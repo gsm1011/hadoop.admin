@@ -1,4 +1,4 @@
-Building Hadoop Cluster with Amazon EC2 and S3 {#chap:8}
+Building Hadoop Cluster with Amazon EC2 and S3 <a name="#chap:8"></a>
 ==============================================
 
 In this chapter, we will cover:
@@ -10,7 +10,7 @@ In this chapter, we will cover:
 - Using S3 to host data
 - Configuring a Hadoop cluster with the new AMI
 
-Introduction {#introduction-5}
+Introduction <a name="#introduction-5"></a>
 ------------
 
 Amazon Elastic Cloud Computing (EC2) and Simple Storage Service (S3) are
@@ -38,14 +38,14 @@ Registering with Amazon Web Services (AWS)
 To use AWS, registration is required. The steps to register with AWS are
 straightforward. In this recipe, we will outline steps to do this.
 
-### Getting ready {#getting-ready-62 .unnumbered}
+### Getting ready <a name="#getting-ready-62"></a>
 
 We assume to use a GUI web browser for AWS registration. So, we are
 assuming you already have a web browser with internet access. In
 addition, personal information needs to be prepared to fill the online
 registration forms.
 
-### How to do it... {#how-to-do-it...-55 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-55"></a>
 
 We can use the following steps to register with AWS:
 
@@ -100,7 +100,7 @@ data-label="fig:aws.management.console"></span>](figs/5163os_08_05.png)
 
 Till here, we finished the registration step successfully.
 
-### See also {#see-also-48 .unnumbered}
+### See also <a name="#see-also-48"></a>
 
 - <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html?r=1874>
 
@@ -116,7 +116,7 @@ AWS provides web interface to manage security credentials, this recipe
 will guide you through the steps to create, download and manage these
 security credentials.
 
-### Getting ready {#getting-ready-63 .unnumbered}
+### Getting ready <a name="#getting-ready-63"></a>
 
 Before getting started, we assume that you have successfully registered
 with AWS. Otherwise, you need to follow the steps in the previous recipe
@@ -129,7 +129,7 @@ least one GUI web browser installed.
 Create a directory for storing AWS credentials with command:\
 `$ mkdir -v ~/.ec2`
 
-### How to do it... {#how-to-do-it...-56 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-56"></a>
 
 Use the following recipe to manage AWS security credentials:
 
@@ -193,7 +193,7 @@ the name of the key pair. And the newly created key pair will be
 downloaded to local machine. Use the following command to copy the
 downloaded key pair to `~/.ec2` folder. `$ cp *.pem ~/.ec2/`
 
-### How it works {#how-it-works-23 .unnumbered}
+### How it works <a name="#how-it-works-23"></a>
 
 Table [tbl:awssecurity] show the usage of each security credential:
 
@@ -213,13 +213,13 @@ can use the local client machine to launch EC2 instances, login to the
 instances on EC2 and so on. In this recipe we will list steps to
 configure a local machine for EC2 connection.
 
-### Getting ready {#getting-ready-64 .unnumbered}
+### Getting ready <a name="#getting-ready-64"></a>
 
 Before getting started, we assume that we have registered with AWS and
 security credentials have been created. We also assume that a machine
 with Linux has been installed.
 
-### How to do it... {#how-to-do-it...-57 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-57"></a>
 
 Use the following recipe to configure a local machine for EC2 remote
 access:
@@ -278,7 +278,7 @@ backed AMI and the other is instance store backed AMI. In this recipe,
 we will first outline steps to create an instance store backed AMI and
 briefly introduce how to create an EBS backed AMI.
 
-### Getting ready {#getting-ready-65 .unnumbered}
+### Getting ready <a name="#getting-ready-65"></a>
 
 Before getting started, we assume that you have successfully registered
 with AWS. And we also assume that a client machine has been configured
@@ -295,7 +295,7 @@ Install the Amazon AMI tools with command:
     Preparing...                #################################### [100%]
        1:ec2-ami-tools          #################################### [100%]
 
-### How to do it... {#how-to-do-it...-58 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-58"></a>
 
 Use the following recipe to create an instance store backed AMI:
 
@@ -827,13 +827,13 @@ In this command, *-i* specifies the key pair to use for login and
 `ec2-54-224-240-54.compute-1.amazonaws.com` is the public domain name of
 the EC2 instance.
 
-### There’s more... {#theres-more...-23 .unnumbered}
+### There’s more... <a name="#theres-more...-23"></a>
 
 As we mentioned previously, there are other methods to create AMIs. One
 method is to create an AMI from existing AMI. Another method is to
 create an EBS backed AMI.
 
-#### Creating AMI from an existing AMI {#creating-ami-from-an-existing-ami .unnumbered}
+#### Creating AMI from an existing AMI <a name="#creating-ami-from-an-existing-ami"></a>
 
 This recipe shows steps how to create an instance store backed AMI from
 an existing AMI. We assume that you have registered with AWS and have
@@ -991,7 +991,7 @@ manifest file in the S3 bucket, the *-n* option specifies the name of
 the AMI, *-O* specifies the access key string and -W specifies the
 secret key string.
 
-#### Creating an EBS backed AMI {#creating-an-ebs-backed-ami .unnumbered}
+#### Creating an EBS backed AMI <a name="#creating-an-ebs-backed-ami"></a>
 
 Creating an EBS backed AMI is straightforward from the web management
 console. This recipe will guide you through the steps to create an EBS
@@ -1032,7 +1032,7 @@ EC2 creates a snapshot for the new AMI. Similar to the image part files
 stored in S3, the snapshot stores the physical image of the EBS backed
 AMI.
 
-### See also {#see-also-49 .unnumbered}
+### See also <a name="#see-also-49"></a>
 
 - Installing HBase in Chapter [chap:3], Configuring a Hadoop cluster
 - Installing Hive in Chapter [chap:3], Configuring a Hadoop cluster
@@ -1053,13 +1053,13 @@ can be obtained from <http://aws.amazon.com/s3/>.
 This recipe will outline steps to configure S3 as the distributed data
 storage system for MapReduce.
 
-### Getting ready {#getting-ready-66 .unnumbered}
+### Getting ready <a name="#getting-ready-66"></a>
 
 Before getting started, we assume that you have successfully registered
 with AWS and the client machine has been successfully configured to
 access the AWS.
 
-### How to do it... {#how-to-do-it...-59 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-59"></a>
 
 Use the following recipe to configure S3 for data storage:
 
@@ -1113,12 +1113,12 @@ Starting a Hadoop cluster with the new AMI is simple and
 straightforward. This recipe will list steps to start up a Hadoop
 cluster with the new AMI.
 
-### Getting ready {#getting-ready-67 .unnumbered}
+### Getting ready <a name="#getting-ready-67"></a>
 
 Before getting started, we assume that you have registered with AWS and
 have successfully created a new AMI with Hadoop properly configured.
 
-### How to do it... {#how-to-do-it...-60 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-60"></a>
 
 Use the following recipe to configure a Hadoop cluster with EC2:
 
@@ -1229,7 +1229,7 @@ $ start-mapred.sh
 When the cluster is running, we can start to submit jobs to the cluster
 from the master node.
 
-### There’s more... {#theres-more...-24 .unnumbered}
+### There’s more... <a name="#theres-more...-24"></a>
 
 An alternative method of running a MapReduce with the amazon cloud is to
 use Amazon Elastic MapReduce (EMR). Amazon EMR provides an elastic
@@ -1331,7 +1331,7 @@ completes. We can get its status from the web console as shown in Figure
 ![Status of an Elastic MapReduce Job Flow<span
 data-label="fig:aws.elasticmapred.flow.status"></span>](figs/5163os_08_28.png)
 
-### See also {#see-also-50 .unnumbered}
+### See also <a name="#see-also-50"></a>
 
 - Chapter [chap:3], Configuring a Hadoop cluster
 

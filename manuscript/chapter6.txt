@@ -1,4 +1,4 @@
-Monitoring a Hadoop Cluster {#chap:6}
+Monitoring a Hadoop Cluster <a name="#chap:6"></a>
 ===========================
 
 In this chapter, we will cover:
@@ -13,7 +13,7 @@ In this chapter, we will cover:
 
 - Monitoring Hadoop cluster with Chukwa
 
-Introduction {#introduction-3}
+Introduction <a name="#introduction-3"></a>
 ------------
 
 System monitoring is critical for maintaining the health and
@@ -65,13 +65,13 @@ corresponding 0.20.x Hadoop release. Configurations for monitoring
 Hadoop versions 2.0.x or 0.23.x should follow the recipe with some
 changes.
 
-### Getting ready {#getting-ready-40 .unnumbered}
+### Getting ready <a name="#getting-ready-40"></a>
 
 We assume that Oracle JDK has been installed and our Hadoop cluster has
 been configured properly and all the daemons are running without any
 problems.
 
-### How to do it... {#how-to-do-it...-33 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-33"></a>
 
 Use the following recipe to configure JMX for monitoring a Hadoop
 cluster:
@@ -199,7 +199,7 @@ From this window, we can get a number of JobTracker metrics such as
 number of running jobs, number of map and reduce slots and number of
 running map and reduce tasks etc.
 
-### See also {#see-also-31 .unnumbered}
+### See also <a name="#see-also-31"></a>
 
 - Monitoring Hadoop cluster with Ganglia
 - Monitoring Hadoop cluster with Nagios
@@ -217,7 +217,7 @@ monitoring daemon, the metadata daemon and the web UI. In this recipe,
 we will outline steps to configure Ganglia for Hadoop cluster
 monitoring.
 
-### Getting ready {#getting-ready-41 .unnumbered}
+### Getting ready <a name="#getting-ready-41"></a>
 
 Login to the master node from administrator machine with command:\
 `$ ssh hdadmin@master`\
@@ -241,7 +241,7 @@ done
 In this recipe, we assume that the Ganglia server will run on the master
 node and the monitoring daemons run on both master and slave nodes.
 
-### How to do it... {#how-to-do-it...-34 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-34"></a>
 
 Use the following recipe to configure Ganglia for Hadoop cluster
 monitoring:
@@ -463,7 +463,7 @@ This screenshot contains the status information of the JobTracker
 including the number of running jobs, the number of map and reduce slots
 and so on.
 
-### How it works {#how-it-works-15 .unnumbered}
+### How it works <a name="#how-it-works-15"></a>
 
 A Ganglia monitoring system is composed of three parts: the monitoring
 daemons gmond, the meta-data handling daemon gmetad and the web UI.
@@ -478,7 +478,7 @@ data flow can be described with Figure [fig:ganglia.dataflow].
 ![The Ganglia Data Flow Diagram<span
 data-label="fig:ganglia.dataflow"></span>](figs/5163os_06_13.png)
 
-### See also {#see-also-32 .unnumbered}
+### See also <a name="#see-also-32"></a>
 
 - Monitoring Hadoop cluster with JMX
 - Monitoring Hadoop cluster with Chukwa
@@ -499,7 +499,7 @@ Designed to be a generic monitoring system, Nagios can be configured to
 monitor Hadoop clusters. In this recipe, we will outline steps to
 configure Nagios for Hadoop cluster monitoring.
 
-### Getting ready {#getting-ready-42 .unnumbered}
+### Getting ready <a name="#getting-ready-42"></a>
 
 To get started with Nagios monitoring, we need to install it first. On
 CentOS and other Red Hat compatible Linux systems, we can use the
@@ -545,7 +545,7 @@ $ cp check_jmx/nagios/plugin/jmxquery.jar /usr/local/nagios/libexec
 By doing this, we will be able to use the `check_jmx` command in the
 Nagios monitoring configuration.
 
-### How to do it... {#how-to-do-it...-35 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-35"></a>
 
 Use the following recipe to configure Nagios for Hadoop cluster
 monitoring: Open file /etc/nagios/nagios.cfg with a text editor.\
@@ -772,7 +772,7 @@ If you are opening the web UI for the first time, you need to type in
 the username and password. The username should be “nagiosadmin” and the
 password should be the one you entered for the htpasswd command.
 
-### How it works {#how-it-works-16 .unnumbered}
+### How it works <a name="#how-it-works-16"></a>
 
 Nagios is an open source centralized network monitoring system. A
 typical Nagios deployment consists of a monitoring server and a number
@@ -781,7 +781,7 @@ specifications (what services on which hosts) using one or more
 configuration files. For more information about Nagios, please refer to
 [its homepage](http://www.nagios.org).
 
-### See also {#see-also-33 .unnumbered}
+### See also <a name="#see-also-33"></a>
 
 - Monitoring Hadoop cluster with JMX
 - Monitoring Hadoop cluster with Chukwa
@@ -799,7 +799,7 @@ following software: HDFS, MapReduce, HBase and Hive. In this recipe, we
 will outline steps to configure Hadoop Ambari for cluster installation,
 monitoring and management.
 
-### Getting ready {#getting-ready-43 .unnumbered}
+### Getting ready <a name="#getting-ready-43"></a>
 
 We assume that the Hadoop cluster has been configured properly.
 
@@ -834,7 +834,7 @@ Check the status of iptables with command:
     Chain OUTPUT (policy ACCEPT)
     target     prot opt source               destination
 
-### How to do it... {#how-to-do-it...-36 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-36"></a>
 
 Use the following recipe to configure Ambari for Hadoop monitoring and
 management:
@@ -983,7 +983,7 @@ shown in Figure [fig:cluster.status].
 ![Cluster Status after Installation<span
 data-label="fig:cluster.status"></span>](figs/5163os_06_27.png)
 
-### See also {#see-also-34 .unnumbered}
+### See also <a name="#see-also-34"></a>
 
 - Monitoring Hadoop cluster with JMX
 - Monitoring Hadoop cluster with Chukwa
@@ -1001,7 +1001,7 @@ toolkits for log analysis and cluster monitoring. In this recipe, we
 will guide you through steps to configure Chukwa to monitor a Hadoop
 cluster.
 
-### Getting ready {#getting-ready-44 .unnumbered}
+### Getting ready <a name="#getting-ready-44"></a>
 
 Latest release of Chukwa uses HBase for key-value storage. So, before
 getting started, we assume that Hadoop and HBase have been installed and
@@ -1056,7 +1056,7 @@ Install telnet with command:\
 Login to the master node from administrator machine with command:\
 `$ ssh hduser@master`
 
-### How to do it... {#how-to-do-it...-37 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-37"></a>
 
 Use the following recipe to configure Chukwa for Hadoop monitoring:
 
@@ -1241,7 +1241,7 @@ By default the file will have the following content:\
 
 The meaning of this is username: `password[, role]`
 
-### How it works {#how-it-works-17 .unnumbered}
+### How it works <a name="#how-it-works-17"></a>
 
 Chukwa was designed to collect data that are dynamically generated
 across distributed machines in a cluster. It has four major components:
@@ -1277,7 +1277,7 @@ data-label="fig:chukwa.dataflow"></span>](figs/5163os_06_08.png)
 For more information about the design of Chukwa, please check the
 [documentation](http://incubator.apache.org/chukwa/docs/r0.5.0/design.html).
 
-### There’s more... {#theres-more...-20 .unnumbered}
+### There’s more... <a name="#theres-more...-20"></a>
 
 Due to the instability of this software package, you might need to do
 some debugging when deploying it onto the cluster. But to get started
@@ -1311,7 +1311,7 @@ projects, new bugs are reported and new features added, a nice way to
 keep up to date with the most recent changes is to work with the source
 [code repository](https://github.com/apache/chukwa).
 
-### See also {#see-also-35 .unnumbered}
+### See also <a name="#see-also-35"></a>
 
 - Monitoring Hadoop cluster with JMX
 - Monitoring Hadoop cluster with Ganglia

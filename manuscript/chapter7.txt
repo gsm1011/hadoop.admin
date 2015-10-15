@@ -1,4 +1,4 @@
-Tuning Hadoop Cluster for Best Performance {#chap:7}
+Tuning Hadoop Cluster for Best Performance <a name="#chap:7"></a>
 ==========================================
 
 In this chapter, we will cover:
@@ -21,7 +21,7 @@ In this chapter, we will cover:
 - Configuring JVM reuse
 - Configuring reducer initialization time
 
-Introduction {#introduction-4}
+Introduction <a name="#introduction-4"></a>
 ------------
 
 Hadoop performance tuning is a challenging task, mainly due to the
@@ -101,7 +101,7 @@ performance of the HDFS cluster. In addition, we will test the failure
 resilience of the MapReduce framework and the performance of the
 MapReduce cluster under stress.
 
-### Getting ready {#getting-ready-45 .unnumbered}
+### Getting ready <a name="#getting-ready-45"></a>
 
 To get started with Hadoop cluster benchmarks, we assume that a working
 Hadoop cluster has been configured and all the daemons are running
@@ -115,7 +115,7 @@ Login from the Hadoop cluster administrative machine to the cluster
 master node with command:\
 `$ ssh hduser@master`
 
-### How to do it... {#how-to-do-it...-38 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-38"></a>
 
 Use the following recipe to do HDFS benchmarks:
 
@@ -332,7 +332,7 @@ $ hadoop jar $HADOOP_HOME/hadoop-test-*.jar testmapredsort -m 50 -r 5 -sortInput
 SUCCESS! Validated the MapReduce framework's 'sort' successfully.
 ```
 
-### How it works {#how-it-works-18 .unnumbered}
+### How it works <a name="#how-it-works-18"></a>
 
 We can get the usage of the Hadoop benchmark of the test package with
 the following command:
@@ -558,7 +558,7 @@ $ hadoop jar $HADOOP_HOME/hadoop-example-*.jar wordcount <in> <out>
 `<in>` specifies the directory for input and `<out>` specifies the
 directory for output.
 
-### See also {#see-also-36 .unnumbered}
+### See also <a name="#see-also-36"></a>
 
 - Benchmarking a Hadoop cluster with GridMix.
 
@@ -578,7 +578,7 @@ to scale up (make time longer) or down (make time shorter) the job
 runtime. In this recipe, we will outline steps to analyze job history
 with Rumen.
 
-### Getting ready {#getting-ready-46 .unnumbered}
+### Getting ready <a name="#getting-ready-46"></a>
 
 Before getting started, we assume that the Hadoop cluster has been
 properly configured and all the daemons are running without any issues.
@@ -586,7 +586,7 @@ Login from the Hadoop cluster administrator machine to the cluster
 master node with command:\
 `$ ssh hduser@master`
 
-### How to do it... {#how-to-do-it...-39 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-39"></a>
 
 Use the following recipe to analyze job history with Rumen:
 
@@ -709,7 +709,7 @@ the job trace, and the default value for this option is one hour. Option
 `-input-cycle` is a mandatory option, and it defines the basic unit of
 time for the folding operation.
 
-### See also {#see-also-37 .unnumbered}
+### See also <a name="#see-also-37"></a>
 
 - Benchmarking a Hadoop cluster with GridMix.
 - <http://hadoop.apache.org/docs/r1.1.2/rumen.html>
@@ -725,7 +725,7 @@ based on the job execution metrics. The profiles can help us find
 performance bottlenecks of the cluster. In this section, we will outline
 steps for benchmarking Hadoop with GridMix.
 
-### Getting ready {#getting-ready-47 .unnumbered}
+### Getting ready <a name="#getting-ready-47"></a>
 
 We assume that our Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
@@ -739,7 +739,7 @@ Login to the Hadoop cluster node from the administrator machine with
 command:\
 `$ ssh hduser@master`
 
-### How to do it... {#how-to-do-it...-40 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-40"></a>
 
 Use the following recipe to do GridMix2 benchmarks:
 
@@ -819,7 +819,7 @@ Run the GridMix2 benchmark with command:
     Jobs in success state: 32
     Jobs in failed state: 0
 
-### How it works... {#how-it-works...-18 .unnumbered}
+### How it works... <a name="#how-it-works...-18"></a>
 
 GridMix is a benchmark for Hadoop clusters. It is generally used to
 model the performance profile of a Hadoop cluster by running a number of
@@ -853,12 +853,12 @@ from different categories. We can specify the mix in file
 `gridmix_config.xml`. Based on the specification, a number of jobs will
 be created and submitted to the Hadoop cluster till finish.
 
-### There’s more... {#theres-more...-21 .unnumbered}
+### There’s more... <a name="#theres-more...-21"></a>
 
 Besides doing benchmark with `GridMix2`, we can also benchmark a Hadoop
 cluster with `GridMix1` and `GridMix3`.
 
-#### Benchmarking Hadoop cluster with GridMix1 {#benchmarking-hadoop-cluster-with-gridmix1 .unnumbered}
+#### Benchmarking Hadoop cluster with GridMix1 <a name="#benchmarking-hadoop-cluster-with-gridmix1"></a>
 
 The usage of GridMix1 is similar to GridMix2. The following steps can be
 used:
@@ -900,7 +900,7 @@ To run a small javasort job, we can use the following command:\
 
 We can use similar commands to run medium and large jobs.
 
-#### Benchmarking Hadoop cluster with GridMix3 {#benchmarking-hadoop-cluster-with-gridmix3 .unnumbered}
+#### Benchmarking Hadoop cluster with GridMix3 <a name="#benchmarking-hadoop-cluster-with-gridmix3"></a>
 
 Use the following recipe to build a GridMix3 benchmark for a Hadoop
 cluster:
@@ -960,7 +960,7 @@ following command:
            gridmix.client.submit.threads          : Submitting threads
     ...
 
-### See also {#see-also-38 .unnumbered}
+### See also <a name="#see-also-38"></a>
 
 - Benchmarking and profiling a Hadoop cluster
 - <http://hadoop.apache.org/docs/r1.1.2/rumen.html>
@@ -980,7 +980,7 @@ Hadoop Vaidya is extensible, users can analyze Hadoop job with their own
 rules. In this recipe, we will outline steps to configure Hadoop Vaidya
 for Hadoop cluster performance diagnosis.
 
-### Getting ready {#getting-ready-48 .unnumbered}
+### Getting ready <a name="#getting-ready-48"></a>
 
 Before getting started, we assume that the Hadoop cluster has been
 properly configured and all the daemons are running without any issues.
@@ -989,7 +989,7 @@ Login from the Hadoop cluster administrator machine to the master node
 machine with command:\
 `$ ssh hduser@master`
 
-### How to do it... {#how-to-do-it...-41 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-41"></a>
 
 Use the following steps to use Hadoop Vaidya:\
 Locate the directory for the job configuration file you want to analyze.
@@ -1129,7 +1129,7 @@ following:
 </PostExPerformanceDiagnosticReport>
 ```
 
-### How it works... {#how-it-works...-19 .unnumbered}
+### How it works... <a name="#how-it-works...-19"></a>
 
 We can get the options for Vaidya with the following command:
 
@@ -1158,7 +1158,7 @@ We can get the options for Vaidya with the following command:
 
     -help                  : prints this usage
 
-### There’s more... {#theres-more...-22 .unnumbered}
+### There’s more... <a name="#theres-more...-22"></a>
 
 HiBench is a benchmarking suite for Hadoop. It has 9 typical workloads,
 including micro, HDFS, web search machine learning and data analytics
@@ -1169,7 +1169,7 @@ and the paper provide nice examples of Hadoop benchmarking. For more
 information, you can refer to:
 <https://github.com/intel-hadoop/Hibench>.
 
-### See also {#see-also-39 .unnumbered}
+### See also <a name="#see-also-39"></a>
 
 - Benchmarking and profiling a Hadoop cluster
 - Benchmarking a Hadoop cluster with GridMix
@@ -1199,7 +1199,7 @@ To deal with the data skew problem on HDFS, Hadoop is shipped with a
 balancer tool. It can be configured either manually or automatically to
 re-balance the data blocks.
 
-### Getting ready {#getting-ready-49 .unnumbered}
+### Getting ready <a name="#getting-ready-49"></a>
 
 To get started with balancer, we assume that the Hadoop cluster has been
 properly configured and all the daemons are running without any issues.
@@ -1207,7 +1207,7 @@ Login from the cluster administrator machine to the master node with the
 following command:\
 `$ ssh hduser@master`
 
-### How to do it... {#how-to-do-it...-42 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-42"></a>
 
 Use the following recipe to balance HDFS data blocks with balancer:
 
@@ -1256,7 +1256,7 @@ will get output similar to the following:
 To stop the balancer, we can use the following command:\
 `$ stop-balancer.sh`
 
-### How it works {#how-it-works-19 .unnumbered}
+### How it works <a name="#how-it-works-19"></a>
 
 Hadoop balancer balances data blocks on HDFS according to a
 pre-configured threshold value, which sets the target for whether the
@@ -1295,7 +1295,7 @@ Based on the property of the jobs being executed, one block size might
 result in better performance than others. We will guide you through
 steps to configure proper block size for the Hadoop cluster.
 
-### Getting ready {#getting-ready-50 .unnumbered}
+### Getting ready <a name="#getting-ready-50"></a>
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
@@ -1304,7 +1304,7 @@ Login from the Hadoop cluster administrator machine to the master node
 with command:\
 `$ ssh hduser@master`
 
-### How to do it... {#how-to-do-it...-43 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-43"></a>
 
 Configure the proper HDFS block size with the following recipe:
 
@@ -1371,7 +1371,7 @@ far out weight the disadvantages.
 In this section, we will outline steps to configure data compression on
 a Hadoop cluster.
 
-### Getting ready {#getting-ready-51 .unnumbered}
+### Getting ready <a name="#getting-ready-51"></a>
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
@@ -1383,7 +1383,7 @@ master node with command:\
 In this recipe, we assume all the property configurations will make
 changes in file `$HADOOP_HOME/conf/mapred-site.xml`.
 
-### How to do it... {#how-to-do-it...-44 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-44"></a>
 
 Use the following recipe to configure input and output data compression
 for a Hadoop cluster:
@@ -1473,7 +1473,7 @@ done
 Restart the Hadoop cluster with command:\
 `$ start-all.sh`
 
-### How it works... {#how-it-works...-20 .unnumbered}
+### How it works... <a name="#how-it-works...-20"></a>
 
 Table [tbl:hdfscompression] is a summary of properties for configuring
 Hadoop data compression:
@@ -1521,7 +1521,7 @@ slots that are used for speculative execution.
 In this recipe, we will list steps to configure Hadoop speculative
 execution.
 
-### Getting ready {#getting-ready-52 .unnumbered}
+### Getting ready <a name="#getting-ready-52"></a>
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
@@ -1533,7 +1533,7 @@ master node with command:\
 In this recipe, we assume all the property configurations will make
 changes to file `$HADOOP_HOME/conf/mapred-site.xml`.
 
-### How to do it... {#how-to-do-it...-45 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-45"></a>
 
 We can use the following recipe to configure Hadoop speculative
 execution:
@@ -1614,7 +1614,7 @@ done
 Started the MapReduce cluster with the following command:\
 `$ start-mapred.sh`
 
-### How it works... {#how-it-works...-21 .unnumbered}
+### How it works... <a name="#how-it-works...-21"></a>
 
 When speculative execution is enabled, some tasks will get killed. This
 can be verified by opening URL: <http://master:50030/>.
@@ -1670,7 +1670,7 @@ The number of map and reduce slots determines the number of concurrent
 map/reduce tasks for a TaskTracker, which forks multiple JVMs to run
 these tasks. In this recipe, we will give general
 
-### Getting ready {#getting-ready-53 .unnumbered}
+### Getting ready <a name="#getting-ready-53"></a>
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
@@ -1679,7 +1679,7 @@ Login from the Hadoop cluster administrator machine to the cluster
 master node with command:\
 `$ ssh hduser@master`
 
-### How to do it... {#how-to-do-it...-46 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-46"></a>
 
 Use the following steps to configure map/reduce slots for a TaskTracker:
 
@@ -1739,7 +1739,7 @@ cluster. Hadoop provides a few properties for administrators to tune the
 JobTracker. In this recipe, we will list the steps to configure the
 JobTracker.
 
-### Getting ready {#getting-ready-54 .unnumbered}
+### Getting ready <a name="#getting-ready-54"></a>
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
@@ -1751,7 +1751,7 @@ master node with command:\
 In this recipe, we assume all the configurations are making changes to
 file `$HADOOP_HOME/conf/mapred-site.xml`.
 
-### How to do it... {#how-to-do-it...-47 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-47"></a>
 
 Use the following recipe to configure JobTracker:
 
@@ -1834,7 +1834,7 @@ done
 Restart the Hadoop cluster with command:\
 `$ start-mapred.sh`
 
-### How it works {#how-it-works-20 .unnumbered}
+### How it works <a name="#how-it-works-20"></a>
 
 Table [tbl:jobtracker] is a list of properties with descriptions of this
 recipe:
@@ -1846,7 +1846,7 @@ mapred.jobtracker.job.history.block.size & 3145728 &\
 mapred.jobtracker.taskScheduler.maxRunningTasksPerJob & EMPTY & No
 Limits\
 
-### See also {#see-also-40 .unnumbered}
+### See also <a name="#see-also-40"></a>
 
 - Tuning TaskTracker configuration
 
@@ -1865,7 +1865,7 @@ configured based on the configuration of the cluster.
 
 In this section, we will list steps to configure TaskTracker property.
 
-### Getting ready {#getting-ready-55 .unnumbered}
+### Getting ready <a name="#getting-ready-55"></a>
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
@@ -1877,7 +1877,7 @@ master node with command:\
 In this recipe, we assume all the configurations are making changes to
 file `$HADOOP_HOME/conf/mapred-site.xml`.
 
-### How to do it... {#how-to-do-it...-48 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-48"></a>
 
 Use the following recipe to configure TaskTracker properties:
 
@@ -2002,7 +2002,7 @@ done
 Restart the MapReduce cluster with the following command:\
 `$ start-mapred.sh`
 
-### How it works {#how-it-works-21 .unnumbered}
+### How it works <a name="#how-it-works-21"></a>
 
 Table [tbl:tasktracker] contains a list of properties with descriptions
 of this recipe:
@@ -2018,7 +2018,7 @@ mapreduce.tasktracker.outofband.heartbeat & false &\
 mapred.map.max.attempts & 4 &\
 mapred.reduce.max.attempts & 4 &\
 
-### See also {#see-also-41 .unnumbered}
+### See also <a name="#see-also-41"></a>
 
 - Tuning JobTracker configuration
 
@@ -2032,7 +2032,7 @@ of swap operations, incurring big overhead. In this section, we will
 show best practices for configuring the shuffle, merge and sort
 parameters.
 
-### Getting ready {#getting-ready-56 .unnumbered}
+### Getting ready <a name="#getting-ready-56"></a>
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
@@ -2044,7 +2044,7 @@ master node with command:\
 In this recipe, we assume all the configurations are making changes to
 file `$HADOOP_HOME/conf/mapred-site.xml`.
 
-### How to do it... {#how-to-do-it...-49 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-49"></a>
 
 Use the following recipe to configure the sorting parameters:
 
@@ -2199,7 +2199,7 @@ done
 Restart the MapReduce cluster with the following command:\
 `$ start-mapred.sh`
 
-### How it works {#how-it-works-22 .unnumbered}
+### How it works <a name="#how-it-works-22"></a>
 
 Figure [tbl:memoryconfig] show the description of the properties and
 their default values mentioned in the recipe:
@@ -2215,7 +2215,7 @@ mapred.job.shuffle.input.buffer.percent & 0.70\
 mapred.job.reduce.input.buffer.percent & 0.0\
 mapreduce.reduce.shuffle.maxfetchfailures & 10\
 
-### See also {#see-also-42 .unnumbered}
+### See also <a name="#see-also-42"></a>
 
 - Configuring memory for a Hadoop cluster
 
@@ -2228,7 +2228,7 @@ Hadoop has a few memory configuration properties. Their values should be
 set according to the configurations of the cluster. In this recipe, we
 will outline steps to configure these memory properties.
 
-### Getting ready {#getting-ready-57 .unnumbered}
+### Getting ready <a name="#getting-ready-57"></a>
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
@@ -2240,7 +2240,7 @@ master node with command:\
 In this recipe, we assume all the configurations are making changes to
 file `$HADOOP_HOME/conf/mapred-site.xml`.
 
-### How to do it... {#how-to-do-it...-50 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-50"></a>
 
 We can use the following recipe to configure memory properties for a
 Hadoop cluster:
@@ -2331,7 +2331,7 @@ done
 Start the Hadoop cluster with the following command:\
 `$ start-mapred.sh`
 
-### How it works... {#how-it-works...-22 .unnumbered}
+### How it works... <a name="#how-it-works...-22"></a>
 
 Table [tbl:memoryconfig.default] lists the properties in the recipe that
 their descriptions.
@@ -2344,7 +2344,7 @@ mapred.cluster.max.reduce.memory.mb & -1 & Feature unused.\
 mapred.job.map.memory.mb & -1 & Feature unused.\
 mapred.job.reduce.memory.mb & -1 & Feature unused.\
 
-### See also {#see-also-43 .unnumbered}
+### See also <a name="#see-also-43"></a>
 
 - Setting proper number of map and reduce slots for TaskTracker
 
@@ -2360,7 +2360,7 @@ property, we can boost the performance of our Hadoop cluster. In this
 recipe, we will outline steps to configure the number of multiple copies
 for transferring map outputs to reducers.
 
-### Getting ready {#getting-ready-58 .unnumbered}
+### Getting ready <a name="#getting-ready-58"></a>
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
@@ -2372,7 +2372,7 @@ master node with command:\
 In this recipe, we assume all the configurations are making changes to
 file `$HADOOP_HOME/conf/mapred-site.xml`.
 
-### How to do it... {#how-to-do-it...-51 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-51"></a>
 
 Use the following recipe to configure the number of parallel copies:
 
@@ -2403,7 +2403,7 @@ done
 Restart the Hadoop cluster with the following command:\
 `$ start-mapred.sh`
 
-### See also {#see-also-44 .unnumbered}
+### See also <a name="#see-also-44"></a>
 
 - Tuning TaskTracker configuration
 - Tuning shuffle, merge and sort parameters
@@ -2415,7 +2415,7 @@ Configuring JVM properties plays a very important rule in the
 performance tuning of a Hadoop cluster. In this recipe, we will outline
 steps to configure JVM.
 
-### Getting ready {#getting-ready-59 .unnumbered}
+### Getting ready <a name="#getting-ready-59"></a>
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
@@ -2424,7 +2424,7 @@ Login from the Hadoop cluster administrator machine to the cluster
 master node with command:\
 `$ ssh hduser@master`
 
-### How to do it... {#how-to-do-it...-52 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-52"></a>
 
 Use the following recipe to configure JVM parameters:
 
@@ -2462,7 +2462,7 @@ done
 Start the MapReduce cluster with the following commands:\
 `$ start-all.sh`
 
-### See Also {#see-also-45 .unnumbered}
+### See Also <a name="#see-also-45"></a>
 
 - Configuring JVM reuse.
 
@@ -2483,7 +2483,7 @@ is enabled, multiple tasks can be executed sequentially with one JVM.
 
 In this recipe we will outline steps to configure JVM reuse.
 
-### Getting ready {#getting-ready-60 .unnumbered}
+### Getting ready <a name="#getting-ready-60"></a>
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
@@ -2492,7 +2492,7 @@ Login from the Hadoop cluster administrator machine to the cluster
 master node with command:\
 `$ ssh hduser@master`
 
-### How to do it... {#how-to-do-it...-53 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-53"></a>
 
 Use the following recipe to configure JVM reuse:
 
@@ -2525,7 +2525,7 @@ done
 Start the Hadoop cluster with the following command:\
 `$ start-mapred.sh`
 
-### See also {#see-also-46 .unnumbered}
+### See also <a name="#see-also-46"></a>
 
 - Tuning JVM parameters.
 
@@ -2540,7 +2540,7 @@ other hand, if the number is set too large, for example, very close to
 to finish, prolonging the job execution time. In this recipe, we will
 outline steps to configure reducer initialization.
 
-### Getting ready {#getting-ready-61 .unnumbered}
+### Getting ready <a name="#getting-ready-61"></a>
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
@@ -2549,7 +2549,7 @@ Login from the Hadoop cluster administrator machine to the cluster
 master node with command:\
 `$ ssh hduser@master`
 
-### How to do it... {#how-to-do-it...-54 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-54"></a>
 
 Use the following recipe to configure reducer initialization time:
 
@@ -2578,7 +2578,7 @@ done
 Restart the MapReduce cluster with command:\
 `$ start-mapred.sh`
 
-### See also {#see-also-47 .unnumbered}
+### See also <a name="#see-also-47"></a>
 
 - Tuning TaskTracker configuration.
 

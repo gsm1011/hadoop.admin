@@ -1,4 +1,4 @@
-Hardening a Hadoop Cluster {#chap:5}
+Hardening a Hadoop Cluster <a name="#chap:5"></a>
 ==========================
 
 In this chapter, we will cover:
@@ -11,7 +11,7 @@ In this chapter, we will cover:
 - Configuring NameNode high availability
 - Configuring HDFS federation
 
-Introduction {#introduction-2}
+Introduction <a name="#introduction-2"></a>
 ------------
 
 The security of a Hadoop cluster is critical for its availability.
@@ -30,14 +30,14 @@ use case of this configuration is to control a list of allowed users who
 can use the cluster. This is enforced with Access Control List (ACL) in
 Hadoop. In this recipe, we will list steps to configure SLA.
 
-### Getting ready {#getting-ready-33 .unnumbered}
+### Getting ready <a name="#getting-ready-33"></a>
 
 Before getting started, we assume that our Hadoop cluster has been
 properly configured and all the daemons are running without any issues.
 Login to the master node from the administrator machine with command:
 ssh hduser@master
 
-### How to do it... {#how-to-do-it...-26 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-26"></a>
 
 Use the following steps to configure Hadoop SLA:
 
@@ -105,7 +105,7 @@ Force the JobTracker to reload the service ACL configurations with
 command:\
 `$ hadoop mradmin -refreshServiceAcl`
 
-### How it works... {#how-it-works...-15 .unnumbered}
+### How it works... <a name="#how-it-works...-15"></a>
 
 The value of properties such as security.namenode.protocol.acl is a
 comma separated list of users and a comma separated list of groups. The
@@ -113,7 +113,7 @@ users list and the groups list are separated by space. For example, the
 generic format of the value should be similar to the following:\
 `<value>user1,user2,user3 group1,group2</value>`
 
-### There’s more... {#theres-more...-15 .unnumbered}
+### There’s more... <a name="#theres-more...-15"></a>
 
 Besides the three properties we mentioned in this recipe, a number of
 other ACL properties are available in Hadoop. Table [tbl:acl] shows the
@@ -136,7 +136,7 @@ ACL policies.\
 The default value of these properties is \*, which means all entities
 can access the service or, in other words, SLA is disabled.
 
-### See also {#see-also-24 .unnumbered}
+### See also <a name="#see-also-24"></a>
 
 - Configuring job authorization with ACLs
 
@@ -149,7 +149,7 @@ cluster. Users’ operations on jobs and queues will also be authenticated
 by the JobTracker. In this recipe, we will show steps to configure job
 authorization with ACLs.
 
-### Getting ready {#getting-ready-34 .unnumbered}
+### Getting ready <a name="#getting-ready-34"></a>
 
 We assume that our Hadoop cluster has been properly configured without
 any problems.
@@ -157,7 +157,7 @@ any problems.
 Login to the master node from the administrator machine with command:\
 `$ ssh hduser@master`
 
-### How to do it... {#how-to-do-it...-27 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-27"></a>
 
 Use the following steps to configure job authorization with ACLs:
 
@@ -242,7 +242,7 @@ with commands:\
 `$ hadoop dfsadmin -refreshServiceAcl`\
 `$ hadoop mradmin -refreshServiceAcl`
 
-### How it works... {#how-it-works...-16 .unnumbered}
+### How it works... <a name="#how-it-works...-16"></a>
 
 Similar to the SLA properties in the previous recipe, the value of
 properties such as mapred.queue.hdqueue.acl-submit-job is a comma
@@ -262,7 +262,7 @@ Job modification ACLs can overlap with queue level ACLs. When this
 happens, a user’s operation will be granted if the user has been listed
 in either of these ACLs.
 
-### See also {#see-also-25 .unnumbered}
+### See also <a name="#see-also-25"></a>
 
 - Configuring service level authentication
 
@@ -281,7 +281,7 @@ It achieves this by authenticating on the underlying Remote Procedure
 Calls (RPC). In this recipe, we will outline steps to configure Kerberos
 authentication for a Hadoop cluster.
 
-### Getting ready {#getting-ready-35 .unnumbered}
+### Getting ready <a name="#getting-ready-35"></a>
 
 Kerberos was created by MIT. It was designed to provide strong
 authentication for client/server applications by using secret key
@@ -315,7 +315,7 @@ data-label="fig:jce"></span>](figs/5163os_05_01.png)
 Click the right download link based on your Java version, which we can
 get with the ``` ``java -version'' ``` command.
 
-### How to do it... {#how-to-do-it...-28 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-28"></a>
 
 Use the following steps to configure Kerberos for a Hadoop cluster:
 
@@ -579,7 +579,7 @@ Test the Kerberos configuration by running an example MapReduce job with
 command:\
 `$ hadoop jar $HADOOP_HOME/hadoop-example*.jar pi 20 1000000`
 
-### See also {#see-also-26 .unnumbered}
+### See also <a name="#see-also-26"></a>
 
 - Configuring web UI authentication
 - <http://en.wikipedia.org/wiki/SPNEGO>
@@ -596,7 +596,7 @@ web UIs can be configured to authenticate users with Kerberos. In this
 recipe, we will outline steps to configure user authentication for
 accessing the web UI.
 
-### Getting ready {#getting-ready-36 .unnumbered}
+### Getting ready <a name="#getting-ready-36"></a>
 
 We assume that our Hadoop has been properly configured and all the
 daemons are running without any issues. We also assume that Kerberos
@@ -605,7 +605,7 @@ authentication has been configured properly.
 In this recipe, we assume all the property configurations will make
 changes on file `$HADOOP_HOME/conf/core-site.xml`.
 
-### How to do it... {#how-to-do-it...-29 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-29"></a>
 
 Use the following recipe to configure web UI authentication:
 
@@ -718,7 +718,7 @@ Alternatively, we can test our configuration with the curl command:
 
     $ curl -v -u hduser --negotiate http://master:50030/jobtracker.jsp
 
-### How it works {#how-it-works-12 .unnumbered}
+### How it works <a name="#how-it-works-12"></a>
 
 Web UI authentication is implemented with the HTTP SPNEGO protocol .
 SPNEGO stands for Simple and Protected Negotiation mechanism. It is a
@@ -735,7 +735,7 @@ security mechanisms in a phased manner.
 For more information about SPNEGO, please refer to its wiki page at:
 <http://en.wikipedia.org/wiki/SPNEGO>.
 
-### There’s more... {#theres-more...-16 .unnumbered}
+### There’s more... <a name="#theres-more...-16"></a>
 
 Other authentication methods include the simple authentication. If this
 authentication method is used, we must specify the user name in the
@@ -754,7 +754,7 @@ property:
 </property>
 ```
 
-### See also {#see-also-27 .unnumbered}
+### See also <a name="#see-also-27"></a>
 
 - Securing Hadoop cluster with Kerberos
 
@@ -775,7 +775,7 @@ cluster. In this recipe, we will show you how to configure a
 SecondaryNameNode as a backup NameNode and how to recover from NameNode
 failures.
 
-### Getting ready {#getting-ready-37 .unnumbered}
+### Getting ready <a name="#getting-ready-37"></a>
 
 We assume that our Hadoop cluster has been properly configured. And we
 have one machine master1 as the NameNode and a second machine master2 to
@@ -784,7 +784,7 @@ run the SecondaryNameNode.
 Please be prepared that a NameNode failure can cause the cluster to
 halt. It might take some time to recover from the failure.
 
-### How to do it... {#how-to-do-it...-30 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-30"></a>
 
 The first method we want to introduce is to configure the NameNode to
 write edit logs and filesystem image into two locations, one is on the
@@ -879,7 +879,7 @@ command:
 Start the Hadoop cluster with command:\
 `$ start-all.sh`
 
-### How it works {#how-it-works-13 .unnumbered}
+### How it works <a name="#how-it-works-13"></a>
 
 Strictly speaking, the HDFS SecondaryNameNode daemon is not NameNode. It
 only acts as the role of periodically fetching the filesystem metadata
@@ -887,7 +887,7 @@ image file and the edit log files to the directory specified with
 property fs.checkpoint.dir. In case of NameNode failure, the backup
 files can be used to recover the HDFS file system.
 
-### There’s more... {#theres-more...-17 .unnumbered}
+### There’s more... <a name="#theres-more...-17"></a>
 
 As we have mentioned previously, the failure of a NameNode is mainly
 caused by the corrupted metadata files. So the key for NameNode
@@ -896,7 +896,7 @@ two more methods to do this, one is by writing metadata onto multiple
 hard drives and the other is to recover from the checkpoint of a
 SecondaryNameNode.
 
-#### NameNode resilience with multiple hard drives {#namenode-resilience-with-multiple-hard-drives .unnumbered}
+#### NameNode resilience with multiple hard drives <a name="#namenode-resilience-with-multiple-hard-drives"></a>
 
 We can use the following steps to configure the NameNode with multiple
 hard drives:\
@@ -939,7 +939,7 @@ Configure the following property in file
 Start the cluster with command:\
 `$ start-all.sh`
 
-#### Recovering NameNode from the checkpoint of a SecondaryNameNode {#recovering-namenode-from-the-checkpoint-of-a-secondarynamenode .unnumbered}
+#### Recovering NameNode from the checkpoint of a SecondaryNameNode <a name="#recovering-namenode-from-the-checkpoint-of-a-secondarynamenode"></a>
 
 We can use the following steps to configure SecondaryNameNode and
 recover from the NameNode failure:
@@ -1014,7 +1014,7 @@ Convert the checkpoint to the new version format with command:\
 Start the cluster with command:\
 `$ start-all.sh`
 
-### See also {#see-also-28 .unnumbered}
+### See also <a name="#see-also-28"></a>
 
 - Managing HDFS cluster in Chapter [chap:4], Managing a Hadoop cluster
 
@@ -1039,7 +1039,7 @@ active NameNode. Hadoop HA offers two ways to do this. One is based on
 Quorum and the other is based on shared storage using NFS. In this
 recipe, we will only show you how to configure HA using Quorum.
 
-### Getting ready {#getting-ready-38 .unnumbered}
+### Getting ready <a name="#getting-ready-38"></a>
 
 Currently, Hadoop release 1.x.y (MRv1) doesn’t support NameNode HA, so
 we are assuming that all the cluster nodes already have Hadoop version
@@ -1053,7 +1053,7 @@ of MRv2, please refer to the official website at:
 We are assuming that we have two master nodes, with hostnames master1
 and master2, to run the NameNode daemons.
 
-### How to do it... {#how-to-do-it...-31 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-31"></a>
 
 Use the following recipe to configure Hadoop NameNode HA:
 
@@ -1289,7 +1289,7 @@ If the standby NameNode becomes the active NameNode automatically and
 the Hadoop cluster is still working without any problems, the
 configuration is successful.
 
-### How it works {#how-it-works-14 .unnumbered}
+### How it works <a name="#how-it-works-14"></a>
 
 Hadoop NameNode HA was introduced since versions 0.23.x or the 2.0.x
 branch (MRv2). The goal is to guarantee the availability of the cluster.
@@ -1301,7 +1301,7 @@ to a backup directory, the standby NameNode is a hot standby node for
 the active NameNode. In case when the active NameNode fails, the standby
 NameNode will become the active node in minimum time.
 
-### There’s more... {#theres-more...-18 .unnumbered}
+### There’s more... <a name="#theres-more...-18"></a>
 
 In the NameNode HA implementation, ZooKeeper is playing an important
 role. The security of ZooKeeper can be a necessary concern. We can use
@@ -1373,7 +1373,7 @@ We will have output similar to the following:
 Restart the cluster with command:\
 `$ start-dfs.sh`
 
-### See also {#see-also-29 .unnumbered}
+### See also <a name="#see-also-29"></a>
 
 - Configuring HDFS federation
 - <http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/HDFSHighAvailabilityWithNFS.html>
@@ -1388,14 +1388,14 @@ increases the NameNode capacity and throughput by leveraging the
 capacity of multiple independent NameNodes, with each NameNode hosting
 or managing part of the HDFS namespace.
 
-### Getting ready {#getting-ready-39 .unnumbered}
+### Getting ready <a name="#getting-ready-39"></a>
 
 Currently only Hadoop MRv2 supports NameNode federation, so we are
 assuming that Hadoop MRv2 has been property configured on all the
 cluster machines. We are assuming that all the configurations are making
 changes to file `$HADOOP_CONF_DIR/hdfs-site.xml`.
 
-### How to do it... {#how-to-do-it...-32 .unnumbered}
+### How to do it... <a name="#how-to-do-it...-32"></a>
 
 Use the following recipe to configure HDFS federation:
 
@@ -1484,7 +1484,7 @@ on either of the NameNode host:\
 `$ start-dfs.sh`\
 `$ stop-dfs.sh`
 
-### How it works... {#how-it-works...-17 .unnumbered}
+### How it works... <a name="#how-it-works...-17"></a>
 
 On a non-federated HDFS cluster, all the DataNodes register with and
 send heartbeats to the single NameNode. On a federated HDFS cluster, all
@@ -1521,12 +1521,12 @@ SecondaryNameNode keytab file.\
 BackupNode & dfs.secondary.namenode.keytab.file & Backup node keytab
 file.\
 
-### There’s more... {#theres-more...-19 .unnumbered}
+### There’s more... <a name="#theres-more...-19"></a>
 
 A NameNode federated Hadoop cluster has different administrative tasks
 than the old version (MRv1), which does not support federation.
 
-#### Decommissioning a NameNode from the cluster {#decommissioning-a-namenode-from-the-cluster .unnumbered}
+#### Decommissioning a NameNode from the cluster <a name="#decommissioning-a-namenode-from-the-cluster"></a>
 
 Add the NameNode ID into file `$HADOOP_CONF_DIR/namenode_exclude.txt`,
 for example if we want to decommission namenode1 from the cluster, the
@@ -1542,7 +1542,7 @@ Refresh the NameNode list with command:\
 We can use the following URL to access the web UI for the HDFS cluster.
 <http://namenode2:50070/dfsclusterhealth.jsp>
 
-#### Running Balancer {#running-balancer .unnumbered}
+#### Running Balancer <a name="#running-balancer"></a>
 
 Similar to the old Hadoop version, balancer is used to balance the data
 blocks over the cluster. On a HDFS federated Hadoop cluster, we can run
@@ -1556,7 +1556,7 @@ This command will balance the data blocks on the node level. Another
 balancing policy is blockpool, which balances the storage at the block
 pool level as well as the data node level.
 
-#### Adding a new NameNode {#adding-a-new-namenode .unnumbered}
+#### Adding a new NameNode <a name="#adding-a-new-namenode"></a>
 
 Suppose we have configured a NameNode federated Hadoop cluster with two
 running NameNodes. We want to add the third NameNode namenode3 on host
@@ -1649,7 +1649,7 @@ for slavehost in `$HADOOP_CONF_DIR/slaves`;  do
 done
 ```
 
-### See also {#see-also-30 .unnumbered}
+### See also <a name="#see-also-30"></a>
 
 - Configuring NameNode high availability
 
