@@ -1,7 +1,6 @@
-Managing a Hadoop Cluster <a name="#chap:4"></a>
-=========================
+# Managing a Hadoop Cluster <a name="#chap:4"></a>
 
-In this chapter, we will cover:\
+In this chapter, we will cover:
 
 - Managing HDFS cluster
 - Configuring SecondaryNameNode
@@ -20,8 +19,7 @@ In this chapter, we will cover:\
 - Configuring Hadoop audit logging
 - Upgrading Hadoop
 
-Introduction <a name="#introduction-1"></a>
-------------
+## Introduction <a name="#introduction-1"></a>
 
 From the perspective of functionality, a Hadoop cluster is composed of
 an HDFS cluster and a MapReduce cluster. The HDFS cluster consists of
@@ -128,8 +126,9 @@ Hadoop will scan and list all the files in the cluster.
 
 This command scans all files on HDFS and prints the size and status.
 
-Check the locations of file blocks with the following command:\
-`$ hadoop fsck / -files -locations`
+Check the locations of file blocks with the following command:
+
+	$ hadoop fsck / -files -locations
 
 The output will be similar to Figure [fig:hdfs.block.locations].
 
@@ -144,14 +143,17 @@ hosts `10.145.231.46` and `10.145.223.184`. The number 50010 is the port
 number of the DataNode.
 
 Check the locations of file blocks containing rack information with the
-following command:\
-`$ hadoop fsck / -files -blocks -racks`
+following command:
 
-Delete corrupted files with the following command:\
-`$ hadoop fsck -delete`
+	$ hadoop fsck / -files -blocks -racks
 
-Move corrupted files to /lost+found with the following command:\
-`$ hadoop fsck -move`
+Delete corrupted files with the following command:
+
+	$ hadoop fsck -delete
+
+Move corrupted files to /lost+found with the following command:
+
+	$ hadoop fsck -move
 
 Use the following steps to check the status of a HDFS cluster with
 hadoop dfsadmin:
@@ -194,8 +196,9 @@ commission status, configured capacity, HDFS and non-HDFS used space
 amount, HDFS remaining space, and the time that the slave node contacted
 the master.
 
-Refresh all the DataNodes using the following command:\
-`$ hadoop dfsadmin -refreshNodes`
+Refresh all the DataNodes using the following command:
+
+	$ hadoop dfsadmin -refreshNodes
 
 Check the status of the safe mode using the following command:
 
@@ -206,26 +209,30 @@ The output tells us that the NameNode is not in safe mode. In this case,
 the filesystem is both readable and writable. If the NameNode is in safe
 mode, the filesystem will be read-only (write protected).
 
-Manually put the NameNode into safe mode using the following command:\
-`$ hadoop dfsadmin -safemode enter`
+Manually put the NameNode into safe mode using the following command:
+
+	$ hadoop dfsadmin -safemode enter
 
 This command is useful for system maintenance.
 
-Make the NameNode to leave safe mode using the following command:\
-`$ hadoop dfsadmin -safemode leave`
+Make the NameNode to leave safe mode using the following command:
+
+	$ hadoop dfsadmin -safemode leave
 
 If the NameNode has been in safe mode for a long time or it has been put
 into safe mode manually, we need to use this command to let the NameNode
 leave this mode.
 
-Wait until NameNode leaves safe mode using the following command:\
-`$ hadoop dfsadmin -safemode wait`\
+Wait until NameNode leaves safe mode using the following command:
+
+	$ hadoop dfsadmin -safemode wait`\
 This command is useful when we want to wait until HDFS finishes data
 block replication or wait until a newly commissioned DataNode to be
 ready for service.
 
-Save the metadata of the HDFS filesystem with the following command:\
-`$ hadoop dfsadmin -metasave meta.log`
+Save the metadata of the HDFS filesystem with the following command:
+
+	$ hadoop dfsadmin -metasave meta.log
 
 The meta.log file will be created under the directory
 `$HADOOP_HOME/logs`. Its content will be similar to the following:
@@ -335,8 +342,7 @@ on the **part-0000x** link.
 
 - The Manipulating files on HDFS recipe
 
-Configuring SecondaryNameNode
------------------------------
+## Configuring SecondaryNameNode
 
 Hadoop NameNode is a single point of failure. By configuring
 SecondaryNameNode, the filesystem image and edit log files can be backed
@@ -348,19 +354,21 @@ to configure SecondaryNameNode.
 
 We assume that Hadoop has been configured correctly.\
 Log in to the master node from cluster administration machine using the
-following command:\
-`$ ssh hduser@master`
+following command:
+
+	$ ssh hduser@master
 
 ### How to do it... <a name="#how-to-do-it...-11"></a>
 
 Perform the following steps to configure SecondaryNameNode:\
-Stop the cluster using the following command:\
-`$ stop-all.sh`
+Stop the cluster using the following command:
+
+	$ stop-all.sh
 
 Add or change the following into the file
 `$HADOOP_HOME/conf/hdfs-site.xml`:
 
-``` {.xml language="XML"}
+```xml
 <property>
     <name>fs.checkpoint.dir</name>
     <value>/hadoop/dfs/namesecondary</value>
@@ -370,8 +378,9 @@ Add or change the following into the file
 If this property is not set explicitly, the default checkpoint directory
 will be `${hadoop.tmp.dir}/dfs/namesecondary`.
 
-Start the cluster using the following command:\
-`$ start-all.sh`
+Start the cluster using the following command:
+
+	$ start-all.sh
 
 The tree structure of NameNode data directory will be similar to the
 following:
@@ -403,7 +412,7 @@ metadata on multiple locations. For example, we can add an NFS shared
 directory for backup by changing the following property in the file
 `$HADOOP_HOME/conf/hdfs-site.xml`:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>dfs.name.dir</name>
   <value>/hadoop/dfs/name,/nfs/name</value>
@@ -418,8 +427,7 @@ directory for backup by changing the following property in the file
 
 - The Decommissioning DataNode recipe
 
-Managing the MapReduce cluster
-------------------------------
+## Managing the MapReduce cluster
 
 A typical MapReduce cluster is composed of one master node that runs the
 JobTracker and a number of slave nodes that run TaskTrackers. The task
@@ -437,8 +445,9 @@ machine using the following command: ssh hduser@master
 
 Perform the following steps to manage a MapReduce cluster:
 
-List all the active TaskTrackers using the following command:\
-`$ hadoop -job -list-active-trackers`\
+List all the active TaskTrackers using the following command:
+
+	$ hadoop -job -list-active-trackers`\
 This command can help us check the registration status of the
 TaskTrackers in the cluster.
 
@@ -452,25 +461,30 @@ submit jobs to the cluster. If the JobTracker is in safe mode, no jobs
 can be submitted to the cluster.
 
 Manually let the JobTracker enter safe mode using the following
-command:\
-`$ hadoop mradmin -safemode enter`
+command:
+
+	$ hadoop mradmin -safemode enter
 
 This command is handy when we want to maintain the cluster.
 
-Let the JobTracker leave safe mode using the following command:\
-`$ hadoop mradmin -safemode leave`
+Let the JobTracker leave safe mode using the following command:
+
+	$ hadoop mradmin -safemode leave
 
 When maintenance tasks are done, you need to run this command.
 
 If we want to wait for safe mode to exit, the following command can be
-used:\
-`$ hadoop mradmin -safemode wait`
+used:
 
-Reload the MapReduce queue configuration using the following command:\
-`$ hadoop mradmin -refreshQueues`
+	$ hadoop mradmin -safemode wait
 
-Reload active TaskTrackers using the following command:\
-`$ hadoop mradmin -refreshNodes`
+Reload the MapReduce queue configuration using the following command:
+
+	$ hadoop mradmin -refreshQueues
+
+Reload active TaskTrackers using the following command:
+
+	$ hadoop mradmin -refreshNodes
 
 ### How it works... <a name="#how-it-works...-2"></a>
 
@@ -506,8 +520,7 @@ user group mappings.\
 
 - The Managing MapReduce jobs recipe
 
-Managing TaskTracker
---------------------
+## Managing TaskTracker
 
 TaskTrackers are MapReduce daemon processes that run on slave nodes.
 They accept tasks assigned by the JobTracker on the master node and fork
@@ -534,8 +547,9 @@ We assume that Hadoop has been properly configured. MapReduce and HDFS
 daemons are running without any issues.
 
 Log in to the cluster master node from the administrator machine using
-the following command:\
-`$ ssh hduser@master`
+the following command:
+
+	$ ssh hduser@master
 
 List the active trackers with the following command on the master node:
 
@@ -551,13 +565,14 @@ List the active trackers with the following command on the master node:
 
 Perform the following steps to configure the heartbeat interval:
 
-Stop a MapReduce cluster with the following command:\
-`$ stop-dfs.sh`
+Stop a MapReduce cluster with the following command:
+
+	$ stop-dfs.sh
 
 Open the file `$HADOOP_HOME/conf/mapred-site.xml` with your favorite
 text editor and add the following content into the file:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.tasktracker.expiry.interval</name>
   <value>600000</value>
@@ -568,26 +583,26 @@ The value is in milliseconds.
 
 Copy the configuration into the slave nodes using the following command:
 
-``` {.bash language="bash"}
-for host in `cat $HADOOP_HOME/conf/slaves`; do
-  echo 'Copying mapred-site.xml to slave node ' $host
-  sudo scp $HADOOP_HOME/conf/mapred-site.xml hduser@$host:$HADOOP_HOME/conf
-done
-```
+	for host in `cat $HADOOP_HOME/conf/slaves`; do
+		echo 'Copying mapred-site.xml to slave node ' $host
+		sudo scp $HADOOP_HOME/conf/mapred-site.xml hduser@$host:$HADOOP_HOME/conf
+	done
 
-Start the MapReduce cluster with the following command:\
-`$ start-mapred.sh`
+Start the MapReduce cluster with the following command:
+
+	$ start-mapred.sh
 
 Perform the following steps to configure TaskTracker blacklisting:
 
-Stop the MapReduce cluster with the following command:\
-`$ stop-mapred.sh`
+Stop the MapReduce cluster with the following command:
+
+	$ stop-mapred.sh
 
 Set the number of task failures for a job to blacklist a TaskTracker by
 adding or changing the following property in the file
 `$HADOOP_HOME/conf/hdfs-site.xml`:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.max.tracker.failures</name>
   <value>10</value>
@@ -598,7 +613,7 @@ Set the maximum number of successful jobs that can blacklist a
 TaskTracker by adding or changing the following property in the file
 `$HADOOP_HOME/conf/hdfs-site.xml`:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.max.tracker.blacklists</name>
   <value>5</value>
@@ -608,25 +623,25 @@ TaskTracker by adding or changing the following property in the file
 Copy the configuration file to the slave nodes using the following
 commands:
 
-``` {.bash language="bash"}
-for host in `cat $HADOOP_HOME/conf/slaves`; do
-  echo 'Copying hdfs-site.xml to slave node ' $host
-  sudo scp $HADOOP_HOME/conf/hdfs-site.xml hduser@$host:$HADOOP_HOME/conf
-done
-```
+	for host in `cat $HADOOP_HOME/conf/slaves`; do
+		echo 'Copying hdfs-site.xml to slave node ' $host
+		sudo scp $HADOOP_HOME/conf/hdfs-site.xml hduser@$host:$HADOOP_HOME/conf
+	done
 
-Start the MapReduce cluster using the following command:\
-`$ start-mapred.sh`
+Start the MapReduce cluster using the following command:
 
-List blacklisted TaskTrackers using the following command:\
-`$ hadoop job -list-blacklisted-trackers`
+	$ start-mapred.sh
+
+List blacklisted TaskTrackers using the following command:
+
+	$ hadoop job -list-blacklisted-trackers
 
 Perform the following steps to decommission TaskTrackers:
 
 Set the TaskTracker exclude file by adding the following properties into
 the file:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.hosts.exclude</name>
   <value>$HADOOP_HOME/conf/mapred-exclude.txt</value>
@@ -642,8 +657,9 @@ and *slave3* from the cluster:
     slave3
 
 Force the JobTracker to reload the TaskTracker list with the following
-command:\
-`$ hadoop mradmin -refreshNodes`
+command:
+
+	$ hadoop mradmin -refreshNodes
 
 List all the active trackers again using the following command:
 
@@ -681,8 +697,7 @@ percent of the total number of TaskTrackers.
 
 - The Replacing a slave node recipe
 
-Decommissioning DataNode
-------------------------
+## Decommissioning DataNode
 
 Similar to TaskTracker, there are situations when we need to temporarily
 disable a DataNode from the cluster, for example, because the storage
@@ -694,8 +709,9 @@ steps to decommission a DataNode from a live Hadoop cluster.
 We assume that our Hadoop has been configured properly.
 
 Log in to the master node from the cluster administrator machine with
-the following command:\
-`$ ssh hduser@master`
+the following command:
+
+	$ ssh hduser@master
 
 For illustration purpose, we assume to decommission DataNode on host
 slave1 from our running Hadoop cluster.
@@ -705,8 +721,9 @@ slave1 from our running Hadoop cluster.
 Perform the following steps to decommission a live DataNode:
 
 Create the file `$HADOOP_HOME/conf/dfs-exclude.txt` with the following
-content:\
-`slave1`
+content:
+
+	slave1
 
 The `dfs-exclude.txt` file contains the DataNode hostnames, one per
 line, that are to be decommissioned from the cluster.
@@ -714,7 +731,7 @@ line, that are to be decommissioned from the cluster.
 Add the following property to the file
 `$HADOOP_HOME/conf/hdfs-site.xml`:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>dfs.hosts.exclude</name>
   <value>$HADOOP_HOME/conf/dfs-exclude.txt</value>
@@ -722,11 +739,13 @@ Add the following property to the file
 ```
 
 Force the NameNode to reload the active DataNodes using the following
-command:\
-`$ hadoop dfsadmin -refreshNodes`
+command:
 
-Get a description report of each active DataNode:\
-`$ hadoop dfsadmin -report`
+	$ hadoop dfsadmin -refreshNodes
+
+Get a description report of each active DataNode:
+
+	$ hadoop dfsadmin -report
 
 ### How it works... <a name="#how-it-works...-4"></a>
 
@@ -753,8 +772,7 @@ DataNodes. We can get the usage of this command using the following:
 
 - The Replacing a slave node recipe
 
-Replacing a slave node
-----------------------
+## Replacing a slave node
 
 Sometimes, we need to replace a slave node with new hardware, because of
 reasons such as the slave node is not stable, more storage space or more
@@ -787,31 +805,31 @@ Installing Java and other tools, and Configuring SSH recipes of Chapter
 Install Hadoop on the new node by copying the Hadoop directory and
 configuration from the master node with the following commands:
 
-``` {.bash language="bash"}
-$ sudo scp -r /usr/local/hadoop-1.1.2 hduser@slave2:/usr/local/
-$ sudo ssh hduser@slave2 -C "ln -s /usr/local/hadoop-1.1.2 /usr/local/hadoop"
-$ sudo scp ~/.bashrc hduser@slave2:~/
-```
+	$ sudo scp -r /usr/local/hadoop-1.1.2 hduser@slave2:/usr/local/
+	$ sudo ssh hduser@slave2 -C "ln -s /usr/local/hadoop-1.1.2 /usr/local/hadoop"
+	$ sudo scp ~/.bashrc hduser@slave2:~/
 
 Log in to `slave2` and start the DataNode and TaskTracker using the
 following commands:
 
-``` {.bash language="bash"}
-$ ssh hduser@slave2 -C "hadoop DataNode &"
-$ ssh hduser@slave2 -C "Hadoop TaskTracker &"
-```
+	$ ssh hduser@slave2 -C "hadoop DataNode &"
+	$ ssh hduser@slave2 -C "Hadoop TaskTracker &"
 
-Refresh the DataNodes with the following command:\
-`$ hadoop dfsadmin -refreshNodes`
+Refresh the DataNodes with the following command:
 
-Refresh the TaskTracker with the following command:\
-`$ hadoop mradmin -refreshNodes`
+	$ hadoop dfsadmin -refreshNodes
 
-Report the status of the live DataNodes with the following command:\
-`$ hadoop dfsadmin -report`
+Refresh the TaskTracker with the following command:
 
-Get all the active TaskTrackers with the following command:\
-`$ hadoop job -list-active-trackers`
+	$ hadoop mradmin -refreshNodes
+
+Report the status of the live DataNodes with the following command:
+
+	$ hadoop dfsadmin -report
+
+Get all the active TaskTrackers with the following command:
+
+	$ hadoop job -list-active-trackers
 
 ### See also <a name="#see-also-15"></a>
 
@@ -826,8 +844,7 @@ Get all the active TaskTrackers with the following command:\
 - The Managing TaskTracker recipe
 - The Decommissioning DataNode recipe
 
-Managing MapReduce jobs
------------------------
+## Managing MapReduce jobs
 
 The Hadoop Big Data platform accepts jobs submitted by clients. In a
 multiuser environment, multiple jobs can be submitted and run
@@ -842,8 +859,9 @@ the Hadoop daemons are running without any issues. We also assume that a
 regular user can submit Hadoop jobs to the cluster.
 
 Log in to the master node from the cluster administrator machine with
-the following command:\
-`$ ssh hduser@master`
+the following command:
+
+	$ ssh hduser@master
 
 ### How to do it... <a name="#how-to-do-it...-16"></a>
 
@@ -960,8 +978,9 @@ Check the status of a job with the following command:
 Change the status of a job by performing the following steps:
 
 Set the job `job_201302152353_0001` to be on high priority using the
-following command:\
-`$ hadoop job -set-priority job_201302152353_0003 HIGH`
+following command:
+
+	$ hadoop job -set-priority job_201302152353_0003 HIGH
 
 Available priorities, in descending order, include:
 `VERY_HIGH, HIGH, NORMAL, LOW`, and `VERY_LOW`.
@@ -976,8 +995,9 @@ The priority of the job will be *HIGH* as shown in the following output:
     job_201302152353_0002   2   1361405860611   hduser  NORMAL  NA
     job_201302152353_0003   1   1361408177470   hduser  HIGH    NA
 
-Kill the job `job_201302152353_0004` using the following command:\
-`$ hadoop job -kill job_201302152353_0004`
+Kill the job `job_201302152353_0004` using the following command:
+
+	$ hadoop job -kill job_201302152353_0004
 
 With the job status command, we will get the following output:
 
@@ -1099,23 +1119,24 @@ jobs.
 
 #### More job management commands <a name="#more-job-management-commands"></a>
 
-Get the value of a counter:\
-`$ hadoop job -counter <job-id> <group-name> <counter-name>`
+Get the value of a counter:
+
+	$ hadoop job -counter <job-id> <group-name> <counter-name>
 
 For example, we can get the counter `HDFS_BYTES_WRITTEN` of the counter
 group FileSystemCounters for the job `job_201302281451_0002` with the
 following command:
 
-``` {.bash language="bash"}
-$ hadoop job -counter job_201302281451_0002 FileSystemCounters HDFS_BYTES_WRITTEN
-```
+	$ hadoop job -counter job_201302281451_0002 FileSystemCounters HDFS_BYTES_WRITTEN
 
-Query events of a MapReduce job with the following command:\
-`$ hadoop job -events <job-id> <from-event-#> <#-of-events>`
+Query events of a MapReduce job with the following command:
+
+	$ hadoop job -events <job-id> <from-event-#> <#-of-events>
 
 For example, we can query the first 10 events of the job
-`job_201302281451_0002` using the following command:\
-`$ hadoop job -events job_201302281451_0002 0 10`
+`job_201302281451_0002` using the following command:
+
+	$ hadoop job -events job_201302281451_0002 0 10
 
 We will get output similar to Figure [fig:task.events].
 
@@ -1182,17 +1203,18 @@ so on with the following command:
     slave3  task_201302281451_0012_m_000005,
     slave5  task_201302281451_0012_m_000001, task_201302281451_0012_m_000004,
 
-Managing tasks
---------------
+## Managing tasks
 
 We will show you how to kill tasks, check task attempts, and so on.
 
-Kill a task with the following command:\
-`$ hadoop job -kill-task <task-id> `
+Kill a task with the following command:
+
+	$ hadoop job -kill-task <task-id> 
 
 For example, to kill the task `task_201302281451_0013_m_000000`, we can
-use the following command:\
-`$ hadoop job -kill-task task_201302281451_0013_m_000000`
+use the following command:
+
+	$ hadoop job -kill-task task_201302281451_0013_m_000000
 
 After the task is killed, the JobTracker will restart the task on a
 different node. The killed tasks can be viewed through the web UI as
@@ -1215,21 +1237,18 @@ situations:
     need empty slots for other pools or queues
 
 In many situations, we need a task to fail, which can be done with the
-following command:\
-`$ hadoop job -fail-task <task-id> `
+following command:
+
+	$ hadoop job -fail-task <task-id> 
 
 For example, to fail the task `task_201302281451_0013_m_000000`, we can
 use the following command:
 
-``` {.bash language="bash"}
-$ hadoop job -fail-task task_201302281451_0013_m_000000
-```
+	$ hadoop job -fail-task task_201302281451_0013_m_000000
 
 List task attempts with the following command:
 
-``` {.bash language="bash"}
-$ hadoop job -list-attempt-ids <job-id> <task-type> <task-state>
-```
+	$ hadoop job -list-attempt-ids <job-id> <task-type> <task-state>
 
 In this command, available task types are *map, reduce, setup*, and
 *clean*; available task states are running and completed. For example,
@@ -1244,8 +1263,7 @@ to list all the completed map attempts for the job
     attempt_201302281451_0014_m_000010_0
     ...
 
-Managing jobs through the web UI
---------------------------------
+## Managing jobs through the web UI
 
 We will show job management from the web UI.
 
@@ -1289,8 +1307,7 @@ Change the job priority to be HIGH by opening the URL,
 - Refer to [MapReduce
     tutorial](http://hadoop.apache.org/docs/r1.1.2/mapred_tutorial.html).
 
-Checking job history from the web UI
-------------------------------------
+## Checking job history from the web UI
 
 Hadoop keeps track of all the submitted jobs in the logs directory. The
 job history logs contain information for each job such as the total run
@@ -1392,7 +1409,7 @@ interval can be modified by changing the
 `mapreduce.client.completion.pollinterval` property in the
 `$HADOOP_HOME/conf/mapred-site.xml` file similar to the following:
 
-``` {.xml language="XML"}
+```xml
 <property>
    <name>mapreduce.client.completion.pollinterval</name>
    <value>5000</value>
@@ -1429,8 +1446,7 @@ attemptID & `attempt_201302281451_0001_m_000000_0`\
 
 - The Managing MapReduce jobs recipe
 
-Importing data to HDFS
-----------------------
+## Importing data to HDFS
 
 If our Big Data is on the local filesystem, we need to move it to HDFS.
 In this section, we will list steps to move data from the local
@@ -1446,8 +1462,9 @@ the data on the local system is in the directory /data.
 
 Perform the following steps to import data to HDFS:
 
-Use the following command to create a data directory on HDFS:\
-`$ hadoop fs -mkdir data`
+Use the following command to create a data directory on HDFS:
+
+	$ hadoop fs -mkdir data
 
 This command will create a directory
 [/user/hduser/data](/user/hduser/data) in the HDFS filesystem.
@@ -1455,29 +1472,25 @@ This command will create a directory
 Copy the data file from the local directory to HDFS using the following
 command:
 
-``` {.bash language="bash"}
-$ hadoop fs -cp file:///data/datafile /user/hduser/data
-```
+	$ hadoop fs -cp file:///data/datafile /user/hduser/data
 
-Alternatively, we can use the command:\
-`hadoop fs -put /data/datafile /user/hduser/data`
+Alternatively, we can use the command:
 
-Verify the data file on HDFS with the following command:\
-`$ hadoop fs -ls /user/hduser/data`
+	hadoop fs -put /data/datafile /user/hduser/data
+
+Verify the data file on HDFS with the following command:
+
+	$ hadoop fs -ls /user/hduser/data
 
 Move the data file from the local directory to HDFS with command:
 
-``` {.bash language="bash"}
-$ hadoop fs -mv file:///data/datafile /user/hduser/data
-```
+	$ hadoop fs -mv file:///data/datafile /user/hduser/data
 
 The local copy will be deleted if you use this command.
 
 Use distributed copy to copy the large data file to HDFS:
 
-``` {.bash language="bash"}
-$ hadoop distcp file:///data/datafile /user/hduser/data
-```
+	$ hadoop distcp file:///data/datafile /user/hduser/data
 
 This command will initiate a MapReduce job with a number of mappers to
 run the copy task in parallel.
@@ -1485,16 +1498,18 @@ run the copy task in parallel.
 ### There’s more... <a name="#theres-more...-12"></a>
 
 To copy multiple files from the local directory to HDFS, we can use the
-following command:\
-`$ hadoop fs -copyFromLocal src1 src2 data`
+following command:
+
+	$ hadoop fs -copyFromLocal src1 src2 data
 
 This command will copy two files src1 and src2 from the local directory
 to the data directory on HDFS.
 
 Similarly, we can move files from the local directory to HDFS. Its only
 difference from the previous command is that the local files will be
-deleted.\
-`$ hadoop fs -moveFromLocal src1 src2 data`
+deleted.
+
+	$ hadoop fs -moveFromLocal src1 src2 data
 
 This command will move two files, **src1** and **src2**, from the local
 directory to HDFS.
@@ -1505,9 +1520,7 @@ because of the possibly of high data transfer requests. distcp will be
 more useful when copying data from one HDFS location to another. For
 example:
 
-``` {.bash language="bash"}
-$ hadoop distcp hdfs:///user/hduser/file hdfs:///user/hduser/file-copy
-```
+	$ hadoop distcp hdfs:///user/hduser/file hdfs:///user/hduser/file-copy
 
 ### How it works... <a name="#how-it-works...-7"></a>
 
@@ -1563,8 +1576,7 @@ The default `<dst>` filesystem schema for all these commands is
 
 - The Manipulating files on HDFS recipe
 
-Manipulating files on HDFS
---------------------------
+## Manipulating files on HDFS
 
 Besides commands to copy files from the local directory, HDFS provides
 commands to operate on files. In this section, we will show you how to
@@ -1610,11 +1622,13 @@ column shows the location of files on HDFS.
 Sometimes, we can get a summarized usage of a directory with the command
 hadoop fs -dus .. It will show us the total space usage of the directory
 rather than the sizes of individual files and folders in the directory.
-For example, we can get a one-line output similar to the following:\
-`$ hdfs://master:54310/user/hduser    109810605367`
+For example, we can get a one-line output similar to the following:
 
-Check the content of a file with the following command:\
-`$ hadoop fs -cat file1`
+	$ hdfs://master:54310/user/hduser    109810605367
+
+Check the content of a file with the following command:
+
+	$ hadoop fs -cat file1
 
 This command is handy to check the content of small files. But when the
 file is large, it is not recommended. Instead, we can use the command
@@ -1630,16 +1644,19 @@ directory:
     $ hadoop fs -test -z file1
     $ hadoop fs -test -d file1
 
-Check the status of file1 using the following command:\
-`$ hadoop fs -stat file1`
+Check the status of file1 using the following command:
+
+	$ hadoop fs -stat file1
 
 Perform the following steps to manipulate files and directories on HDFS:
 
-Empty the trash using the following command:\
-`$ hadoop fs -expunge`
+Empty the trash using the following command:
 
-Merge files in a directory dir and download it as one big file:\
-`$ hadoop fs -getmerge dir file1`
+	$ hadoop fs -expunge
+
+Merge files in a directory dir and download it as one big file:
+
+	$ hadoop fs -getmerge dir file1
 
 This command is similar to the cat command in Linux. It is very useful
 when we want to get the MapReduce output as one file rather than several
@@ -1648,46 +1665,53 @@ smaller partitioned files.
 For example, the command can merge files `dir/part-00000`,
 `dir/part-00001`, and so on to file1 to the local filesystem.
 
-Delete file1 under the current directory using the following command:\
-`$ hadoop fs -rm file1`
+Delete file1 under the current directory using the following command:
+
+	$ hadoop fs -rm file1
 
 Note that this command will not delete a directory. To delete a
 directory, we can use the command hadoop fs -rmr dir. It is very similar
 to the Linux command rm -r, which will recursively delete everything in
 the directory dir and the directory itself. So use it with caution.
 
-Download file1 from HDFS using the following command:\
-`$ hadoop fs -get file1`
+Download file1 from HDFS using the following command:
+
+	$ hadoop fs -get file1
 
 The file1 file under the directory `/user/hduser` will be downloaded to
 the current directory on the local filesystem.
 
 Change the group membership of a regular file with the following
-command:\
-`$ hadoop fs -chgrp hadoop file1`
+command:
+
+	$ hadoop fs -chgrp hadoop file1
 
 In this command, we are assuming group hadoop exists.\
 Also, we can use the command `hadoop fs -chgrp -R <hadoop-dir>` to
 change the group membership of a directory dir recursively.
 
-Change the ownership of a regular file with the following command:\
-`$ hadoop fs -chown hduser file1`
+Change the ownership of a regular file with the following command:
+
+	$ hadoop fs -chown hduser file1
 
 Similarly, we can use the command `hadoop fs -chown hdadmin -R <dir>` to
 change the ownership of a directory dir recursively.
 
-Change the mode of a file with the following command:\
-`$ hadoop fs -chmod 600 file1`
+Change the mode of a file with the following command:
+
+	$ hadoop fs -chmod 600 file1
 
 The mode of files and directories under HDFS follows a similar rule as
 the mode under Linux.
 
 Set the replication factor of file1 to be 3 using the following
-command:\
-`$ hadoop fs -setrep -w 3 file1`
+command:
 
-Create an empty file using the following command:\
-`$ hadoop fs -touchz 0file`
+	$ hadoop fs -setrep -w 3 file1
+
+Create an empty file using the following command:
+
+	$ hadoop fs -touchz 0file
 
 ### How it works... <a name="#how-it-works...-8"></a>
 
@@ -1738,8 +1762,7 @@ For example, we can get the help of the list command with the following:
                     where n is the number of replicas specified for the file
                     and size is the size of the file, in bytes.
 
-Configuring HDFS quota
-----------------------
+## Configuring HDFS quota
 
 In a multiuser environment, quota can enforce the fair share of
 computing resources. HDFS supports quota for users and directories. In
@@ -1754,8 +1777,9 @@ the daemons are running without any issues.
 
 Perform the following steps to manage HDFS quota:
 
-Set name quota on the home directory with the following command:\
-`$ hadoop dfsadmin -setQuota 20 /usr/hduser`
+Set name quota on the home directory with the following command:
+
+	$ hadoop dfsadmin -setQuota 20 /usr/hduser
 
 This command will set name quota on the home directory to 20, which
 means at most 20 files, including directories, can be created under the
@@ -1768,9 +1792,7 @@ If we reach the quota, we will get an error message:
 Set space quota of the current user’s home directory to be **100000000**
 with the following command:
 
-``` {.bash language="bash"}
-$ hadoop dfsadmin -setSpaceQuota 100000000 /user/hduser
-```
+	$ hadoop dfsadmin -setSpaceQuota 100000000 /user/hduser
 
 If the space usage under the directory `/user/hduser` exceeds the
 specified quota, we will get an error message similar to the following:\
@@ -1779,9 +1801,7 @@ specified quota, we will get an error message similar to the following:\
 
 Check the quota status with the following command:
 
-``` {.bash language="bash"}
-$ hadoop fs -count -q /user/hduser
-```
+	$ hadoop fs -count -q /user/hduser
 
 We will get output similar to the following before setting quota:\
 
@@ -1803,11 +1823,13 @@ The meaning of output columns are
     CONTENT_SIZE
     FILE_NAME
 
-Clear the name quota with the following command:\
-`$ hadoop dfsadmin -clrQuota /user/hduser`
+Clear the name quota with the following command:
 
-Clear the space quota with the following command:\
-`$ hadoop dfsadmin -clrSpaceQuota /user/hduser`
+	$ hadoop dfsadmin -clrQuota /user/hduser
+
+Clear the space quota with the following command:
+
+	$ hadoop dfsadmin -clrSpaceQuota /user/hduser
 
 ### How it works... <a name="#how-it-works...-9"></a>
 
@@ -1833,13 +1855,13 @@ command:
                [-setBalancerBandwidth <bandwidth in bytes per second>]
                [-help [cmd]]
 
-The generic usage of -count command is:\
-`$ hadoop fs -count -q <path>`
+The generic usage of -count command is:
+
+	$ hadoop fs -count -q <path>
 
 In this command `-q` specifies the directory to query.
 
-Configuring CapacityScheduler
------------------------------
+## Configuring CapacityScheduler
 
 Hadoop CapacityScheduler is a pluggable MapReduce job scheduler. The
 goal is to maximize the Hadoop cluster utilization by sharing the
@@ -1852,8 +1874,9 @@ outline steps to configure CapacityScheduler for a Hadoop cluster.
 
 We assume that our Hadoop cluster has been properly configured and all
 the daemons are running without any issues. Log in to the master node
-from the cluster administrator machine using the following command:\
-`$ ssh hduser@master`
+from the cluster administrator machine using the following command:
+
+	$ ssh hduser@master
 
 ### How to do it... <a name="#how-to-do-it...-21"></a>
 
@@ -1862,7 +1885,7 @@ Configure CapacityScheduler with the following steps:
 Configure Hadoop to use CapacityScheduler by adding the following lines
 into the file `$HADOOP_HOME/conf/mapred-site.xml`:
 
-``` {.xml language="XML"}
+```xml
 <property>
     <name>mapred.jobtracker.taskScheduler</name>
     <value>org.apache.hadoop.mapred.CapacityTaskScheduler </value>
@@ -1872,7 +1895,7 @@ into the file `$HADOOP_HOME/conf/mapred-site.xml`:
 Define a new queue, hdqueue, by adding the following lines into the file
 `$HADOOP_HOME/conf/mapred-site.xml`:
 
-``` {.xml language="XML"}
+```xml
 <property>
     <name>mapred.queue.names</name>
     <value>default,hdqueue</value>
@@ -1884,7 +1907,7 @@ By default, a Hadoop cluster has only one default queue.
 Configure CapacityScheduler queues by adding the following lines into
 the file `$HADOOP_HOME/conf/capacity-scheduler.xml`:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.capacity-scheduler.queue.hdqueue.capacity</name>
   <value>20</value>
@@ -1948,9 +1971,7 @@ including the numbers of running jobs, pending jobs, and so on.
 Test the queue configuration by submitting an example wordcount job to
 the queue hdqueue using the following command:
 
-``` {.bash language="bash"}
-$ hadoop jar $HADOOP_HOME/hadoop-examples-1.1.2.jar wordcount -Dmapred.job.queue.name=hdqueue randtext wordcount.out
-```
+	$ hadoop jar $HADOOP_HOME/hadoop-examples-1.1.2.jar wordcount -Dmapred.job.queue.name=hdqueue randtext wordcount.out
 
 From the job information web UI, we can get the job scheduling
 information similar to the following:
@@ -2007,8 +2028,7 @@ information about queue ACLs can be found at
 - Refer to
     <http://hadoop.apache.org/docs/r1.1.2/capacity_scheduler.html>
 
-Configuring Fair Scheduler
---------------------------
+## Configuring Fair Scheduler
 
 Similar to CapacityScheduler, Fair Scheduler was designed to enforce
 fair shares of cluster resources in a multiuser environment. In this
@@ -2019,8 +2039,9 @@ cluster.
 
 We assume that our Hadoop cluster has been configured properly and all
 the daemons are running without any problems. Log in to the master node
-from the Hadoop administrator machine using the following command:\
-`$ ssh hduser@master`
+from the Hadoop administrator machine using the following command:
+
+	$ ssh hduser@master
 
 ### How to do it... <a name="#how-to-do-it...-22"></a>
 
@@ -2029,7 +2050,7 @@ Perform the following steps to configure Hadoop Fair Scheduler:
 Enable fair scheduling by changing the following property in the file
 `$HADOOP_HOME/conf/mapred-site.xml`:
 
-``` {.xml language="XML"}
+```xml
   <property>
     <name>mapred.jobtracker.taskScheduler</name>
     <value>org.apache.hadoop.mapred.FairScheduler</value>
@@ -2040,7 +2061,7 @@ Create the Fair Scheduler configuration file,
 `$HADOOP_HOME/conf/fair-scheduler.xml`, with content similar to the
 following:
 
-``` {.xml language="XML"}
+```xml
 <?xml version="1.0"?>
 <allocations>
  <pool name="hduser">
@@ -2059,10 +2080,8 @@ following:
 
 Restart the MapReduce cluster with the following commands:
 
-``` {.bash language="bash"}
-$ stop-mapred.sh
-$ start-mapred.sh
-```
+	$ stop-mapred.sh
+	$ start-mapred.sh
 
 Verify the setting of Fair Scheduler by opening the URL
 <http://master:50030/scheduler>.
@@ -2138,8 +2157,7 @@ mode.\
 - Refer to [the FairScheduler
     documentation](http://hadoop.apache.org/docs/r1.1.2/fair_scheduler.html).
 
-Configuring Hadoop daemon logging
----------------------------------
+## Configuring Hadoop daemon logging
 
 System logging plays an important role in dealing with performance and
 security problems. In addition, the logging information can be used
@@ -2155,8 +2173,9 @@ We assume that our Hadoop cluster has been properly configured.
 Perform the following steps to configure Hadoop logging:
 
 Log in to the master node with the following command from the Hadoop
-administrator machine:\
-`$ ssh hduser@master`
+administrator machine:
+
+	$ ssh hduser@master
 
 Check the current logging level of JobTracker with the following
 command:
@@ -2258,15 +2277,18 @@ The cluster needs to be restarted for the configuration to take effect.
 #### Configuring Hadoop logging with hadoop-env.sh <a name="#configuring-hadoop-logging-with-hadoop-env.sh"></a>
 
 Open the file `$HADOOP_HOME/conf/hadoop-env.sh` with a text editor and
-change the following line:\
-`# export HADOOP_LOG_DIR=${HADOOP_HOME}/logs`
+change the following line:
 
-We change the preceding command to the following:\
-`export HADOOP_LOG_DIR=${HADOOP_HOME}/logs`
+	# export HADOOP_LOG_DIR=${HADOOP_HOME}/logs
+
+We change the preceding command to the following:
+
+	export HADOOP_LOG_DIR=${HADOOP_HOME}/logs
 
 Configure the logging directory to `/var/log/hadoop` by changing the
-following line:\
-`export HADOOP_LOG_DIR=/var/log/hadoop`
+following line:
+
+	export HADOOP_LOG_DIR=/var/log/hadoop
 
 Additionally, Table [tbl:loggingenv] shows other environment variables
 we can configure for Hadoop logging:
@@ -2281,8 +2303,7 @@ hadoop.security.logger. Default value: “INFO,NullAppender”.\
 `HDFS_AUDIT_LOGGER` & Logging configuration for hdfs.audit.logger.
 Default value: “INFO,NullAppender”.\
 
-Configuring Hadoop security logging
------------------------------------
+## Configuring Hadoop security logging
 
 Security logging can help Hadoop cluster administrators to identify
 security problems. It is enabled by default.
@@ -2315,8 +2336,9 @@ contains logs of the MapReduce job history. Similarly, on a slave node,
 the logs directory contains a userlogs directory, which maintains the
 history information of the tasks that ran on the node.
 
-In Hadoop, the names of logging files are using the following format:\
-`$ hadoop-<username>-<daemonname>-<hostname>.log `
+In Hadoop, the names of logging files are using the following format:
+
+	$ hadoop-<username>-<daemonname>-<hostname>.log
 
 ### See also <a name="#see-also-21"></a>
 
@@ -2324,8 +2346,7 @@ In Hadoop, the names of logging files are using the following format:\
 
 - Refer to <http://wiki.apache.org/hadoop/HowToConfigure>
 
-Configuring Hadoop audit logging
---------------------------------
+## Configuring Hadoop audit logging
 
 Audit logging might be required for data processing systems such as
 Hadoop. In Hadoop, audit logging has been implemented using the Log4j
@@ -2337,8 +2358,9 @@ configure Hadoop audit logging.
 
 We assume that our Hadoop cluster has been configured properly. Log in
 to the master node from the administrator machine using the following
-command:\
-`$ ssh hduser@master`
+command:
+
+	$ ssh hduser@master
 
 ### How to do it... <a name="#how-to-do-it...-24"></a>
 
@@ -2353,8 +2375,9 @@ to the following:
 
     log4j.logger.org.apache.hadoop.hdfs.server.namenode.FSNamesystem.audit=INFO
 
-Try making a directory on HDFS with the following command:\
-`$ hadoop fs -mkdir audittest`
+Try making a directory on HDFS with the following command:
+
+	$ hadoop fs -mkdir audittest
 
 Check the audit log messages in the NameNode log file with the following
 command:
@@ -2405,8 +2428,7 @@ an empty file.
 
 - The Configuring Hadoop daemon logging recipe
 
-Upgrading Hadoop
-----------------
+## Upgrading Hadoop
 
 A Hadoop cluster needs to be upgraded when new versions with bug fixes
 or new features are released. In this recipe, we will outline steps to
@@ -2435,57 +2457,53 @@ blocks are lost after upgrade, Hadoop can automatically recover it from
 other backup replications.
 
 Log in to the master node from the administrator machine with the
-following command:\
-`$ ssh hduser@master`
+following command:
+
+	$ ssh hduser@master
 
 ### How to do it... <a name="#how-to-do-it...-25"></a>
 
 Perform the following steps to upgrade a Hadoop cluster:
 
-Stop the cluster with the following command:\
-`$ stop-all.sh`
+Stop the cluster with the following command:
+
+	$ stop-all.sh
 
 Back up block locations of the data on HDFS with the fsck command:
 
-``` {.bash language="bash"}
-$ hadoop fsck / -files -blocks -locations > dfs.block.locations.fsck.backup
-```
+	$ hadoop fsck / -files -blocks -locations > dfs.block.locations.fsck.backup
 
 The resulting file, `dfs.block.locations.fsck.backup`, will contain the
 locations of each data block on the HDFS filesystem.
 
 Save the list of all files on the HDFS filesystem with the following
-command:\
-`$ hadoop dfs -lsr / > dfs.namespace.lsr.backup`
+command:
+
+	$ hadoop dfs -lsr / > dfs.namespace.lsr.backup
 
 Save the description of each DataNode in the HDFS cluster with the
-following command:\
-`$ hadoop dfsadmin -report > dfs.datanodes.report.backup`
+following command:
+
+	$ hadoop dfsadmin -report > dfs.datanodes.report.backup
 
 Copy the checkpoint files to a backup directory with the following
 commands:
 
-``` {.bash language="bash"}
-$ sudo cp dfs.name.dir/edits /backup
-$ sudo cp dfs.name.dir/image/fsimage /backup
-```
+	$ sudo cp dfs.name.dir/edits /backup
+	$ sudo cp dfs.name.dir/image/fsimage /backup
 
 Verify that no DataNode daemon is running with the following command:
 
-``` {.bash language="bash"}
-for node in `cat $HADOOP_HOME/conf/slaves`
-  do
-  echo 'Checking node ' $node
-  ssh $node -C "jps"
-done
-```
+	for node in `cat $HADOOP_HOME/conf/slaves`
+		do
+		echo 'Checking node ' $node
+		ssh $node -C "jps"
+	done
 
 If any DataNode process is still running, kill the process with the
 following command:
 
-``` {.bash language="bash"}
-$ ssh $node -C "jps | grep 'DataNode' | cut -d'\t' -f 1 | xargs kill -9 "
-```
+	$ ssh $node -C "jps | grep 'DataNode' | cut -d'\t' -f 1 | xargs kill -9 "
 
 A still running DataNode can fail an update if it is not killed because
 the old version DataNode might register with the newer version NameNode,
@@ -2493,53 +2511,48 @@ causing compatibility problems.
 
 Decompress the Hadoop archive file with the following commands:
 
-``` {.bash language="bash"}
-$ sudo mv hadoop-1.2.0.tar.gz /usr/local/
-$ sudo tar xvf hadoop-1.2.0.tar.gz
-```
+	$ sudo mv hadoop-1.2.0.tar.gz /usr/local/
+	$ sudo tar xvf hadoop-1.2.0.tar.gz
 
 Copy the configuration files from the old configuration directory to the
-new one using the following command:\
-`$ sudo cp $HADOOP_HOME/conf/* /usr/local/hadoop-1.2.0/conf/*`\
+new one using the following command:
+
+	$ sudo cp $HADOOP_HOME/conf/* /usr/local/hadoop-1.2.0/conf/*`\
 
 You can make changes to the configuration files if necessary.
 
 Update the Hadoop symbolic link to the Hadoop version with the following
 command:
 
-``` {.bash language="bash"}
-$ sudo rm -rf /usr/local/hadoop
-$ sudo ln -s /usr/local/hadoop-1.2.0 /usr/local/hadoop
-```
+	$ sudo rm -rf /usr/local/hadoop
+	$ sudo ln -s /usr/local/hadoop-1.2.0 /usr/local/hadoop
 
 Upgrade in the slave nodes with the following commands:
 
-``` {.bash language="bash"}
-for host in `cat $HADOOP_HOME/conf/slaves`
-  do
-  echo 'Configuring hadoop on slave node ' $host
-  sudo scp -r /usr/local/hadoop-1.2.0 hduser@$host:/usr/local/
-  echo 'Making symbolic link for Hadoop home directory on host ' $host
-  sudo ssh hduser@$host -C "ln -s /usr/local/hadoop-1.2.0 /usr/local/hadoop"
-done
-```
+	for host in `cat $HADOOP_HOME/conf/slaves`
+		do
+		echo 'Configuring hadoop on slave node ' $host
+		sudo scp -r /usr/local/hadoop-1.2.0 hduser@$host:/usr/local/
+		echo 'Making symbolic link for Hadoop home directory on host ' $host
+		sudo ssh hduser@$host -C "ln -s /usr/local/hadoop-1.2.0 /usr/local/hadoop"
+	done
 
-Upgrade the NameNode with the following command:\
-`$ hadoop namenode -upgrade`
+Upgrade the NameNode with the following command:
+
+	$ hadoop namenode -upgrade
 
 This command will convert the checkpoint to the new version format. We
 need to wait to let it finish.
 
-Start the HDFS cluster using the following commands:\
-`$ start-dfs.sh`
+Start the HDFS cluster using the following commands:
+
+	$ start-dfs.sh
 
 Get the list of all files on HDFS and compare its difference with the
 backed up one using the following commands:
 
-``` {.bash language="bash"}
-$ hadoop dfs -lsr / > dfs.namespace.lsr.new
-$ diff dfs.namespace.lsr.new dfs.namespace.lsr.backup
-```
+	$ hadoop dfs -lsr / > dfs.namespace.lsr.new
+	$ diff dfs.namespace.lsr.new dfs.namespace.lsr.backup
 
 The two files should have the same content if there is no error in the
 upgrade.
@@ -2547,26 +2560,23 @@ upgrade.
 Get a new report of each DataNode in the cluster and compare the file
 with the backed up one using the following command:
 
-``` {.bash language="bash"}
-$ hadoop dfsadmin -report > dfs.datanodes.report.new
-$ diff dfs.datanodes.report.1.log dfs.datanodes.report.backup
-```
+	$ hadoop dfsadmin -report > dfs.datanodes.report.new
+	$ diff dfs.datanodes.report.1.log dfs.datanodes.report.backup
 
 The two files should have the same content if there is no error.
 
 Get the locations of all data blocks and compare the output with the
 previous backup using the following commands:
 
-``` {.bash language="bash"}
-$ hadoop fsck / -files -blocks -locations > dfs.block.locations.fsck.new
-$ diff dfs.locations.fsck.backup dfs.locations.fsck.new
-```
+	$ hadoop fsck / -files -blocks -locations > dfs.block.locations.fsck.new
+	$ diff dfs.locations.fsck.backup dfs.locations.fsck.new
 
 The result of this command should tell us that the data block locations
 should be the same.
 
-Start the MapReduce cluster using the following command:\
-`$ start-mapred.sh`
+Start the MapReduce cluster using the following command:
+
+	$ start-mapred.sh
 
 Now, we can check the status of the cluster either by running a sample
 MapReduce job such as teragen and terasort, or by using the web user
