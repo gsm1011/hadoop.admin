@@ -133,7 +133,7 @@ Check the locations of file blocks with the following command:
 The output will be similar to Figure [fig:hdfs.block.locations].
 
 ![Block locations on HDFS<span
-data-label="fig:hdfs.block.locations"></span>](figs/5163os_04_07.png)
+data-label="fig:hdfs.block.locations"></span>](images/5163os_04_07.png)
 
 The first line tells us that file `part-00000` has 17 blocks in total
 and each block has 2 replications (replication factor has been set to
@@ -313,21 +313,21 @@ as the configured capacity and remaining space. For example, the web
 page will be similar to Figure [fig:hdfs.summary].
 
 ![Summary of a HDFS cluster<span
-data-label="fig:hdfs.summary"></span>](figs/5163os_04_08.png)
+data-label="fig:hdfs.summary"></span>](images/5163os_04_08.png)
 
 By clicking on the Live Nodes link, we can check the status of each
 DataNode. We will get a web page similar to Figure
 [fig:datanode.status].
 
 ![HDFS DataNode status<span
-data-label="fig:datanode.status"></span>](figs/5163os_04_09.png)
+data-label="fig:datanode.status"></span>](images/5163os_04_09.png)
 
 By clicking on the link of each node, we can browse the directory of the
 HDFS filesystem. The web page will be similar to Figure
 [fig:content.hdfs]
 
 ![Content of an HDFS directory<span
-data-label="fig:content.hdfs"></span>](figs/5163os_04_10.png)
+data-label="fig:content.hdfs"></span>](images/5163os_04_10.png)
 
 The web page shows that file `/user/hduser/randtext` has been split into
 five partitions. We can browse the content of each partition by clicking
@@ -1141,7 +1141,7 @@ For example, we can query the first 10 events of the job
 We will get output similar to Figure [fig:task.events].
 
 ![MapReduce task completion events<span
-data-label="fig:task.events"></span>](figs/5163os_04_13.png)
+data-label="fig:task.events"></span>](images/5163os_04_13.png)
 
 Get the job history including job details, failed and killed jobs, and
 so on with the following command:
@@ -1221,7 +1221,7 @@ different node. The killed tasks can be viewed through the web UI as
 shown in Figure [fig:mapred.killed.tasks].
 
 ![Status of killed tasks<span
-data-label="fig:mapred.killed.tasks"></span>](figs/5163os_04_14.png)
+data-label="fig:mapred.killed.tasks"></span>](images/5163os_04_14.png)
 
 Hadoop JobTracker can automatically kill tasks in the following
 situations:
@@ -1273,7 +1273,7 @@ Check the status of a job by opening the JobTracker URL:
 We will get a web page similar to Figure [fig:mapred.status].
 
 ![MapReduce Job and Scheduling information<span
-data-label="fig:mapred.status"></span>](figs/5163os_04_11.png)
+data-label="fig:mapred.status"></span>](images/5163os_04_11.png)
 
 From this web page, we can get the cluster summary information, the
 scheduling information, the running jobs list, the completed jobs list,
@@ -1290,7 +1290,7 @@ After a while, the killed job will be listed in the Failed Jobs list as
 shown in Figure [fig:failed.job].
 
 ![Information of a Failed job<span
-data-label="fig:failed.job"></span>](figs/5163os_04_12.png)
+data-label="fig:failed.job"></span>](images/5163os_04_12.png)
 
 Change the job priority to be HIGH by opening the URL,
 <master:50030/jobdetails.jsp?jobid=job_201302281451_0007&action=changeprio&prio=HIGH>.\
@@ -1327,7 +1327,7 @@ Open the job history URL, <http://master:50030/jobhistoryhome.jsp>.\
 We will be able to get a web page similar to Figure [fig:history.jobs]
 
 ![History jobs<span
-data-label="fig:history.jobs"></span>](figs/5163os_04_01.png)
+data-label="fig:history.jobs"></span>](images/5163os_04_01.png)
 
 On the web UI, we can filter jobs based on the username and job name in
 the format **username:jobname** as shown in Figure [fig:history.jobs].
@@ -1340,7 +1340,7 @@ get the details of the job as shown in Figure
 [fig:specific.job.history].
 
 ![History of a specific job<span
-data-label="fig:specific.job.history"></span>](figs/5163os_04_02.png)
+data-label="fig:specific.job.history"></span>](images/5163os_04_02.png)
 
 This web page shows the details of the job, including task information
 such as total, successful, failed, and killed tasks. The information
@@ -1355,7 +1355,7 @@ interface for us to analyze a job. By clicking on the link *Analyze This
 Job*, we will go to a web page similar to Figure [fig:task.statistics].
 
 ![Statistics of tasks for a job<span
-data-label="fig:task.statistics"></span>](figs/5163os_04_03.png)
+data-label="fig:task.statistics"></span>](images/5163os_04_03.png)
 
 The web page contains information of simple time analytics for each
 task, for example the best performing tasks that take the shortest time,
@@ -1365,7 +1365,7 @@ To further check the information of a task, we can click on the link for
 the task, and we will get a web page similar to Figure [fig:task.info].
 
 ![Information of a task<span
-data-label="fig:task.info"></span>](figs/5163os_04_04.png)
+data-label="fig:task.info"></span>](images/5163os_04_04.png)
 
 We can get the counters of a task by clicking on the Counters field of
 the task as shown in Figure [fig:task.info], or we can get the same web
@@ -1379,14 +1379,14 @@ We will be able to get task counters as shown in Figure
 [fig:task.counters]
 
 ![Task Counters<span
-data-label="fig:task.counters"></span>](figs/5163os_04_05.png)
+data-label="fig:task.counters"></span>](images/5163os_04_05.png)
 
 In addition to all these web services, the web UI provides a graphical
 display of the progress of Hadoop jobs and each phase as shown in Figure
 [fig:mapreduce.progress].
 
 ![Progress of map and reduce tasks from the web UI<span
-data-label="fig:mapreduce.progress"></span>](figs/5163os_04_06.png)
+data-label="fig:mapreduce.progress"></span>](images/5163os_04_06.png)
 
 This screenshot shows the progress of each map and reduce task. The
 reduce task is composed of three phases, the shuffle phase, the sort
@@ -1953,7 +1953,7 @@ From the JobTracker web UI, we can get a queue scheduling information
 web page similar to Figure [fig:mapred.scheduling].
 
 ![Hadoop MapReduce job Scheduling information<span
-data-label="fig:mapred.scheduling"></span>](figs/5163os_04_17.png)
+data-label="fig:mapred.scheduling"></span>](images/5163os_04_17.png)
 
 Alternatively, we can use the command hadoop queue -list to get the same
 information.
@@ -1963,7 +1963,7 @@ master:50030/scheduler, and we can get a web page similar to the
 following:
 
 ![Job Scheduler Queues<span
-data-label="fig:job.queues"></span>](figs/5163os_04_18.png)
+data-label="fig:job.queues"></span>](images/5163os_04_18.png)
 
 Figure [fig:job.queues] shows the status of each queue in the cluster
 including the numbers of running jobs, pending jobs, and so on.
@@ -2089,7 +2089,7 @@ Verify the setting of Fair Scheduler by opening the URL
 The web page will be similar to Figure [fig:fairscheduler].
 
 ![Status of fair scheduler<span
-data-label="fig:fairscheduler"></span>](figs/5163os_04_16.png)
+data-label="fig:fairscheduler"></span>](images/5163os_04_16.png)
 
 ### How it works... 
 

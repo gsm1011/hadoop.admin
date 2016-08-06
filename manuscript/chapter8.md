@@ -53,7 +53,7 @@ Click the ’**Sign Up**’ button on the upper right corner of the window.
 You will be directed to a webpage as shown in Figure [fig:aws.signin].
 
 ![Sign in or Create and AWS Account<span
-data-label="fig:aws.signin"></span>](figs/5163os_08_01.png)
+data-label="fig:aws.signin"></span>](images/5163os_08_01.png)
 
 Fill in the email address in the text field with label ’**My e-mail
 address is**:’ and select the ’**I am a new user**’ radio button as
@@ -66,7 +66,7 @@ Fill the login credentials form, which includes name, email and password
 as shown in Figure [fig:login.credentials].
 
 ![The Login Credentials Form<span
-data-label="fig:login.credentials"></span>](figs/5163os_08_02.png)
+data-label="fig:login.credentials"></span>](images/5163os_08_02.png)
 
 Click the ’**Continue**’ button at the bottom as shown in the
 screenshot.
@@ -75,7 +75,7 @@ Fill in the ’**Contact Information**’, ’**Security Check**’ and ’**AWS
 Customer Agreement**’ form as shown in Figure [fig:aws.personal.info].
 
 ![AWS Signin Personal Information Page<span
-data-label="fig:aws.personal.info"></span>](figs/5163os_08_03.png)
+data-label="fig:aws.personal.info"></span>](images/5163os_08_03.png)
 
 Click the ’**Create Account and Continue**’ button at the bottom as
 shown in the screenshot.
@@ -85,7 +85,7 @@ the newly created account by using the ’**returning user**’ option as
 shown in Figure [fig:aws.signin.return].
 
 ![AWS signin with Returning User<span
-data-label="fig:aws.signin.return"></span>](figs/5163os_08_04.png)
+data-label="fig:aws.signin.return"></span>](images/5163os_08_04.png)
 
 By clicking the ’**Sign in using our secure server**’ button on the
 bottom of the window, we will be able to login to the AWS management
@@ -93,7 +93,7 @@ console page with EC2 and S3 service available as shown in Figure
 [fig:aws.management.console].
 
 ![The AWS Management Console<span
-data-label="fig:aws.management.console"></span>](figs/5163os_08_05.png)
+data-label="fig:aws.management.console"></span>](images/5163os_08_05.png)
 
 Till here, we finished the registration step successfully.
 
@@ -136,7 +136,7 @@ Click the ’**My Account / Console**’ dropdown button on the upper left
 of the window as shown in Figure [fig:secu.select].
 
 ![Choose the Security Credentials button<span
-data-label="fig:secu.select"></span>](figs/5163os_08_07.png)
+data-label="fig:secu.select"></span>](images/5163os_08_07.png)
 
 Click the ’**Security Credentials**’ in the dropdown list as shown in
 the previous screenshot.
@@ -150,20 +150,20 @@ Currently, Amazon AWS has a few types of credentials as shown in Figure
 [fig:aws.credentials.types].
 
 ![AWS Types of Security Credentials<span
-data-label="fig:aws.credentials.types"></span>](figs/5163os_08_08.png)
+data-label="fig:aws.credentials.types"></span>](images/5163os_08_08.png)
 
 Access Credentials include Access Keys, X.509 Certificates and Key pairs
 as shown in Figure [fig:aws.access.credentials].
 
 ![AWS Access Credentials<span
-data-label="fig:aws.access.credentials"></span>](figs/5163os_08_09.png)
+data-label="fig:aws.access.credentials"></span>](images/5163os_08_09.png)
 
 By clicking the ’**Make Inactive**’ link on the status column of the
 access keys table, we can make the access keys inactive. Inactive access
 keys can be made active again and can be deleted from the list.
 
 ![X.509 Certificates<span
-data-label="fig:aws.x509certificates"></span>](figs/5163os_08_11.png)
+data-label="fig:aws.x509certificates"></span>](images/5163os_08_11.png)
 
 Similarly, we can make a X.509 certificate inactive. Inactive
 certificates can be made active again or deleted from the list.
@@ -172,7 +172,7 @@ By clicking the ’**Create a new Certificate**’ link we will be able to
 create a new certificate as shown in Figure [fig:aws.create.x509].
 
 ![Create X.509 Certificates<span
-data-label="fig:aws.create.x509"></span>](figs/5163os_08_10.png)
+data-label="fig:aws.create.x509"></span>](images/5163os_08_10.png)
 
 We need to download the private key file as well as the X.509
 certificate by clicking on the buttons as shown in the screenshot. These
@@ -182,7 +182,7 @@ Key pairs used for EC2 can be managed from the management console as
 shown in Figure [fig:aws.keypair.management].
 
 ![AWS Managing Key Pairs<span
-data-label="fig:aws.keypair.management"></span>](figs/5163os_08_14.png)
+data-label="fig:aws.keypair.management"></span>](images/5163os_08_14.png)
 
 New key pairs can be created by clicking the ’**Create Key Pair**’
 Button on the top of the window. A pop up window will be used to type in
@@ -224,7 +224,7 @@ Get the Access Key ID and the secret access key from the security
 credentials web page as shown in Figure [fig:aws.access.keys].
 
 ![AWS Access Keys<span
-data-label="fig:aws.access.keys"></span>](figs/5163os_08_15.png)
+data-label="fig:aws.access.keys"></span>](images/5163os_08_15.png)
 
 Move the key pair to the .ec2 directory with command:
 
@@ -609,7 +609,7 @@ The account number is on the upper left of the window as shown in Figure
 [fig:aws.account.number].
 
 ![AWS Account Number<span
-data-label="fig:aws.account.number"></span>](figs/5163os_08_16.png)
+data-label="fig:aws.account.number"></span>](images/5163os_08_16.png)
 
 The command will ask for the architecture of the image, then it will
 bundle the image with user’s security credentials and split the bundled
@@ -641,19 +641,19 @@ Create a bucket from the S3 web interface as shown in Figure
 [fig:aws.s3.bucket.create].
 
 ![AWS Creating S3 Bucket<span
-data-label="fig:aws.s3.bucket.create"></span>](figs/5163os_08_17.png)
+data-label="fig:aws.s3.bucket.create"></span>](images/5163os_08_17.png)
 
 Type in the bucket name and select the region based on your location as
 shown in Figure [fig:aws.s3.bucket.region].
 
 ![Choose Region for the Bucket<span
-data-label="fig:aws.s3.bucket.region"></span>](figs/5163os_08_18.png)
+data-label="fig:aws.s3.bucket.region"></span>](images/5163os_08_18.png)
 
 Click the ’Create’ button, the bucket will be successfully created as
 shown in Figure [fig:aws.s3.buckets].
 
 ![AWS S3 Buckets<span
-data-label="fig:aws.s3.buckets"></span>](figs/5163os_08_19.png)
+data-label="fig:aws.s3.buckets"></span>](images/5163os_08_19.png)
 
 Upload the bundled file into S3 with command:
 
@@ -691,7 +691,7 @@ parts as well as the manifest file as shown in Figure
 [fig:aws.bucket.content].
 
 ![Files of a S3 Bucket<span
-data-label="fig:aws.bucket.content"></span>](figs/5163os_08_20.png)
+data-label="fig:aws.bucket.content"></span>](images/5163os_08_20.png)
 
 Register the AMI with command:
 
@@ -803,7 +803,7 @@ For example, we can get the status of the instance similar to Figure
 [fig:aws.ec2.instances].
 
 ![AWS EC2 Instances<span
-data-label="fig:aws.ec2.instances"></span>](figs/5163os_08_21.png)
+data-label="fig:aws.ec2.instances"></span>](images/5163os_08_21.png)
 
 Login to the instance with command:
 
@@ -980,13 +980,13 @@ Go to <https://console.aws.amazon.com/ec2/v2/home#Images:>, filter the
 AMIs with conditions similar to Figure [fig:aws.ec2.ami.filter].
 
 ![Filtering EC2 AMIs<span
-data-label="fig:aws.ec2.ami.filter"></span>](figs/5163os_08_29.png)
+data-label="fig:aws.ec2.ami.filter"></span>](images/5163os_08_29.png)
 
 Start an instance by right clicking on one of the AMIs and then click
 ’Launch’ as shown in Figure [fig:aws.launch.instance].
 
 ![Launching EC2 Instance<span
-data-label="fig:aws.launch.instance"></span>](figs/5163os_08_30.png)
+data-label="fig:aws.launch.instance"></span>](images/5163os_08_30.png)
 
 When the instance is running, login to the instances, make changes
 according to your requirements. Then, from the web management console,
@@ -994,14 +994,14 @@ right click on the running instance and then select ’Create Image (EBS
 AMI)’ as shown in Figure [fig:aws.create.ebsami].
 
 ![Create EBS AMI from Running Instance<span
-data-label="fig:aws.create.ebsami"></span>](figs/5163os_08_31.png)
+data-label="fig:aws.create.ebsami"></span>](images/5163os_08_31.png)
 
 Go to the AMIs tab of the AWS web console, and select ’Owned By Me’, we
 will see that the EBS AMI is being created as shown in Figure
 [fig:aws.owned.ami].
 
 ![Owned AMI<span
-data-label="fig:aws.owned.ami"></span>](figs/5163os_08_33.png)
+data-label="fig:aws.owned.ami"></span>](images/5163os_08_33.png)
 
 EC2 creates a snapshot for the new AMI. Similar to the image part files
 stored in S3, the snapshot stores the physical image of the EBS backed
@@ -1215,7 +1215,7 @@ Upload data into the input folder from the web console as shown in
 Figure [fig:aws.s3.upload].
 
 ![Uploading data into S3<span
-data-label="fig:aws.s3.upload"></span>](figs/5163os_08_22.png)
+data-label="fig:aws.s3.upload"></span>](images/5163os_08_22.png)
 
 Upload required jar file (hadoop-examples-\*.jar in this example) into
 the jars directory.
@@ -1235,13 +1235,13 @@ Click the ’*Create New Job Flow*’ button as shown in Figure
 [fig:aws.elasticmapred.createflow].
 
 ![Create New Elastic MapReduce Job Flow<span
-data-label="fig:aws.elasticmapred.createflow"></span>](figs/5163os_08_23.png)
+data-label="fig:aws.elasticmapred.createflow"></span>](images/5163os_08_23.png)
 
 Next, enter the ’Job Flow Name’, select the ’Hadoop Version’ and select
 the job flow type as shown in Figure [fig:aws.elasticmapred.config].
 
 ![Configure Elastic MapReduce Job Flow<span
-data-label="fig:aws.elasticmapred.config"></span>](figs/5163os_08_24.png)
+data-label="fig:aws.elasticmapred.config"></span>](images/5163os_08_24.png)
 
 To test a simple job flow, you can choose ’Run a sample application’
 instead.
@@ -1251,7 +1251,7 @@ location of the jar file and the parameters for running the Hadoop
 MapReduce job as shown in Figure [fig:aws.elasticmapred.specify.param].
 
 ![Specify Job Flow Parameters<span
-data-label="fig:aws.elasticmapred.specify.param"></span>](figs/5163os_08_01.png)
+data-label="fig:aws.elasticmapred.specify.param"></span>](images/5163os_08_01.png)
 
 In this step, we need to specify the location of the jar file and the
 arguments to run a job. The specifications should be similar to option
@@ -1266,7 +1266,7 @@ small input data size, data intensive or computation intensive etc.).
 This step is shown in Figure [fig:aws.elasticmapred.config.instance].
 
 ![Configure EC2 Instances<span
-data-label="fig:aws.elasticmapred.config.instance"></span>](figs/5163os_08_26.png)
+data-label="fig:aws.elasticmapred.config.instance"></span>](images/5163os_08_26.png)
 
 Click the ’Continue’ button and we will go to the ’Advanced options’
 window. This window asks for instance boot options such as security key
@@ -1281,18 +1281,17 @@ problem, we can click the ’Create Job Flow’ button to create an EMR job
 flow. This step is shown in Figure [fig:aws.elasticmapred.flow.review].
 
 ![Review Job Flow Configuration<span
-data-label="fig:aws.elasticmapred.flow.review"></span>](figs/5163os_08_27.png)
+data-label="fig:aws.elasticmapred.flow.review"></span>](images/5163os_08_27.png)
 
 The job flow will be started and we can check the output when it
 completes. We can get its status from the web console as shown in Figure
 [fig:aws.elasticmapred.flow.status].
 
 ![Status of an Elastic MapReduce Job Flow<span
-data-label="fig:aws.elasticmapred.flow.status"></span>](figs/5163os_08_28.png)
+data-label="fig:aws.elasticmapred.flow.status"></span>](images/5163os_08_28.png)
 
 ### See also 
 
 - Chapter [chap:3], Configuring a Hadoop cluster
 
-[^1]: HDD stands for Hard Disk Drive and SSD stands for Solid State
-    Drive
+[^1]: HDD stands for Hard Disk Drive and SSD stands for Solid State Drive

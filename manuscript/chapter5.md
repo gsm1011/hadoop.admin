@@ -311,7 +311,7 @@ At the bottom of the web page, you should see options similar to Figure
 [fig:jce].
 
 ![Option of downloading JCE<span
-data-label="fig:jce"></span>](figs/5163os_05_01.png)
+data-label="fig:jce"></span>](images/5163os_05_01.png)
 
 Click the right download link based on your Java version, which we can
 get with the `java -version` command.

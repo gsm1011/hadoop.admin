@@ -32,7 +32,7 @@ minor revision number. A Hadoop release version can be described in
 Figure [fig:hadoop.release].
 
 ![Structure of a Hadoop release version<span
-data-label="fig:hadoop.release"></span>](figs/5163os_03_01.png)
+data-label="fig:hadoop.release"></span>](images/5163os_03_01.png)
 
 Sometimes, the revision number can have a fourth part, for example
 `0.20.203.0`, but this is relatively rare.
@@ -913,7 +913,7 @@ Open URL `master:50030/jobtracker.jsp` with a web browser. The webpage
 will be similar to Figure [fig:jobtracker.webui].
 
 ![Hadoop Jobtracker Web UI<span
-data-label="fig:jobtracker.webui"></span>](figs/5163os_03_02.png)
+data-label="fig:jobtracker.webui"></span>](images/5163os_03_02.png)
 
 The webpage shows that the Hadoop cluster contains 5 active slave nodes.
 
@@ -921,7 +921,7 @@ Check the status each slave node by clicking the link, which lead us to
 a webpage similar to Figure [fig:active.trackers].
 
 ![List of active TaskTrackers<span
-data-label="fig:active.trackers"></span>](figs/5163os_03_03.png)
+data-label="fig:active.trackers"></span>](images/5163os_03_03.png)
 
 From Figure [fig:active.trackers], we can easily check the status of the
 active TaskTrackers on the slave nodes. For example, we can see the
@@ -932,7 +932,7 @@ Check the status of slave DataNodes by opening URL master:50070. The
 webpage will be similar to Figure [fig:namenode.webui].
 
 ![Hadoop HDFS NameNode Web UI<span
-data-label="fig:namenode.webui"></span>](figs/5163os_03_04.png)
+data-label="fig:namenode.webui"></span>](images/5163os_03_04.png)
 
 The webpage shows that the cluster is configured with 5 active nodes.
 
@@ -940,7 +940,7 @@ By clicking the `Live Nodes` link we can see the details of
 each node as shown in Figure [fig:hdfs.datanodes].
 
 ![List of HDFS live DataNodes<span
-data-label="fig:hdfs.datanodes"></span>](figs/5163os_03_05.png)
+data-label="fig:hdfs.datanodes"></span>](images/5163os_03_05.png)
 
 This webpage shows the status of each slave node including node
 capacity, percentage of usage and how many blocks are hosted in the node
@@ -966,7 +966,7 @@ how often the webpage should be refreshed.
 The job status webpage will be similar to Figure [fig:mapreduce.job].
 
 ![Information about a MapReduce job from the Web UI<span
-data-label="fig:mapreduce.job"></span>](figs/5163os_03_06.png)
+data-label="fig:mapreduce.job"></span>](images/5163os_03_06.png)
 
 Figure [fig:mapreduce.job] tells us that the Hadoop cluster has been
 configured successfully!
@@ -977,7 +977,7 @@ usage by opening URL
 be similar to Figure [fig:hdfs.storage].
 
 ![Storage information of DataNodes from the Web UI<span
-data-label="fig:hdfs.storage"></span>](figs/5163os_03_07.png)
+data-label="fig:hdfs.storage"></span>](images/5163os_03_07.png)
 
 The webpage shows that a certain percentage of storage space has been
 used on each slave node.
@@ -1291,7 +1291,7 @@ suggest the stable version, for example, follow the link
 downloadable files as shown in Figure [fig:hbase.download].
 
 ![Download a stable HBase release from a mirror site<span
-data-label="fig:hbase.download"></span>](figs/5163os_03_08.png)
+data-label="fig:hbase.download"></span>](images/5163os_03_08.png)
 
 Click the file link hbase-0.94.5.tar.gz to download the file to the
 administrator machine. Then, copy the file to the FTP repository with

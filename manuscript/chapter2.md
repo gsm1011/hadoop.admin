@@ -198,7 +198,7 @@ In general, the network architecture of medium sized cluster can be
 described in Figure [fig:network.architecture].
 
 ![Network Architecture of Hadoop Cluster<span
-data-label="fig:network.architecture"></span>](figs/5163os_02_01.png)
+data-label="fig:network.architecture"></span>](images/5163os_02_01.png)
 
 In this figure, we assume there is a Hadoop cluster administrator
 machine and the clients connect to the cluster through a gateway,
@@ -275,7 +275,7 @@ installation packages. And image file `CentOS-6.3-x86_64-netinstall.iso`
 contains PXE network booting files used for booting over the network.
 
 ![Directory Listing of CentOS mirror site<span
-data-label="fig:centos.mirror"></span>](figs/5163os_02_02.png)
+data-label="fig:centos.mirror"></span>](images/5163os_02_02.png)
 
 If you are not sure about the architecture of the cluster machines,
 please refer to the product hardware menu.
@@ -970,7 +970,7 @@ jdk-7u11-linux-x64.rpm for a 64bit Linux machine. The operations are
 shown in Figure [fig:oracle.jdk].
 
 ![Downloading Oracle JDK<span
-data-label="fig:oracle.jdk"></span>](figs/5163os_02_04.png)
+data-label="fig:oracle.jdk"></span>](images/5163os_02_04.png)
 
 ### How to do it 
 

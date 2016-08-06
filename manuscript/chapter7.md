@@ -1198,7 +1198,7 @@ Check the data skew through the web UI, for example, by opening URL
 The webpage will be similar to Figure [fig:skewed.datanode].
 
 ![The Skewed Datanode<span
-data-label="fig:skewed.datanode"></span>](figs/5163os_07_01.png)
+data-label="fig:skewed.datanode"></span>](images/5163os_07_01.png)
 
 The screenshot shows that the data blocks are skewed. Hence, rebalancing
 is necessary.
@@ -1603,7 +1603,7 @@ can be verified by opening URL: <http://master:50030/>.
 The web page will be similar to Figure [fig:killed.jobs.speculative].
 
 ![Killed Attempts due to Speculative Execution<span
-data-label="fig:killed.jobs.speculative"></span>](figs/5163os_06_10.png)
+data-label="fig:killed.jobs.speculative"></span>](images/5163os_06_10.png)
 
 If speculative execution has been enabled for a Hadoop cluster, we can
 still disable it for specific jobs. For example, when we write MapReduce

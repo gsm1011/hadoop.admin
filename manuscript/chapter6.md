@@ -131,7 +131,7 @@ Use the following command to start the monitor user interface:
 We can see a window that is similar to Figure [fig:jconsole].
 
 ![jconsole UI<span
-data-label="fig:jconsole"></span>](figs/5163os_06_01.png)
+data-label="fig:jconsole"></span>](images/5163os_06_01.png)
 
 From this window, we can check the status of both local and remote
 processes. Checking the status of local processes is relatively simple.
@@ -149,7 +149,7 @@ We can get a monitoring window, as shown in Figure
 [fig:jconsole.jobtracker] after waiting for a few moments.
 
 ![jconsole JobTracker resource usage monitoring UI<span
-data-label="fig:jconsole.jobtracker"></span>](figs/5163os_06_02.png)
+data-label="fig:jconsole.jobtracker"></span>](images/5163os_06_02.png)
 
 The window shows the daemon status for the JobTracker. From the window,
 we can check the memory usage, threads, classes, summary of JVM and
@@ -160,7 +160,7 @@ jconsole window and we will get a window similar to Figure
 [fig:heap.usage.window].
 
 ![The Heap Memory Usage Window<span
-data-label="fig:heap.usage.window"></span>](figs/5163os_06_03.png)
+data-label="fig:heap.usage.window"></span>](images/5163os_06_03.png)
 
 The memory window shows the heap memory usage as a time serial chart.
 From this window, we can select from different charts and time ranges to
@@ -172,7 +172,7 @@ threads of the JobTracker and we can get a window similar to Figure
 [fig:num.threads].
 
 ![Number of Threads Window<span
-data-label="fig:num.threads"></span>](figs/5163os_06_04.png)
+data-label="fig:num.threads"></span>](images/5163os_06_04.png)
 
 The upper part of the window shows the number of peak live threads and
 the number of current live threads. On the lower part of the window, we
@@ -187,7 +187,7 @@ status details of the daemon. For example, Figure
 [fig:mbeans.hadoop.metrics] shows more metrics details for JobTracker:
 
 ![MBeans Hadoop Metrics<span
-data-label="fig:mbeans.hadoop.metrics"></span>](figs/5163os_06_05.png)
+data-label="fig:mbeans.hadoop.metrics"></span>](images/5163os_06_05.png)
 
 From this window, we can get a number of JobTracker metrics such as
 number of running jobs, number of map and reduce slots and number of
@@ -402,7 +402,7 @@ Check the status of Ganglia by opening URL <http://master:80/ganglia>
 and we can get webpage similar to Figure [fig:ganglia.cluster.summary].
 
 ![Ganglia Cluster Summary<span
-data-label="fig:ganglia.cluster.summary"></span>](figs/5163os_06_06.png)
+data-label="fig:ganglia.cluster.summary"></span>](images/5163os_06_06.png)
 
 The upper left portion of the UI is a summary of the cluster, including
 number of hosts, host status, average load etc.
@@ -419,14 +419,14 @@ slave nodes. We can change the metric to display by selecting from the
 combo box as shown in Figure [fig:ganglia.metrics].
 
 ![Ganglia Available Monitoring Metrics<span
-data-label="fig:ganglia.metrics"></span>](figs/5163os_06_09.png)
+data-label="fig:ganglia.metrics"></span>](images/5163os_06_09.png)
 
 For example, by selecting metric “`dfs_datenode.bytes_written`”, we can
 get the `bytes_written` for each node as shown in Figure
 [fig:bytes.written.metric].
 
 ![The bytes written metric for all the Datanodes<span
-data-label="fig:bytes.written.metric"></span>](figs/5163os_06_10.png)
+data-label="fig:bytes.written.metric"></span>](images/5163os_06_10.png)
 
 Figure [fig:bytes.written.metric] confirms that a DataNode is the actual
 place where data blocks are stored and NameNode only keeps track of the
@@ -439,13 +439,13 @@ check all the metric for the master node, we will be able to get web
 page similar to Figure [fig:master.status].
 
 ![Metric Status of the **master** Node<span
-data-label="fig:master.status"></span>](figs/5163os_06_11.png)
+data-label="fig:master.status"></span>](images/5163os_06_11.png)
 
 By scrolling down the window, we can check the Hadoop JobTracker metrics
 as shown in Figure [fig:jobtracker.metrics].
 
 ![MapReduce jobtracker metrics<span
-data-label="fig:jobtracker.metrics"></span>](figs/5163os_06_12.png)
+data-label="fig:jobtracker.metrics"></span>](images/5163os_06_12.png)
 
 This screenshot contains the status information of the JobTracker
 including the number of running jobs, the number of map and reduce slots
@@ -464,7 +464,7 @@ generated with PHP by pulling the data from the database. The Ganglia
 data flow can be described with Figure [fig:ganglia.dataflow].
 
 ![The Ganglia Data Flow Diagram<span
-data-label="fig:ganglia.dataflow"></span>](figs/5163os_06_13.png)
+data-label="fig:ganglia.dataflow"></span>](images/5163os_06_13.png)
 
 ### See also 
 
@@ -909,13 +909,13 @@ After login, we will be able to install and manage our Hadoop cluster
 from the Ambari web UI, which is similar to Figure [fig:ambari.welcome].
 
 ![Start Apache Ambari Installation<span
-data-label="fig:ambari.welcome"></span>](figs/5163os_06_14.png)
+data-label="fig:ambari.welcome"></span>](images/5163os_06_14.png)
 
 Next, we need to configure the install options as shown in Figure
 [fig:ambari.install.options].
 
 ![Configure Installation Options<span
-data-label="fig:ambari.install.options"></span>](figs/5163os_06_15.png)
+data-label="fig:ambari.install.options"></span>](images/5163os_06_15.png)
 
 After specifying the installation options as shown in Figure
 [fig:ambari.install.options], we can click the “Register and Confirm”
@@ -924,13 +924,13 @@ registration progress page as shown in Figure [fig:host.registration].
 In this step, we need to confirm hosts to install Hadoop.
 
 ![Host Registration for the Hadoop Cluster<span
-data-label="fig:host.registration"></span>](figs/5163os_06_17.png)
+data-label="fig:host.registration"></span>](images/5163os_06_17.png)
 
 By clicking the “Next” button, we will go the a webpage to choose the
 services to install as shown in Figure [fig:choose.services].
 
 ![Choose Services to Install<span
-data-label="fig:choose.services"></span>](figs/5163os_06_18.png)
+data-label="fig:choose.services"></span>](images/5163os_06_18.png)
 
 By default, all the services are selected to installed, we can make
 changes based on the requirements and then click the “Next” button. We
@@ -938,10 +938,10 @@ will go to a webpage of to assign hosts as masters, slaves and clients,
 as shown in Figure [fig:assign.masters].
 
 ![Assign hosts for master nodes<span
-data-label="fig:assign.masters"></span>](figs/5163os_06_19.png)
+data-label="fig:assign.masters"></span>](images/5163os_06_19.png)
 
 ![Assign hosts for slaves and clients<span
-data-label="fig:assign.slaves"></span>](figs/5163os_06_20.png)
+data-label="fig:assign.slaves"></span>](images/5163os_06_20.png)
 
 Next, we will go to a webpage for customizing services, for example
 configuring the location for the NameNode directory. In this step, some
@@ -952,27 +952,27 @@ After everything is configured, we will get a summary page about our
 configurations as shown in Figure [fig:config.review].
 
 ![Review Configuration before Installation<span
-data-label="fig:config.review"></span>](figs/5163os_06_22.png)
+data-label="fig:config.review"></span>](images/5163os_06_22.png)
 
 By clicking on the “Deploy” button, the cluster deployment will start
 and a progress bar will appear for each service that is being installed
 as shown in Figure [fig:hadoop.install.process].
 
 ![The Hadoop Installation Process<span
-data-label="fig:hadoop.install.process"></span>](figs/5163os_06_24.png)
+data-label="fig:hadoop.install.process"></span>](images/5163os_06_24.png)
 
 After the deployment completes, we will get a summary page as shown in
 Figure [fig:install.summary].
 
 ![Summary of the Installation Process<span
-data-label="fig:install.summary"></span>](figs/5163os_06_26.png)
+data-label="fig:install.summary"></span>](images/5163os_06_26.png)
 
 By clicking on the “Complete” button, the cluster installation process
 will complete, and we will be able to see the status of the cluster as
 shown in Figure [fig:cluster.status].
 
 ![Cluster Status after Installation<span
-data-label="fig:cluster.status"></span>](figs/5163os_06_27.png)
+data-label="fig:cluster.status"></span>](images/5163os_06_27.png)
 
 ### See also 
 
@@ -1259,7 +1259,7 @@ In summary, the data flow of Chukwa can be described with the following
 figure:
 
 ![Chukwa Dataflow<span
-data-label="fig:chukwa.dataflow"></span>](figs/5163os_06_08.png)
+data-label="fig:chukwa.dataflow"></span>](images/5163os_06_08.png)
 
 For more information about the design of Chukwa, please check the
 [documentation](http://incubator.apache.org/chukwa/docs/r0.5.0/design.html).
