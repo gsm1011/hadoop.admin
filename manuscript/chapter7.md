@@ -1,5 +1,4 @@
-Tuning Hadoop Cluster for Best Performance <a name="#chap:7"></a>
-==========================================
+# Tuning Hadoop Cluster for Best Performance 
 
 In this chapter, we will cover:
 
@@ -21,8 +20,7 @@ In this chapter, we will cover:
 - Configuring JVM reuse
 - Configuring reducer initialization time
 
-Introduction <a name="#introduction-4"></a>
-------------
+## Introduction 
 
 Hadoop performance tuning is a challenging task, mainly due to the
 distributed feature of the system. The sheer number of configuration
@@ -78,8 +76,7 @@ optimal for another cluster under different hardware configurations. So,
 to find the optimal settings for a specific cluster, real field work is
 needed.
 
-Benchmarking and profiling a Hadoop cluster
--------------------------------------------
+## Benchmarking and profiling a Hadoop cluster
 
 Benchmarking of a Hadoop cluster is the first step to tune the
 performance of a Hadoop cluster. We can also use Hadoop benchmarks to
@@ -101,7 +98,7 @@ performance of the HDFS cluster. In addition, we will test the failure
 resilience of the MapReduce framework and the performance of the
 MapReduce cluster under stress.
 
-### Getting ready <a name="#getting-ready-45"></a>
+### Getting ready 
 
 To get started with Hadoop cluster benchmarks, we assume that a working
 Hadoop cluster has been configured and all the daemons are running
@@ -112,10 +109,11 @@ installation and have `JAVA_HOME` set in file
 `$HADOOP_HOME/conf/hadoop-env.sh`.
 
 Login from the Hadoop cluster administrative machine to the cluster
-master node with command:\
-`$ ssh hduser@master`
+master node with command:
 
-### How to do it... <a name="#how-to-do-it...-38"></a>
+	$ ssh hduser@master
+
+### How to do it... 
 
 Use the following recipe to do HDFS benchmarks:
 
@@ -135,9 +133,7 @@ If there are no errors, then the test is considered successful.
 Benchmark distributed write consistency on the distributed file system
 with command:
 
-``` {.bash language="bash"}
-$ hadoop jar $HADOOP_HOME/ adoop-test-*.jar DistributedFSCheck -write -nrFiles 10 -fileSize 50
-```
+	$ hadoop jar $HADOOP_HOME/ adoop-test-*.jar DistributedFSCheck -write -nrFiles 10 -fileSize 50
 
 This command will write 10 (controlled by the `-nrFiles` option) files
 of 50MB (controlled by the `-fileSize` option) with random content to
@@ -156,9 +152,7 @@ the HDFS file system. It will generate a result file named
 Similarly, we can benchmark distributed read consistency on the
 distributed file system with command:
 
-``` {.bash language="bash"}
-$ hadoop jar $HADOOP_HOME/hadoop-test-*.jar DistributedFSCheck -read -nrFiles 10 -fileSize 50
-```
+	$ hadoop jar $HADOOP_HOME/hadoop-test-*.jar DistributedFSCheck -read -nrFiles 10 -fileSize 50
 
 The command will read 10 files with size 50 from the cluster and
 generate a result file with the following content:
@@ -180,7 +174,7 @@ computing and recording the checksums of the data blocks etc.
 The following recipe can be used to benchmark a MapReduce cluster:
 
 Benchmark MapReduce jobs with command:
-`$ hadoop jar $HADOOP_HOME/hadoop-test-*.jar mapredtest 5 1000`
+`$ hadoop jar $HADOOP_HOME/hadoop-test-*.jar mapredtest 5 1000
 
 The mapredtest benchmark does a load test on the MapReduce computing
 framework. This benchmark is done with random integers, which are
@@ -218,8 +212,9 @@ failures and hence reliability tuning (such as by adding more computing
 TaskTrackers) is needed.
 
 Benchmark MapReduce for dealing with a large number of small jobs with
-command:\
-`$ hadoop jar $HADOOP_HOME/hadoop-test-*.jar mrbench -numRuns 20`
+command:
+
+	$ hadoop jar $HADOOP_HOME/hadoop-test-*.jar mrbench -numRuns 20
 
 The mrbench execute a small job a number of times (20 in this command)
 and checks if these small jobs are responsive and can run efficiently on
@@ -232,9 +227,7 @@ This output tells us that the average run time is about 45 seconds.
 
 Benchmark MapReduce load generator with command:
 
-``` {.bash language="bash"}
-$ hadoop jar $HADOOP_HOME/hadoop-test-1.1.2.jar loadgen -m 100 -r 10 -keepmap 50 -keepred 50 -indir input -outdir output
-```
+	$ hadoop jar $HADOOP_HOME/hadoop-test-1.1.2.jar loadgen -m 100 -r 10 -keepmap 50 -keepred 50 -indir input -outdir output
 
 The result of this command will be similar to the following:
 
@@ -244,9 +237,7 @@ The result of this command will be similar to the following:
 
 Do stress test with the NameNode:
 
-``` {.bash language="bash"}
-$ hadoop jar $HADOOP_HOME/hadoop-test-*.jar nnbench -create_write
-```
+	$ hadoop jar $HADOOP_HOME/hadoop-test-*.jar nnbench -create_write
 
 We will get output similar to the following:
 
@@ -292,7 +283,8 @@ Test the Hadoop performance with large non-splittable files:
     13/04/18 22:17:33 INFO net.NetworkTopology: Adding a new node: /default-rack/slave3:50010
     ...
 
-Test thread map spills with command:\
+Test thread map spills with command:
+
 threadedmapbench is a MapReduce benchmark that compares the performance
 of maps with multiple spills over maps with 1 spill. The output message
 will be similar to the following:
@@ -313,26 +305,21 @@ used to benchmark Hadoop sort:
 
 Generate some random text data with command:
 
-``` {.bash language="bash"}
-$ hadoop jar $HADOOP_HOME/hadoop-examples-*.jar randomwriter random.writer.out
-```
+	$ hadoop jar $HADOOP_HOME/hadoop-examples-*.jar randomwriter random.writer.out
 
 Sort the generated random data with command:
 
-``` {.bash language="bash"}
-$ hadoop jar $HADOOP_HOME/hadoop-examples-*.jar sort random.writer.out random.writer.out.sorted
-```
+	$ hadoop jar $HADOOP_HOME/hadoop-examples-*.jar sort random.writer.out random.writer.out.sorted
 
-Validate the MapReduce sort algorithm with command:\
+Validate the MapReduce sort algorithm with command:
+
 This command will validate the accuracy of the sort algorithm. If there
 is no problem on the sort algorithm, we will get the following message:
 
-``` {.bash language="bash"}
-$ hadoop jar $HADOOP_HOME/hadoop-test-*.jar testmapredsort -m 50 -r 5 -sortInput random.writer.out -sortOutput random.writer.out.sorted
-SUCCESS! Validated the MapReduce framework's 'sort' successfully.
-```
+	$ hadoop jar $HADOOP_HOME/hadoop-test-*.jar testmapredsort -m 50 -r 5 -sortInput random.writer.out -sortOutput random.writer.out.sorted
+	SUCCESS! Validated the MapReduce framework's 'sort' successfully.
 
-### How it works <a name="#how-it-works-18"></a>
+### How it works 
 
 We can get the usage of the Hadoop benchmark of the test package with
 the following command:
@@ -511,16 +498,16 @@ We can get the usage of the testmapredsort benchmark with command:
 
 Some commands are very handy for testing the configuration of a Hadoop
 cluster. For example, we can use the following command to test the
-cluster by computing $\pi$ (pi):\
-`$ hadoop jar $HADOOP_HOME/hadoop-example-*.jar pi 10 1000000`\
+cluster by computing $\pi$ (pi):
+
+	$ hadoop jar $HADOOP_HOME/hadoop-example-*.jar pi 10 1000000`
+
 This command will start a MapReduce job to compute $\pi$ with 10 mappers
 with each mapper generating 1000000 samples.
 
 The usage for randomwriter is as follows:
 
-``` {.bash language="bash"}
-$ hadoop jar $HADOOP_HOME/hadoop-example-*.jar randomwriter <out-dir>
-```
+	$ hadoop jar $HADOOP_HOME/hadoop-example-*.jar randomwriter <out-dir>
 
 `<out-dir>` specifies the output directory of randomwriter.
 
@@ -545,25 +532,21 @@ specifies the number of partitions, `<num samples>` specifies the number
 of samples and `<max splits>` specifies the maximum number of splits for
 the data.
 
-\
 input & Sort input directory\
 output & Sort output directory\
 
 The usage for wordcount is as follows:
 
-``` {.bash language="bash"}
-$ hadoop jar $HADOOP_HOME/hadoop-example-*.jar wordcount <in> <out>
-```
+	$ hadoop jar $HADOOP_HOME/hadoop-example-*.jar wordcount <in> <out>
 
 `<in>` specifies the directory for input and `<out>` specifies the
 directory for output.
 
-### See also <a name="#see-also-36"></a>
+### See also 
 
 - Benchmarking a Hadoop cluster with GridMix.
 
-Analyzing job history with Rumen
---------------------------------
+## Analyzing job history with Rumen
 
 Rumen is a tool for extracting well formatted information from job log
 files. It parses logs and generates statistics for the Hadoop jobs. The
@@ -578,31 +561,28 @@ to scale up (make time longer) or down (make time shorter) the job
 runtime. In this recipe, we will outline steps to analyze job history
 with Rumen.
 
-### Getting ready <a name="#getting-ready-46"></a>
+### Getting ready 
 
 Before getting started, we assume that the Hadoop cluster has been
 properly configured and all the daemons are running without any issues.
 Login from the Hadoop cluster administrator machine to the cluster
-master node with command:\
-`$ ssh hduser@master`
+master node with command:
 
-### How to do it... <a name="#how-to-do-it...-39"></a>
+	$ ssh hduser@master
+
+### How to do it... 
 
 Use the following recipe to analyze job history with Rumen:
 
 Use the trace builder to extract the “Gold Trace” from the Hadoop job
 history files. The syntax of the command is:
 
-``` {.bash language="bash"}
-$ hadoop org.apache.hadoop.tools.rumen.TraceBuilder [options] <jobtrace-output> <topology-output> <inputs>
-```
+	$ hadoop org.apache.hadoop.tools.rumen.TraceBuilder [options] <jobtrace-output> <topology-output> <inputs>
 
 For example, we can use the following command to extract job trace and
 topology from the job history directory:
 
-``` {.bash language="bash"}
-$ hadoop org.apache.hadoop.tools.rumen.TraceBuilder -recursive file:///tmp/jobtraces.json file:///tmp/topology.out file:///usr/local/hadoop/logs/history/done
-```
+	$ hadoop org.apache.hadoop.tools.rumen.TraceBuilder -recursive file:///tmp/jobtraces.json file:///tmp/topology.out file:///usr/local/hadoop/logs/history/done
 
 This command will recursively extract job history traces as well as the
 topology of the cluster from the Hadoop job history directory
@@ -693,30 +673,25 @@ jobs similar to the following:
 The second step of using Rumen is to scale the data generated from the
 previous step. We can use the following syntax to do this:
 
-``` {.bash language="bash"}
-$ hadoop org.apache.hadoop.tools.rumen.Folder [options] [input] [output]
-```
+	$ hadoop org.apache.hadoop.tools.rumen.Folder [options] [input] [output]
 
 For example, to scale the runtime of the job trace generated in the
 previous step to 50 minutes, we can use the following command:
 
-``` {.bash language="bash"}
-$ hadoop org.apache.hadoop.tools.rumen.Folder -output-duration 50m -input-cycle 20m file:///home/hduser/jobtraces.json file:///home/hduser/job-scaled-50min.json
-```
+	$ hadoop org.apache.hadoop.tools.rumen.Folder -output-duration 50m -input-cycle 20m file:///home/hduser/jobtraces.json file:///home/hduser/job-scaled-50min.json
 
 In this command, option `-output-duration` defines the final runtime of
 the job trace, and the default value for this option is one hour. Option
 `-input-cycle` is a mandatory option, and it defines the basic unit of
 time for the folding operation.
 
-### See also <a name="#see-also-37"></a>
+### See also 
 
 - Benchmarking a Hadoop cluster with GridMix.
 - <http://hadoop.apache.org/docs/r1.1.2/rumen.html>
 - <https://issues.apache.org/jira/browse/MAPREDUCE-751>
 
-Benchmarking a Hadoop cluster with GridMix
-------------------------------------------
+## Benchmarking a Hadoop cluster with GridMix
 
 GridMix is a tool for benchmarking Hadoop clusters. It generates a
 number of synthetic MapReduce jobs and builds a model based on the
@@ -725,7 +700,7 @@ based on the job execution metrics. The profiles can help us find
 performance bottlenecks of the cluster. In this section, we will outline
 steps for benchmarking Hadoop with GridMix.
 
-### Getting ready <a name="#getting-ready-47"></a>
+### Getting ready 
 
 We assume that our Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
@@ -736,22 +711,26 @@ version 1, use GridMix2 to represent GridMix version 2 and use GridMix3
 to represent GridMix version 3.
 
 Login to the Hadoop cluster node from the administrator machine with
-command:\
-`$ ssh hduser@master`
+command:
 
-### How to do it... <a name="#how-to-do-it...-40"></a>
+	$ ssh hduser@master
+
+### How to do it... 
 
 Use the following recipe to do GridMix2 benchmarks:
 
-Change the current working directory with command:\
-`$ cd $HADOOP_HOME/src/benchmarks/gridmix2`
+Change the current working directory with command:
 
-Build the GridMix2 package with command:\
-`$ ant`
+	$ cd $HADOOP_HOME/src/benchmarks/gridmix2
+
+Build the GridMix2 package with command:
+
+	$ ant
 
 Copy the gridmix.jar file to the current working directory with
-command:\
-`$ cp build/gridmix.jar .`
+command:
+
+	$ cp build/gridmix.jar .
 
 Open file gridmix-env-2 with a text editor and change the environment
 variables similar to the following:
@@ -770,7 +749,7 @@ editor and change the benchmark configuration by changing the properties
 for the benchmark. For example, the following lines configure the number
 of jobs for streamSort benchmark with small jobs:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>streamSort.smallJobs.numOfJobs</name>
   <value>10,5</value>
@@ -786,8 +765,9 @@ These two properties specify that we will use 10 small stream sort job
 with 6 reducers and 5 small stream sort job with 3 reducers. All other
 configurations should follow rules similar to this one.
 
-Make script generateGridmix2Data.sh executable with command:\
-`$ chmod +x generateGridmix2Data.sh`
+Make script generateGridmix2Data.sh executable with command:
+
+	$ chmod +x generateGridmix2Data.sh
 
 Generate data with command:
 
@@ -806,8 +786,9 @@ This command will generate data on HDFS. By default the generated data
 will be compressed with a block compression ratio of 4. Three jobs will
 be started in our example.
 
-Make script `rungridmix_2` to be executable with command:\
-`$ chmod +x rungridmix_2`
+Make script `rungridmix_2` to be executable with command:
+
+	$ chmod +x rungridmix_2
 
 Run the GridMix2 benchmark with command:
 
@@ -819,7 +800,7 @@ Run the GridMix2 benchmark with command:
     Jobs in success state: 32
     Jobs in failed state: 0
 
-### How it works... <a name="#how-it-works...-18"></a>
+### How it works... 
 
 GridMix is a benchmark for Hadoop clusters. It is generally used to
 model the performance profile of a Hadoop cluster by running a number of
@@ -853,18 +834,19 @@ from different categories. We can specify the mix in file
 `gridmix_config.xml`. Based on the specification, a number of jobs will
 be created and submitted to the Hadoop cluster till finish.
 
-### There’s more... <a name="#theres-more...-21"></a>
+### There’s more... 
 
 Besides doing benchmark with `GridMix2`, we can also benchmark a Hadoop
 cluster with `GridMix1` and `GridMix3`.
 
-#### Benchmarking Hadoop cluster with GridMix1 <a name="#benchmarking-hadoop-cluster-with-gridmix1"></a>
+#### Benchmarking Hadoop cluster with GridMix1 
 
 The usage of GridMix1 is similar to GridMix2. The following steps can be
 used:
 
-Change to the GridMix1 directory:\
-`$ cd $HADOOP_HOME/src/benchmarks/gridmix`
+Change to the GridMix1 directory:
+
+	$ cd $HADOOP_HOME/src/benchmarks/gridmix
 
 Open file gridmix-env with a text editor and change the configuration to
 the following:
@@ -881,11 +863,13 @@ The last two environment variables `GRID_MIX_DATA` and `GRID_MIX_PROG`
 specify two directories on HDFS. So, the generated data and programs
 will be on HDFS.
 
-Make script generateData.sh executable with command:\
-`$ chmod +x generateData.sh`
+Make script generateData.sh executable with command:
 
-Generate data with command:\
-`$ sh ./generateData.sh`
+	$ chmod +x generateData.sh
+
+Generate data with command:
+
+	$ sh ./generateData.sh
 
 `GridMix1` is composed a number of high level scripts to control how
 benchmark jobs work. The tree structure of the GridMix1 directory is
@@ -895,22 +879,21 @@ template jobs with different sizes. For example, the three scripts
 javasort directory are templates for small, medium and large javasort
 jobs.
 
-To run a small javasort job, we can use the following command:\
-`$ sh javasort/text-sort.small`
+To run a small javasort job, we can use the following command:
+
+	$ sh javasort/text-sort.small
 
 We can use similar commands to run medium and large jobs.
 
-#### Benchmarking Hadoop cluster with GridMix3 <a name="#benchmarking-hadoop-cluster-with-gridmix3"></a>
+#### Benchmarking Hadoop cluster with GridMix3 
 
 Use the following recipe to build a GridMix3 benchmark for a Hadoop
 cluster:
 
 Copy required jar files to Hadoop lib directory with commands:
 
-``` {.bash language="bash"}
-$ cp $HADOOP_HOME/hadoop-tools-*.jar $HADOOP_HOME/lib
-$ cp $HADOOP_HOME/contrib/gridmix/hadoop-gridmix-*.jar $HADOOP_HOME/lib
-```
+	$ cp $HADOOP_HOME/hadoop-tools-*.jar $HADOOP_HOME/lib
+	$ cp $HADOOP_HOME/contrib/gridmix/hadoop-gridmix-*.jar $HADOOP_HOME/lib
 
 File `hadoop-tools-*.jar` contains tools such as Rumen, which is needed
 by GridMix3. And file `hadoop-gridmix-*.jar` contains the GridMix3
@@ -920,9 +903,7 @@ job configuration files using Rumen.
 
 Use Rumen to generate job trace file with command:
 
-``` {.bash language="bash"}
-$ hadoop org.apache.hadoop.tools.rumen.TraceBuilder -recursive file:///tmp/jobtrace.json file:///tmp/topology.out file:///usr/local/hadoop/logs/history/done
-```
+	$ hadoop org.apache.hadoop.tools.rumen.TraceBuilder -recursive file:///tmp/jobtrace.json file:///tmp/topology.out file:///usr/local/hadoop/logs/history/done
 
 The command will generate job trace file `/tmp/jobtrace.json`, and in
 the next step, we are going to use this file as input for the GridMix3
@@ -960,14 +941,13 @@ following command:
            gridmix.client.submit.threads          : Submitting threads
     ...
 
-### See also <a name="#see-also-38"></a>
+### See also 
 
 - Benchmarking and profiling a Hadoop cluster
 - <http://hadoop.apache.org/docs/r1.1.2/rumen.html>
 - `$HADOOP_HOME/src/benchmarks/README.gridmix2`
 
-Using Hadoop Vaidya to identify performance problems
-----------------------------------------------------
+## Using Hadoop Vaidya to identify performance problems
 
 Hadoop Vaidya is an open source, rule based performance diagnostic
 framework for Apache Hadoop. Each rule can identify a specific
@@ -980,24 +960,27 @@ Hadoop Vaidya is extensible, users can analyze Hadoop job with their own
 rules. In this recipe, we will outline steps to configure Hadoop Vaidya
 for Hadoop cluster performance diagnosis.
 
-### Getting ready <a name="#getting-ready-48"></a>
+### Getting ready 
 
 Before getting started, we assume that the Hadoop cluster has been
 properly configured and all the daemons are running without any issues.
 
 Login from the Hadoop cluster administrator machine to the master node
-machine with command:\
-`$ ssh hduser@master`
+machine with command:
 
-### How to do it... <a name="#how-to-do-it...-41"></a>
+	$ ssh hduser@master
 
-Use the following steps to use Hadoop Vaidya:\
+### How to do it... 
+
+Use the following steps to use Hadoop Vaidya:
+
 Locate the directory for the job configuration file you want to analyze.
 The default location of this folder is `$HADOOP_HOME/logs`.
 
 Locate the job history files under the job history directory with
-command:\
-`$ find $HADOOP_HOME/logs -name 'job_201304012330_0001*'`\
+command:
+
+	$ find $HADOOP_HOME/logs -name 'job_201304012330_0001*'
 
 This command assumes that at least one job has been run so that at least
 one job configuration file can be found. For purpose of illustration, we
@@ -1015,9 +998,7 @@ second one is the job log file.
 
 Use Vaidya to analyze the job trace files with command:
 
-``` {.bash language="bash"}
-$ sh $HADOOP_HOME/contrib/vaidya/bin/vaidya.sh -jobconf file:///usr/local/hadoop/logs/history/job_201304012330_0002_conf.xml -joblog file:///usr/local/hadoop/logs/history/job_201304012330_0002_1364874504561_hduser_TeraGen -report report.txt
-```
+	$ sh $HADOOP_HOME/contrib/vaidya/bin/vaidya.sh -jobconf file:///usr/local/hadoop/logs/history/job_201304012330_0002_conf.xml -joblog file:///usr/local/hadoop/logs/history/job_201304012330_0002_1364874504561_hduser_TeraGen -report report.txt
 
 Note that the file location should be an absolute path including the
 schema, which is either `hdfs://` or `file://`.
@@ -1025,7 +1006,7 @@ schema, which is either `hdfs://` or `file://`.
 This command will generate file report.txt with content similar to the
 following:
 
-``` {.xml language="XML"}
+```xml
 <?xml version=''1.0'' encoding=''UTF-8'' standalone=''no''?>
 <PostExPerformanceDiagnosticReport>
     <JobInformationElement>
@@ -1129,7 +1110,7 @@ following:
 </PostExPerformanceDiagnosticReport>
 ```
 
-### How it works... <a name="#how-it-works...-19"></a>
+### How it works... 
 
 We can get the options for Vaidya with the following command:
 
@@ -1158,7 +1139,7 @@ We can get the options for Vaidya with the following command:
 
     -help                  : prints this usage
 
-### There’s more... <a name="#theres-more...-22"></a>
+### There’s more... 
 
 HiBench is a benchmarking suite for Hadoop. It has 9 typical workloads,
 including micro, HDFS, web search machine learning and data analytics
@@ -1169,14 +1150,13 @@ and the paper provide nice examples of Hadoop benchmarking. For more
 information, you can refer to:
 <https://github.com/intel-hadoop/Hibench>.
 
-### See also <a name="#see-also-39"></a>
+### See also 
 
 - Benchmarking and profiling a Hadoop cluster
 - Benchmarking a Hadoop cluster with GridMix
 - <http://hadoop.apache.org/docs/stable/vaidya.html>
 
-Balancing data blocks for a Hadoop cluster
-------------------------------------------
+## Balancing data blocks for a Hadoop cluster
 
 HDFS stores data blocks on DataNode machines. When Hadoop processes
 jobs, data is generated and deleted. Overtime, some DataNodes can host
@@ -1199,15 +1179,16 @@ To deal with the data skew problem on HDFS, Hadoop is shipped with a
 balancer tool. It can be configured either manually or automatically to
 re-balance the data blocks.
 
-### Getting ready <a name="#getting-ready-49"></a>
+### Getting ready 
 
 To get started with balancer, we assume that the Hadoop cluster has been
 properly configured and all the daemons are running without any issues.
 Login from the cluster administrator machine to the master node with the
-following command:\
-`$ ssh hduser@master`
+following command:
 
-### How to do it... <a name="#how-to-do-it...-42"></a>
+	$ ssh hduser@master
+
+### How to do it... 
 
 Use the following recipe to balance HDFS data blocks with balancer:
 
@@ -1223,8 +1204,10 @@ The screenshot shows that the data blocks are skewed. Hence, rebalancing
 is necessary.
 
 Use the following command to balance the data blocks on the DataNode
-machines:\
-`$ hadoop balancer -threshold 0.2`\
+machines:
+
+	$ hadoop balancer -threshold 0.2
+	
 This command will take some time to finish depending on the status of
 the distributed filesystem as well as the value for option `-threshold`.
 The option `-threshold` specifies the threshold for whether the cluster
@@ -1236,8 +1219,9 @@ not practical to achieve an ideal balance.
 
 Alternatively, we can start the Hadoop balancer daemon to automatically
 balance the data blocks on HDFS. We can use the following command to do
-this:\
-`$ start-balancer.sh`
+this:
+
+	$ start-balancer.sh
 
 The balancer will move data blocks among the DataNodes according to the
 space utilization. For example, it will move data blocks from high
@@ -1253,10 +1237,11 @@ will get output similar to the following:
     The cluster is balanced. Exiting...
     Balancing took 567.0 milliseconds
 
-To stop the balancer, we can use the following command:\
-`$ stop-balancer.sh`
+To stop the balancer, we can use the following command:
 
-### How it works <a name="#how-it-works-19"></a>
+	$ stop-balancer.sh
+
+### How it works 
 
 Hadoop balancer balances data blocks on HDFS according to a
 pre-configured threshold value, which sets the target for whether the
@@ -1273,7 +1258,7 @@ balancing speed will be faster but the more resources will be used. For
 example, to change the value of this property to be 10MB/s, we can open
 file `$HADOOP_HOME/conf/hdfs-site.xml` and add the following lines:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>dfs.balance.bandwidthPerSec</name>
   <value>10485760</value>
@@ -1282,8 +1267,7 @@ file `$HADOOP_HOME/conf/hdfs-site.xml` and add the following lines:
 
 We need to restart HDFS to make this change take effect.
 
-Choosing proper block size
---------------------------
+## Choosing proper block size
 
 HDFS stores data as data blocks distributed on multiple machines. So,
 when a large file put onto HDFS, it will first be splitted into a number
@@ -1295,62 +1279,58 @@ Based on the property of the jobs being executed, one block size might
 result in better performance than others. We will guide you through
 steps to configure proper block size for the Hadoop cluster.
 
-### Getting ready <a name="#getting-ready-50"></a>
+### Getting ready 
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
 
 Login from the Hadoop cluster administrator machine to the master node
-with command:\
-`$ ssh hduser@master`
+with command:
 
-### How to do it... <a name="#how-to-do-it...-43"></a>
+	$ ssh hduser@master
+
+### How to do it... 
 
 Configure the proper HDFS block size with the following recipe:
 
 Run a typical job on the configured cluster. For example, we can run a
 sample terasort on the cluster with command:
 
-``` {.bash language="bash"}
-$ hadoop jar $HADOOP_HOME/hadoop-example-*.jar terasort input output
-```
+	$ hadoop jar $HADOOP_HOME/hadoop-example-*.jar terasort input output
 
 Use Rumen to generate job traces from the job history file and the job
 log file with command:
 
-``` {.bash language="bash"}
-$ hadoop org.apache.hadoop.tools.rumen.TraceBuilder file:///tmp/jobtraces.json file:///tmp/topology.out file:///usr/local/hadoop/logs/history/done/ job_201304012206_0002_conf.xml
-```
+	$ hadoop org.apache.hadoop.tools.rumen.TraceBuilder file:///tmp/jobtraces.json file:///tmp/topology.out file:///usr/local/hadoop/logs/history/done/ job_201304012206_0002_conf.xml
 
 Use GridMix3 to generate Hadoop cluster benchmark with different block
 sizes:
 
-``` {.bash language="bash"}
-$ hadoop org.apache.hadoop.mapred.gridmix.Gridmix -generate 10m input jobtraces.json
-```
+	$ hadoop org.apache.hadoop.mapred.gridmix.Gridmix -generate 10m input jobtraces.json
 
 Now, we can find the block size that achieves the best performance. For
 example, by setting block size to be 64MB, we can get the best
 performance.
 
-Stop the cluster with command:\
-`$ stop-all.sh`
+Stop the cluster with command:
+
+	$ stop-all.sh
 
 Open file `$HADOOP_HOME/conf/hdfs-site.xml` with your favorite text
 editor and change the dfs.block.size property to be the following:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>dfs.block.size</name>
   <value>64</value>
 </property>
 ```
 
-Start the Hadoop cluster with command:\
-`$ start-all.sh`
+Start the Hadoop cluster with command:
 
-Using compression for input and output
---------------------------------------
+	$ start-all.sh
+
+## Using compression for input and output
 
 A typical MapReduce job uses parallel mapper tasks to load data from
 external storage devices such as hard drives to the main memory. When a
@@ -1371,29 +1351,31 @@ far out weight the disadvantages.
 In this section, we will outline steps to configure data compression on
 a Hadoop cluster.
 
-### Getting ready <a name="#getting-ready-51"></a>
+### Getting ready 
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
 
 Login from the Hadoop cluster administrator machine to the cluster
-master node with command:\
-`$ ssh hduser@master`
+master node with command:
+
+	$ ssh hduser@master
 
 In this recipe, we assume all the property configurations will make
 changes in file `$HADOOP_HOME/conf/mapred-site.xml`.
 
-### How to do it... <a name="#how-to-do-it...-44"></a>
+### How to do it... 
 
 Use the following recipe to configure input and output data compression
 for a Hadoop cluster:
 
-Stop the cluster with command:\
-`$ stop-all.sh`
+Stop the cluster with command:
+
+	$ stop-all.sh
 
 Enable output compression by adding the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.output.compress</name>
   <value>true</value>
@@ -1402,7 +1384,7 @@ Enable output compression by adding the following property:
 
 Specify output compression codec by changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.output.compression.codec</name>
   <value>org.apache.hadoop.io.compress.GzipCodec</value>
@@ -1418,7 +1400,7 @@ for this property is `org.apache.hadoop.io.compress.DefaultCodec`.
 Change the output compression type for sequence file output by changing
 the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.output.compression.type</name>
   <value>BLOCK</value>
@@ -1435,7 +1417,7 @@ more efficient than RECORD type, so it is recommended.
 
 Configure the map output compression by changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.compress.map.output</name>
   <value>true</value>
@@ -1452,7 +1434,7 @@ which is org.apache.hadoop.io.compress.DefaultCodec. For example, we can
 configure the map output compression to be Gzip codec by changing the
 property similar to the following:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.map.output.compression.codec</name>
   <value>org.apache.hadoop.io.compress.GzipCodec</value>
@@ -1462,18 +1444,17 @@ property similar to the following:
 Copy the configuration file from the master node to all the slave nodes
 in the cluster with command:
 
-``` {.bash language="bash"}
-for host in `cat $HADOOP_HOME/conf/slaves`
-do
-  echo 'Copying mapred-site.xml file to host: ' $host
-  scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
-done
-```
+	for host in `cat $HADOOP_HOME/conf/slaves`
+		do
+		echo 'Copying mapred-site.xml file to host: ' $host
+		scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
+	done
 
-Restart the Hadoop cluster with command:\
-`$ start-all.sh`
+Restart the Hadoop cluster with command:
 
-### How it works... <a name="#how-it-works...-20"></a>
+	$ start-all.sh
+
+### How it works... 
 
 Table [tbl:hdfscompression] is a summary of properties for configuring
 Hadoop data compression:
@@ -1496,8 +1477,7 @@ BZip2Codec & org.apache.hadoop.io.compress.BZip2Codec\
 SnappyCodec & org.apache.hadoop.io.compress.SnappyCodec\
 LzoCodec & org.apache.hadoop.io.compress.LzoCodec\
 
-Configuring speculative execution
----------------------------------
+## Configuring speculative execution
 
 Speculative execution is a proactive performance boosting strategy used
 by JobTracker to execute one task on two TaskTrackers. When either of
@@ -1521,30 +1501,32 @@ slots that are used for speculative execution.
 In this recipe, we will list steps to configure Hadoop speculative
 execution.
 
-### Getting ready <a name="#getting-ready-52"></a>
+### Getting ready 
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
 
 Login from the Hadoop cluster administrator machine to the cluster
-master node with command:\
-`$ ssh hduser@master`
+master node with command:
+
+	$ ssh hduser@master
 
 In this recipe, we assume all the property configurations will make
 changes to file `$HADOOP_HOME/conf/mapred-site.xml`.
 
-### How to do it... <a name="#how-to-do-it...-45"></a>
+### How to do it... 
 
 We can use the following recipe to configure Hadoop speculative
 execution:
 
-Stop the MapReduce cluster with command:\
-`$ stop-mapred.sh`
+Stop the MapReduce cluster with command:
+
+	$ stop-mapred.sh
 
 Disable map task speculative execution by changing the following
 property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.map.tasks.speculative.execution</name>
   <value>false</value>
@@ -1556,7 +1538,7 @@ By default, Hadoop speculative execution is turned on.
 Disable the reduce task speculative execution by changing the following
 property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.reduce.tasks.speculative.execution</name>
   <value>false</value>
@@ -1566,7 +1548,7 @@ property:
 Configure the maximum percentage of concurrently running speculative
 tasks by changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapreduce.job.speculative.speculativecap</name>
   <value>0.2</value>
@@ -1579,7 +1561,7 @@ speculatively.
 Configure the job speculative execution threshold for slow tasks by
 changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapreduce.job.speculative.slowtaskthreshold</name>
   <value>1.0</value>
@@ -1592,7 +1574,7 @@ speculatively. Its default value is 1.0.
 Configure the threshold for a TaskTracker to speculatively execute slow
 tasks by changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapreduce.job.speculative.slownodethreshold</name>
   <value>1.0</value>
@@ -1604,17 +1586,16 @@ speculative tasks. Its default value is 1.0.
 
 Sync the configurations to the slave nodes with command:
 
-``` {.bash language="bash"}
-for host in `cat $HADOOP_HOME/conf/slaves`; do
-  echo 'Copying mapred-site.xml file to host: ' $host
-  sudo scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
-done
-```
+	for host in `cat $HADOOP_HOME/conf/slaves`; do
+		echo 'Copying mapred-site.xml file to host: ' $host
+		sudo scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
+	done
 
-Started the MapReduce cluster with the following command:\
-`$ start-mapred.sh`
+Started the MapReduce cluster with the following command:
 
-### How it works... <a name="#how-it-works...-21"></a>
+	$ start-mapred.sh
+
+### How it works... 
 
 When speculative execution is enabled, some tasks will get killed. This
 can be verified by opening URL: <http://master:50030/>.
@@ -1663,33 +1644,34 @@ met:
 - The number of launched speculative tasks is smaller than the
     configured speculative cap.
 
-Setting proper number of map and reduce slots for TaskTracker
--------------------------------------------------------------
+## Setting proper number of map and reduce slots for TaskTracker
 
 The number of map and reduce slots determines the number of concurrent
 map/reduce tasks for a TaskTracker, which forks multiple JVMs to run
 these tasks. In this recipe, we will give general
 
-### Getting ready <a name="#getting-ready-53"></a>
+### Getting ready 
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
 
 Login from the Hadoop cluster administrator machine to the cluster
-master node with command:\
-`$ ssh hduser@master`
+master node with command:
 
-### How to do it... <a name="#how-to-do-it...-46"></a>
+	$ ssh hduser@master
+
+### How to do it... 
 
 Use the following steps to configure map/reduce slots for a TaskTracker:
 
-Stop the MapReduce cluster with command:\
-`$ stop-mapred.sh`
+Stop the MapReduce cluster with command:
+
+	$ stop-mapred.sh
 
 Configure the map slots by adding the following property into file
 `$HADOOP_HOME/conf/mapred-site.xml`:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.takstracker.map.tasks.maximum</name>
   <value>4</value>
@@ -1701,7 +1683,7 @@ The TaskTracker is configured to have 4 map slots.
 Similarly, we can configure the number of reduce slots for a
 TaskTracker:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.takstracker.reduce.tasks.maximum</name>
   <value>4</value>
@@ -1711,7 +1693,7 @@ TaskTracker:
 Configure the memory usage for each slot by adding the following
 property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.child.java.opts</name>
   <value>-Xmx1024m</value>
@@ -1720,18 +1702,16 @@ property:
 
 Sync the configuration to all the slave nodes with command:
 
-``` {.bash language="bash"}
-for host in `cat $HADOOP_HOME/conf/slaves`; do
-  echo 'Copying mapred-site.xml file to host: ' $host
-  scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
-done
-```
+	for host in `cat $HADOOP_HOME/conf/slaves`; do
+		echo 'Copying mapred-site.xml file to host: ' $host
+		scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
+	done
 
-Start the MapReduce cluster with command:\
-`$ start-mapred.sh`
+Start the MapReduce cluster with command:
 
-Tuning JobTracker configuration
--------------------------------
+	$ start-mapred.sh
+
+## Tuning JobTracker configuration
 
 In a Hadoop cluster, the JobTracker is responsible for managing jobs and
 tasks. The performance of the JobTracker is critical for the whole
@@ -1739,29 +1719,31 @@ cluster. Hadoop provides a few properties for administrators to tune the
 JobTracker. In this recipe, we will list the steps to configure the
 JobTracker.
 
-### Getting ready <a name="#getting-ready-54"></a>
+### Getting ready 
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
 
 Login from the Hadoop cluster administrator machine to the cluster
-master node with command:\
-`$ ssh hduser@master`
+master node with command:
+
+	$ ssh hduser@master
 
 In this recipe, we assume all the configurations are making changes to
 file `$HADOOP_HOME/conf/mapred-site.xml`.
 
-### How to do it... <a name="#how-to-do-it...-47"></a>
+### How to do it... 
 
 Use the following recipe to configure JobTracker:
 
-Stop the MapReduce cluster with command:\
-`$ stop-mapred.sh`
+Stop the MapReduce cluster with command:
+
+	$ stop-mapred.sh
 
 Configure the maximum number of tasks for a job by changing the
 following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.jobtracker.maxtasks.per.job</name>
   <value>3000</value>
@@ -1773,7 +1755,7 @@ The default value of this property is -1, which ignores the limit.
 Configure JobTracker to recover upon restart by changing the following
 property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.jobtracker.restart.recover</name>
   <value>true</value>
@@ -1785,7 +1767,7 @@ fresh.
 
 Configure the block size for the job history file by changing property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.jobtracker.job.history.block.size</name>
   <value>3145728</value>
@@ -1797,7 +1779,7 @@ recovery.
 
 Configure the task scheduler for the JobTracker by changing property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.jobtracker.taskScheduler</name>
   <value>org.apache.hadoop.mapred.JobQueueTaskScheduler</value>
@@ -1810,7 +1792,7 @@ org.apache.hadoop.mapred.JobQueueTaskScheduler to schedule tasks.
 Configure the maximum running tasks for a job by changing the following
 property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.jobtracker.taskScheduler.maxRunningTasksPerJob</name>
   <value>20</value>
@@ -1824,17 +1806,16 @@ scheduling of jobs and tasks.
 Sync the configuration from the master node to all the slave nodes with
 command:
 
-``` {.bash language="bash"}
-for host in `cat $HADOOP_HOME/conf/slaves`; do
-  echo 'Copying mapred-site.xml file to host: ' $host
-  scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
-done
-```
+	for host in `cat $HADOOP_HOME/conf/slaves`; do
+		echo 'Copying mapred-site.xml file to host: ' $host
+		scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
+	done
 
-Restart the Hadoop cluster with command:\
-`$ start-mapred.sh`
+Restart the Hadoop cluster with command:
 
-### How it works <a name="#how-it-works-20"></a>
+	$ start-mapred.sh
+
+### How it works 
 
 Table [tbl:jobtracker] is a list of properties with descriptions of this
 recipe:
@@ -1846,7 +1827,7 @@ mapred.jobtracker.job.history.block.size & 3145728 &\
 mapred.jobtracker.taskScheduler.maxRunningTasksPerJob & EMPTY & No
 Limits\
 
-### See also <a name="#see-also-40"></a>
+### See also 
 
 - Tuning TaskTracker configuration
 
@@ -1856,8 +1837,7 @@ Limits\
 - Configuring fair scheduler in Chapter [chap:4], Managing a Hadoop
     cluster
 
-Tuning TaskTracker configuration
---------------------------------
+## Tuning TaskTracker configuration
 
 TaskTrackers accept tasks from the JobTracker in a cluster and forks
 JVMs to run the tasks. A couple of TaskTracker properties can be
@@ -1865,29 +1845,31 @@ configured based on the configuration of the cluster.
 
 In this section, we will list steps to configure TaskTracker property.
 
-### Getting ready <a name="#getting-ready-55"></a>
+### Getting ready 
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
 
 Login from the Hadoop cluster administrator machine to the cluster
-master node with command:\
-`$ ssh hduser@master`
+master node with command:
+
+	$ ssh hduser@master
 
 In this recipe, we assume all the configurations are making changes to
 file `$HADOOP_HOME/conf/mapred-site.xml`.
 
-### How to do it... <a name="#how-to-do-it...-48"></a>
+### How to do it... 
 
 Use the following recipe to configure TaskTracker properties:
 
-Stop the MapReduce cluster with command:\
-`$ mapred-stop.sh`
+Stop the MapReduce cluster with command:
+
+	$ mapred-stop.sh
 
 Configure the MapReduce cluster heartbeat interval by changing the
 following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.tasktracker.expiry.interval</name>
   <value>600000</value>
@@ -1900,7 +1882,7 @@ after which it will be marked lost by the JobTracker.
 Configure the sleep time before sending the SIGKILL signal by changing
 the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.tasktracker.tasks.sleeptime-before-sigkill</name>
   <value>6000</value>
@@ -1913,7 +1895,7 @@ has been sent a SIGTERM signal. Its default value is 5000ms.
 
 Enable TaskTracker memory management by changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.tasktracker.tasks.maxmemory</name>
   <value>true</value>
@@ -1923,7 +1905,7 @@ Enable TaskTracker memory management by changing the following property:
 Configure the TaskTracker index cache size to be 20MB by changing the
 following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.tasktracker.indexcache.mb</name>
   <value>20</value>
@@ -1936,7 +1918,7 @@ index cache when serving map output to reducers.
 Configure the monitoring interval for the TaskTracker’s task memory
 manager by changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.tasktracker.taskmemorymanager.monitoring-interval</name>
   <value>5000</value>
@@ -1951,7 +1933,7 @@ mapred.tasktracker.tasks.maxmemory.
 Configure TaskTracker to send an out-of-band heartbeat on task
 completion by changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapreduce.tasktracker.outofband.heartbeat</name>
   <value>true</value>
@@ -1965,7 +1947,7 @@ latency.
 Configure the maximum number of retries for a map task by changing the
 following:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.map.max.attempts</name>
   <value>4</value>
@@ -1978,7 +1960,7 @@ before being declared failed.
 Configure the maximum number of retries for a failed reduce task by
 changing the following:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.reduce.max.attempts</name>
   <value>4</value>
@@ -1992,17 +1974,16 @@ failed.
 Sync the configuration from the master node to all the slave nodes with
 command:
 
-``` {.bash language="bash"}
-for host in `cat $HADOOP_HOME/conf/slaves`; do
-  echo 'Copying mapred-site.xml file to host: ' $host
-  scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
-done
-```
+	for host in `cat $HADOOP_HOME/conf/slaves`; do
+		echo 'Copying mapred-site.xml file to host: ' $host
+		scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
+	done
 
-Restart the MapReduce cluster with the following command:\
-`$ start-mapred.sh`
+Restart the MapReduce cluster with the following command:
 
-### How it works <a name="#how-it-works-21"></a>
+	$ start-mapred.sh
+
+### How it works 
 
 Table [tbl:tasktracker] contains a list of properties with descriptions
 of this recipe:
@@ -2018,12 +1999,11 @@ mapreduce.tasktracker.outofband.heartbeat & false &\
 mapred.map.max.attempts & 4 &\
 mapred.reduce.max.attempts & 4 &\
 
-### See also <a name="#see-also-41"></a>
+### See also 
 
 - Tuning JobTracker configuration
 
-Tuning shuffle, merge and sort parameters
------------------------------------------
+## Tuning shuffle, merge and sort parameters
 
 In a MapReduce job, map task outputs are aggregated into JVM buffers.
 The size of the in-memory buffer determines how large the data can be
@@ -2032,29 +2012,31 @@ of swap operations, incurring big overhead. In this section, we will
 show best practices for configuring the shuffle, merge and sort
 parameters.
 
-### Getting ready <a name="#getting-ready-56"></a>
+### Getting ready 
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
 
 Login from the Hadoop cluster administrator machine to the cluster
-master node with command:\
-`$ ssh hduser@master`
+master node with command:
+
+	$ ssh hduser@master
 
 In this recipe, we assume all the configurations are making changes to
 file `$HADOOP_HOME/conf/mapred-site.xml`.
 
-### How to do it... <a name="#how-to-do-it...-49"></a>
+### How to do it... 
 
 Use the following recipe to configure the sorting parameters:
 
-Stop the MapReduce cluster with command:\
-`$ stop-mapred.sh`
+Stop the MapReduce cluster with command:
+
+	$ stop-mapred.sh
 
 Configure the buffer size, in megabytes, for sorting by changing
 property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>io.sort.mb</name>
   <value>100</value>
@@ -2065,7 +2047,7 @@ To minimize seeks, we typically assign 1MB for each merge stream.
 
 Configure the merge factor by changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>io.sort.factor</name>
   <value>100</value>
@@ -2079,7 +2061,7 @@ default value of this property is 10.
 Change the percentage of buffer dedicated for record collection by
 changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>io.sort.record.percent</name>
   <value>0.05</value>
@@ -2093,7 +2075,7 @@ io.sort.mb / 4.
 
 Change the spill factor for buffers by changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>io.sort.spill.percent</name>
   <value>0.8</value>
@@ -2108,7 +2090,7 @@ than 0.5.
 Configure the in memory merge threshold by changing the following
 property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.inmem.merge.threshold</name>
   <value>1000</value>
@@ -2127,7 +2109,7 @@ The default value for this property is 1000.
 Configure the percentage of memory to be allocated from the maximum heap
 size to storing map outputs during the shuffle by changing property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.job.shuffle.input.buffer.percent</name>
   <value>0.70</value>
@@ -2140,7 +2122,7 @@ size, of memory used to store map outputs during the shuffle phase.
 Configure the threshold to start the in memory merge by changing
 property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.job.shuffle.merge.percent</name>
   <value>0.66</value>
@@ -2158,7 +2140,7 @@ of the memory.
 Configure the percentage of memory to retain map outputs during the
 reduce phase by changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.job.reduce.input.buffer.percent</name>
   <value>0.0</value>
@@ -2176,7 +2158,7 @@ memory consumption threshold is needed to start the reduce phase.
 Configure the maximum retries in case of fetch failures by changing the
 following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapreduce.reduce.shuffle.maxfetchfailures</name>
   <value>10</value>
@@ -2189,17 +2171,16 @@ map outputs in case of fetch failure.
 Sync the configuration from the master node to all the slave nodes in
 the cluster with command:
 
-``` {.bash language="bash"}
-for host in `cat $HADOOP_HOME/conf/slaves`; do
-  echo 'Copying mapred-site.xml file to host: ' $host
-  scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
-done
-```
+	for host in `cat $HADOOP_HOME/conf/slaves`; do
+		echo 'Copying mapred-site.xml file to host: ' $host
+		scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
+	done
 
-Restart the MapReduce cluster with the following command:\
-`$ start-mapred.sh`
+Restart the MapReduce cluster with the following command:
 
-### How it works <a name="#how-it-works-22"></a>
+	$ start-mapred.sh
+
+### How it works 
 
 Figure [tbl:memoryconfig] show the description of the properties and
 their default values mentioned in the recipe:
@@ -2215,43 +2196,44 @@ mapred.job.shuffle.input.buffer.percent & 0.70\
 mapred.job.reduce.input.buffer.percent & 0.0\
 mapreduce.reduce.shuffle.maxfetchfailures & 10\
 
-### See also <a name="#see-also-42"></a>
+### See also 
 
 - Configuring memory for a Hadoop cluster
 
 - Setting proper number of parallel copies
 
-Configuring memory for a Hadoop cluster
----------------------------------------
+## Configuring memory for a Hadoop cluster
 
 Hadoop has a few memory configuration properties. Their values should be
 set according to the configurations of the cluster. In this recipe, we
 will outline steps to configure these memory properties.
 
-### Getting ready <a name="#getting-ready-57"></a>
+### Getting ready 
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
 
 Login from the Hadoop cluster administrator machine to the cluster
-master node with command:\
-`$ ssh hduser@master`
+master node with command:
+
+	$ ssh hduser@master
 
 In this recipe, we assume all the configurations are making changes to
 file `$HADOOP_HOME/conf/mapred-site.xml`.
 
-### How to do it... <a name="#how-to-do-it...-50"></a>
+### How to do it... 
 
 We can use the following recipe to configure memory properties for a
 Hadoop cluster:
 
-Stop the MapReduce cluster with command:\
-`$ stop-mapred.sh`
+Stop the MapReduce cluster with command:
+
+	$ stop-mapred.sh
 
 Configure the virtual memory size, in megatytes, for a map task used by
 a scheduler by changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.cluster.map.memory.mb</name>
   <value>200</value>
@@ -2265,7 +2247,7 @@ property is -1, which disables this property.
 Similarly, we can configure the virtual memory size, in megatytes, for a
 reduce task used by a scheduler by changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.cluster.reduce.memory.mb</name>
   <value>512</value>
@@ -2275,7 +2257,7 @@ reduce task used by a scheduler by changing the following property:
 Configure the maximum virtual memory size for a map task used by a
 scheduler by changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.cluster.max.map.memory.mb</name>
   <value>512</value>
@@ -2288,7 +2270,7 @@ although it configures the maximum memory size.
 Configure the maximum virtual memory size for a reduce task used by a
 scheduler by changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.cluster.max.reduce.memory.mb</name>
   <value>512</value>
@@ -2298,7 +2280,7 @@ scheduler by changing the following property:
 Configure the maximum virtual memory size for a single map task for the
 job used by a scheduler by changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.job.map.memory.mb</name>
   <value>0.8</value>
@@ -2310,7 +2292,7 @@ The default value for this task is `-1`, which ignores this property.
 Configure the maximum virtual memory size for a single reduce task for
 the job used by a scheduler by changing the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.job.reduce.memory.mb</name>
   <value>0.8</value>
@@ -2320,18 +2302,17 @@ the job used by a scheduler by changing the following property:
 Sync the configuration from the master node to all the slave nodes in
 the cluster with command:
 
-``` {.bash language="bash"}
-for host in `cat $HADOOP_HOME/conf/slaves`
-do
-  echo 'Copying mapred-site.xml file to host: ' $host
-  scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
-done
-```
+	for host in `cat $HADOOP_HOME/conf/slaves`
+		do
+		echo 'Copying mapred-site.xml file to host: ' $host
+		scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
+	done
 
-Start the Hadoop cluster with the following command:\
-`$ start-mapred.sh`
+Start the Hadoop cluster with the following command:
 
-### How it works... <a name="#how-it-works...-22"></a>
+	$ start-mapred.sh
+
+### How it works... 
 
 Table [tbl:memoryconfig.default] lists the properties in the recipe that
 their descriptions.
@@ -2344,14 +2325,13 @@ mapred.cluster.max.reduce.memory.mb & -1 & Feature unused.\
 mapred.job.map.memory.mb & -1 & Feature unused.\
 mapred.job.reduce.memory.mb & -1 & Feature unused.\
 
-### See also <a name="#see-also-43"></a>
+### See also 
 
 - Setting proper number of map and reduce slots for TaskTracker
 
 - Tuning shuffle, merge and sort parameters
 
-Setting proper number of parallel copies
-----------------------------------------
+## Setting proper number of parallel copies
 
 When all or part of the map tasks finish, map outputs will be copied
 from the map task nodes to the reduce task nodes. The parallel copying
@@ -2360,28 +2340,30 @@ property, we can boost the performance of our Hadoop cluster. In this
 recipe, we will outline steps to configure the number of multiple copies
 for transferring map outputs to reducers.
 
-### Getting ready <a name="#getting-ready-58"></a>
+### Getting ready 
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
 
 Login from the Hadoop cluster administrator machine to the cluster
-master node with command:\
-`$ ssh hduser@master`
+master node with command:
+
+	$ ssh hduser@master
 
 In this recipe, we assume all the configurations are making changes to
 file `$HADOOP_HOME/conf/mapred-site.xml`.
 
-### How to do it... <a name="#how-to-do-it...-51"></a>
+### How to do it... 
 
 Use the following recipe to configure the number of parallel copies:
 
-Stop the MapReduce cluster with command:\
-`$ stop-mapred.sh`
+Stop the MapReduce cluster with command:
+
+	$ stop-mapred.sh
 
 Add or change, if it already exists, the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.reduce.parallel.copies</name>
   <value>20</value>
@@ -2393,48 +2375,48 @@ default value 10.
 
 Sync the configuration to all the nodes in the cluster with command:
 
-``` {.bash language="bash"}
-for host in `cat $HADOOP_HOME/conf/slaves`; do
-  echo 'Copying mapred-site.xml file to host: ' $host
-  scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
-done
-```
+	for host in `cat $HADOOP_HOME/conf/slaves`; do
+		echo 'Copying mapred-site.xml file to host: ' $host
+		scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
+	done
 
-Restart the Hadoop cluster with the following command:\
-`$ start-mapred.sh`
+Restart the Hadoop cluster with the following command:
 
-### See also <a name="#see-also-44"></a>
+	$ start-mapred.sh
+
+### See also 
 
 - Tuning TaskTracker configuration
 - Tuning shuffle, merge and sort parameters
 
-Tuning JVM parameters
----------------------
+## Tuning JVM parameters
 
 Configuring JVM properties plays a very important rule in the
 performance tuning of a Hadoop cluster. In this recipe, we will outline
 steps to configure JVM.
 
-### Getting ready <a name="#getting-ready-59"></a>
+### Getting ready 
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
 
 Login from the Hadoop cluster administrator machine to the cluster
-master node with command:\
-`$ ssh hduser@master`
+master node with command:
 
-### How to do it... <a name="#how-to-do-it...-52"></a>
+	$ ssh hduser@master
+
+### How to do it... 
 
 Use the following recipe to configure JVM parameters:
 
-Stop the Hadoop cluster with commands:\
-`$ stop-all.sh`
+Stop the Hadoop cluster with commands:
+
+	$ stop-all.sh
 
 Open file `$HADOOP_HOME/conf/mapred-site.xml` and add or change, if it
 already exists, the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.child.java.opts</name>
   <value>-Xmx512M</value>
@@ -2452,22 +2434,20 @@ processes and reduce processes by changing properties
 Copy the configuration from the master node to all the slave nodes in
 the cluster with command:
 
-``` {.bash language="bash"}
-for host in `cat $HADOOP_HOME/conf/slaves`; do
-  echo 'Copying mapred-site.xml file to host: ' $host
-  scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
-done
-```
+	for host in `cat $HADOOP_HOME/conf/slaves`; do
+		echo 'Copying mapred-site.xml file to host: ' $host
+		scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
+	done
 
-Start the MapReduce cluster with the following commands:\
-`$ start-all.sh`
+Start the MapReduce cluster with the following commands:
 
-### See Also <a name="#see-also-45"></a>
+	$ start-all.sh
+
+### See Also 
 
 - Configuring JVM reuse.
 
-Configuring JVM reuse
----------------------
+## Configuring JVM reuse
 
 MapReduce tasks are executed by JVM processes/threads, which are forked
 by the TaskTracker. The creation of a JVM, which includes the
@@ -2483,26 +2463,28 @@ is enabled, multiple tasks can be executed sequentially with one JVM.
 
 In this recipe we will outline steps to configure JVM reuse.
 
-### Getting ready <a name="#getting-ready-60"></a>
+### Getting ready 
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
 
 Login from the Hadoop cluster administrator machine to the cluster
-master node with command:\
-`$ ssh hduser@master`
+master node with command:
 
-### How to do it... <a name="#how-to-do-it...-53"></a>
+	$ ssh hduser@master
+
+### How to do it... 
 
 Use the following recipe to configure JVM reuse:
 
-Stop the MapReduce cluster with command:\
-`$ stop-mapred.sh`
+Stop the MapReduce cluster with command:
+
+	$ stop-mapred.sh
 
 Open file `$HADOOP_HOME/conf/mapred-site.xml` and add or change, if it
 already exists, the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.job.reuse.jvm.num.tasks</name>
   <value>2</value>
@@ -2515,22 +2497,20 @@ to `-1`, the number of tasks a JVM can execute is unlimited.
 
 Sync the configuration file to all the slave nodes with command:
 
-``` {.bash language="bash"}
-for host in `cat $HADOOP_HOME/conf/slaves`; do
-  echo 'Copying mapred-site.xml file to host: ' $host
-  scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
-done
-```
+	for host in `cat $HADOOP_HOME/conf/slaves`; do
+		echo 'Copying mapred-site.xml file to host: ' $host
+		scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
+	done
 
-Start the Hadoop cluster with the following command:\
-`$ start-mapred.sh`
+Start the Hadoop cluster with the following command:
 
-### See also <a name="#see-also-46"></a>
+	$ start-mapred.sh
+
+### See also 
 
 - Tuning JVM parameters.
 
-Configuring reducer initialization time
----------------------------------------
+## Configuring reducer initialization time
 
 Reduce tasks can be started when a certain percentage of map tasks has
 been finished. By setting this property with a smaller number, the
@@ -2540,26 +2520,28 @@ other hand, if the number is set too large, for example, very close to
 to finish, prolonging the job execution time. In this recipe, we will
 outline steps to configure reducer initialization.
 
-### Getting ready <a name="#getting-ready-61"></a>
+### Getting ready 
 
 We assume that the Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
 
 Login from the Hadoop cluster administrator machine to the cluster
-master node with command:\
-`$ ssh hduser@master`
+master node with command:
 
-### How to do it... <a name="#how-to-do-it...-54"></a>
+	$ ssh hduser@master
+
+### How to do it... 
 
 Use the following recipe to configure reducer initialization time:
 
-Stop the MapReduce cluster with command:\
-`$ stop-mapred.sh`
+Stop the MapReduce cluster with command:
+
+	$ stop-mapred.sh
 
 Open file `$HADOOP_HOME/conf/mapred-site.xml` and add or change, if it
 already exists, the following property:
 
-``` {.xml language="XML"}
+```xml
 <property>
   <name>mapred.reduce.slowstart.completed.maps</name>
   <value>0.05</value>
@@ -2568,18 +2550,16 @@ already exists, the following property:
 
 Sync the configuration file to all the slave nodes with command:
 
-``` {.bash language="bash"}
-for host in `cat $HADOOP_HOME/conf/slaves`; do
-  echo 'Copying mapred-site.xml file to host: ' $host
-  scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
-done
-```
+	for host in `cat $HADOOP_HOME/conf/slaves`; do
+		echo 'Copying mapred-site.xml file to host: ' $host
+		scp $HADOOP_HOME/conf/mapred-site.xml $host:$HADOOP_HOME/conf/
+	done
 
-Restart the MapReduce cluster with command:\
-`$ start-mapred.sh`
+Restart the MapReduce cluster with command:
 
-### See also <a name="#see-also-47"></a>
+	$ start-mapred.sh
+
+### See also 
 
 - Tuning TaskTracker configuration.
-
 - Configuring speculative execution.

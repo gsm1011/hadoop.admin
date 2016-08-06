@@ -1,4 +1,4 @@
-# Configuring a Hadoop Cluster <a name="#chap:3"></a>
+# Configuring a Hadoop Cluster 
 
 In this chapter, we will cover:
 
@@ -24,7 +24,7 @@ In this section, we are going to review the release history of Hadoop,
 pointing out features of these releases. More importantly, we will give
 tips on choosing a proper Hadoop distribution.
 
-### Getting ready <a name="#getting-ready-8"></a>
+### Getting ready 
 
 In general, the release version number of a Hadoop distribution consists
 of three parts: the version number, the major revision number and the
@@ -37,7 +37,7 @@ data-label="fig:hadoop.release"></span>](figs/5163os_03_01.png)
 Sometimes, the revision number can have a fourth part, for example
 `0.20.203.0`, but this is relatively rare.
 
-### How to do it... <a name="#how-to-do-it...-1"></a>
+### How to do it... 
 
 Table [tbl:compare.mrv1.mrv2] shows features of major Hadoop releases:
 
@@ -66,7 +66,7 @@ we also want to use the release that contains all the required features.
 Clearly, our current optimal and only choice is version 1.1.x, or
 specifically version 1.1.2 as of this book writing.
 
-### See also <a name="#see-also-5"></a>
+### See also 
 
 - More information about Hadoop releases can be found at [Hadoop @
     Apache](http://hadoop.apache.org/releases.html)
@@ -78,7 +78,7 @@ contains only one node. This mode can be helpful for debugging and
 validation purposes. In this recipe, we will outline steps to configure
 Hadoop in pseudo-distributed mode.
 
-### Getting ready <a name="#getting-ready-9"></a>
+### Getting ready 
 
 Before configuring Hadoop in pseudo-distributed mode, we assume that we
 have a machine, for example the master node of the Hadoop cluster, with
@@ -118,7 +118,7 @@ command under Linux:
 Last, we assume that ssh password-less login has been properly
 configured.
 
-### How to do it... <a name="#how-to-do-it...-2"></a>
+### How to do it... 
 
 Use the following recipe to configure Hadoop in pseudo-distributed mode:
 
@@ -310,7 +310,7 @@ Stop the HDFS daemons with command:
 
 	$ stop-hdfs.sh
 
-### How it works... <a name="#how-it-works..."></a>
+### How it works... 
 
 Under Unix-like operating systems, system runtime configurations and
 environment variables are specified via plain text files. These files
@@ -405,7 +405,7 @@ kill those processes.\
 **start-all.sh** & Equals to start-dfs.sh plus start-mapred.sh.\
 **stop-all.sh** & Equals to stop-dfs.sh plus stop-mapred.sh.\
 
-### There’s more... <a name="#theres-more...-3"></a>
+### There’s more... 
 
 Currently, Hadoop is also available in rpm format. So we can use the
 following command to install Hadoop:
@@ -422,7 +422,7 @@ single node:
 
 	$ sudo hadoop-setup-single-node.sh
 
-### See also <a name="#see-also-6"></a>
+### See also 
 
 - Configuring Hadoop in fully distributed mode
 
@@ -436,7 +436,7 @@ pseudo-distributed mode, the configuration experience will be similar.
 In this recipe, we will outline steps to configure Hadoop in
 fully-distributed mode.
 
-### Getting ready <a name="#getting-ready-10"></a>
+### Getting ready 
 
 In this book, we propose to configure a Hadoop cluster with 1 master
 node and 5 slave nodes. The hostname of the master node is 1 and the
@@ -466,7 +466,7 @@ the password-less login to all slave nodes from the master node:
 		ssh hduser@$host
 	done
 
-### How to do it... <a name="#how-to-do-it...-3"></a>
+### How to do it... 
 
 Use the following recipe to configure Hadoop in fully-distributed mode:\
 Login to the master node from administrator machine with command:
@@ -798,7 +798,7 @@ master node and the DataNode daemons on the slave nodes are being
 stopped. Alternatively, we can use command `stop-all.sh` to stop all the
 running Hadoop daemons.
 
-### How it works <a name="#how-it-works-9"></a>
+### How it works 
 
 The following table shows the properties used in this recipe:
 
@@ -828,7 +828,7 @@ task child processes.
 `mapred.reduce.child.java.opts` The Java options for the
 reduce task child processes.
 
-### There’s more... <a name="#theres-more...-4"></a>
+### There’s more... 
 
 Alternatively, we can use the following steps to configure a
 fully-distributed Hadoop cluster: 
@@ -851,7 +851,7 @@ Use the following command to install Hadoop on all nodes:
 Configure the Hadoop cluster by modifying the configuration files
 located in folder `/etc/hadoop`.
 
-### See also <a name="#see-also-7"></a>
+### See also 
 
 - Configuring Hadoop in pseudo-distributed mode
 - Validating Hadoop installation
@@ -869,7 +869,7 @@ two methods to validate the cluster configuration. One is from web
 interface and the other is from the command line. In this recipe, we
 will list steps to validate the configuration a Hadoop cluster.
 
-### Getting ready <a name="#getting-ready-11"></a>
+### Getting ready 
 
 To validate the configuration from the web interface, a web browser such
 as Firefox, Google Chrome etc. is needed. Sometimes if a GUI web browser
@@ -886,7 +886,7 @@ Start all the Hadoop daemons with commands:
 	$ start-dfs.sh
 	$ start-mapred.sh
 
-### How to do it... <a name="#how-to-do-it...-4"></a>
+### How to do it... 
 
 Use the following steps to run a MapReduce job:
 
@@ -1030,7 +1030,7 @@ Check the status of HDFS cluster with command:
 The output gives us the same information as from the web interface. And
 the last line tells us that the root filesystem is *HEALTHY*.
 
-### How it works <a name="#how-it-works-10"></a>
+### How it works 
 
 Hadoop provides commands and web interfaces for system administrators to
 check the status of the cluster. When we start Hadoop daemons, a
@@ -1040,12 +1040,12 @@ The jsp files can be found under the `$HADOOP_HOME/webapps` directory.
 If you have programming experience, you can take advantage of the jsp
 files to develop personalized Hadoop cluster management tools.
 
-### There’s more... <a name="#theres-more...-5"></a>
+### There’s more... 
 
 In this part, we list a few typical Hadoop configuration problems and
 give suggestions on dealing with these problems.
 
-#### Can’t start HDFS daemons <a name="#cant-start-hdfs-daemons"></a>
+#### Can’t start HDFS daemons 
 
 There are many possible reasons that can cause this problem. For
 example, the NameNode on the master node has not been formatted, in
@@ -1101,7 +1101,7 @@ Alternatively, the following command will give the same error:
 The message above shows that the hostname of the NameNode is wrong. It
 should be master instead of master1.
 
-#### Cluster is missing slave nodes <a name="#cluster-is-missing-slave-nodes"></a>
+#### Cluster is missing slave nodes 
 
 Most probably, this problem is caused by hostname resolution. To
 confirm, we can check the content of file `/etc/hosts` with:
@@ -1118,7 +1118,7 @@ If the IP address and hostname mapping does not exist or has been
 erroneously specified in this file, correcting the error can solve this
 problem.
 
-#### MapReduce daemons can’t be started <a name="#mapreduce-daemons-cant-be-started"></a>
+#### MapReduce daemons can’t be started 
 
 The following two reasons can cause this problem:
 
@@ -1153,7 +1153,7 @@ reduce slot from 6 to 3. This configuration gives us a total configured
 memory of 3GB, which is smaller than the system total memory 4GB, thus
 the MapReduce daemons should be able to start successfully.
 
-### See also <a name="#see-also-8"></a>
+### See also 
 
 - Configuring Hadoop in pseudo-distributed mode
 
@@ -1166,7 +1166,7 @@ configuration information, naming and providing distributed
 synchronization and group services. In this recipe, we will outline
 steps to install ZooKeeper.
 
-### Getting ready <a name="#getting-ready-12"></a>
+### Getting ready 
 
 Make sure Hadoop has been properly configured. Please refer to the
 previous recipes in this chapter about installation of Hadoop on a
@@ -1181,7 +1181,7 @@ Download ZooKeeper archive file with commands:
 
 	$ wget http://www.gtlib.gatech.edu/pub/apache/zookeeper/stable/zookeeper-3.4.5.tar.gz -P ~/repo
 
-### How to do it... <a name="#how-to-do-it...-5"></a>
+### How to do it... 
 
 Use the following recipe to configure ZooKeeper:
 
@@ -1263,7 +1263,7 @@ Stop ZooKeeper with command:
 
 	$ zkServer.sh stop
 
-### See also <a name="#see-also-9"></a>
+### See also 
 
 - Installing HBase
 
@@ -1276,7 +1276,7 @@ HBase is the database based on Hadoop. It is a distributed, scalable Big
 Data storage system. In this section, we are going to list steps about
 installing HBase in our Hadoop cluster.
 
-### Getting ready <a name="#getting-ready-13"></a>
+### Getting ready 
 
 To install HBase, we assume Hadoop has been configured without any
 issues.
@@ -1303,7 +1303,7 @@ Alternatively, we can download the file with command:
 
 	$ wget http://mirror.quintex.com/apache/hbase/stable/hbase-0.94.5.tar.gz -P ~/repo
 
-### How to do it... <a name="#how-to-do-it...-6"></a>
+### How to do it... 
 
 Use the following recipe to install HBase:\
 Login to the master node from administrator machine with command:
@@ -1427,14 +1427,14 @@ To stop HBase, use command:
     $ stop-hbase.sh
     stopping hbase...............
 
-### How it works <a name="#how-it-works-11"></a>
+### How it works 
 
 In the configuration, property hbase.rootdir specifies the root
 directory of the HBase data storage. And property
 *hbase.zookeeper.property.dataDir* specifies the root directory of the
 ZooKeeper data storage.
 
-### There’s more... <a name="#theres-more...-6"></a>
+### There’s more... 
 
 - Installing ZooKeeper in Chapter 3, Configuring a Hadoop cluster
 
@@ -1447,7 +1447,7 @@ As a top level abstraction language, Hive provides a handy tool for
 manipulating data storage on HDFS with SQL like language. In this
 section, we will talk about installing Hive on our Hadoop cluster.
 
-### Getting ready <a name="#getting-ready-14"></a>
+### Getting ready 
 
 Before we install Hive, we need to make sure Hadoop has been properly
 installed. Please refer to the previous sections about the configuration
@@ -1457,7 +1457,7 @@ on the administrator machine:
 
 	$ wget http://apache.osuosl.org/hive/stable/hive-0.9.0.tar.gz -P ~/repo
 
-### How to do it... <a name="#how-to-do-it...-7"></a>
+### How to do it... 
 
 Use the following steps to install Hive:
 
@@ -1489,7 +1489,7 @@ Start Hive with command:
 
 	$ hive
 
-### There’s more... <a name="#theres-more...-7"></a>
+### There’s more... 
 
 - Installing Pig in Chapter 3, Configuring a Hadoop cluster
 
@@ -1501,7 +1501,7 @@ Start Hive with command:
 Similar to Hive, Pig provides a handy tool for manipulating Hadoop data.
 In this recipe, we are going to discuss the installation of Apache Pig.
 
-### Getting ready <a name="#getting-ready-15"></a>
+### Getting ready 
 
 Before we install Pig, we need to make sure Hadoop has been properly
 installed. Please refer to the previous sections about the configuration
@@ -1512,7 +1512,7 @@ administrator machine:
 
 	$ wget http://www.motorlogy.com/apache/pig/stable/pig-0.10.1.tar.gz ~/repo
 
-### How to do it... <a name="#how-to-do-it...-8"></a>
+### How to do it... 
 
 Use the following steps to configure Pig:
 
@@ -1555,7 +1555,7 @@ Alternatively, we can use the following command:
 Pig that runs in MapReduce mode will utilizes the power of distributed
 computing provided by Hadoop.
 
-### There’s more... <a name="#theres-more...-8"></a>
+### There’s more... 
 
 - Installing Hive in Chapter 3, Configuring a Hadoop cluster
 
@@ -1570,7 +1570,7 @@ stack. It already has implementation of a wide range of machine learning
 algorithms. In this recipe, we will outline steps to configure Apache
 Mahout.
 
-### Getting ready <a name="#getting-ready-16"></a>
+### Getting ready 
 
 Before we install Mahout, we need to make sure Hadoop has been properly
 installed.
@@ -1580,7 +1580,7 @@ master node:
 
 	$ wget http://www.eng.lsu.edu/mirrors/apache/mahout/0.7/mahout-distribution-0.7.tar.gz -P ~/repo
 
-### How to do it... <a name="#how-to-do-it...-9"></a>
+### How to do it... 
 
 Use the following the recipe to install Mahout: Login to the master node
 from the Hadoop administrator machine as hduser with command:
@@ -1649,7 +1649,7 @@ Run kmeans clustering with command:
 
 	$ mahout org.apache.mahout.clustering.syntheticcontrol.kmeans.Job
 
-### There’s more... <a name="#theres-more...-9"></a>
+### There’s more... 
 
 - More documentation about Mahout can be obtained from the [Mahout
     Wiki](https://cwiki.apache.org/confluence/display/MAHOUT/Mahout+Wiki)

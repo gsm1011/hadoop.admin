@@ -1,4 +1,4 @@
-# Managing a Hadoop Cluster <a name="#chap:4"></a>
+# Managing a Hadoop Cluster 
 
 In this chapter, we will cover:
 
@@ -19,7 +19,7 @@ In this chapter, we will cover:
 - Configuring Hadoop audit logging
 - Upgrading Hadoop
 
-## Introduction <a name="#introduction-1"></a>
+## Introduction 
 
 From the perspective of functionality, a Hadoop cluster is composed of
 an HDFS cluster and a MapReduce cluster. The HDFS cluster consists of
@@ -46,7 +46,7 @@ logging and doing system upgrade. Logging provides insights for
 diagnosing cluster failure or performance problems, and system upgrade
 plays an important role in keeping the software up to date.
 
-### Managing HDFS cluster <a name="#managing-hdfs-cluster"></a>
+### Managing HDFS cluster 
 
 The health of HDFS is critical for a Hadoop-based Big Data platform.
 HDFS problems can negatively affect the efficiency of the cluster. Even
@@ -57,14 +57,14 @@ replicate those data blocks, which will bring a lot of overhead to the
 cluster and cause the cluster to be too unstable to be available for
 use. In this recipe, we will show commands to manage a HDFS cluster.
 
-### Getting ready <a name="#getting-ready-17"></a>
+### Getting ready 
 
 Before getting started, we assume that our Hadoop cluster has been
 properly configured and all the daemons are running without any
 problems. Log in to the master node from the administrator machine with
 the following command: ssh hduser@master
 
-### How to do it... <a name="#how-to-do-it...-10"></a>
+### How to do it... 
 
 Use the following steps to check the status of a HDFS cluster with
 `hadoop fsck`:
@@ -252,7 +252,7 @@ The meta.log file will be created under the directory
     21 files and directories, 88 blocks = 109 total
     ...
 
-### How it works... <a name="#how-it-works...-1"></a>
+### How it works... 
 
 The HDFS filesystem will be write-protected when NameNode enters safe
 mode. When an HDFS cluster is started, it will enter safe mode first.
@@ -301,7 +301,7 @@ We can get the usage of the dfsadmin command using:
                [-setBalancerBandwidth <bandwidth in bytes per second>]
                [-help [cmd]]
 
-### There’s more ... <a name="#theres-more-..."></a>
+### There’s more ... 
 
 Besides using command line, we can use the web UI to check the status of
 an HDFS cluster. For example, we can get the status information of HDFS
@@ -333,7 +333,7 @@ The web page shows that file `/user/hduser/randtext` has been split into
 five partitions. We can browse the content of each partition by clicking
 on the **part-0000x** link.
 
-### See also <a name="#see-also-10"></a>
+### See also 
 
 - The Validating Hadoop installation recipe in Chapter [chap:3],
     Configuring a Hadoop cluster
@@ -350,7 +350,7 @@ up periodically. And in case of NameNode failure, the backup files can
 be used to recover the NameNode. In this recipe, we will outline steps
 to configure SecondaryNameNode.
 
-### Getting ready <a name="#getting-ready-18"></a>
+### Getting ready 
 
 We assume that Hadoop has been configured correctly.\
 Log in to the master node from cluster administration machine using the
@@ -358,7 +358,7 @@ following command:
 
 	$ ssh hduser@master
 
-### How to do it... <a name="#how-to-do-it...-11"></a>
+### How to do it... 
 
 Perform the following steps to configure SecondaryNameNode:\
 Stop the cluster using the following command:
@@ -405,7 +405,7 @@ following:
 The tree structure of the SecondaryNameNode will be similar to that of
 the NameNode.
 
-### There’s more... <a name="#theres-more...-10"></a>
+### There’s more... 
 
 To increase redundancy, we can configure NameNode to write filesystem
 metadata on multiple locations. For example, we can add an NFS shared
@@ -421,7 +421,7 @@ directory for backup by changing the following property in the file
 
 `/nfs/name` is an NFS shared directory on a remote machine.
 
-### See also <a name="#see-also-11"></a>
+### See also 
 
 - The Managing HDFS cluster recipe
 
@@ -435,13 +435,13 @@ of managing a MapReduce cluster includes maintaining the health as well
 as the membership between TaskTrackers and the JobTracker. In this
 recipe, we will outline commands to manage a MapReduce cluster.
 
-### Getting ready <a name="#getting-ready-19"></a>
+### Getting ready 
 
 We assume that the Hadoop cluster has been properly configured and
 running. Log in to the master node from the cluster administration
 machine using the following command: ssh hduser@master
 
-### How to do it... <a name="#how-to-do-it...-12"></a>
+### How to do it... 
 
 Perform the following steps to manage a MapReduce cluster:
 
@@ -486,7 +486,7 @@ Reload active TaskTrackers using the following command:
 
 	$ hadoop mradmin -refreshNodes
 
-### How it works... <a name="#how-it-works...-2"></a>
+### How it works... 
 
 Get the help for the mradmin command using the following command:
 
@@ -514,7 +514,7 @@ user group mappings.\
 -refreshNodes & Force JobTracker to refresh the JobTracker hosts.\
 -help [cmd] & Show the help info for a command or all commands.\
 
-### See also <a name="#see-also-12"></a>
+### See also 
 
 - The Configuring SecondaryNameNode recipe
 
@@ -541,7 +541,7 @@ For example, when we debug or upgrade a slave node, we want to separate
 this node from the cluster in case it affects the cluster. Hadoop
 supports the live decommission of a TaskTracker from a running cluster.
 
-### Getting ready <a name="#getting-ready-20"></a>
+### Getting ready 
 
 We assume that Hadoop has been properly configured. MapReduce and HDFS
 daemons are running without any issues.
@@ -561,7 +561,7 @@ List the active trackers with the following command on the master node:
     tracker_slave4:localhost/127.0.0.1:60756
     tracker_slave2:localhost/127.0.0.1:42939
 
-### How to do it... <a name="#how-to-do-it...-13"></a>
+### How to do it... 
 
 Perform the following steps to configure the heartbeat interval:
 
@@ -668,7 +668,7 @@ List all the active trackers again using the following command:
     tracker_slave4:localhost/127.0.0.1:60756
     tracker_slave2:localhost/127.0.0.1:42939
 
-### How it works... <a name="#how-it-works...-3"></a>
+### How it works... 
 
 TaskTrackers on slave nodes contact the JobTracker on the master node
 periodically. The interval between two consecutive contact
@@ -687,7 +687,7 @@ blacklist.
 The total number of blacklisted TaskTrackers should not exceed 50
 percent of the total number of TaskTrackers.
 
-### See also <a name="#see-also-13"></a>
+### See also 
 
 - The Managing the MapReduce cluster recipe
 
@@ -704,7 +704,7 @@ disable a DataNode from the cluster, for example, because the storage
 space of the DataNode has been used up. In this recipe, we will outline
 steps to decommission a DataNode from a live Hadoop cluster.
 
-### Getting ready <a name="#getting-ready-21"></a>
+### Getting ready 
 
 We assume that our Hadoop has been configured properly.
 
@@ -716,7 +716,7 @@ the following command:
 For illustration purpose, we assume to decommission DataNode on host
 slave1 from our running Hadoop cluster.
 
-### How to do it... <a name="#how-to-do-it...-14"></a>
+### How to do it... 
 
 Perform the following steps to decommission a live DataNode:
 
@@ -747,7 +747,7 @@ Get a description report of each active DataNode:
 
 	$ hadoop dfsadmin -report
 
-### How it works... <a name="#how-it-works...-4"></a>
+### How it works... 
 
 Cluster administrators can use the dfsadmin command to manage the
 DataNodes. We can get the usage of this command using the following:
@@ -762,7 +762,7 @@ DataNodes. We can get the usage of this command using the following:
                [-upgradeProgress status | details | force]
                ...
 
-### See also <a name="#see-also-14"></a>
+### See also 
 
 - The Managing the HDFS cluster recipe
 
@@ -779,13 +779,13 @@ reasons such as the slave node is not stable, more storage space or more
 powerful CPUs are desired, and so on. In this recipe, we will outline
 the steps to replace a slave node.
 
-### Getting ready <a name="#getting-ready-22"></a>
+### Getting ready 
 
 We assume that replacement hardware is ready for use. And for
 illustration purposes, we suppose *slave2* needs to be replaced in this
 book.
 
-### How to do it... <a name="#how-to-do-it...-15"></a>
+### How to do it... 
 
 Perform the following steps to replace a slave node:
 
@@ -831,7 +831,7 @@ Get all the active TaskTrackers with the following command:
 
 	$ hadoop job -list-active-trackers
 
-### See also <a name="#see-also-15"></a>
+### See also 
 
 - The Installing Linux on node recipe of Chapter [chap:2], Preparing
     for Hadoop Installation
@@ -852,7 +852,7 @@ simultaneously. The tasks of managing Hadoop jobs include checking job
 status, changing job priority, killing a running job, and so on. In this
 recipe, we will outline the steps to do these job management tasks.
 
-### Getting ready <a name="#getting-ready-23"></a>
+### Getting ready 
 
 We assume that our Hadoop cluster has been configured properly and all
 the Hadoop daemons are running without any issues. We also assume that a
@@ -863,7 +863,7 @@ the following command:
 
 	$ ssh hduser@master
 
-### How to do it... <a name="#how-to-do-it...-16"></a>
+### How to do it... 
 
 Perform the following steps to check the status of Hadoop jobs:
 
@@ -1079,7 +1079,7 @@ Submit the job with the following command:
     13/03/01 11:55:53 INFO mapred.FileInputFormat: Total input paths to process : 5
     Created job job_201302281451_0012
 
-### How it works... <a name="#how-it-works...-5"></a>
+### How it works... 
 
 The queue command is a wrapper command for the JobQueueClient class, and
 the job command is a wrapper command for the JobClient class.
@@ -1110,14 +1110,14 @@ Similarly, we can get the usage of the job command with the following:
             [-kill-task <task-id>]
             [-fail-task <task-id>]
 
-### There’s more... <a name="#theres-more...-11"></a>
+### There’s more... 
 
 We discussed the most useful commands for Hadoop job management.
 Actually, there are even more commands that are related to job
 management, and alternatively, we can use the web UI to manage Hadoop
 jobs.
 
-#### More job management commands <a name="#more-job-management-commands"></a>
+#### More job management commands 
 
 Get the value of a counter:
 
@@ -1295,7 +1295,7 @@ data-label="fig:failed.job"></span>](figs/5163os_04_12.png)
 Change the job priority to be HIGH by opening the URL,
 <master:50030/jobdetails.jsp?jobid=job_201302281451_0007&action=changeprio&prio=HIGH>.\
 
-### See also <a name="#see-also-16"></a>
+### See also 
 
 - The Validating Hadoop installation recipe of Chapter [chap:3],
     Configuring a Hadoop Cluster
@@ -1314,12 +1314,12 @@ job history logs contain information for each job such as the total run
 time and the run time of each task. In this section, we will show you
 how to check the job history logs through a web UI.
 
-### Getting ready <a name="#getting-ready-24"></a>
+### Getting ready 
 
 We assume that our Hadoop cluster has been properly configured and all
 daemons are running without any issues.
 
-### How to do it... <a name="#how-to-do-it...-17"></a>
+### How to do it... 
 
 Perform the following steps to check job history logs from web UI:
 
@@ -1393,7 +1393,7 @@ reduce task is composed of three phases, the shuffle phase, the sort
 phase, and the reduce phase, with each phase composing of $\frac{1}{3}$
 of the total reduce task.
 
-### How it works... <a name="#how-it-works...-6"></a>
+### How it works... 
 
 The meaning of the job history URL, <master:50030/jobhistoryhome.jsp>,
 can be explained as in Table [tbl:jobhistory].
@@ -1439,7 +1439,7 @@ jobID & `job_201302281451_0001`\
 taskID & `task_201302281451_0001_m_000000`\
 attemptID & `attempt_201302281451_0001_m_000000_0`\
 
-### See also <a name="#see-also-17"></a>
+### See also 
 
 - The Validating Hadoop installation recipe of Chapter [chap:3],
     Configuring a Hadoop Cluster
@@ -1452,13 +1452,13 @@ If our Big Data is on the local filesystem, we need to move it to HDFS.
 In this section, we will list steps to move data from the local
 filesystem to the HDFS filesystem.
 
-### Getting ready <a name="#getting-ready-25"></a>
+### Getting ready 
 
 We assume that our Hadoop cluster has been properly configured and all
 the Hadoop daemons are running without any issues. And we assume that
 the data on the local system is in the directory /data.
 
-### How to do it... <a name="#how-to-do-it...-18"></a>
+### How to do it... 
 
 Perform the following steps to import data to HDFS:
 
@@ -1495,7 +1495,7 @@ Use distributed copy to copy the large data file to HDFS:
 This command will initiate a MapReduce job with a number of mappers to
 run the copy task in parallel.
 
-### There’s more... <a name="#theres-more...-12"></a>
+### There’s more... 
 
 To copy multiple files from the local directory to HDFS, we can use the
 following command:
@@ -1522,7 +1522,7 @@ example:
 
 	$ hadoop distcp hdfs:///user/hduser/file hdfs:///user/hduser/file-copy
 
-### How it works... <a name="#how-it-works...-7"></a>
+### How it works... 
 
 We can get the usage of the fs command with the following:
 
@@ -1570,7 +1570,7 @@ schema for -put, -copyFromLocal, and -moveFromLocal is `file:///`.
 The default `<dst>` filesystem schema for all these commands is
 `hdfs:///`.
 
-### See also <a name="#see-also-18"></a>
+### See also 
 
 - The Managing the HDFS cluster recipe
 
@@ -1583,12 +1583,12 @@ commands to operate on files. In this section, we will show you how to
 operate files, such as downloading files from HDFS, checking the content
 of files, and removing files from HDFS.
 
-### Getting ready <a name="#getting-ready-26"></a>
+### Getting ready 
 
 We assume that our Hadoop cluster has been properly configured and all
 the daemons are running without any issues.
 
-### How to do it... <a name="#how-to-do-it...-19"></a>
+### How to do it... 
 
 Perform the following steps to check the status of files and directory
 on HDFS:
@@ -1713,7 +1713,7 @@ Create an empty file using the following command:
 
 	$ hadoop fs -touchz 0file
 
-### How it works... <a name="#how-it-works...-8"></a>
+### How it works... 
 
 We can get the usage of the fs command with the following command:
 
@@ -1768,12 +1768,12 @@ In a multiuser environment, quota can enforce the fair share of
 computing resources. HDFS supports quota for users and directories. In
 this recipe, we will list steps to configure HDFS quota.
 
-### Getting ready <a name="#getting-ready-27"></a>
+### Getting ready 
 
 We assume that the Hadoop cluster has been configured properly and all
 the daemons are running without any issues.
 
-### How to do it... <a name="#how-to-do-it...-20"></a>
+### How to do it... 
 
 Perform the following steps to manage HDFS quota:
 
@@ -1831,7 +1831,7 @@ Clear the space quota with the following command:
 
 	$ hadoop dfsadmin -clrSpaceQuota /user/hduser
 
-### How it works... <a name="#how-it-works...-9"></a>
+### How it works... 
 
 We can get the usage of the `hadoop fs` command with the following
 command:
@@ -1870,7 +1870,7 @@ the minimum share of each user. It has features of being secure,
 elastic, operable, and supporting job priority. In this recipe, we will
 outline steps to configure CapacityScheduler for a Hadoop cluster.
 
-### Getting ready <a name="#getting-ready-28"></a>
+### Getting ready 
 
 We assume that our Hadoop cluster has been properly configured and all
 the daemons are running without any issues. Log in to the master node
@@ -1878,7 +1878,7 @@ from the cluster administrator machine using the following command:
 
 	$ ssh hduser@master
 
-### How to do it... <a name="#how-to-do-it...-21"></a>
+### How to do it... 
 
 Configure CapacityScheduler with the following steps:
 
@@ -1978,7 +1978,7 @@ information similar to the following:
 
     Job Scheduling information: 8 running map tasks using 8 map slots. 0 additional slots reserved. 1 running reduce tasks using 1 reduce slots. 0 additional slots reserved.
 
-### How it works... <a name="#how-it-works...-10"></a>
+### How it works... 
 
 CapacityScheduler is available as a JAR file under the
 `$HADOOP_HOME/lib` directory. For example, in our Hadoop distribution,
@@ -2007,14 +2007,14 @@ in the queue hdqueue for each user.\
 mapred.capacity-scheduler.queue.hdqueue.supports-priority & Whether to
 support job priority for job scheduling or not.\
 
-### There’s more... <a name="#theres-more...-13"></a>
+### There’s more... 
 
 Hadoop supports access control on the queue using queue ACLs. Queue ACLs
 control the authorization of MapReduce job submission to a queue. More
 information about queue ACLs can be found at
 <http://hadoop.apache.org/docs/r1.1.2/cluster_setup.html#Configuring+the+Hadoop+Daemons>.
 
-### See also <a name="#see-also-19"></a>
+### See also 
 
 - The Managing MapReduce jobs recipe
 
@@ -2035,7 +2035,7 @@ fair shares of cluster resources in a multiuser environment. In this
 recipe, we will outline steps to configure Fair Scheduler for a Hadoop
 cluster.
 
-### Getting ready <a name="#getting-ready-29"></a>
+### Getting ready 
 
 We assume that our Hadoop cluster has been configured properly and all
 the daemons are running without any problems. Log in to the master node
@@ -2043,7 +2043,7 @@ from the Hadoop administrator machine using the following command:
 
 	$ ssh hduser@master
 
-### How to do it... <a name="#how-to-do-it...-22"></a>
+### How to do it... 
 
 Perform the following steps to configure Hadoop Fair Scheduler:
 
@@ -2091,7 +2091,7 @@ The web page will be similar to Figure [fig:fairscheduler].
 ![Status of fair scheduler<span
 data-label="fig:fairscheduler"></span>](figs/5163os_04_16.png)
 
-### How it works... <a name="#how-it-works...-11"></a>
+### How it works... 
 
 The Hadoop Fair Scheduler schedules jobs in such a way that all jobs can
 get an equal share of computing resources. Jobs are organized with
@@ -2150,7 +2150,7 @@ resource is below half of the fair share.\
 defaultPoolSchedulingMode & Fair/FIFO & Default in-pool scheduling
 mode.\
 
-### See also <a name="#see-also-20"></a>
+### See also 
 
 - The Configuring CapacityScheduler recipe
 
@@ -2164,11 +2164,11 @@ security problems. In addition, the logging information can be used
 analytically to tune the performance of a Hadoop cluster. In this
 recipe, we will show you how to configure Hadoop logging.
 
-### Getting ready <a name="#getting-ready-30"></a>
+### Getting ready 
 
 We assume that our Hadoop cluster has been properly configured.
 
-### How to do it... <a name="#how-to-do-it...-23"></a>
+### How to do it... 
 
 Perform the following steps to configure Hadoop logging:
 
@@ -2225,7 +2225,7 @@ following commands:
     Log Class: org.apache.commons.logging.impl.Log4JLogger
     Effective level: INFO
 
-### How it works... <a name="#how-it-works...-12"></a>
+### How it works... 
 
 By default, Hadoop sends log messages to Log4j, which is configured in
 the file `$HADOOP_HOME/conf/log4j.properties`. This file defines both
@@ -2261,7 +2261,7 @@ We can get the usage of daemonlog with the following command:
     java org.apache.hadoop.log.LogLevel -getlevel <host:port> <name>
     java org.apache.hadoop.log.LogLevel -setlevel <host:port> <name> <level>
 
-### There’s more... <a name="#theres-more...-14"></a>
+### There’s more... 
 
 Other than configuring Hadoop logging on the fly from command line, we
 can configure it using configuration files. The most important file that
@@ -2274,7 +2274,7 @@ next recipe.
 
 The cluster needs to be restarted for the configuration to take effect.
 
-#### Configuring Hadoop logging with hadoop-env.sh <a name="#configuring-hadoop-logging-with-hadoop-env.sh"></a>
+#### Configuring Hadoop logging with hadoop-env.sh 
 
 Open the file `$HADOOP_HOME/conf/hadoop-env.sh` with a text editor and
 change the following line:
@@ -2320,7 +2320,7 @@ The error message tells that the NameNode is in safe mode, so the file
 `/user/hduser/test` cannot be created. Similar information can give us a
 very useful hint to figure out operation errors.
 
-#### Hadoop logging file naming conventions <a name="#hadoop-logging-file-naming-conventions"></a>
+#### Hadoop logging file naming conventions 
 
 Hadoop logs files are kept under the directory `$HADOOP_HOME/logs`.
 
@@ -2340,7 +2340,7 @@ In Hadoop, the names of logging files are using the following format:
 
 	$ hadoop-<username>-<daemonname>-<hostname>.log
 
-### See also <a name="#see-also-21"></a>
+### See also 
 
 - The Configuring Hadoop audit logging recipe
 
@@ -2354,7 +2354,7 @@ Java logging library at the INFO logging level. By default, Hadoop audit
 logging is disabled. This recipe will guide you through the steps to
 configure Hadoop audit logging.
 
-### Getting ready <a name="#getting-ready-31"></a>
+### Getting ready 
 
 We assume that our Hadoop cluster has been configured properly. Log in
 to the master node from the administrator machine using the following
@@ -2362,7 +2362,7 @@ command:
 
 	$ ssh hduser@master
 
-### How to do it... <a name="#how-to-do-it...-24"></a>
+### How to do it... 
 
 Perform the following steps to configure Hadoop audit logging:
 
@@ -2411,7 +2411,7 @@ with the following content:
     log4j.appender.DRFAAUDIT.layout=org.apache.log4j.PatternLayout
     log4j.appender.DRFAAUDIT.layout.ConversionPattern=%d{ISO8601} %p %c: %m%n
 
-### How it works... <a name="#how-it-works...-13"></a>
+### How it works... 
 
 Hadoop logs auditing messages of operations, such as creating, changing,
 or deleting files into a configured log file. By default, audit logging
@@ -2424,7 +2424,7 @@ rotates a log file to a different name, for example, by appending the
 date to the filename, so that the original log file name can be used as
 an empty file.
 
-### See also <a name="#see-also-22"></a>
+### See also 
 
 - The Configuring Hadoop daemon logging recipe
 
@@ -2434,7 +2434,7 @@ A Hadoop cluster needs to be upgraded when new versions with bug fixes
 or new features are released. In this recipe, we will outline steps to
 upgrade a Hadoop cluster to a newer version.
 
-### Getting ready <a name="#getting-ready-32"></a>
+### Getting ready 
 
 Download the desired Hadoop release from an Apache mirror site:
 <http://www.apache.org/dyn/closer.cgi/hadoop/common/>. In this book, we
@@ -2461,7 +2461,7 @@ following command:
 
 	$ ssh hduser@master
 
-### How to do it... <a name="#how-to-do-it...-25"></a>
+### How to do it... 
 
 Perform the following steps to upgrade a Hadoop cluster:
 
@@ -2582,7 +2582,7 @@ Now, we can check the status of the cluster either by running a sample
 MapReduce job such as teragen and terasort, or by using the web user
 interface.
 
-### How it works... <a name="#how-it-works...-14"></a>
+### How it works... 
 
 We can use the following command to get the usage of HDFS upgrade
 commands:
@@ -2617,7 +2617,7 @@ configured directories.\
 the DataNode to delete the previous version working directories.\
 -metasave & Saves the metadata of the HDFS cluster.\
 
-### See also <a name="#see-also-23"></a>
+### See also 
 
 - The Configuring Hadoop in pseudo-distributed mode recipe of Chapter
     [chap:3], Configuring a Hadoop Cluster

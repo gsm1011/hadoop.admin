@@ -1,4 +1,4 @@
-# Big Data and Hadoop <a name="#chap:1"></a>
+# Big Data and Hadoop 
 
 In this chapter, we will cover:
 
@@ -6,7 +6,7 @@ In this chapter, we will cover:
 - Building a Hadoop based Big Data platform
 - Choosing from Hadoop alternatives
 
-## Introduction <a name="#chap1:intro"></a>
+## Introduction 
 
 Today, many organizations are facing the Big Data problem. Managing and
 processing Big Data can incur a lot of challenges for traditional data
@@ -29,7 +29,7 @@ Big Data platform is capable of dealing with most of the Big Data
 problems, while not good fit for others. Because of these and many other
 reasons, we need to choose from Hadoop alternatives.
 
-## Defining a Big Data Problem <a name="#chap1:problem"></a>
+## Defining a Big Data Problem 
 
 Generally, the definition of Big Data is that data with sizes go beyond
 the ability of commonly-used software tools to collect, manage, and
@@ -38,14 +38,14 @@ of Big Data should go beyond the size of the data to include other
 properties. In this recipe, we will outline the properties that define
 Big Data in a formal way.
 
-### Getting ready <a name="#getting-ready"></a>
+### Getting ready 
 
 Formally, data has the following three important properties: volume,
 velocity and variety. In this book, we treat the value property of Big
 Data as the fourth important property. And the value property also
 explains the reason why Big Data problem exists.
 
-### How to do it <a name="#how-to-do-it"></a>
+### How to do it 
 
 Defining a Big Data problem involves the following steps:
 
@@ -82,7 +82,7 @@ Defining a Big Data problem involves the following steps:
     click-through data for better marketing and more efficient
     deployment of advertisements.
 
-### How it works <a name="#how-it-works"></a>
+### How it works 
 
 A Big Data platform can be described with the
 [IPO](http://en.wikipedia.org/wiki/IPO_Model) model, which includes
@@ -90,7 +90,7 @@ three components: input, process and output. For a Big Data problem, the
 volume, velocity and variety properties together define the input of the
 system and the value property defines the output.
 
-### See also <a name="#see-also"></a>
+### See also 
 
 - Building a Hadoop based Big Data platform
 
@@ -103,14 +103,14 @@ In the past few years, Hadoop has become a widely used platform and
 runtime environment for the deployment of Big Data applications. In this
 recipe, we will outline steps to build a Hadoop based Big Data platform.
 
-### Getting ready <a name="#getting-ready-1"></a>
+### Getting ready 
 
 Hadoop was designed to be parallel and resilient. It redefines the way
 that data is managed and processed by leveraging the power of computing
 resources composed of commodity hardware. And it can automatically
 recover from failures.
 
-### How to do it <a name="#how-to-do-it-1"></a>
+### How to do it 
 
 Use the following steps to build a Hadoop based Big Data platform:
 
@@ -132,12 +132,12 @@ Use the following steps to build a Hadoop based Big Data platform:
     results using charts, graphs or other types of dynamic web
     applications.
 
-### How it works <a name="#how-it-works-1"></a>
+### How it works 
 
 The architecture of a Hadoop based Big Data system can be described in
 Figure [fig:hadoop.architecture].
 
-![Architecture of Hadoop based big data system](figs/5163os_01_01.png)<a name="fig:hadoop.architecture"></a>
+![Architecture of Hadoop based big data system](figs/5163os_01_01.png)
 
 Although Hadoop borrows its idea from Google’s MapReduce, it is more
 than MapReduce. A typical Hadoop based Big Data platform includes the
@@ -176,7 +176,7 @@ of the job flow can be described in Figure [fig:mapred.job].
 ![Anatomy of a MapReduce job<span
 data-label="fig:mapred.job"></span>](figs/5163os_01_02.png)
 
-### There’s more <a name="#theres-more"></a>
+### There’s more 
 
 HDFS has two types of nodes, NameNode and DataNode. A NameNode keeps
 track of the filesystem metadata such as the locations of data blocks.
@@ -195,7 +195,7 @@ receives a task, its Tasktracker will fork a java process to run the
 task. Meanwhile, the Tasktracker is also responsible for tracking and
 reporting the progress of individual tasks.
 
-#### Hadoop Common <a name="#hadoop-common"></a>
+#### Hadoop Common 
 
 Hadoop common is a collection of components and interfaces for the
 foundation of Hadoop based Big Data platform. It provides the following
@@ -206,7 +206,7 @@ components:
 - Logging
 - Security management
 
-#### Apache HBase <a name="#apache-hbase"></a>
+#### Apache HBase 
 
 Apache HBase is an open source, distributed, versioned and column
 oriented data store. It was built on top of Hadoop and HDFS. HBase
@@ -215,7 +215,7 @@ large table, containing billions of rows and millions of columns. More
 documentation about HBase can be obtained from [HBase @
 Apache](http://hbase.apache.org).
 
-#### Apache Mahout <a name="#apache-mahout"></a>
+#### Apache Mahout 
 
 Apache Mahout is an open source scalable machine learning library based
 on Hadoop. It has a very active community and is still under
@@ -224,7 +224,7 @@ recommendation mining, clustering, classification and frequent item set
 mining. More documentation of Mahout can be obtained from
 [Mahout](http://mahout.apache.org).
 
-#### Apache Pig <a name="#apache-pig"></a>
+#### Apache Pig 
 
 Apache Pig is a high level system for expressing Big Data analysis
 programs. It supports Big Data by compiling the Pig statements into a
@@ -232,7 +232,7 @@ sequence of MapReduce jobs. Pig uses Pig Latin as the programming
 language, which is extensible and easy to use. More documentation about
 Pig can be found from [Pig](http://pig.apache.org).
 
-#### Apache Hive <a name="#apache-hive"></a>
+#### Apache Hive 
 
 Apache Hive is a high level system for the management and analysis of
 Big Data stored in Hadoop based systems. It uses a SQL-like language
@@ -241,7 +241,7 @@ HiveQL statements into a sequence of MapReduce jobs for execution. More
 information about Hive can be obtained from
 [Hive](http://hive.apache.org).
 
-#### Apache ZooKeeper <a name="#apache-zookeeper"></a>
+#### Apache ZooKeeper 
 
 Apache ZooKeeper is a centralized coordination service for large scale
 distributed systems. It maintains the configuration and naming
@@ -249,7 +249,7 @@ information and provides distributed synchronization and group services
 for applications in distributed systems. More documentation about
 ZooKeeper can be obtained from [ZooKeeper](http://zookeeper.apache.org).
 
-#### Apache Oozie <a name="#apache-oozie"></a>
+#### Apache Oozie 
 
 Apache Oozie is a scalable workflow management and coordination service
 for Hadoop jobs. It is data aware and coordinates jobs based on their
@@ -257,7 +257,7 @@ dependencies. In addition, Oozie has been integrated with Hadoop and can
 support all types of Hadoop jobs. More information about Oozie can be
 obtained from [Oozie](http://oozie.apache.org).
 
-#### Apache Sqoop <a name="#apache-sqoop"></a>
+#### Apache Sqoop 
 
 Apache Sqoop is a tool for moving data between Apache Hadoop and
 structured data stores such as relational databases. It provides command
@@ -265,14 +265,14 @@ line suites to transfer data from relational database to HDFS and vice
 versa. More information about Apache Sqoop can be found at
 [Sqoop](http://sqoop.apache.org).
 
-#### Apache Flume <a name="#apache-flume"></a>
+#### Apache Flume 
 
 Apache Flume is a tool for collecting log data in distributed systems.
 It has a flexible yet robust and fault tolerant architecture that
 streams data from log servers to Hadoop. More information can be
 obtained from [Flume](http://flume.apache.org).
 
-#### Apache Avro <a name="#apache-avro"></a>
+#### Apache Avro 
 
 Apache Avro is a fast, feature rich data serialization system for
 Hadoop. The serialized data is coupled with the data schema, which
@@ -286,7 +286,7 @@ Although Hadoop has been very successful for most of the Big Data
 problems, it is not an optimal choice in many situations. In this
 recipe, we will introduce a few Hadoop alternatives.
 
-### Getting ready <a name="#getting-ready-2"></a>
+### Getting ready 
 
 Hadoop has the following drawbacks as a Big Data platform:
 
@@ -306,7 +306,7 @@ Data. For example, data that has the following properties: small data
 sets and data sets with processing that requires transaction and
 synchronization.
 
-### How to do it <a name="#how-to-do-it-2"></a>
+### How to do it 
 
 We can choose Hadoop alternatives with the following guidelines:
 
@@ -320,7 +320,7 @@ We can choose Hadoop alternatives with the following guidelines:
 3.  Choose GraphLab if an application requires handling of large graph
     data sets.
 
-### How it works <a name="#how-it-works-2"></a>
+### How it works 
 
 Enterprise Hadoop refers to Hadoop distributions by some Hadoop oriented
 companies. Compared with the community Hadoop releases, Enterprise
@@ -380,7 +380,7 @@ Warning!\
 Phoenix and HaLoop do not have an active community and they are not
 recommended for production deployment.
 
-### There’s more... <a name="#theres-more..."></a>
+### There’s more... 
 
 As the Big Data problem floods the whole world, many systems have been
 designed to deal with the problem. Two famous such systems that do not

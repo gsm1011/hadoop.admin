@@ -1,4 +1,4 @@
-# Preparing for Hadoop Installation <a name="#chap:2"></a>
+# Preparing for Hadoop Installation 
 
 In this chapter, we will cover:
 
@@ -10,7 +10,7 @@ In this chapter, we will cover:
 - Installing Java and other tools
 - Configuring SSH
 
-## Introduction <a name="#introduction"></a>
+## Introduction 
 
 The configuration of a Hadoop cluster is a systematic project,
 especially, due to its large scale and the distributed property. Efforts
@@ -87,7 +87,7 @@ slave nodes. Properly selecting hardware for these computing and storage
 nodes can maximize the efficiency of a Hadoop cluster. In this recipe,
 we will list suggestions on hardware selection for a computing node.
 
-### How to do it <a name="#how-to-do-it-3"></a>
+### How to do it 
 
 Although special requirements exist for a master node and a slave node,
 there is no gold standard for choosing optimal hardware for both types
@@ -114,7 +114,7 @@ Slave Node & CPU & $\ge$ 2 Quad Core\
 & Hard Drive & $\ge$ 4 x 1TB HDD\
 & Network Card & $\ge$ 1Gbps Ethernet\
 
-### How it works <a name="#how-it-works-3"></a>
+### How it works 
 
 On a Hadoop master node, the NameNode keeps the metadata such as
 permissions of each file in main memory. The amount of memory needed by
@@ -149,7 +149,7 @@ In the simple equation, the first 2 stands for the number of CPUs of the
 slave node, the number 4 represents the number of cores per CPU and the
 second 2 means the number of slots per CPU core.
 
-### See also <a name="#see-also-1"></a>
+### See also 
 
 - Designing the cluster network
 - Managing HDFS cluster in Chapter [chap:4], Managing a Hadoop
@@ -162,7 +162,7 @@ Network is the backbone of a Hadoop cluster. Its stability is critical
 for the performance of the cluster. In this recipe, we will outline a
 few general rules for designing a Hadoop cluster network.
 
-### How to do it <a name="#how-to-do-it-4"></a>
+### How to do it 
 
 The network architecture for a small to medium sized cluster can be as
 simple as connecting the cluster nodes with one or more switches.
@@ -204,7 +204,7 @@ In this figure, we assume there is a Hadoop cluster administrator
 machine and the clients connect to the cluster through a gateway,
 through which Hadoop jobs can be submitted.
 
-### How it works <a name="#how-it-works-4"></a>
+### How it works 
 
 The increasing bandwidth of network devices makes it possible for Hadoop
 to load and replicate large data sets across interconnected nodes.
@@ -219,7 +219,7 @@ book, we assume to use the administrator machine as the installation
 server. We will learn steps to configure this server, including the
 configuration of the following two services: DHCP and FTP.
 
-### Getting ready <a name=""#getting-ready-3"></a>
+### Getting ready 
 
 Before getting started, we assume that the cluster administrator machine
 has a 64bit Red Hat compatible Linux operating system installed. The
@@ -259,7 +259,7 @@ We will use the DHCP server to assign IP addresses and bootstrap the
 operating system in the installation process and use the FTP server to
 host the installation packages.
 
-### Download the latest ISO image from a mirror <a name="#download-the-latest-iso-image-from-a-mirror"></a>
+### Download the latest ISO image from a mirror 
 
 The CentOS official site provides a worldwide mirrors list, including
 North America, European Countries, South America, Asia, Oceania, Middle
@@ -315,7 +315,7 @@ file contains packages and boot images for system installation. The
 netinstall package only contains files for booting, including network
 booting files in the `images/pxeboot` directory.
 
-### How to do it <a name="#how-to-do-it-5"></a>
+### How to do it 
 
 Use the following recipe configure DHCP server:
 
@@ -407,7 +407,7 @@ The configuration is successful if we get the following message:
     220 (vsFTPd 3.0.0)
     Name (knoesis157:hdadmin):
 
-### See also <a name="#see-also-2"></a>
+### See also 
 
 - Creating kickstart file and boot media in Chapter 2, Preparing for
   Hadoop Installation.
@@ -424,7 +424,7 @@ settings for the post installation process.
 In this section, we will cover steps of creating a kickstart file and a
 USB boot media with the operating system image.
 
-### Getting ready <a name="#getting-ready-4"></a>
+### Getting ready 
 
 A kickstart file is plain text file used for the automatic installation
 of Linux.
@@ -448,7 +448,7 @@ Login to the administrative machine with command:
 
     $ ssh hdadmin@hadoop.admin
 
-### How to do it <a name="#how-to-do-it-6"></a>
+### How to do it 
 
 Use the following steps to create a kickstart file:
 
@@ -639,7 +639,7 @@ Make sure you have a backup of the data on the USB flash drive, all the
 information will be wiped out when we write the ISO image file into the
 drive.
 
-### How it works <a name="#how-it-works-5"></a>
+### How it works 
 
 A kickstart file specifies a number of installation options such as
 installation media, networking configuration, firewall configuration
@@ -673,7 +673,7 @@ This option tells the location of the kickstart file. Once the kickstart
 file is located and transferred to the local machine, automatic
 installation will start.
 
-### There’s more <a name="#theres-more-1"></a>
+### There’s more 
 
 There are other installation methods other than FTP, for example, we can
 also use NFS and HTTP. The difference of these methods from FTP lies
@@ -688,7 +688,7 @@ changes in our configuration:
     `ks=ftp://hadoop.admin/ks.cfg` to
     `ks=http://hadoop.admin:80/ks.cfg`.
 
-### See also <a name="#see-also-3"></a>
+### See also 
 
 - Installing the Linux operating system
 
@@ -702,7 +702,7 @@ individual machines during the installation process. In the recipe, we
 will outline steps to install Linux on a number of Hadoop nodes over the
 network.
 
-### Getting ready <a name="#getting-ready-5"></a>
+### Getting ready 
 
 Before getting started, we need to verify that the DHCP server and FTP
 server are running correctly on the administrative machine.
@@ -729,7 +729,7 @@ In addition, we assume that the cluster nodes have been physically
 configured. For example, racks and networking devices are all working
 without any issues.
 
-### How to do it <a name="#how-to-do-it-7"></a>
+### How to do it 
 
 Use the following recipe to install Linux on a machine:
 
@@ -745,7 +745,7 @@ Use the following recipe to install Linux on a machine:
 4.  When the installation starts, you can remove the boot media and
     start the installation on the next machine.
 
-### How it works <a name="#how-it-works-6"></a>
+### How it works 
 
 Linux system was designed to be flexible. And its booting process is
 composed of the following stages:
@@ -776,7 +776,7 @@ One advantage of separating the boot media from the installation package
 repository is that the installation on multiple machines can be
 paralleled to reduce the total installation time.
 
-### There’s more... <a name="#theres-more...-1"></a>
+### There’s more... 
 
 With the help of a kickstart file, we can automate the installation of
 Linux on a number of machines. One disadvantage of this method is that
@@ -892,7 +892,7 @@ Start installation process by powering on the cluster machines.
 Hadoop was build using Java, so Java is required before installing
 Hadoop.
 
-### Getting ready <a name="#getting-ready-6"></a>
+### Getting ready 
 
 Under Linux, OpenJDK provides an open source Java implementation. But if
 we use OpenJDK for Hadoop, it will cause low level and hard to tackle
@@ -972,7 +972,7 @@ shown in Figure [fig:oracle.jdk].
 ![Downloading Oracle JDK<span
 data-label="fig:oracle.jdk"></span>](figs/5163os_02_04.png)
 
-### How to do it <a name="#how-to-do-it-8"></a>
+### How to do it 
 
 Use the following recipe to install Java and other tools:
 
@@ -999,7 +999,7 @@ Use the following command to install necessary tools:
 If these packages have been specified in the installation kickstart
 file, this step will be optional.
 
-### How it works <a name="#how-it-works-7"></a>
+### How it works 
 
 wget** is a software tool for transferring files using HTTP, HTTPS and
 FTP protocols. It is none interactive and can be used from command line
@@ -1046,7 +1046,7 @@ Similarly, we can use the following command to scan IP segment
 The command will give us service information of each host under the IP
 segment from 10.0.0.1 to 10.0.0.255.
 
-### There’s more <a name="#theres-more-2"></a>
+### There’s more 
 
 Under Linux, we can use the man command to get the usage of a command.
 For example, to get usage of wget, we can use <span>***m***an
@@ -1064,7 +1064,7 @@ Hadoop installation. In this section, we are going to learn how to
 configure SSH on the cluster nodes. Specifically, we are discussing how
 to configure SSH for password-less login to a remote machine.
 
-### Getting ready <a name="#getting-ready-7"></a>
+### Getting ready 
 
 Start up the SSHD service on all the cluster nodes (both slave nodes and
 the master node) with command:
@@ -1089,7 +1089,7 @@ similar to the following:
 We need to type in yes and then provide the password for user hduser to
 login to the host.
 
-### How to do it... <a name="#how-to-do-it..."></a>
+### How to do it... 
 
 Use the following recipe to configure password-less login:\
 Login to the master node from the cluster administrator machine with the
@@ -1129,7 +1129,7 @@ Test the configuration with command:
 If we can login without entering the password, then the configuration is
 successful!
 
-### How it works <a name="#how-it-works-8"></a>
+### How it works 
 
 When we run command `ssh-copy-id hdslave.host`, we actually append the
 content of the public key file on local machine into file
@@ -1138,14 +1138,14 @@ the public key string in file `~/.ssh/authorized_keys` on the remote
 machine and local private key will be used for the login authentication
 process.
 
-### There’s more... <a name="#theres-more...-2"></a>
+### There’s more... 
 
 Configuration of password-less login failure can be caused by many
 reasons, for example, the configuration of firewall (or iptables, to be
 more specific), SELinux and even the SSHD server itself. We will discuss
 methods to deal with these potential problems.
 
-#### Erroneous SSH settings <a name="#erroneous-ssh-settings"></a>
+#### Erroneous SSH settings 
 
 If the `/etc/ssh_config` file contains the following lines:
 
@@ -1174,7 +1174,7 @@ we can manually append the local machine’s public key to the
 Log out of the remote machine and login again, if problem persists, go
 to the next step.
 
-#### Erroneous iptables configuration <a name="#erroneous-iptables-configuration"></a>
+#### Erroneous iptables configuration 
 
 Check the status of iptables with command:
 
@@ -1187,7 +1187,7 @@ iptables by flushing all the existing rules with command:
 
 If problem persists, go to the next step.
 
-#### Erroneous SELinux configuration <a name="#erroneous-selinux-configuration"></a>
+#### Erroneous SELinux configuration 
 
 Security Enhanced Linux (SELinux) is a Linux feature that provides the
 mechanism for supporting access control security policies. SELinux that
@@ -1210,6 +1210,6 @@ Alternatively, we can disable SELinux by editing file
 `SELINUX=disabled`. Note that system reboot is required for the changes
 to take effect in this method.
 
-### See also <a name="#see-also-4"></a>
+### See also 
 
 - Creating kickstart file and boot media
