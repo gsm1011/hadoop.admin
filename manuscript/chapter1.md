@@ -135,9 +135,10 @@ Use the following steps to build a Hadoop based Big Data platform:
 ### How it works 
 
 The architecture of a Hadoop based Big Data system can be described in
-Figure [fig:hadoop.architecture](#fig:hadoop.architecture).
 
-![<a name="fig:hadoop.architecture"></a>Architecture of Hadoop based big data system](images/5163os_01_01.png) 
+Figure below.
+
+![Architecture of Hadoop based big data system](images/5163os_01_01.png) 
 
 Although Hadoop borrows its idea from Google’s MapReduce, it is more
 than MapReduce. A typical Hadoop based Big Data platform includes the
@@ -171,9 +172,9 @@ reduce tasks will run on the shuffled data and generate final (or
 intermediate, if multiple consecutive MapReduce jobs are pipelined)
 results. When a job finishes, final results will reside in multiple
 files, depending on the number of reducers used in the job. The anatomy
-of the job flow can be described in Figure [fig:mapred.job](#fig:mapred.job).
+of the job flow can be described in Figure below.
 
-![Anatomy of a MapReduce job<a name="fig:mapred.job"></a>](images/5163os_01_02.png)
+![Anatomy of a MapReduce job](images/5163os_01_02.png)
 
 ### There’s more 
 

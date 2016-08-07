@@ -29,10 +29,9 @@ tips on choosing a proper Hadoop distribution.
 In general, the release version number of a Hadoop distribution consists
 of three parts: the version number, the major revision number and the
 minor revision number. A Hadoop release version can be described in
-Figure [fig:hadoop.release].
+Figure below.
 
-![Structure of a Hadoop release version<span
-data-label="fig:hadoop.release"></span>](images/5163os_03_01.png)
+![Structure of a Hadoop release version](images/5163os_03_01.png)
 
 Sometimes, the revision number can have a fourth part, for example
 `0.20.203.0`, but this is relatively rare.
@@ -41,7 +40,7 @@ Sometimes, the revision number can have a fourth part, for example
 
 Table [tbl:compare.mrv1.mrv2] shows features of major Hadoop releases:
 
-<span>l|l|l|l|l</span> **Feature or Version** & **2.x.y** & **1.1.x** &
+ **Feature or Version** & **2.x.y** & **1.1.x** &
 **0.23.x** & **0.20.x**\
 Stable & & Yes & & Yes\
 MRv1 & & Yes & & Yes\
@@ -340,7 +339,7 @@ after it is created or changed with the source command.
 Table [s]hows configuration files for configuring a Hadoop cluster in
 pseudo-distributed mode:
 
-<span>ll</span> **File** & **Description**\
+ **File** & **Description**\
 hadoop-env.sh & Configures environment variable used by Hadoop.\
 core-site.xml & Configures parameters for the whole Hadoop cluster.\
 hdfs-site.xml & Configures parameters for HDFS and its clients.\
@@ -385,11 +384,11 @@ slaves & Configures a list of slave node hosts.\
 Hadoop provides a number of bash scripts for convenience of starting and
 stopping a cluster. Table [tbl:start.stop.scripts] shows these scripts.
 
-<span>p<span>.18</span>p<span>.73</span></span> **Script** &
+<span>pp</span> **Script** &
 **Description**\
 **start-dfs.sh** & Script to start HDFS daemons including NameNode,
 SecondaryNameNode and DataNode. A PID file will be created for each
-daemon process under default folder \$<span>hadoop.tmp.dir</span>. For
+daemon process under default folder \$. For
 example, if user hduser is used to run the script, file
 /hadoop/tmp/hadoop-hduser-namenode.pid will be created for the NameNode
 daemon process.\
@@ -912,16 +911,14 @@ through web user interface:
 Open URL `master:50030/jobtracker.jsp` with a web browser. The webpage
 will be similar to Figure [fig:jobtracker.webui].
 
-![Hadoop Jobtracker Web UI<span
-data-label="fig:jobtracker.webui"></span>](images/5163os_03_02.png)
+![Hadoop Jobtracker Web UI](images/5163os_03_02.png)
 
 The webpage shows that the Hadoop cluster contains 5 active slave nodes.
 
 Check the status each slave node by clicking the link, which lead us to
 a webpage similar to Figure [fig:active.trackers].
 
-![List of active TaskTrackers<span
-data-label="fig:active.trackers"></span>](images/5163os_03_03.png)
+![List of active TaskTrackers](images/5163os_03_03.png)
 
 From Figure [fig:active.trackers], we can easily check the status of the
 active TaskTrackers on the slave nodes. For example, we can see the
@@ -931,16 +928,14 @@ seconds etc.
 Check the status of slave DataNodes by opening URL master:50070. The
 webpage will be similar to Figure [fig:namenode.webui].
 
-![Hadoop HDFS NameNode Web UI<span
-data-label="fig:namenode.webui"></span>](images/5163os_03_04.png)
+![Hadoop HDFS NameNode Web UI](images/5163os_03_04.png)
 
 The webpage shows that the cluster is configured with 5 active nodes.
 
 By clicking the `Live Nodes` link we can see the details of
 each node as shown in Figure [fig:hdfs.datanodes].
 
-![List of HDFS live DataNodes<span
-data-label="fig:hdfs.datanodes"></span>](images/5163os_03_05.png)
+![List of HDFS live DataNodes](images/5163os_03_05.png)
 
 This webpage shows the status of each slave node including node
 capacity, percentage of usage and how many blocks are hosted in the node
@@ -965,8 +960,7 @@ how often the webpage should be refreshed.
 
 The job status webpage will be similar to Figure [fig:mapreduce.job].
 
-![Information about a MapReduce job from the Web UI<span
-data-label="fig:mapreduce.job"></span>](images/5163os_03_06.png)
+![Information about a MapReduce job from the Web UI](images/5163os_03_06.png)
 
 Figure [fig:mapreduce.job] tells us that the Hadoop cluster has been
 configured successfully!
@@ -976,8 +970,7 @@ usage by opening URL
 <http://master:50070/dfsnodelist.jsp?whatNodes=LIVE>. The webpage will
 be similar to Figure [fig:hdfs.storage].
 
-![Storage information of DataNodes from the Web UI<span
-data-label="fig:hdfs.storage"></span>](images/5163os_03_07.png)
+![Storage information of DataNodes from the Web UI](images/5163os_03_07.png)
 
 The webpage shows that a certain percentage of storage space has been
 used on each slave node.
@@ -1290,8 +1283,7 @@ suggest the stable version, for example, follow the link
 <http://mirror.quintex.com/apache/hbase/stable/> and can see the
 downloadable files as shown in Figure [fig:hbase.download].
 
-![Download a stable HBase release from a mirror site<span
-data-label="fig:hbase.download"></span>](images/5163os_03_08.png)
+![Download a stable HBase release from a mirror site](images/5163os_03_08.png)
 
 Click the file link hbase-0.94.5.tar.gz to download the file to the
 administrator machine. Then, copy the file to the FTP repository with

@@ -195,10 +195,9 @@ network design techniques, please refer to related books and online
 materials.
 
 In general, the network architecture of medium sized cluster can be
-described in Figure [fig:network.architecture].
+described in Figure below.
 
-![Network Architecture of Hadoop Cluster<span
-data-label="fig:network.architecture"></span>](images/5163os_02_01.png)
+![Network Architecture of Hadoop Cluster](images/5163os_02_01.png)
 
 In this figure, we assume there is a Hadoop cluster administrator
 machine and the clients connect to the cluster through a gateway,
@@ -269,13 +268,12 @@ After selecting the nearest mirror, we can use either HTTP or FTP to
 download the image. Let’s choose FTP as the download method by clicking
 the link in the corresponding line of the selected mirror. Then choose
 `6.3/, isos/, x86_64/` consecutively. In this directory as shown in
-Figure [fig:centos.mirror], we choose to download two ISO image files.
+Figure below, we choose to download two ISO image files.
 Image file `CentOS-6.3-x86_64-minimal.iso` contains all the necessary
 installation packages. And image file `CentOS-6.3-x86_64-netinstall.iso`
 contains PXE network booting files used for booting over the network.
 
-![Directory Listing of CentOS mirror site<span
-data-label="fig:centos.mirror"></span>](images/5163os_02_02.png)
+![Directory Listing of CentOS mirror site](images/5163os_02_02.png)
 
 If you are not sure about the architecture of the cluster machines,
 please refer to the product hardware menu.
@@ -967,10 +965,9 @@ Select ’Java SE Development Kit 7 Downloads’, which is Java 1.7.x
 (Hadoop can work with Java with version $\ge$ 1.6.0). Next, click the
 “Accept License Agreement” radio button and choose
 jdk-7u11-linux-x64.rpm for a 64bit Linux machine. The operations are
-shown in Figure [fig:oracle.jdk].
+shown in Figure below.
 
-![Downloading Oracle JDK<span
-data-label="fig:oracle.jdk"></span>](images/5163os_02_04.png)
+![Downloading Oracle JDK](images/5163os_02_04.png)
 
 ### How to do it 
 
