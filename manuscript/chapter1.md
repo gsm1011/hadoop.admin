@@ -134,11 +134,11 @@ Use the following steps to build a Hadoop based Big Data platform:
 
 ### How it works 
 
-The architecture of a Hadoop based Big Data system can be described in
-
-Figure below.
+The hadoop architecture [figure](#fig:hadoop-architecture) shows the
+components of a hadoop based big data ecosystem.
 
 ![Architecture of Hadoop based big data system](images/5163os_01_01.png) 
+<a name="fig:hadoop-architecture"></a>
 
 Although Hadoop borrows its idea from Google’s MapReduce, it is more
 than MapReduce. A typical Hadoop based Big Data platform includes the
