@@ -379,7 +379,7 @@ oriented companies include: Cloudera, Horntonworks, MapR and Hadapt etc.
     [HaLoop](http://code.google.com/p/haloop/), which is a modified
     version of Hadoop for iterative data processing.
 
-Warning!\
+**Warning!**
 Phoenix and HaLoop do not have an active community and they are not
 recommended for production deployment.
 
@@ -390,14 +390,14 @@ designed to deal with the problem. Two famous such systems that do not
 follow the map-reduce route are Message Passing Interface (MPI) and High
 Performance Cluster Computing (HPCC).
 
-<span>MPI</span> is a library specification for message passing.
+`MPI` is a library specification for message passing.
 Different from Hadoop, MPI was designed for high performance on both
 massively parallel machines and on workstation clusters. In addition,
 MPI lacks fault tolerance and performance will be bounded when data
 becomes large. More documentation about MPI can be found at
 [MPI](http://www.mpi-forum.org/).
 
-<span>HPCC</span> is an open source Big Data platform developed by HPCC
+`HPCC` is an open source Big Data platform developed by HPCC
 systems, which was acquired by LexisNexis Risk Solutions. It achieves
 high performance by clustering commodity hardware. The system includes
 configurations for both parallel batch processing and high performance
