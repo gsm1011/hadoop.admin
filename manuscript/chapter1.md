@@ -138,7 +138,7 @@ The hadoop architecture [figure](#fig:hadoop-architecture) shows the
 components of a hadoop based big data ecosystem.
 
 ![Architecture of Hadoop based big data system](images/5163os_01_01.png) 
-<a name="fig:hadoop-architecture"></a>
+![Hadoop architecture][fig:hadoop-architecture]
 
 Although Hadoop borrows its idea from Google’s MapReduce, it is more
 than MapReduce. A typical Hadoop based Big Data platform includes the
