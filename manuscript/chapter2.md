@@ -1,3 +1,4 @@
+{id="chapter-2"}
 # Preparing for Hadoop Installation 
 
 In this chapter, we will cover:
@@ -100,19 +101,28 @@ need to choose high end CPUs and hard drives. If we have a large number
 of potential Hadoop users, we may need to upgrade the hardware
 configuration for both the master node and the slave nodes.
 
-Empirically, Table [tbl:cluster.hardware] shows the hardware
-configurations for a small to medium sized Hadoop cluster.
+Empirically, the [hardware recommendation table](#tbl:cluster.hardware)
+shows the hardware configurations for a small to medium sized Hadoop
+cluster.
 
-<span>lll</span> **Node Type** & **Node Components** & **Recommended
-Specification**\
-Master Node & CPU & $\ge$ 2 Quad Core, 2.0GHz\
-& RAM (Main Memory) & $\ge$ 16GB\
-& Hard Drive & $\ge$ 2 x 1TB SATA II 7200 RPM HDD or SSD[^1]\
-& Network Card & $\ge$ 1Gbps Ethernet\
-Slave Node & CPU & $\ge$ 2 Quad Core\
-& RAM (Main Memory) & $\ge$ 16GB\
-& Hard Drive & $\ge$ 4 x 1TB HDD\
-& Network Card & $\ge$ 1Gbps Ethernet\
+{id="tbl:cluster.hardware"}
+|  Node Type  | Node Components | Recommended Specification        |
+|-------------|:----------------|:---------------------------------|
+| Master Node |       CPU       | {$$}\ge{/$$} 2 Quad Core, 2.0GHz |
+|-------------|-----------------|----------------------------------|
+|             |       RAM       | {$$}\ge{/$$} 16GB                |
+|-------------|-----------------|----------------------------------|
+|             |    Hard Drive   | {$$}\ge{/$$} 2 x 1TB SATA 7200 RPM HDD or SSD[^1]|
+|-------------|-----------------|----------------------------------|
+|             |  Network Card   | {$$}\ge{/$$} 1Gbps Ethernet      |
+|-------------|-----------------|----------------------------------|
+|  Slave Node |       CPU       | {$$}\ge{/$$} 2 Quad Core         |
+|-------------|-----------------|----------------------------------|
+|             |       RAM       | {$$}\ge{/$$} 16GB                |
+|-------------|-----------------|----------------------------------|
+|             |    Hard Drive   | {$$}\ge{/$$} 4 x 1TB HDD         |
+|-------------|-----------------|----------------------------------|
+|             |  Network Card   | {$$}\ge{/$$} 1Gbps Ethernet      |
 
 ### How it works 
 
@@ -194,9 +204,10 @@ network architecture design method. If you want to learn more advanced
 network design techniques, please refer to related books and online
 materials.
 
-In general, the network architecture of medium sized cluster can be
-described in Figure below.
+In general, the [network architecture figure](#fig:network.arch) of medium
+sized cluster describes how the hadoop servers should be configured. 
 
+{id="fig:network.arch"}
 ![Network Architecture of Hadoop Cluster](images/5163os_02_01.png)
 
 In this figure, we assume there is a Hadoop cluster administrator
@@ -273,6 +284,7 @@ Image file `CentOS-6.3-x86_64-minimal.iso` contains all the necessary
 installation packages. And image file `CentOS-6.3-x86_64-netinstall.iso`
 contains PXE network booting files used for booting over the network.
 
+{id="fig:dir.mirror"}
 ![Directory Listing of CentOS mirror site](images/5163os_02_02.png)
 
 If you are not sure about the architecture of the cluster machines,
@@ -288,8 +300,7 @@ We can also use the following wget command to download the image file:
 
 Mount the image file with command:
 
-	$ sudo mount $~/isoimages/ CentOS-6.3-x86_64-minimal.iso \
-	~/$mnt
+	$ sudo mount $~/isoimages/ CentOS-6.3-x86_64-minimal.iso ~/$mnt
 
 Copy all the files to the `~/repo` directory for FTP hosting with
 command:
@@ -298,7 +309,7 @@ command:
 
 Un-mount the ISO image with command:
 
-    $ sudo umount $~/$mnt
+    $ sudo umount /mnt
 
 The directory tree of the minimal image is similar to the following:
 
@@ -632,7 +643,7 @@ bootable ISO image into the USB flash drive with the following command
 
     $ dd if=~/CentOS6.3-x86_64-boot.iso of=/dev/sdb
 
-Warning!\
+**Warning!**
 Make sure you have a backup of the data on the USB flash drive, all the
 information will be wiped out when we write the ISO image file into the
 drive.
@@ -641,7 +652,7 @@ drive.
 
 A kickstart file specifies a number of installation options such as
 installation media, networking configuration, firewall configuration
-etc. Lines that start with ’\#’ are treated as comments.
+etc. Lines that start with `\#` are treated as comments.
 
 The file contains a %packages section, which specifies the packages to
 be installed. In this section, both specific packages and package groups
@@ -649,12 +660,12 @@ can be specified to install. For example, in our kickstart file, we
 configure to install the Linux base package with @Base. In addition, if
 a package is not intended to be installed, we can add a dash symbol
 before the package. For example, we don’t want to install OpenJDK, we
-can specify this with *-java*.
+can specify this with `-java`.
 
 For a Hadoop cluster, basic packages are enough, so we have ignored the
 unnecessary packages in the kickstart file.
 
-The %post section allows us to specify configurations and commands after
+The `%post` section allows us to specify configurations and commands after
 installation. This is very helpful when we need to do some
 administrative configurations after installing the operating system. For
 example, we might want to create a regular user for Hadoop with
@@ -732,14 +743,10 @@ without any issues.
 Use the following recipe to install Linux on a machine:
 
 1.  Plug in the USB flash drive boot media and power on the computer.
-
-2.  Press F9 to select the boot device.
-
+2.  Press `F9` to select the boot device.
     Different BIOS versions may have different shortcut keys. If F9 does
     not work, please refer to related product manual.
-
 3.  From the list of boot devices, choose USB or ’Removable Devices’.
-
 4.  When the installation starts, you can remove the boot media and
     start the installation on the next machine.
 
@@ -749,15 +756,10 @@ Linux system was designed to be flexible. And its booting process is
 composed of the following stages:
 
 - Power on physical machine
-
 - Choose boot media
-
 - Stage 1 boot loader
-
 - Stage 2 boot loader
-
 - Load the kernel image
-
 - System initialization
 
 After we power on the machine and choose USB as the boot media, the boot
@@ -774,7 +776,7 @@ One advantage of separating the boot media from the installation package
 repository is that the installation on multiple machines can be
 paralleled to reduce the total installation time.
 
-### There’s more... 
+### There's more... 
 
 With the help of a kickstart file, we can automate the installation of
 Linux on a number of machines. One disadvantage of this method is that
@@ -843,7 +845,7 @@ Install TFTP server with command:
 
     $ sudo yum install tftpd
 
-Open file /etc/xinetd.d/tftpd with your favorite text editor and edit
+Open file `/etc/xinetd.d/tftpd` with your favorite text editor and edit
 content to be similar to the following:
 
     service tftp {
@@ -887,8 +889,7 @@ Start installation process by powering on the cluster machines.
 
 ## Installing Java and other tools
 
-Hadoop was build using Java, so Java is required before installing
-Hadoop.
+Hadoop was build using Java, so Java is required before installingHadoop.
 
 ### Getting ready 
 
@@ -903,7 +904,7 @@ Check if OpenJDK has been installed in the system with command:
 
 If no output is given, it means OpenJDK has not been installed.
 
-If Java has been installed in the system, we can check it’s version
+If Java has been installed in the system, we can check it's version
 with:
 
     $ java -version
@@ -916,7 +917,7 @@ following:
     OpenJDK 64-Bit Server VM (build 23.2-b09, mixed mode)
 
 After confirming that we are using OpenJDK, we need to remove the
-package and reinstall the version downloaded from Oracle’s official
+package and reinstall the version downloaded from Oracle's official
 website.
 
 To remove OpenJDK, we can use the following command:
@@ -930,7 +931,7 @@ Warning!\
 This command can be destructive, especially, when some dependent
 software packages have been installed. In such a case, it will prompt
 you to confirm the removal of OpenJDK together with the depending
-software packages. If you don’t want all the packages to be removed,
+software packages. If you don't want all the packages to be removed,
 answer NO to the question.
 
 Alternatively, we can use the following rpm command to remove the
@@ -961,8 +962,8 @@ be:
 
 To download Java from Oracle, go to the [official
 site](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
-Select ’Java SE Development Kit 7 Downloads’, which is Java 1.7.x
-(Hadoop can work with Java with version $\ge$ 1.6.0). Next, click the
+Select 'Java SE Development Kit 7 Downloads', which is Java 1.7.x
+(Hadoop can work with Java with version {$$}\ge{/$$} 1.6.0). Next, click the
 “Accept License Agreement” radio button and choose
 jdk-7u11-linux-x64.rpm for a 64bit Linux machine. The operations are
 shown in Figure below.
@@ -1043,7 +1044,7 @@ Similarly, we can use the following command to scan IP segment
 The command will give us service information of each host under the IP
 segment from 10.0.0.1 to 10.0.0.255.
 
-### There’s more 
+### There's more 
 
 Under Linux, we can use the man command to get the usage of a command.
 For example, to get usage of wget, we can use <span>***m***an
@@ -1135,7 +1136,7 @@ the public key string in file `~/.ssh/authorized_keys` on the remote
 machine and local private key will be used for the login authentication
 process.
 
-### There’s more... 
+### There's more... 
 
 Configuration of password-less login failure can be caused by many
 reasons, for example, the configuration of firewall (or iptables, to be
@@ -1161,8 +1162,8 @@ remote machine with command:
     $ sudo service sshd restart
 
 Manually check the `~/.ssh/authorized_hosts` file on the remote host and
-see if the local machine’s public key string has been appended. If not,
-we can manually append the local machine’s public key to the
+see if the local machine's public key string has been appended. If not,
+we can manually append the local machine's public key to the
 `~/.ssh/authorized_hosts` on the remote machine with commands:
 
 	$ scp ~/.ssh/id_rsa.pub hduser@hdslave.host:~/
