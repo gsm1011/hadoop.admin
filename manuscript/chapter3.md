@@ -28,9 +28,10 @@ tips on choosing a proper Hadoop distribution.
 
 In general, the release version number of a Hadoop distribution consists
 of three parts: the version number, the major revision number and the
-minor revision number. A Hadoop release version can be described in
-Figure below.
+minor revision number. The following [figure](#fig:release.version) shows
+the components of a Hadoop release version. 
 
+{id="fig:release.version"}
 ![Structure of a Hadoop release version](images/5163os_03_01.png)
 
 Sometimes, the revision number can have a fourth part, for example
@@ -38,32 +39,41 @@ Sometimes, the revision number can have a fourth part, for example
 
 ### How to do it... 
 
-Table [tbl:compare.mrv1.mrv2] shows features of major Hadoop releases:
+The table [below](tbl:compare.mrv1.mrv2) shows features of major Hadoop
+releases: 
 
- **Feature or Version** & **2.x.y** & **1.1.x** &
-**0.23.x** & **0.20.x**\
-Stable & & Yes & & Yes\
-MRv1 & & Yes & & Yes\
-MRv2 & Yes & & Yes &\
-Kerberos Security & Yes & Yes & Yes &\
-HDFS federation & Yes & & Yes &\
-NameNode HA & Yes & & Yes &\
-HDFS append & Yes & Yes & Yes &\
-HDFS symbolic Links & Yes & Yes & Yes &\
+{id="tbl:compare.mrv1.mrv2"}
+| Feature or Version | 2.x.y  | 1.1.x | 0.23.x | 0.20.x|
+|--------------------|:-------|:------|:-------|:------|
+|       Stable       |        |  Yes  |        |   Yes |
+|--------------------|--------|-------|--------|-------|
+|        MRv1        |        |  Yes  |        |  Yes  |
+|--------------------|--------|-------|--------|-------|
+| MRv2               |   Yes  |       |   Yes  |       |
+|--------------------|--------|-------|--------|-------|
+| Kerberos Security  |   Yes  |  Yes  |   Yes  |       |
+|--------------------|--------|-------|--------|-------|
+| HDFS federation    |   Yes  |       |   Yes  |       |
+|--------------------|--------|-------|--------|-------|
+| NameNode HA        |   Yes  |       |   Yes  |       |
+|--------------------|--------|-------|--------|-------|
+| HDFS append        |   Yes  |  Yes  |   Yes  |       |
+|--------------------|--------|-------|--------|-------|
+| HDFS symbolic Links|   Yes  |  Yes  |   Yes  |       |
 
 The table tells us that Hadoop is evolving rapidly, with new features
 such as security, HDFS federation and NameNode HA being added over time.
 Another lesson we can learn from the table is that the most recent
-stable release version 1.1.x does not contain all the features. And
-although release version 2.0.x is the most feature rich Hadoop release,
+stable release version `1.1.x` does not contain all the features. And
+although release version `2.0.x` is the most feature rich Hadoop release,
 it is still in alpha state requiring further improvements.
 
 So, which version should I choose for my deployment? Generally, we need
 to consider the following two properties: stability and features. For a
 production deployment, we definitely want to deploy a stable release and
 we also want to use the release that contains all the required features.
-Clearly, our current optimal and only choice is version 1.1.x, or
-specifically version 1.1.2 as of this book writing.
+Clearly, our current optimal and only choice is version `1.1.x`, or
+specifically version `1.1.2` as of this book writing.
 
 ### See also 
 
@@ -97,8 +107,8 @@ been properly installed, we can use the following command:
     OpenJDK Runtime Environment (fedora-2.3.4.fc17-x86_64)
     OpenJDK 64-Bit Server VM (build 23.2-b09, mixed mode)
 
-If you have installed OpenJDK, please refer to recipe *Installing Java
-and other tools* of Chapter 2, Preparing for Hadoop installation.
+If you have installed OpenJDK, please refer to recipe `Installing Java
+and other tools` of Chapter 2, Preparing for Hadoop installation.
 
 Download the desired Hadoop distribution. In this book, we assume to use
 Hadoop release 1.1.2.
@@ -141,9 +151,9 @@ folders:
     build.xml    hadoop-core-1.1.2.jar   ivy.xml                       webapps
 
 The folder contains several jar files and folders such as bin, sbin and
-conf. Jar files hadoop-core-1.1.2.jar and hadoop-tools-1.1.2.jar contain
-the core classes of Hadoop. File hadoop-examples-1.1.2.jar and
-hadoop-test-1.1.2.jar contains sample MapReduce jobs.
+conf. Jar files `hadoop-core-1.1.2.jar` and `hadoop-tools-1.1.2.jar` contain
+the core classes of Hadoop. File `hadoop-examples-1.1.2.jar` and
+`hadoop-test-1.1.2.jar` contains sample MapReduce jobs.
 
 Folder conf contains cluster configuration files, folder bin contains
 commands and scripts to start and stop a cluster and folder sbin
@@ -153,7 +163,7 @@ Make a soft link for Hadoop root directory.
 
 	$ sudo ln -s hadoop-1.1.2 hadoop
 
-Use your favorite text editor to open file  /.bashrc and add the
+Use your favorite text editor to open file `~/.bashrc` and add the
 following contents:
 
     export JAVA_HOME=/usr/java/latest
@@ -161,8 +171,9 @@ following contents:
     export PATH=$PATH:$JAVA_HOME/bin:HADOOP_HOME/bin
 
 We are assuming Oracle Java has been installed under directory
-/usr/java/latest.\
-Source file  /.bashrc with command:
+`/usr/java/latest`. 
+
+Source file `~/.bashrc` with command:
 
 	$ . ~/.bashrc
 
@@ -276,7 +287,7 @@ We will get output similar to the following:
     localhost: starting secondarynamenode, logging to /usr/local/hadoop/libexec/../logs/hadoop-hduser-secondarynamenode-localhost.out
 
 The output shows that the following HDFS daemons have been started:
-*NameNode*, *DataNode* and *SecondaryNameNode*.
+**NameNode**, **DataNode** and **SecondaryNameNode**.
 
 Start the MapReduce daemons with command:
 
@@ -336,22 +347,29 @@ so that new configurations will be available after opening a new bash
 process. Alternatively, we can manually source a configuration file
 after it is created or changed with the source command.
 
-Table [s]hows configuration files for configuring a Hadoop cluster in
-pseudo-distributed mode:
+The [following table](#tbl:hadoop.conf.files) shows configuration files for
+configuring a Hadoop cluster in pseudo-distributed mode:
 
- **File** & **Description**\
-hadoop-env.sh & Configures environment variable used by Hadoop.\
-core-site.xml & Configures parameters for the whole Hadoop cluster.\
-hdfs-site.xml & Configures parameters for HDFS and its clients.\
-mapred-site.xml & Configures parameters for MapReduce and its clients.\
-masters & Configures host machines for SecondaryNameNode.\
-slaves & Configures a list of slave node hosts.\
+{id="tbl:hadoop.conf.files"}
+|   **File**      |     **Description**                                 |
+|-----------------|:----------------------------------------------------|
+| hadoop-env.sh   | Configures environment variable used by Hadoop.     |
+|-----------------|-----------------------------------------------------|
+| core-site.xml   | Configures parameters for the whole Hadoop cluster. |
+|-----------------|-----------------------------------------------------|
+| hdfs-site.xml   | Configures parameters for HDFS and its clients.     |
+|-----------------|-----------------------------------------------------|
+| mapred-site.xml | Configures parameters for MapReduce and its clients.|
+|-----------------|-----------------------------------------------------|
+| masters         | Configures host machines for SecondaryNameNode.     |
+|-----------------|-----------------------------------------------------|
+| slaves          | Configures a list of slave node hosts.              |
 
-- *hadoop-env.sh* specifies environment variables for running Hadoop.
+- **hadoop-env.sh** specifies environment variables for running Hadoop.
     For example, the home directory of Java installation `JAVA_HOME` and
     those related to Hadoop runtime options and cluster logging etc.
 
-- *core-site.xml* specifies the URI of HDFS NameNode and MapReduce
+- **core-site.xml** specifies the URI of HDFS NameNode and MapReduce
     JobTracker. Value <hdfs://localhost:54310> of the fs.default.name
     property specifies the location of the default file system as HDFS
     on localhost using port 54310. We can specify other file system
@@ -360,19 +378,19 @@ slaves & Configures a list of slave node hosts.\
     localhost:54311 of the mapred.job.tracker property specifies the URI
     of the cluster’s JobTracker.
 
-- *hdfs-site.xml* specifies the HDFS related configurations. For
+- **hdfs-site.xml** specifies the HDFS related configurations. For
     example, dfs.replication configures the replication factor of data
     blocks on HDFS. For example, the value 2 specifies that each data
     block will be replicated twice on the file system. Property
     dfs.data.dir specifies the location of the data directory on the
     host Linux file system.
 
-- *mapred-site.xml* specifies configurations for the MapReduce
+- **mapred-site.xml** specifies configurations for the MapReduce
     framework. For example, we can configure the total number of jvm
     tasks, the number of map slots and reduce slots on a slave node and
     the amount of memory for each task etc.
 
-- *masters* file specifies hosts that will run a SecondaryNameNode
+- **masters** file specifies hosts that will run a SecondaryNameNode
     daemon. In our single node configuration, we put localhost in this
     file. And a SecondaryNameNode daemon will be started on localhost,
     which has been verified with the jps command.
@@ -384,25 +402,29 @@ slaves & Configures a list of slave node hosts.\
 Hadoop provides a number of bash scripts for convenience of starting and
 stopping a cluster. Table [tbl:start.stop.scripts] shows these scripts.
 
-<span>pp</span> **Script** &
-**Description**\
-**start-dfs.sh** & Script to start HDFS daemons including NameNode,
+| **Script**       |     **Description**             |
+|------------------|:--------------------------------|
+| **start-dfs.sh** | Script to start HDFS daemons including NameNode,
 SecondaryNameNode and DataNode. A PID file will be created for each
-daemon process under default folder \$. For
-example, if user hduser is used to run the script, file
-/hadoop/tmp/hadoop-hduser-namenode.pid will be created for the NameNode
-daemon process.\
-**stop-dfs.sh** & Script to stop HDFS daemons. This command will try to
+daemon process under default folder \$. For example, if user hduser is used
+to run the script, file /hadoop/tmp/hadoop-hduser-namenode.pid will be
+created for the NameNode daemon process. |
+|------------------|---------------------|
+| **stop-dfs.sh** | Script to stop HDFS daemons. This command will try to
 find the PIDs of the HDFS daemons and kill the processes with the PIDs.
-So, if the PID file is missing, this script will not work.\
-**start-mapred.sh** & Script to start MapReduce daemons, including the
+So, if the PID file is missing, this script will not work.|
+|------------------|---------------------|
+| **start-mapred.sh** | Script to start MapReduce daemons, including the
 JobTracker and TaskTrackers. Similar to start-hdfs.sh script, PIDs files
-will be created for each daemon process.\
-**stop-mapred.sh** & Script to stop Hadoop MapReduce daemons. Similar to
+will be created for each daemon process.|
+|------------------|---------------------|
+| **stop-mapred.sh** | Script to stop Hadoop MapReduce daemons. Similar to
 stop-dfs.sh script, the script will try to find the PID files and then
-kill those processes.\
-**start-all.sh** & Equals to start-dfs.sh plus start-mapred.sh.\
-**stop-all.sh** & Equals to stop-dfs.sh plus stop-mapred.sh.\
+kill those processes.|
+|------------------|---------------------|
+| **start-all.sh** | Equals to start-dfs.sh plus start-mapred.sh.|
+|------------------|---------------------|
+| **stop-all.sh** | Equals to stop-dfs.sh plus stop-mapred.sh.|
 
 ### There’s more... 
 
@@ -568,7 +590,8 @@ Configure file `$HADOOP_HOME/conf/masters` with command:
 
 	$ sudo echo "master" > $HADOOP_HOME/conf/masters
 
-This will configure the master node to run SecondaryNameNode.\
+This will configure the master node to run SecondaryNameNode.
+
 Open file `$HADOOP_HOME/conf/slaves` with your favorite text editor and
 add all the slave node hostnames into the file similar to the following:
 
