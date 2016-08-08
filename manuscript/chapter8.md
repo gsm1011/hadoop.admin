@@ -48,18 +48,18 @@ We can use the following steps to register with AWS:
 
 Use a web browser to open the following link: <http://aws.amazon.com/>.
 
-Click the ’**Sign Up**’ button on the upper right corner of the window.
+Click the '**Sign Up**' button on the upper right corner of the window.
 
 You will be directed to a webpage as shown in Figure [fig:aws.signin].
 
 ![Sign in or Create and AWS Account<span
 data-label="fig:aws.signin"></span>](images/5163os_08_01.png)
 
-Fill in the email address in the text field with label ’**My e-mail
-address is**:’ and select the ’**I am a new user**’ radio button as
+Fill in the email address in the text field with label '**My e-mail
+address is**:' and select the '**I am a new user**' radio button as
 shown in the screenshot.
 
-Click the ’**Sign in using our secure server**’ button at the bottom as
+Click the '**Sign in using our secure server**' button at the bottom as
 shown in the screenshot.
 
 Fill the login credentials form, which includes name, email and password
@@ -68,26 +68,26 @@ as shown in Figure [fig:login.credentials].
 ![The Login Credentials Form<span
 data-label="fig:login.credentials"></span>](images/5163os_08_02.png)
 
-Click the ’**Continue**’ button at the bottom as shown in the
+Click the '**Continue**' button at the bottom as shown in the
 screenshot.
 
-Fill in the ’**Contact Information**’, ’**Security Check**’ and ’**AWS
-Customer Agreement**’ form as shown in Figure [fig:aws.personal.info].
+Fill in the '**Contact Information**', '**Security Check**' and '**AWS
+Customer Agreement**' form as shown in Figure [fig:aws.personal.info].
 
 ![AWS Signin Personal Information Page<span
 data-label="fig:aws.personal.info"></span>](images/5163os_08_03.png)
 
-Click the ’**Create Account and Continue**’ button at the bottom as
+Click the '**Create Account and Continue**' button at the bottom as
 shown in the screenshot.
 
 So far, an AWS account has been created. Now we can login to AWS with
-the newly created account by using the ’**returning user**’ option as
+the newly created account by using the '**returning user**' option as
 shown in Figure [fig:aws.signin.return].
 
 ![AWS signin with Returning User<span
 data-label="fig:aws.signin.return"></span>](images/5163os_08_04.png)
 
-By clicking the ’**Sign in using our secure server**’ button on the
+By clicking the '**Sign in using our secure server**' button on the
 bottom of the window, we will be able to login to the AWS management
 console page with EC2 and S3 service available as shown in Figure
 [fig:aws.management.console].
@@ -132,19 +132,19 @@ Use the following recipe to manage AWS security credentials:
 
 Open a web browser and go to URL [aws.amazon.com](aws.amazon.com).
 
-Click the ’**My Account / Console**’ dropdown button on the upper left
+Click the '**My Account / Console**' dropdown button on the upper left
 of the window as shown in Figure [fig:secu.select].
 
 ![Choose the Security Credentials button<span
 data-label="fig:secu.select"></span>](images/5163os_08_07.png)
 
-Click the ’**Security Credentials**’ in the dropdown list as shown in
+Click the '**Security Credentials**' in the dropdown list as shown in
 the previous screenshot.
 
 If you have logged in to AWS previously, you will be able to visit the
 security credentials management page. Otherwise, a login window will
 appear. You need to type in the user name and password and login as a
-’**returning user**’.
+'**returning user**'.
 
 Currently, Amazon AWS has a few types of credentials as shown in Figure
 [fig:aws.credentials.types].
@@ -158,7 +158,7 @@ as shown in Figure [fig:aws.access.credentials].
 ![AWS Access Credentials<span
 data-label="fig:aws.access.credentials"></span>](images/5163os_08_09.png)
 
-By clicking the ’**Make Inactive**’ link on the status column of the
+By clicking the '**Make Inactive**' link on the status column of the
 access keys table, we can make the access keys inactive. Inactive access
 keys can be made active again and can be deleted from the list.
 
@@ -168,7 +168,7 @@ data-label="fig:aws.x509certificates"></span>](images/5163os_08_11.png)
 Similarly, we can make a X.509 certificate inactive. Inactive
 certificates can be made active again or deleted from the list.
 
-By clicking the ’**Create a new Certificate**’ link we will be able to
+By clicking the '**Create a new Certificate**' link we will be able to
 create a new certificate as shown in Figure [fig:aws.create.x509].
 
 ![Create X.509 Certificates<span
@@ -184,7 +184,7 @@ shown in Figure [fig:aws.keypair.management].
 ![AWS Managing Key Pairs<span
 data-label="fig:aws.keypair.management"></span>](images/5163os_08_14.png)
 
-New key pairs can be created by clicking the ’**Create Key Pair**’
+New key pairs can be created by clicking the '**Create Key Pair**'
 Button on the top of the window. A pop up window will be used to type in
 the name of the key pair. And the newly created key pair will be
 downloaded to local machine. Use the following command to copy the
@@ -515,7 +515,7 @@ Configure password-less login with commands:
 	$ sudo cp ~/.ssh/id_* /mnt/centos/root/.ssh
 
 When you are prompted to enter the paraphrase, leave it empty by
-pressing the ’**Enter**’ key.
+pressing the '**Enter**' key.
 
 Copy the public key to the `authorized_keys` file with command:
 
@@ -612,7 +612,7 @@ The account number is on the upper left of the window as shown in Figure
 data-label="fig:aws.account.number"></span>](images/5163os_08_16.png)
 
 The command will ask for the architecture of the image, then it will
-bundle the image with user’s security credentials and split the bundled
+bundle the image with user's security credentials and split the bundled
 image file into smaller files.
 
 The output message will be similar to the following:
@@ -649,7 +649,7 @@ shown in Figure [fig:aws.s3.bucket.region].
 ![Choose Region for the Bucket<span
 data-label="fig:aws.s3.bucket.region"></span>](images/5163os_08_18.png)
 
-Click the ’Create’ button, the bucket will be successfully created as
+Click the 'Create' button, the bucket will be successfully created as
 shown in Figure [fig:aws.s3.buckets].
 
 ![AWS S3 Buckets<span
@@ -813,7 +813,7 @@ In this command, *-i* specifies the key pair to use for login and
 `ec2-54-224-240-54.compute-1.amazonaws.com` is the public domain name of
 the EC2 instance.
 
-### There’s more... 
+### There's more... 
 
 As we mentioned previously, there are other methods to create AMIs. One
 method is to create an AMI from existing AMI. Another method is to
@@ -850,7 +850,7 @@ Configure password-less login with commands:
 	$ ssh-keygen
 
 You will be prompted to enter the paraphrase, leave it empty by pressing
-the ’Enter’ key.
+the 'Enter' key.
 
 	$ ssh-copy-id localhost
 
@@ -983,20 +983,20 @@ AMIs with conditions similar to Figure [fig:aws.ec2.ami.filter].
 data-label="fig:aws.ec2.ami.filter"></span>](images/5163os_08_29.png)
 
 Start an instance by right clicking on one of the AMIs and then click
-’Launch’ as shown in Figure [fig:aws.launch.instance].
+'Launch' as shown in Figure [fig:aws.launch.instance].
 
 ![Launching EC2 Instance<span
 data-label="fig:aws.launch.instance"></span>](images/5163os_08_30.png)
 
 When the instance is running, login to the instances, make changes
 according to your requirements. Then, from the web management console,
-right click on the running instance and then select ’Create Image (EBS
-AMI)’ as shown in Figure [fig:aws.create.ebsami].
+right click on the running instance and then select 'Create Image (EBS
+AMI)' as shown in Figure [fig:aws.create.ebsami].
 
 ![Create EBS AMI from Running Instance<span
 data-label="fig:aws.create.ebsami"></span>](images/5163os_08_31.png)
 
-Go to the AMIs tab of the AWS web console, and select ’Owned By Me’, we
+Go to the AMIs tab of the AWS web console, and select 'Owned By Me', we
 will see that the EBS AMI is being created as shown in Figure
 [fig:aws.owned.ami].
 
@@ -1191,7 +1191,7 @@ Start the cluster with command:
 When the cluster is running, we can start to submit jobs to the cluster
 from the master node.
 
-### There’s more... 
+### There's more... 
 
 An alternative method of running a MapReduce with the amazon cloud is to
 use Amazon Elastic MapReduce (EMR). Amazon EMR provides an elastic
@@ -1231,22 +1231,22 @@ can also use the following commands to finish the above steps:
 
 Open URL: <https://console.aws.amazon.com/elasticmapreduce>.
 
-Click the ’*Create New Job Flow*’ button as shown in Figure
+Click the '*Create New Job Flow*' button as shown in Figure
 [fig:aws.elasticmapred.createflow].
 
 ![Create New Elastic MapReduce Job Flow<span
 data-label="fig:aws.elasticmapred.createflow"></span>](images/5163os_08_23.png)
 
-Next, enter the ’Job Flow Name’, select the ’Hadoop Version’ and select
+Next, enter the 'Job Flow Name', select the 'Hadoop Version' and select
 the job flow type as shown in Figure [fig:aws.elasticmapred.config].
 
 ![Configure Elastic MapReduce Job Flow<span
 data-label="fig:aws.elasticmapred.config"></span>](images/5163os_08_24.png)
 
-To test a simple job flow, you can choose ’Run a sample application’
+To test a simple job flow, you can choose 'Run a sample application'
 instead.
 
-Click ’Continue’ button at the bottom, the next window asks for the
+Click 'Continue' button at the bottom, the next window asks for the
 location of the jar file and the parameters for running the Hadoop
 MapReduce job as shown in Figure [fig:aws.elasticmapred.specify.param].
 
@@ -1258,7 +1258,7 @@ arguments to run a job. The specifications should be similar to option
 specifications from the command line with the only difference that all
 the files should be specified using the S3 scheme.
 
-Click ’Continue’, we need to configure EC2 instances. By default, there
+Click 'Continue', we need to configure EC2 instances. By default, there
 will be one m1.small instance as the master node and two m1.small
 instances as the slave nodes. You can configure the instance type and
 the number of instances based on the job properties (for example, big or
@@ -1268,16 +1268,16 @@ This step is shown in Figure [fig:aws.elasticmapred.config.instance].
 ![Configure EC2 Instances<span
 data-label="fig:aws.elasticmapred.config.instance"></span>](images/5163os_08_26.png)
 
-Click the ’Continue’ button and we will go to the ’Advanced options’
+Click the 'Continue' button and we will go to the 'Advanced options'
 window. This window asks for instance boot options such as security key
 pairs etc. In this step, we can choose the key pair and use all others
-as default and click ’Continue’.
+as default and click 'Continue'.
 
-We will go to the ’Bootstrap actions’ window. We can simply use default
-in this step and click ’Continue’.
+We will go to the 'Bootstrap actions' window. We can simply use default
+in this step and click 'Continue'.
 
-The ’Review’ window shows the options we have configured, if there is no
-problem, we can click the ’Create Job Flow’ button to create an EMR job
+The 'Review' window shows the options we have configured, if there is no
+problem, we can click the 'Create Job Flow' button to create an EMR job
 flow. This step is shown in Figure [fig:aws.elasticmapred.flow.review].
 
 ![Review Job Flow Configuration<span

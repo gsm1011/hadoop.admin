@@ -96,7 +96,7 @@ Check the status of the root filesystem with the following command:
 
 The output shows that some percentage of data blocks is under
 replicated. But because HDFS can automatically make duplication for
-those data blocks, the HDFS filesystem and the ’/’ directory are both
+those data blocks, the HDFS filesystem and the '/' directory are both
 HEALTHY.
 
 Check the status of all the files on HDFS with the following command:
@@ -301,7 +301,7 @@ We can get the usage of the dfsadmin command using:
                [-setBalancerBandwidth <bandwidth in bytes per second>]
                [-help [cmd]]
 
-### There’s more ... 
+### There's more ... 
 
 Besides using command line, we can use the web UI to check the status of
 an HDFS cluster. For example, we can get the status information of HDFS
@@ -405,7 +405,7 @@ following:
 The tree structure of the SecondaryNameNode will be similar to that of
 the NameNode.
 
-### There’s more... 
+### There's more... 
 
 To increase redundancy, we can configure NameNode to write filesystem
 metadata on multiple locations. For example, we can add an NFS shared
@@ -892,7 +892,7 @@ The State column of the output message shows the status of jobs. For
 example, in the preceding output, two jobs have been submitted, the
 first job with JobId `job_201302152353_0001` is in the succeeded state
 and the second job with JobId `job_201302152353_0002` is in the
-preparation state. Both jobs have normal priority and don’t have
+preparation state. Both jobs have normal priority and don't have
 scheduling information.
 
 We can check the status of the default queue with the following command:
@@ -1110,7 +1110,7 @@ Similarly, we can get the usage of the job command with the following:
             [-kill-task <task-id>]
             [-fail-task <task-id>]
 
-### There’s more... 
+### There's more... 
 
 We discussed the most useful commands for Hadoop job management.
 Actually, there are even more commands that are related to job
@@ -1495,7 +1495,7 @@ Use distributed copy to copy the large data file to HDFS:
 This command will initiate a MapReduce job with a number of mappers to
 run the copy task in parallel.
 
-### There’s more... 
+### There's more... 
 
 To copy multiple files from the local directory to HDFS, we can use the
 following command:
@@ -1593,7 +1593,7 @@ the daemons are running without any issues.
 Perform the following steps to check the status of files and directory
 on HDFS:
 
-List files of the user’s home directory on HDFS using the following
+List files of the user's home directory on HDFS using the following
 command:
 
     $ hadoop fs -ls .
@@ -1789,7 +1789,7 @@ If we reach the quota, we will get an error message:
 
     put: org.apache.hadoop.hdfs.protocol.NSQuotaExceededException: The NameSpace quota (directories and files) of directory \verb|/user/hduser| is exceeded: quota=20 file count=141
 
-Set space quota of the current user’s home directory to be **100000000**
+Set space quota of the current user's home directory to be **100000000**
 with the following command:
 
 	$ hadoop dfsadmin -setSpaceQuota 100000000 /user/hduser
@@ -2007,7 +2007,7 @@ in the queue hdqueue for each user.\
 mapred.capacity-scheduler.queue.hdqueue.supports-priority & Whether to
 support job priority for job scheduling or not.\
 
-### There’s more... 
+### There's more... 
 
 Hadoop supports access control on the queue using queue ACLs. Queue ACLs
 control the authorization of MapReduce job submission to a queue. More
@@ -2135,7 +2135,7 @@ for a pool. Default value is unlimited.\
 weight & Float & Value to control non proportional share of cluster
 resource. The default value is 1.0.\
 minSharePreemptionTimeout & Integer & Seconds to wait before killing
-other pool’s tasks if a pool’s share is under minimum share.\
+other pool's tasks if a pool's share is under minimum share.\
 maxRunningJobs & Integer & Maximum number of concurrent running jobs for
 a user. Default is unlimited.\
 poolMaxJobsDefault & Integer & Default maximum number of concurrently
@@ -2143,9 +2143,9 @@ running jobs for a pool.\
 userMaxJobsDefault & Integer & Default maximum number of concurrently
 running jobs for a user.\
 defaultMinSharePreemptionTimeout & Integer & Default seconds to wait
-before killing other pool’s tasks when a pool’s share is under minimum
+before killing other pool's tasks when a pool's share is under minimum
 share.\
-fairSharePreemptionTimeout & Integer & Pre-emption time when a job’s
+fairSharePreemptionTimeout & Integer & Pre-emption time when a job's
 resource is below half of the fair share.\
 defaultPoolSchedulingMode & Fair/FIFO & Default in-pool scheduling
 mode.\
@@ -2231,7 +2231,7 @@ By default, Hadoop sends log messages to Log4j, which is configured in
 the file `$HADOOP_HOME/conf/log4j.properties`. This file defines both
 what to log and where to log. For applications, the default root logger
 is INFO,console , which logs all messages at level INFO and above the
-console’s stderr. Log files are named
+console's stderr. Log files are named
 `$HADOOP_LOG_DIR/hadoop-$HADOOP_IDENT_STRING-<hostname>.log`.
 
 Hadoop supports a number of log levels for different purposes. The log
@@ -2261,7 +2261,7 @@ We can get the usage of daemonlog with the following command:
     java org.apache.hadoop.log.LogLevel -getlevel <host:port> <name>
     java org.apache.hadoop.log.LogLevel -setlevel <host:port> <name> <level>
 
-### There’s more... 
+### There's more... 
 
 Other than configuring Hadoop logging on the fly from command line, we
 can configure it using configuration files. The most important file that

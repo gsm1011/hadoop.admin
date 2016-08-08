@@ -1264,7 +1264,7 @@ data-label="fig:chukwa.dataflow"></span>](images/5163os_06_08.png)
 For more information about the design of Chukwa, please check the
 [documentation](http://incubator.apache.org/chukwa/docs/r0.5.0/design.html).
 
-### There’s more... 
+### There's more... 
 
 Due to the instability of this software package, you might need to do
 some debugging when deploying it onto the cluster. But to get started

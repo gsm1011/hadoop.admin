@@ -326,7 +326,7 @@ Under Unix-like operating systems, system runtime configurations and
 environment variables are specified via plain text files. These files
 are called run configuration file, meaning that they provide
 configurations when the program runs. For example, file .bashrc under a
-user’s home directory is the run configuration file for bash shell. It
+user's home directory is the run configuration file for bash shell. It
 will be sourced (loaded) automatically every time when a bash terminal
 is opened. So, in this file, we can specify commands and environment
 variables for a running bash environment.
@@ -376,7 +376,7 @@ configuring a Hadoop cluster in pseudo-distributed mode:
     schemes such as local file system with <file:///home/hduser/hadoop>
     and amazon web service S3 with <s3://a-bucket/hadoop> etc. Value
     localhost:54311 of the mapred.job.tracker property specifies the URI
-    of the cluster’s JobTracker.
+    of the cluster's JobTracker.
 
 - **hdfs-site.xml** specifies the HDFS related configurations. For
     example, dfs.replication configures the replication factor of data
@@ -407,7 +407,7 @@ stopping a cluster. Table [tbl:start.stop.scripts] shows these scripts.
 | **start-dfs.sh** | Script to start HDFS daemons including NameNode,
 SecondaryNameNode and DataNode. A PID file will be created for each
 daemon process under default folder \$. For example, if user hduser is used
-to run the script, file /hadoop/tmp/hadoop-hduser-namenode.pid will be
+to run the script, file `/hadoop/tmp/hadoop-hduser-namenode.pid` will be
 created for the NameNode daemon process. |
 |------------------|---------------------|
 | **stop-dfs.sh** | Script to stop HDFS daemons. This command will try to
@@ -419,14 +419,14 @@ JobTracker and TaskTrackers. Similar to start-hdfs.sh script, PIDs files
 will be created for each daemon process.|
 |------------------|---------------------|
 | **stop-mapred.sh** | Script to stop Hadoop MapReduce daemons. Similar to
-stop-dfs.sh script, the script will try to find the PID files and then
+`stop-dfs.sh` script, the script will try to find the PID files and then
 kill those processes.|
 |------------------|---------------------|
 | **start-all.sh** | Equals to start-dfs.sh plus start-mapred.sh.|
 |------------------|---------------------|
 | **stop-all.sh** | Equals to stop-dfs.sh plus stop-mapred.sh.|
 
-### There’s more... 
+### There's more... 
 
 Currently, Hadoop is also available in rpm format. So we can use the
 following command to install Hadoop:
@@ -850,7 +850,7 @@ task child processes.
 `mapred.reduce.child.java.opts` The Java options for the
 reduce task child processes.
 
-### There’s more... 
+### There's more... 
 
 Alternatively, we can use the following steps to configure a
 fully-distributed Hadoop cluster: 
@@ -932,15 +932,17 @@ Use the following recipe to validate Hadoop cluster configuration
 through web user interface:
 
 Open URL `master:50030/jobtracker.jsp` with a web browser. The webpage
-will be similar to Figure [fig:jobtracker.webui].
+will be similar to the following [figure](#fig:jobtracker.webui).
 
+{id="fig:jobtracker.webui"}
 ![Hadoop Jobtracker Web UI](images/5163os_03_02.png)
 
 The webpage shows that the Hadoop cluster contains 5 active slave nodes.
 
 Check the status each slave node by clicking the link, which lead us to
-a webpage similar to Figure [fig:active.trackers].
+a webpage similar to the following [figure](#fig:active.trackers).
 
+{id="fig:active.trackers"}
 ![List of active TaskTrackers](images/5163os_03_03.png)
 
 From Figure [fig:active.trackers], we can easily check the status of the
@@ -948,16 +950,18 @@ active TaskTrackers on the slave nodes. For example, we can see the
 count of failed tasks, the number of MapReduce slots and the heart beat
 seconds etc.
 
-Check the status of slave DataNodes by opening URL master:50070. The
-webpage will be similar to Figure [fig:namenode.webui].
+Check the status of slave DataNodes by opening URL `master:50070`, you will
+get the [status of the namenode](#fig:namenode.webui).
 
+{id="fig:namenode.webui"}
 ![Hadoop HDFS NameNode Web UI](images/5163os_03_04.png)
 
 The webpage shows that the cluster is configured with 5 active nodes.
 
-By clicking the `Live Nodes` link we can see the details of
-each node as shown in Figure [fig:hdfs.datanodes].
+By clicking the `Live Nodes` link, we can see the
+[datanode status](#fig:hdfs.datanodes). 
 
+{id="fig:hdfs.datanodes"}
 ![List of HDFS live DataNodes](images/5163os_03_05.png)
 
 This webpage shows the status of each slave node including node
@@ -969,7 +973,7 @@ command:
 
 	$ hadoop jar $HADOOP_HOME/hadoop-examples-1.1.2.jar teragen $((1024*1024*1024* 10/100)) teraout
 
-In this command, hadoop-examples-1.1.2.jar is the Java archive file
+In this command, `hadoop-examples-1.1.2.jar` is the Java archive file
 which provides a number of Hadoop examples. The option
 `$((1024*1024*1024* 10/100))` tells us how many lines of data will be
 generated with the total data size 10GB.
@@ -978,21 +982,23 @@ When the job is running, we can check the status of the job by opening
 URL
 [here](http://master:50030/jobdetails.jsp?jobid=job_201302160219_0003&refresh=30).
 
-In this URL, `job_201302160219_0003` is the job ID and refresh=30 tells
+In this URL, `job_201302160219_0003` is the job ID and `refresh=30` tells
 how often the webpage should be refreshed.
 
-The job status webpage will be similar to Figure [fig:mapreduce.job].
+The job status webpage will be similar to the following [figure](#fig:mapreduce.job).
 
+{id="fig:mapreduce.job"}
 ![Information about a MapReduce job from the Web UI](images/5163os_03_06.png)
 
-Figure [fig:mapreduce.job] tells us that the Hadoop cluster has been
+[The figure](#fig:mapreduce.job) shows that the Hadoop cluster has been
 configured successfully!
 
 After the teragen job finishes, we can check the node storage space
 usage by opening URL
 <http://master:50070/dfsnodelist.jsp?whatNodes=LIVE>. The webpage will
-be similar to Figure [fig:hdfs.storage].
+be similar to the following [figure](#fig:hdfs.storage).
 
+{id="fig:hdfs.storage"}
 ![Storage information of DataNodes from the Web UI](images/5163os_03_07.png)
 
 The webpage shows that a certain percentage of storage space has been
@@ -1051,17 +1057,17 @@ the last line tells us that the root filesystem is *HEALTHY*.
 Hadoop provides commands and web interfaces for system administrators to
 check the status of the cluster. When we start Hadoop daemons, a
 build-in web server will be started and a number of pre-written *jsp*
-script files are used to respond to user’s requests from a web browser.
+script files are used to respond to user's requests from a web browser.
 The jsp files can be found under the `$HADOOP_HOME/webapps` directory.
 If you have programming experience, you can take advantage of the jsp
 files to develop personalized Hadoop cluster management tools.
 
-### There’s more... 
+### There's more... 
 
 In this part, we list a few typical Hadoop configuration problems and
 give suggestions on dealing with these problems.
 
-#### Can’t start HDFS daemons 
+#### Can't start HDFS daemons 
 
 There are many possible reasons that can cause this problem. For
 example, the NameNode on the master node has not been formatted, in
@@ -1134,7 +1140,7 @@ If the IP address and hostname mapping does not exist or has been
 erroneously specified in this file, correcting the error can solve this
 problem.
 
-#### MapReduce daemons can’t be started 
+#### MapReduce daemons can't be started 
 
 The following two reasons can cause this problem:
 
@@ -1148,7 +1154,7 @@ illustrated with the following log output:
     13/02/16 11:32:22 INFO ipc.Client: Retrying connect to server: master/10.0.0.1:54310. Already tried 3 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1 SECONDS)
     13/02/16 11:32:23 INFO ipc.Client: Retrying connect to server: master/10.0.0.1:54310. Already tried 4 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1 SECONDS).
 
-To troubleshoot this problem, we can refer to tips for **can’t start
+To troubleshoot this problem, we can refer to tips for **can't start
 HDFS daemons**.
 
 *Configuration problems of MapReduce*. Recall that we have
@@ -1304,11 +1310,12 @@ mirror (the suggested mirror on the top is the optimal choice). After
 selecting the mirror, follow the link to select the HBase version, we
 suggest the stable version, for example, follow the link
 <http://mirror.quintex.com/apache/hbase/stable/> and can see the
-downloadable files as shown in Figure [fig:hbase.download].
+downloadable files as shown in following [figure](#fig:hbase.download).
 
+{id="fig:hbase.download"}
 ![Download a stable HBase release from a mirror site](images/5163os_03_08.png)
 
-Click the file link hbase-0.94.5.tar.gz to download the file to the
+Click the file link `hbase-0.94.5.tar.gz` to download the file to the
 administrator machine. Then, copy the file to the FTP repository with
 command:
 
@@ -1320,7 +1327,6 @@ Alternatively, we can download the file with command:
 
 ### How to do it... 
 
-Use the following recipe to install HBase:\
 Login to the master node from administrator machine with command:
 
 	$ ssh hduser@master
@@ -1335,7 +1341,7 @@ Create symbolic link with command:
 
 	$ ln -s hbase-0.94.5 hbase
 
-Use your favorite text editor to open file  /.bashrc and append the
+Use your favorite text editor to open file `~/.bashrc` and append the
 following lines into the file:
 
     export HBASE_HOME=/usr/local/hbase
@@ -1449,7 +1455,7 @@ directory of the HBase data storage. And property
 *hbase.zookeeper.property.dataDir* specifies the root directory of the
 ZooKeeper data storage.
 
-### There’s more... 
+### There's more... 
 
 - Installing ZooKeeper in Chapter 3, Configuring a Hadoop cluster
 
@@ -1504,7 +1510,7 @@ Start Hive with command:
 
 	$ hive
 
-### There’s more... 
+### There's more... 
 
 - Installing Pig in Chapter 3, Configuring a Hadoop cluster
 
@@ -1570,7 +1576,7 @@ Alternatively, we can use the following command:
 Pig that runs in MapReduce mode will utilizes the power of distributed
 computing provided by Hadoop.
 
-### There’s more... 
+### There's more... 
 
 - Installing Hive in Chapter 3, Configuring a Hadoop cluster
 
@@ -1664,7 +1670,7 @@ Run kmeans clustering with command:
 
 	$ mahout org.apache.mahout.clustering.syntheticcontrol.kmeans.Job
 
-### There’s more... 
+### There's more... 
 
 - More documentation about Mahout can be obtained from the [Mahout
     Wiki](https://cwiki.apache.org/confluence/display/MAHOUT/Mahout+Wiki)

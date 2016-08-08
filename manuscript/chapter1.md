@@ -98,7 +98,7 @@ system and the value property defines the output.
 ## Building a Hadoop based Big Data platform
 
 Hadoop was first developed as a Big Data processing system in 2006 at
-Yahoo! The idea is based on Google’s MapReduce, which was first
+Yahoo! The idea is based on Google's MapReduce, which was first
 published by Google based on their proprietary MapReduce implementation.
 In the past few years, Hadoop has become a widely used platform and
 runtime environment for the deployment of Big Data applications. In this
@@ -141,7 +141,7 @@ components of a hadoop based big data ecosystem.
 {id="fig:hadoop-architecture"}
 ![Architecture of Hadoop based big data system](images/5163os_01_01.png) 
 
-Although Hadoop borrows its idea from Google’s MapReduce, it is more
+Although Hadoop borrows its idea from Google's MapReduce, it is more
 than MapReduce. A typical Hadoop based Big Data platform includes the
 Hadoop Distributed File System (HDFS), the parallel computing framework
 (MapReduce), common utilities, a column oriented data storage table
@@ -179,7 +179,7 @@ is composed of multiple steps as shown in the
 {id="mapred-anatomy"}
 ![Anatomy of a MapReduce job](images/5163os_01_02.png)
 
-### There’s more 
+### There's more 
 
 HDFS has two types of nodes, NameNode and DataNode. A NameNode keeps
 track of the filesystem metadata such as the locations of data blocks.
@@ -383,7 +383,7 @@ oriented companies include: Cloudera, Horntonworks, MapR and Hadapt etc.
 Phoenix and HaLoop do not have an active community and they are not
 recommended for production deployment.
 
-### There’s more... 
+### There's more... 
 
 As the Big Data problem floods the whole world, many systems have been
 designed to deal with the problem. Two famous such systems that do not

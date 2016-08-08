@@ -87,7 +87,7 @@ cluster performance.
 
 Typically, we benchmark a Hadoop cluster after the cluster is newly
 configured before putting into service to accept jobs. Because when
-clients can submit jobs, the benchmarks can be perplexed by client’s
+clients can submit jobs, the benchmarks can be perplexed by client's
 jobs to show the real performance of a Hadoop cluster and also the
 benchmark jobs can cause inconveniences for clients.
 
@@ -586,7 +586,7 @@ topology from the job history directory:
 
 This command will recursively extract job history traces as well as the
 topology of the cluster from the Hadoop job history directory
-`$HADOOP_HOME/logs/history/done`. The ’`-recursive`’ option tells the
+`$HADOOP_HOME/logs/history/done`. The '`-recursive`' option tells the
 TraceBuider to scan the job history directory recursively.
 
 The output file jobtraces.json will contain all the metrics of MapReduce
@@ -834,7 +834,7 @@ from different categories. We can specify the mix in file
 `gridmix_config.xml`. Based on the specification, a number of jobs will
 be created and submitted to the Hadoop cluster till finish.
 
-### There’s more... 
+### There's more... 
 
 Besides doing benchmark with `GridMix2`, we can also benchmark a Hadoop
 cluster with `GridMix1` and `GridMix3`.
@@ -1139,7 +1139,7 @@ We can get the options for Vaidya with the following command:
 
     -help                  : prints this usage
 
-### There’s more... 
+### There's more... 
 
 HiBench is a benchmarking suite for Hadoop. It has 9 typical workloads,
 including micro, HDFS, web search machine learning and data analytics
@@ -1165,11 +1165,11 @@ on the cluster is called data skew.
 
 Data skew is a big problem for a Hadoop cluster. We know that when the
 JobTracker assigns tasks to TaskTrackers, it follows the general rule of
-being ’data local’, which means the map tasks will be assigned to those
+being 'data local', which means the map tasks will be assigned to those
 hosts where data blocks reside in. If the data block storage
 distribution is skewed, or in other words, the data blocks locate only
 on a small percentage of DataNodes, only those nodes with data blocks
-can follow the ’data local’ rule. And if JobTracker assigns tasks to
+can follow the 'data local' rule. And if JobTracker assigns tasks to
 other nodes that does not have data hosted locally, the data needs to be
 transferred from remote machines to the TaskTracker machine. The data
 transfer will cost large amount of network bandwidth, downgrading the
@@ -1425,7 +1425,7 @@ Configure the map output compression by changing the following property:
 ```
 
 This configuration will enable the map output compression. To disable
-it, which is the default, we can change the value to be ’false’ or
+it, which is the default, we can change the value to be 'false' or
 remove this configuration property from the configuration file.
 
 Similar to the codec configuration for MapReduce job output, we can
@@ -1915,7 +1915,7 @@ following property:
 This property configures the maximum memory that a TaskTracker uses for
 index cache when serving map output to reducers.
 
-Configure the monitoring interval for the TaskTracker’s task memory
+Configure the monitoring interval for the TaskTracker's task memory
 manager by changing the following property:
 
 ```xml
@@ -1926,8 +1926,8 @@ manager by changing the following property:
 ```
 
 This property configures the interval, in milliseconds, that the
-TaskTracker monitors the tasks’ memory usage. It is only meaningful when
-tasks’ memory management has been enabled using property
+TaskTracker monitors the tasks' memory usage. It is only meaningful when
+tasks' memory management has been enabled using property
 mapred.tasktracker.tasks.maxmemory.
 
 Configure TaskTracker to send an out-of-band heartbeat on task

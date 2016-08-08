@@ -113,7 +113,7 @@ generic format of the value should be similar to the following:
 
 	<value>user1,user2,user3 group1,group2</value>
 
-### There’s more... 
+### There's more... 
 
 Besides the three properties we mentioned in this recipe, a number of
 other ACL properties are available in Hadoop. Table [tbl:acl] shows the
@@ -145,7 +145,7 @@ can access the service or, in other words, SLA is disabled.
 Configuring job authorization with ACL Hadoop provides two levels of job
 authorization: job level and queue level. When job authorization is
 enabled, the JobTracker will authenticate users who submit jobs to the
-cluster. Users’ operations on jobs and queues will also be authenticated
+cluster. Users' operations on jobs and queues will also be authenticated
 by the JobTracker. In this recipe, we will show steps to configure job
 authorization with ACLs.
 
@@ -262,7 +262,7 @@ Job view ACLs control the access of job status information including
 counters, diagnostic information, logs and job configuration and so on.
 
 Job modification ACLs can overlap with queue level ACLs. When this
-happens, a user’s operation will be granted if the user has been listed
+happens, a user's operation will be granted if the user has been listed
 in either of these ACLs.
 
 ### See also 
@@ -336,7 +336,7 @@ Create the HTTP principal for SPNEGO with command in the kadmin shell:
 
 	$ addprinc -randkey HTTP/master.hdcluster.com@HDREALM
 
-Create the keytab file that contains the hduser’s and HTTP principal
+Create the keytab file that contains the hduser's and HTTP principal
 with:
 
     $ xst -norandkey -k hduser.keytab hduser/master.hdcluster.com HTTP/master.hdcluster.com
@@ -746,7 +746,7 @@ security mechanisms in a phased manner.
 For more information about SPNEGO, please refer to its wiki page at:
 <http://en.wikipedia.org/wiki/SPNEGO>.
 
-### There’s more... 
+### There's more... 
 
 Other authentication methods include the simple authentication. If this
 authentication method is used, we must specify the user name in the
@@ -898,7 +898,7 @@ image file and the edit log files to the directory specified with
 property fs.checkpoint.dir. In case of NameNode failure, the backup
 files can be used to recover the HDFS file system.
 
-### There’s more... 
+### There's more... 
 
 As we have mentioned previously, the failure of a NameNode is mainly
 caused by the corrupted metadata files. So the key for NameNode
@@ -1053,7 +1053,7 @@ recipe, we will only show you how to configure HA using Quorum.
 
 ### Getting ready 
 
-Currently, Hadoop release 1.x.y (MRv1) doesn’t support NameNode HA, so
+Currently, Hadoop release 1.x.y (MRv1) doesn't support NameNode HA, so
 we are assuming that all the cluster nodes already have Hadoop version
 2.0.x (MRv2) installed.
 
@@ -1315,7 +1315,7 @@ to a backup directory, the standby NameNode is a hot standby node for
 the active NameNode. In case when the active NameNode fails, the standby
 NameNode will become the active node in minimum time.
 
-### There’s more... 
+### There's more... 
 
 In the NameNode HA implementation, ZooKeeper is playing an important
 role. The security of ZooKeeper can be a necessary concern. We can use
@@ -1348,7 +1348,7 @@ for ZooKeeper access control:
 </property>
 ```
 
-Similar to the ha.zookeeper.auth property, the ’@’ character in the
+Similar to the ha.zookeeper.auth property, the '@' character in the
 value specifies that the configuration is a file on disk.
 
 Generate ZooKeeper ACL corresponding to the authentication with
@@ -1537,7 +1537,7 @@ SecondaryNameNode keytab file.\
 BackupNode & dfs.secondary.namenode.keytab.file & Backup node keytab
 file.\
 
-### There’s more... 
+### There's more... 
 
 A NameNode federated Hadoop cluster has different administrative tasks
 than the old version (MRv1), which does not support federation.

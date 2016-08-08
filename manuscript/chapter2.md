@@ -39,7 +39,7 @@ single point of failure. When these two daemons encounter problems, the
 Hadoop cluster halts. The susceptibility to failure requires that the
 machine that is running the NameNode and the JobTracker be more reliable
 than all other nodes. On the other hand, a slave node can always use
-other nodes as backup, and thus doesn’t need to have so strict
+other nodes as backup, and thus doesn't need to have so strict
 requirements on reliability as long as it has enough storage space and
 computing power.
 
@@ -149,7 +149,7 @@ amount of computing resources. In addition, each forked JVM also will
 incur a certain amount of memory requirements. Empirically, a Hadoop job
 can consume 1-2 GB memory for each CPU core. Higher data throughput
 requirement can incur higher I/O operations for the majority of Hadoop
-jobs. That’s why higher end and parallel hard drives can help boost the
+jobs. That's why higher end and parallel hard drives can help boost the
 cluster performance. To maximize parallelism, it is advisable to assign
 two slots for each CPU core. For example, if our slave node has two
 quad-core CPUs, we can assign $2 \times 4 \times 2 = 16$ (map only,
@@ -227,14 +227,14 @@ As we have mentioned previously, the most efficient way to install Linux
 on a large number of machines is to install over the network. In this
 book, we assume to use the administrator machine as the installation
 server. We will learn steps to configure this server, including the
-configuration of the following two services: DHCP and FTP.
+configuration of the following two services: `DHCP` and `FTP`.
 
 ### Getting ready 
 
 Before getting started, we assume that the cluster administrator machine
 has a 64bit Red Hat compatible Linux operating system installed. The
 hostname of the machine is hadoop.admin and an administrative user
-hdadmin has been created. This user should have *sudo* privileges to
+hdadmin has been created. This user should have `sudo` privileges to
 install software packages, configure system services and so on. We also
 assume administrative tools such as a command line text editor has been
 installed on this machine. We will use these tools and commands directly
@@ -260,13 +260,13 @@ We will use directory `/mnt` as the mount point for ISO images. Directory
 directory `/repo` will be used as the repository folder for network
 installation.
 
-Install DHCP and FTP servers on the machine with commands:
+Install `DHCP` and `FTP` servers on the machine with commands:
 
 	$ sudo yum -y install dhcp
 	$ sudo yum -y install vsftpd
 
-We will use the DHCP server to assign IP addresses and bootstrap the
-operating system in the installation process and use the FTP server to
+We will use the `DHCP` server to assign IP addresses and bootstrap the
+operating system in the installation process and use the `FTP` server to
 host the installation packages.
 
 ### Download the latest ISO image from a mirror 
@@ -275,8 +275,8 @@ The CentOS official site provides a worldwide mirrors list, including
 North America, European Countries, South America, Asia, Oceania, Middle
 East, Africa and other regions.
 
-After selecting the nearest mirror, we can use either HTTP or FTP to
-download the image. Let’s choose FTP as the download method by clicking
+After selecting the nearest mirror, we can use either `HTTP` or `FTP` to
+download the image. Let's choose `FTP` as the download method by clicking
 the link in the corresponding line of the selected mirror. Then choose
 `6.3/, isos/, x86_64/` consecutively. In this directory as shown in
 Figure below, we choose to download two ISO image files.
@@ -302,7 +302,7 @@ Mount the image file with command:
 
 	$ sudo mount $~/isoimages/ CentOS-6.3-x86_64-minimal.iso ~/$mnt
 
-Copy all the files to the `~/repo` directory for FTP hosting with
+Copy all the files to the `~/repo` directory for `FTP` hosting with
 command:
 
     $ cp -r $~/mnt/* ~/$repo
@@ -326,7 +326,7 @@ booting files in the `images/pxeboot` directory.
 
 ### How to do it 
 
-Use the following recipe configure DHCP server:
+Use the following recipe configure `DHCP` server:
 
 Use your favorite text editor to open file `/etc/dhcp/dhcpd.conf` and
 change the following content:
@@ -361,19 +361,19 @@ change the following content:
     option routers 10.0.0.1;
     }
 
-Start DHCP server with command:
+Start `DHCP` server with command:
 
     $ sudo service dhcpd start
 
-The DHCP server start with the following message:
+The `DHCP` server start with the following message:
 
     Starting dhcpd: [  OK  ]
 
-Make the DHCP server to survive a system reboot:
+Make the `DHCP` server to survive a system reboot:
 
     $ sudo chkconfig dhcpd --level 3 on
 
-Use the following recipe to configure FTP server:\
+Use the following recipe to configure `FTP` server:\
 
 Open file `/etc/vsftpd/vsftpd.conf` with your favorite text editor and
 change the content according to the following list:
@@ -399,14 +399,14 @@ change the content according to the following list:
     # Specify directory for hosting the Linux installation packages.
     anon_ropot=~/repo
 
-Start the FTP server with command:
+Start the `FTP` server with command:
 
     $ sudo service vsftpd start
 
 The server will start with the following message:
     Starting vsftpd: [  OK  ]
 
-Verify the FTP configuration with command:
+Verify the `FTP` configuration with command:
     ftp hadoop.admin
 
 The configuration is successful if we get the following message:
@@ -448,7 +448,7 @@ We should see message similar to:
 
     /dev/sdb1 SEC_TYPE="msdos" LABEL="LIVE" UUID="07D9-051C" TYPE="vfat"
 
-If the TYPE attribute is other than ’vfat’, use the following command to
+If the TYPE attribute is other than 'vfat', use the following command to
 clear the first few blocks of the drive:
 
     $ dd if=/dev/zero of=/dev/sdb1 bs=1M count=100
@@ -607,7 +607,7 @@ following content:
     # Disable first boot configuration.
     firstboot --disable
 
-Put the kickstart file into the root directory of the FTP server with
+Put the kickstart file into the root directory of the `FTP` server with
 command:
 
     $ cp ks.cfg ~/repo
@@ -659,7 +659,7 @@ be installed. In this section, both specific packages and package groups
 can be specified to install. For example, in our kickstart file, we
 configure to install the Linux base package with @Base. In addition, if
 a package is not intended to be installed, we can add a dash symbol
-before the package. For example, we don’t want to install OpenJDK, we
+before the package. For example, we don't want to install `OpenJDK`, we
 can specify this with `-java`.
 
 For a Hadoop cluster, basic packages are enough, so we have ignored the
@@ -670,7 +670,7 @@ installation. This is very helpful when we need to do some
 administrative configurations after installing the operating system. For
 example, we might want to create a regular user for Hadoop with
 privileges to run Hadoop commands and to configure system services such
-as SSHD and FTP.
+as `SSHD` and `FTP`.
 
 The USB boot media was used to boot a system and start the installation
 process automatically. We can specify the following kernel start up
@@ -682,12 +682,12 @@ This option tells the location of the kickstart file. Once the kickstart
 file is located and transferred to the local machine, automatic
 installation will start.
 
-### There’s more 
+### There's more 
 
-There are other installation methods other than FTP, for example, we can
-also use NFS and HTTP. The difference of these methods from FTP lies
+There are other installation methods other than `FTP`, for example, we can
+also use NFS and `HTTP`. The difference of these methods from FTP lies
 only in the configuration of the corresponding repository URL. For
-example, if we want to use HTTP server, we can make the following two
+example, if we want to use `HTTP` server, we can make the following two
 changes in our configuration:
 
 1.  In the kickstart file, change `url --url ftp://hadoop.admin/repo` to
@@ -713,10 +713,10 @@ network.
 
 ### Getting ready 
 
-Before getting started, we need to verify that the DHCP server and FTP
+Before getting started, we need to verify that the `DHCP` server and `FTP`
 server are running correctly on the administrative machine.
 
-Use the following command on the administrator machine to check if DHCP
+Use the following command on the administrator machine to check if `DHCP`
 server is working properly:
 
     $ ps -ef | grep dhcp
@@ -726,7 +726,7 @@ otherwise, we need to start the service with command:
 
     $ sudo service dhcpd start
 
-Similarly, the following command can be used to check the FTP server on
+Similarly, the following command can be used to check the `FTP` server on
 the administrator machine:
 
     $ ftp hadoop.admin
@@ -746,7 +746,7 @@ Use the following recipe to install Linux on a machine:
 2.  Press `F9` to select the boot device.
     Different BIOS versions may have different shortcut keys. If F9 does
     not work, please refer to related product manual.
-3.  From the list of boot devices, choose USB or ’Removable Devices’.
+3.  From the list of boot devices, choose USB or 'Removable Devices'.
 4.  When the installation starts, you can remove the boot media and
     start the installation on the next machine.
 
@@ -782,23 +782,23 @@ With the help of a kickstart file, we can automate the installation of
 Linux on a number of machines. One disadvantage of this method is that
 we need to manually boot each machine. This is tedious and requires a
 lot of repetitive work. Even worse, in reality, we may find that a lot
-of servers don’t even have a monitor or video card installed. This makes
+of servers don't even have a monitor or video card installed. This makes
 it impractical to use this method. So, we need to explore alternative
 methods.
 
 In this part, we will introduce the steps to automate the installation
-process with the help of DHCP and TFTP servers. A DHCP server is
+process with the help of `DHCP` and `TFTP` servers. A `DHCP` server is
 configured as a booting server, which serves similarly as a USB drive
-boot media and TFTP is configured to host the actual operating system
+boot media and `TFTP` is configured to host the actual operating system
 packages.
 
 ## Configuring DHCP for network booting
 
-We have mentioned the basic configuration of a DHCP server in the
-previous section. To enable network booting for DHCP, we will use the
-Pre-boot Execution Environment (PXE) method of TFTP.
+We have mentioned the basic configuration of a `DHCP` server in the
+previous section. To enable network booting for `DHCP`, we will use the
+Pre-boot Execution Environment (PXE) method of `TFTP`.
 
-Create the configuration file `/etc/dhcpd.conf` for DHCP with the
+Create the configuration file `/etc/dhcpd.conf` for `DHCP` with the
 following content:
 
     option domain-name "hadoop.cluster";
@@ -841,7 +841,7 @@ Login to the administrator machine with command:
 
     $ ssh hdadmin@hadoop.admin
 
-Install TFTP server with command:
+Install `TFTP` server with command:
 
     $ sudo yum install tftpd
 
@@ -860,10 +860,10 @@ content to be similar to the following:
       cps		= 100 2
     }
 
-In this file, we enabled the TFTP service by setting the disable
+In this file, we enabled the `TFTP` service by setting the disable
 primitive to be no.
 
-Create TFTP boot image directory with command:
+Create `TFTP` boot image directory with command:
 
     $ mkdir -p ~/tftp/boot/centos6.3
 
@@ -875,15 +875,15 @@ Copy PXE boot files to the boot image directory with command:
 
     $ cp ~/mnt/images/pxeboot/* ~/tftp/boot/centos6.3
 
-Start the TFTP server with command:
+Start the `TFTP` server with command:
 
     $ sudo service tftpd start
 
-Test the TFTP configuration with command:
+Test the `TFTP` configuration with command:
 
     $ tftp hadoop.admin
 
-If we can login and list files, the TFTP has been configured correctly.
+If we can login and list files, the `TFTP` has been configured correctly.
 
 Start installation process by powering on the cluster machines.
 
@@ -893,44 +893,44 @@ Hadoop was build using Java, so Java is required before installingHadoop.
 
 ### Getting ready 
 
-Under Linux, OpenJDK provides an open source Java implementation. But if
-we use OpenJDK for Hadoop, it will cause low level and hard to tackle
-problems. So OpenJDK is not recommended for the Hadoop installation.
+Under Linux, `OpenJDK` provides an open source Java implementation. But if
+we use `OpenJDK` for Hadoop, it will cause low level and hard to tackle
+problems. So `OpenJDK` is not recommended for the Hadoop installation.
 Instead, Java from Oracle is recommended.
 
-Check if OpenJDK has been installed in the system with command:
+Check if `OpenJDK` has been installed in the system with command:
 
     $ rpm -qa | grep openjdk
 
-If no output is given, it means OpenJDK has not been installed.
+If no output is given, it means `OpenJDK` has not been installed.
 
 If Java has been installed in the system, we can check it's version
 with:
 
     $ java -version
 
-If OpenJDK is used, we should be able to get output similar to the
+If `OpenJDK` is used, we should be able to get output similar to the
 following:
 
     java version "1.7.0_09-icedtea"
     OpenJDK Runtime Environment (fedora-2.3.4.fc17-x86_64)
     OpenJDK 64-Bit Server VM (build 23.2-b09, mixed mode)
 
-After confirming that we are using OpenJDK, we need to remove the
+After confirming that we are using `OpenJDK`, we need to remove the
 package and reinstall the version downloaded from Oracle's official
 website.
 
-To remove OpenJDK, we can use the following command:
+To remove `OpenJDK`, we can use the following command:
 
     $ sudo yum uninstall java-1.x.y-openjdk
 
-In this command, *1.x.y* is the version of the OpenJDK to be removed,
-for example: *1.7.0*.
+In this command, `1.x.y` is the version of the `OpenJDK` to be removed,
+for example: `1.7.0`.
 
-Warning!\
+**Warning!**
 This command can be destructive, especially, when some dependent
 software packages have been installed. In such a case, it will prompt
-you to confirm the removal of OpenJDK together with the depending
+you to confirm the removal of `OpenJDK` together with the depending
 software packages. If you don't want all the packages to be removed,
 answer NO to the question.
 
@@ -939,7 +939,7 @@ package:
 
     $ sudo rpm -e java-1.x.y-openjdk
 
-This command will only remove the OpenJDK package, regardless of the
+This command will only remove the `OpenJDK` package, regardless of the
 dependent software packages.
 
 Note that this command can break software package dependencies, causing
@@ -949,7 +949,7 @@ As another alternative method, we can tweak the PATH environment
 variable to let both Java versions coexist on the system while let the
 system to prefer the Java from Oracle.
 
-Suppose we have both OpenJDK and Oracle Java installed in `/usr/openjdk`
+Suppose we have both `OpenJDK` and Oracle Java installed in `/usr/openjdk`
 and `/usr/jdk` respectively. We can set the PATH environment variable to
 be the following:
 
@@ -962,10 +962,10 @@ be:
 
 To download Java from Oracle, go to the [official
 site](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
-Select 'Java SE Development Kit 7 Downloads', which is Java 1.7.x
-(Hadoop can work with Java with version {$$}\ge{/$$} 1.6.0). Next, click the
+Select 'Java SE Development Kit 7 Downloads', which is `Java 1.7.x`
+(Hadoop can work with Java with version {$$}\ge{/$$} `1.6.0`). Next, click the
 “Accept License Agreement” radio button and choose
-jdk-7u11-linux-x64.rpm for a 64bit Linux machine. The operations are
+`jdk-7u11-linux-x64.rpm` for a 64bit Linux machine. The operations are
 shown in Figure below.
 
 ![Downloading Oracle JDK](images/5163os_02_04.png)
@@ -999,17 +999,17 @@ file, this step will be optional.
 
 ### How it works 
 
-wget** is a software tool for transferring files using HTTP, HTTPS and
-FTP protocols. It is none interactive and can be used from command line
+**wget** is a software tool for transferring files using `HTTP`, `HTTPS` and
+`FTP` protocols. It is none interactive and can be used from command line
 and scripts for file download. For more information please visit
 <http://www.gnu.org/software/wget/>.
 
-rsync** is an open source tool that provides fast and incremental file
+**rsync** is an open source tool that provides fast and incremental file
 transfers. It is widely used for file copying and synchronization under
 Linux. For more information about rsync, please visit
 <http://rsync.samba.org/>.
 
-nmap** stands for Network Mapper. It is a famous tool for network
+**nmap** stands for Network Mapper. It is a famous tool for network
 exploration and security auditing. We can use nmap to scan large
 networks and identify security problems. For example, to scan the
 service on local machine, we can use the following command:
@@ -1033,22 +1033,21 @@ And we can get output similar to the following:
     Nmap done: 1 IP address (1 host up) scanned in 0.14 seconds
 
 The output tells us that the local machine has the following services
-running: *ftp, ssh, smtp, rpcbind* (service for remote procedure calls)
-and *jpp* (service for Java packaging).
+running: `ftp, ssh, smtp, rpcbind` (service for remote procedure calls)
+and `jpp` (service for Java packaging).
 
 Similarly, we can use the following command to scan IP segment
-10.0.1.\*:
+`10.0.1.*`:
 
     $ nmap 10.0.0.*
 
 The command will give us service information of each host under the IP
-segment from 10.0.0.1 to 10.0.0.255.
+segment from `10.0.0.1` to `10.0.0.255`.
 
 ### There's more 
 
 Under Linux, we can use the man command to get the usage of a command.
-For example, to get usage of wget, we can use <span>***m***an
-wget</span>.
+For example, to get usage of `wget`, we can use `man wget`.
 
 If more detailed information about a command is desired, we can use the
 info command. For example, command info wget gives more details about
@@ -1064,7 +1063,7 @@ to configure SSH for password-less login to a remote machine.
 
 ### Getting ready 
 
-Start up the SSHD service on all the cluster nodes (both slave nodes and
+Start up the `SSHD` service on all the cluster nodes (both slave nodes and
 the master node) with command:
 
 	$ sudo service sshd start
@@ -1089,13 +1088,12 @@ login to the host.
 
 ### How to do it... 
 
-Use the following recipe to configure password-less login:\
 Login to the master node from the cluster administrator machine with the
 following command:
 
     $ ssh hduser@master
 
-Use a text editor to modify the SSHD service configuration file
+Use a text editor to modify the `SSHD` service configuration file
 `/etc/ssh/ssh_config` by changing the following line:
 
     #   StrictHostKeyChecking ask
@@ -1104,7 +1102,7 @@ to:
 
     StrictHostKeyChecking no
 
-Restart the SSHD server with command:
+Restart the `SSHD` server with command:
 
     $ sudo service sshd restart
 
@@ -1140,7 +1138,7 @@ process.
 
 Configuration of password-less login failure can be caused by many
 reasons, for example, the configuration of firewall (or iptables, to be
-more specific), SELinux and even the SSHD server itself. We will discuss
+more specific), SELinux and even the `SSHD` server itself. We will discuss
 methods to deal with these potential problems.
 
 #### Erroneous SSH settings 
@@ -1156,7 +1154,7 @@ change these two lines to the following:
     RSAAuthentication yes
     PubkeyAuthentication yes
 
-Make sure that the SSHD service has been successfully restarted on the
+Make sure that the `SSHD` service has been successfully restarted on the
 remote machine with command:
 
     $ sudo service sshd restart
@@ -1174,7 +1172,7 @@ to the next step.
 
 #### Erroneous iptables configuration 
 
-Check the status of iptables with command:
+Check the status of `iptables` with command:
 
     $ sudo iptables -L
 
