@@ -1,3 +1,4 @@
+{id="chap:5"}
 # Hardening a Hadoop Cluster 
 
 In this chapter, we will cover:
@@ -94,7 +95,7 @@ group datanode to communicate with the NameNode in the cluster.
 
 Force the NameNode to reload the ACL configurations with command:
 
-	$ hadoop dfsadmin -refreshServiceAcl`\
+	$ hadoop dfsadmin -refreshServiceAcl
 
 This command will force the reload the HDFS related ACLs from the policy
 file.
@@ -118,28 +119,23 @@ generic format of the value should be similar to the following:
 Besides the three properties we mentioned in this recipe, a number of
 other ACL properties are available in Hadoop. Table [tbl:acl] shows the
 meaning of these properties.
+																									  
+| **Property**                         | **Service Description**     								  |
+|:-------------------------------------|:-------------------------------------------------------------|
+| security.client.protocol.acl         | Clients access HDFS										  |
+| security.client.datanode.protocol.acl| Client to DataNode for block recovery						  |
+| security.inter.datanode.protocol.acl | DataNode to DataNode updating timestamps					  |
+| security.inter.tracker.protocol.acl  | TaskTracker to JobTracker									  |
+| security.job.submission.protocol.acl | Client to JobTracker for job submission, querying and so on. |
+| security.task.umbilical.protocol.acl | For map and reduce tasks talk to TaskTracker.				  |
+| security.refresh.policy.protocol.acl | dfsadmin and mradmin to refresh ACL policies.				  |
 
-<span>ll</span> Property & Service Description\
-security.client.protocol.acl & Clients access HDFS\
-security.client.datanode.protocol.acl & Client to DataNode for block
-recovery\
-security.inter.datanode.protocol.acl & DataNode to DataNode updating
-timestamps\
-security.inter.tracker.protocol.acl & TaskTracker to JobTracker\
-security.job.submission.protocol.acl & Client to JobTracker for job
-submission, querying and so on.\
-security.task.umbilical.protocol.acl & For map and reduce tasks talk to
-TaskTracker.\
-security.refresh.policy.protocol.acl & dfsadmin and mradmin to refresh
-ACL policies.\
-
-The default value of these properties is \*, which means all entities
+The default value of these properties is `*`, which means all entities
 can access the service or, in other words, SLA is disabled.
 
 ### See also 
 
 - Configuring job authorization with ACLs
-
 - <http://hadoop.apache.org/docs/r1.1.2/service_level_auth.html#Enable+Service+Level+Authorization>
 
 Configuring job authorization with ACL Hadoop provides two levels of job
@@ -254,7 +250,7 @@ generic format of the value should be similar to the following:
 
 	<value>user1,user2,user3 group1,group2</value>
 
-Note!\
+**Note!**
 The job owner, the super user and the cluster administrators that the
 job was submitted to will always have right to view and modify a job.
 
@@ -307,11 +303,8 @@ Strength Jurisdiction Policy Files, by downloading it from the following
 command:
 <http://www.oracle.com/technetwork/java/javase/downloads/index.html>
 
-At the bottom of the web page, you should see options similar to Figure
-[fig:jce].
-
-![Option of downloading JCE<span
-data-label="fig:jce"></span>](images/5163os_05_01.png)
+{id="fig:jce"}
+![Option of downloading JCE](images/5163os_05_01.png)
 
 Click the right download link based on your Java version, which we can
 get with the `java -version` command.
@@ -332,7 +325,7 @@ shell:
 
 	$ addprinc -randkey hduser/master.hdcluster.com@HDREALM
 
-Create the HTTP principal for SPNEGO with command in the kadmin shell:
+Create the HTTP principal for `SPNEGO` with command in the kadmin shell:
 
 	$ addprinc -randkey HTTP/master.hdcluster.com@HDREALM
 
@@ -657,7 +650,7 @@ hadoop.http.authentication.token.validity property to the following:
 ```
 
 The unit of the value is in seconds. The default value for this property
-is 36000.
+is `36000`.
 
 Configure the location of the signature secret file, which will be used
 to sign the authentication tokens, by changing the
@@ -686,11 +679,11 @@ property similar to the following:
 </property>
 ```
 
-Warning!\
+**Warning!**
 This property is required for HTTP authentication to work properly.
 
 Configure Kerberos principal for HTTP endpoint by changing the
-hadoop.http.authentication.kerberos.principal property similar to the
+`hadoop.http.authentication.kerberos.principal` property similar to the
 following:
 
 ```xml
@@ -702,7 +695,7 @@ following:
 
 Configure the location of the keytab file for the Kerberos principal for
 HTTP endpoints by changing the
-hadoop.http.authentication.kerberos.keytab property similar to the
+`hadoop.http.authentication.kerberos.keytab` property similar to the
 following:
 
 ```xml
@@ -723,7 +716,7 @@ Start the Hadoop cluster with:
 
 	$ start-all.sh
 
-Validate the configuration by opening URL master:50030/jobtracker.jsp.
+Validate the configuration by opening URL `master:50030/jobtracker.jsp`.
 
 Alternatively, we can test our configuration with the curl command:
 
@@ -800,7 +793,7 @@ The first method we want to introduce is to configure the NameNode to
 write edit logs and filesystem image into two locations, one is on the
 local directory for the NameNode machine and the other is on the
 SecondaryNameNode machine, these directories are specified with the HDFS
-property dfs.name.dir. We can use the following steps to configure this:
+property `dfs.name.dir`. We can use the following steps to configure this:
 
 Log into master1 with command:
 
@@ -910,10 +903,10 @@ SecondaryNameNode.
 #### NameNode resilience with multiple hard drives 
 
 We can use the following steps to configure the NameNode with multiple
-hard drives:\
+hard drives:
 
 Install, format and mount the hard drive on to the machine, suppose the
-mount point is /hadoop1/.
+mount point is `/hadoop1/`.
 
 Create the Hadoop directory with command:
 
@@ -1097,7 +1090,7 @@ following property in the file:
 ```
 
 This property specifies the NameNode IDs with property
-dfs.ha.namenodes.\<nameservices\>. For example, in the previous step, we
+dfs.ha.namenodes. `<nameservices>`. For example, in the previous step, we
 have configured name service hdcluster, so the property name here will
 be dfs.ha.namenodes.hdcluster. In this property, we specified namenode1
 and namenode2 for the logic name service.
@@ -1352,7 +1345,7 @@ Similar to the ha.zookeeper.auth property, the '@' character in the
 value specifies that the configuration is a file on disk.
 
 Generate ZooKeeper ACL corresponding to the authentication with
-command:\
+command:
 
 	$ java -cp $ZK_HOME/lib/*:$ZK_HOME/zookeeper-*.jar org.apache.zookeeper.server.auth.DigestAuthenticationProvider zkuser:password
 
@@ -1517,26 +1510,21 @@ situations.
 
 Table [tbl:nnfederation] shows the properties for configuring NameNode
 federation:
-
-<span>p<span>.19</span>p<span>.32</span>p<span>.38</span></span> Daemon
-& Property & Description\
-NameNode & dfs.namenode.rpc-address & For NameNode RPC communication
-with clients.\
-& dfs.namenode.servicerpc-address & For NameNode RPC communication with
-HDFS services.\
-& dfs.namenode.http-address & NameNode HTTP web UI address.\
-& dfs.namenode.https-address & NameNode Secured HTTP web UI address.\
-& dfs.namenode.name.dir & NameNode local directory.\
-& dfs.namenode.edits.dir & Local directory for NameNode edits logs.\
-& dfs.namenode.checkpoint.dir & SecondaryNameNode local directory.\
-& dfs.namenode.checkpoint.edits.dir & Directory for SecondaryNameNode
-edits logs.\
-SecondaryNameNode & dfs.secondary.namenode.keytab.file & The
-SecondaryNameNode keytab file.\
-& dfs.namenode.backup.address & The address for the backup node.\
-BackupNode & dfs.secondary.namenode.keytab.file & Backup node keytab
-file.\
-
+																											
+|     Daemon        | Property                          | Description										|
+|:------------------|:----------------------------------|:--------------------------------------------------|
+|    NameNode       | dfs.namenode.rpc-address          | For NameNode RPC communication with clients.		|
+|                   | dfs.namenode.servicerpc-address   | For NameNode RPC communication with HDFS services.|
+|                   | dfs.namenode.http-address         | NameNode HTTP web UI address.						|
+|                   | dfs.namenode.https-address        | NameNode Secured HTTP web UI address.				|
+|                   | dfs.namenode.name.dir             | NameNode local directory.							|
+|                   | dfs.namenode.edits.dir            | Local directory for NameNode edits logs.			|
+|                   | dfs.namenode.checkpoint.dir       | SecondaryNameNode local directory.				|
+|                   | dfs.namenode.checkpoint.edits.dir | Directory for SecondaryNameNode edits logs.		|
+| SecondaryNameNode | dfs.secondary.namenode.keytab.file| The SecondaryNameNode keytab file.				|
+|                   | dfs.namenode.backup.address       | The address for the backup node.					|
+| BackupNode        | dfs.secondary.namenode.keytab.file| Backup node keytab file.							|
+																											
 ### There's more... 
 
 A NameNode federated Hadoop cluster has different administrative tasks
@@ -1565,7 +1553,7 @@ We can use the following URL to access the web UI for the HDFS cluster.
 
 Similar to the old Hadoop version, balancer is used to balance the data
 blocks over the cluster. On a HDFS federated Hadoop cluster, we can run
-a balancer with the following command:\
+a balancer with the following command:
 
 	$ hadoop-daemon.sh --config $HADOOP_HOME/conf --script hdfs start balancer -policy node
 
@@ -1577,7 +1565,7 @@ pool level as well as the data node level.
 
 Suppose we have configured a NameNode federated Hadoop cluster with two
 running NameNodes. We want to add the third NameNode namenode3 on host
-master3. We can use the following steps to do this:\
+master3. We can use the following steps to do this:
 
 Log into the new NameNode machine master3.
 

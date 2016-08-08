@@ -1,3 +1,4 @@
+{id="chap:8"}
 # Building Hadoop Cluster with Amazon EC2 and S3 
 
 In this chapter, we will cover:
@@ -50,10 +51,10 @@ Use a web browser to open the following link: <http://aws.amazon.com/>.
 
 Click the '**Sign Up**' button on the upper right corner of the window.
 
-You will be directed to a webpage as shown in Figure [fig:aws.signin].
+You will be directed to a [signup webpage](#fig:aws.signin).
 
-![Sign in or Create and AWS Account<span
-data-label="fig:aws.signin"></span>](images/5163os_08_01.png)
+{id="fig:aws.signin"}
+![Sign in or Create and AWS Account](images/5163os_08_01.png)
 
 Fill in the email address in the text field with label '**My e-mail
 address is**:' and select the '**I am a new user**' radio button as
@@ -63,37 +64,36 @@ Click the '**Sign in using our secure server**' button at the bottom as
 shown in the screenshot.
 
 Fill the login credentials form, which includes name, email and password
-as shown in Figure [fig:login.credentials].
+as shown in the [following figure](#fig:login.credentials).
 
-![The Login Credentials Form<span
-data-label="fig:login.credentials"></span>](images/5163os_08_02.png)
+{id="fig:login.credentials"}
+![The Login Credentials Form](images/5163os_08_02.png)
 
 Click the '**Continue**' button at the bottom as shown in the
 screenshot.
 
 Fill in the '**Contact Information**', '**Security Check**' and '**AWS
-Customer Agreement**' form as shown in Figure [fig:aws.personal.info].
+Customer Agreement**' [form](#fig:aws.personal.info).
 
-![AWS Signin Personal Information Page<span
-data-label="fig:aws.personal.info"></span>](images/5163os_08_03.png)
+{id="fig:aws.personal.info"}
+![AWS Signin Personal Information Page](images/5163os_08_03.png)
 
 Click the '**Create Account and Continue**' button at the bottom as
 shown in the screenshot.
 
 So far, an AWS account has been created. Now we can login to AWS with
-the newly created account by using the '**returning user**' option as
-shown in Figure [fig:aws.signin.return].
+the newly created account by using the '**returning user**'
+[option](#fig:aws.signin.return).  
 
-![AWS signin with Returning User<span
-data-label="fig:aws.signin.return"></span>](images/5163os_08_04.png)
+{id="fig:aws.signin.return"}
+![AWS signin with Returning User](images/5163os_08_04.png)
 
 By clicking the '**Sign in using our secure server**' button on the
 bottom of the window, we will be able to login to the AWS management
-console page with EC2 and S3 service available as shown in Figure
-[fig:aws.management.console].
+[console page with EC2 and S3](#fig:aws.management.console).
 
-![The AWS Management Console<span
-data-label="fig:aws.management.console"></span>](images/5163os_08_05.png)
+{id="fig:aws.management.console"}
+![The AWS Management Console](images/5163os_08_05.png)
 
 Till here, we finished the registration step successfully.
 
@@ -133,10 +133,10 @@ Use the following recipe to manage AWS security credentials:
 Open a web browser and go to URL [aws.amazon.com](aws.amazon.com).
 
 Click the '**My Account / Console**' dropdown button on the upper left
-of the window as shown in Figure [fig:secu.select].
+of the [window](#fig:secu.select).
 
-![Choose the Security Credentials button<span
-data-label="fig:secu.select"></span>](images/5163os_08_07.png)
+{id="fig:secu.select"}
+![Choose the Security Credentials button](images/5163os_08_07.png)
 
 Click the '**Security Credentials**' in the dropdown list as shown in
 the previous screenshot.
@@ -146,43 +146,43 @@ security credentials management page. Otherwise, a login window will
 appear. You need to type in the user name and password and login as a
 '**returning user**'.
 
-Currently, Amazon AWS has a few types of credentials as shown in Figure
-[fig:aws.credentials.types].
+Currently, Amazon AWS has a few types of
+[credentials](#fig:aws.credentials.types). 
 
-![AWS Types of Security Credentials<span
-data-label="fig:aws.credentials.types"></span>](images/5163os_08_08.png)
+{id="fig:aws.credentials.types"}
+![AWS Types of Security Credentials](images/5163os_08_08.png)
 
-Access Credentials include Access Keys, X.509 Certificates and Key pairs
-as shown in Figure [fig:aws.access.credentials].
+Access Credentials include
+[Access Keys, X.509 Certificates and Key pairs](#fig:aws.access.credentials). 
 
-![AWS Access Credentials<span
-data-label="fig:aws.access.credentials"></span>](images/5163os_08_09.png)
+{id="fig:aws.access.credentials"}
+![AWS Access Credentials](images/5163os_08_09.png)
 
 By clicking the '**Make Inactive**' link on the status column of the
 access keys table, we can make the access keys inactive. Inactive access
 keys can be made active again and can be deleted from the list.
 
-![X.509 Certificates<span
-data-label="fig:aws.x509certificates"></span>](images/5163os_08_11.png)
+{id="fig:aws.x509certificates"}
+![X.509 Certificates](images/5163os_08_11.png)
 
 Similarly, we can make a X.509 certificate inactive. Inactive
 certificates can be made active again or deleted from the list.
 
 By clicking the '**Create a new Certificate**' link we will be able to
-create a new certificate as shown in Figure [fig:aws.create.x509].
+create a [new certificate](#fig:aws.create.x509).
 
-![Create X.509 Certificates<span
-data-label="fig:aws.create.x509"></span>](images/5163os_08_10.png)
+{id="fig:aws.create.x509"}
+![Create X.509 Certificates](images/5163os_08_10.png)
 
 We need to download the private key file as well as the X.509
 certificate by clicking on the buttons as shown in the screenshot. These
 files should be kept security and never shared with any other people.
 
 Key pairs used for EC2 can be managed from the management console as
-shown in Figure [fig:aws.keypair.management].
+shown in the [figure below](#fig:aws.keypair.management).
 
-![AWS Managing Key Pairs<span
-data-label="fig:aws.keypair.management"></span>](images/5163os_08_14.png)
+{id="fig:aws.keypair.management"}
+![AWS Managing Key Pairs](images/5163os_08_14.png)
 
 New key pairs can be created by clicking the '**Create Key Pair**'
 Button on the top of the window. A pop up window will be used to type in
@@ -192,16 +192,16 @@ downloaded key pair to `~/.ec2` folder. `$ cp *.pem ~/.ec2/`
 
 ### How it works 
 
-Table [tbl:awssecurity] show the usage of each security credential:
-
-<span>lll</span> **Security Credential** & & **Used for**\
-Access Credentials & Access Keys & Secure REST or Query request access
-to AWS service APIs.\
-& X.509 Certificates & Make SOAP protocol requests to AWS service APIs.\
-& Key Pairs & Launch and securely access EC2 instances.\
-Sign-In Credentials & & Login to AWS from the web portal.\
-Account Identifiers & & Share resources between accounts.\
-
+Table [tbl:awssecurity] show the usage of each security credential:										  
+																										  
+|  **Security Credential** |                    | **Used for**											  |
+|:-------------------------|:-------------------|:--------------------------------------------------------|
+| Access Credentials       | Access Keys        | Secure REST or Query request access to AWS service APIs.|
+|                          | X.509 Certificates | Make SOAP protocol requests to AWS service APIs.		  |
+|                          | Key Pairs          | Launch and securely access EC2 instances.				  |
+| Sign-In Credentials      |                    | Login to AWS from the web portal.						  |
+| Account Identifiers      |                    | Share resources between accounts.						  |
+																										  
 ## Preparing local machine for EC2 connection
 
 A local client machine is required for accessing EC2. For example, we
@@ -221,10 +221,10 @@ Use the following recipe to configure a local machine for EC2 remote
 access:
 
 Get the Access Key ID and the secret access key from the security
-credentials web page as shown in Figure [fig:aws.access.keys].
+credentials [web page](#fig:aws.access.keys).
 
-![AWS Access Keys<span
-data-label="fig:aws.access.keys"></span>](images/5163os_08_15.png)
+{id="fig:aws.access.keys"}
+![AWS Access Keys](images/5163os_08_15.png)
 
 Move the key pair to the .ec2 directory with command:
 
@@ -317,7 +317,7 @@ command, here we specify a file name as the image name; bs specifies the
 size of the blocks and count is the number of blocks for input to
 output. The size of the output file **centos.img** is determined by the
 block size and count. For example, the above command creates an image
-file of size $1M \times 1024$ which is around $1.0GB$.
+file of size {$$}1M \times 1024{/$$} which is around $1.0GB$.
 
 Check the size of the image file with command:
 
@@ -599,17 +599,16 @@ Bundle the loopback image file with command:
 
 	$ ec2-bundle-image -i centos.img -k .ec2/pk-*.pem -c .ec2/cert-*.pem -u 123412341234
 
-Option *-i* specifies the image file name, *-k* specifies the private
-key file, *-c* specifies the certificate file and -u specifies the user
+Option `-i` specifies the image file name, `-k` specifies the private
+key file, `-c` specifies the certificate file and -u specifies the user
 Account Number which is a 12 digit numeric string.
 
 We can get the Account number from the web user interface through the
 following URL: <https://portal.aws.amazon.com/gp/aws/manageYourAccount>?
-The account number is on the upper left of the window as shown in Figure
-[fig:aws.account.number].
+The account number is on the [upper left of the window](#fig:aws.account.number).
 
-![AWS Account Number<span
-data-label="fig:aws.account.number"></span>](images/5163os_08_16.png)
+{id="fig:aws.account.number"}
+![AWS Account Number](images/5163os_08_16.png)
 
 The command will ask for the architecture of the image, then it will
 bundle the image with user's security credentials and split the bundled
@@ -637,32 +636,31 @@ The output message will be similar to the following:
     Creating bundle manifest...
     ec2-bundle-image complete.
 
-Create a bucket from the S3 web interface as shown in Figure
-[fig:aws.s3.bucket.create].
+Create a bucket from the S3 [web interface](#fig:aws.s3.bucket.create).
 
-![AWS Creating S3 Bucket<span
-data-label="fig:aws.s3.bucket.create"></span>](images/5163os_08_17.png)
+{id="fig:aws.s3.bucket.create"}
+![AWS Creating S3 Bucket](images/5163os_08_17.png)
 
 Type in the bucket name and select the region based on your location as
-shown in Figure [fig:aws.s3.bucket.region].
+shown in the following [figure](#fig:aws.s3.bucket.region).
 
-![Choose Region for the Bucket<span
-data-label="fig:aws.s3.bucket.region"></span>](images/5163os_08_18.png)
+{id="fig:aws.s3.bucket.region"}
+![Choose Region for the Bucket](images/5163os_08_18.png)
 
 Click the 'Create' button, the bucket will be successfully created as
-shown in Figure [fig:aws.s3.buckets].
+shown in [figure](#fig:aws.s3.buckets).
 
-![AWS S3 Buckets<span
-data-label="fig:aws.s3.buckets"></span>](images/5163os_08_19.png)
+{id="fig:aws.s3.buckets"}
+![AWS S3 Buckets](images/5163os_08_19.png)
 
 Upload the bundled file into S3 with command:
 
 	$ ec2-upload-bundle -b packt-bucket -m /tmp/centos.img.manifest.xml -a AKIAJ7GAQT52MZKJA4WQ -s QDHHZ0/Mj5pDYFWKpqEzXhwjqM1UB+cqjGQQ6l3S
 
 This command will upload the bundled image parts to the specified bucket
-(packt-bucket in this case), which is specified with the *-b* option.
-Option *-m* specifies the location of the manifest file, option *-a*
-specifies the access key and *-s* specifies the secret key. Note that
+(packt-bucket in this case), which is specified with the `-b` option.
+Option `-m` specifies the location of the manifest file, option `-a`
+specifies the access key and `-s` specifies the secret key. Note that
 for security purposes, the manifest file will be encrypted with the
 public key before being uploaded.
 
@@ -687,11 +685,10 @@ The command will give output similar to the following:
 
 When the upload completes, we can check the content of the bucket by
 clicking on the bucket name. The bucket should now contain all the image
-parts as well as the manifest file as shown in Figure
-[fig:aws.bucket.content].
+parts as well as the [manifest file](#fig:aws.bucket.content).
 
-![Files of a S3 Bucket<span
-data-label="fig:aws.bucket.content"></span>](images/5163os_08_20.png)
+{id="fig:aws.bucket.content"}
+![Files of a S3 Bucket](images/5163os_08_20.png)
 
 Register the AMI with command:
 
@@ -734,8 +731,8 @@ AMI with command:
 
 	$ ec2-run-instances ami-9f422ff6 -n 1 -k shumin.guo
 
-The command specifies to run instance with our new AMI, option *-n*
-specifies the number of instances to start and option *-k* specifies the
+The command specifies to run instance with our new AMI, option `-n`
+specifies the number of instances to start and option `-k` specifies the
 key pair to use for logging in to these instances.
 
 The output will be similar to the following:
@@ -787,7 +784,7 @@ meanings of the columns are:
 - Whether or not the instance is EBS optimized (true or false)
 - The Amazon Resource Name (ARN) of the IAM role
 
-The output message shows that the ID of the instance is **i-0020e06c**.
+The output message shows that the ID of the instance is `i-0020e06c`.
 
 After waiting for a while, we can check the status of the instance with
 command:
@@ -798,18 +795,17 @@ command:
 
 The instance status tells us that it is in running state.
 
-Alternatively, we can check the status of the instance from the web UI.
-For example, we can get the status of the instance similar to Figure
-[fig:aws.ec2.instances].
+Alternatively, we can check the status of the instance from the
+[web UI](#fig:aws.ec2.instances). 
 
-![AWS EC2 Instances<span
-data-label="fig:aws.ec2.instances"></span>](images/5163os_08_21.png)
+{id="fig:aws.ec2.instances"}
+![AWS EC2 Instances](images/5163os_08_21.png)
 
 Login to the instance with command:
 
 	$ ssh -i ~/.ec2/shumin.guo.pem root@ec2-54-224-240-54.compute-1.amazonaws.com
 
-In this command, *-i* specifies the key pair to use for login and
+In this command, `-i` specifies the key pair to use for login and
 `ec2-54-224-240-54.compute-1.amazonaws.com` is the public domain name of
 the EC2 instance.
 
@@ -943,27 +939,27 @@ Bundle the image with command:
 
 	$ ec2-bundle-vol -e ~/.ec2 -k pk-*pem -c cert-*.pem -u 123412341234
 
-In this command, *-k* specifies the name of the file that contains the
-private key, *-c* specifies the file that contains the X.509
-certificate, *-u* specifies the 12 to 15 digit count ID without dashes
-of the current user and *-e* specifies the **location/directory** that
+In this command, `-k` specifies the name of the file that contains the
+private key, `-c` specifies the file that contains the X.509
+certificate, `-u` specifies the 12 to 15 digit count ID without dashes
+of the current user and `-e` specifies the `location/directory` that
 contains the private key file and certificate file.
 
 Upload the bundled AMI to S3 with command:
 
 	$ ec2-upload-bundle -b packt-bucket -m /tmp/image.manifest.xml\index{image.manifest.xml} -a AKIAJ7GAQT52MZKJA4WQ -p QDHHZ0/Mj5pDYFWKpqEzXhwjqM1UB+cqjGQQ6l3S
 
-In this command, *-b* specifies the name of the bucket on S3, *-m*
-specifies the location of the manifest file, *-a* option specifies the
-access key string and *-p* option specifies the secret key string.
+In this command, `-b` specifies the name of the bucket on S3, `-m`
+specifies the location of the manifest file, `-a` option specifies the
+access key string and `-p` option specifies the secret key string.
 
 Register the AMI with command:
 
 	$ ec2-register packt-bucket/image.manifest.xml -n centos-hadoop-1.0 -O AKIAJ7GAQT52MZKJA4WQ -W QDHHZ0/Mj5pDYFWKpqEzXhwjqM1UB+cqjGQQ6l3S
 
 In this command, the first parameter specifies the location of the
-manifest file in the S3 bucket, the *-n* option specifies the name of
-the AMI, *-O* specifies the access key string and -W specifies the
+manifest file in the S3 bucket, the `-n` option specifies the name of
+the AMI, `-O` specifies the access key string and -W specifies the
 secret key string.
 
 #### Creating an EBS backed AMI 
@@ -977,31 +973,30 @@ visit Amazon official document at:
 Use the following recipe to create an EBS backed AMI:
 
 Go to <https://console.aws.amazon.com/ec2/v2/home#Images:>, filter the
-AMIs with conditions similar to Figure [fig:aws.ec2.ami.filter].
+AMIs with conditions similar to [figure](#fig:aws.ec2.ami.filter).
 
-![Filtering EC2 AMIs<span
-data-label="fig:aws.ec2.ami.filter"></span>](images/5163os_08_29.png)
+{id="fig:aws.ec2.ami.filter"}
+![Filtering EC2 AMIs](images/5163os_08_29.png)
 
 Start an instance by right clicking on one of the AMIs and then click
-'Launch' as shown in Figure [fig:aws.launch.instance].
+'Launch' as shown in the following [figure](#fig:aws.launch.instance).
 
-![Launching EC2 Instance<span
-data-label="fig:aws.launch.instance"></span>](images/5163os_08_30.png)
+{id="fig:aws.launch.instance"}
+![Launching EC2 Instance](images/5163os_08_30.png)
 
 When the instance is running, login to the instances, make changes
 according to your requirements. Then, from the web management console,
 right click on the running instance and then select 'Create Image (EBS
-AMI)' as shown in Figure [fig:aws.create.ebsami].
+AMI)' as shown in the following [figure](#fig:aws.create.ebsami).
 
-![Create EBS AMI from Running Instance<span
-data-label="fig:aws.create.ebsami"></span>](images/5163os_08_31.png)
+{id="fig:aws.create.ebsami"}
+![Create EBS AMI from Running Instance](images/5163os_08_31.png)
 
 Go to the AMIs tab of the AWS web console, and select 'Owned By Me', we
-will see that the EBS AMI is being created as shown in Figure
-[fig:aws.owned.ami].
+will see that the EBS AMI is being [created](#fig:aws.owned.ami).
 
-![Owned AMI<span
-data-label="fig:aws.owned.ami"></span>](images/5163os_08_33.png)
+{id="fig:aws.owned.ami"}
+![Owned AMI](images/5163os_08_33.png)
 
 EC2 creates a snapshot for the new AMI. Similar to the image part files
 stored in S3, the snapshot stores the physical image of the EBS backed
@@ -1167,7 +1162,7 @@ change the `fs.default.name` similar to the following:
 ```
 
 Open file `$HADOOP_HOME/conf/mapred-site.xml` with a text editor and
-change the *mapred.job.tracker* property similar to the following:
+change the `mapred.job.tracker` property similar to the following:
 
 ```xml
 <property>
@@ -1211,13 +1206,12 @@ We can use the following recipe to use EMR for data processing:
 Create the input directory (with name input) and Java library directory
 (with name jars) under the bucket from the S3 web management console.
 
-Upload data into the input folder from the web console as shown in
-Figure [fig:aws.s3.upload].
+Upload data into the input folder from the [web console](#fig:aws.s3.upload).
 
-![Uploading data into S3<span
-data-label="fig:aws.s3.upload"></span>](images/5163os_08_22.png)
+{id="fig:aws.s3.upload"}
+![Uploading data into S3](images/5163os_08_22.png)
 
-Upload required jar file (hadoop-examples-\*.jar in this example) into
+Upload required jar file (`hadoop-examples-*.jar` in this example) into
 the jars directory.
 
 If you have configured S3 using the command in the previous recipe, you
@@ -1227,31 +1221,30 @@ can also use the following commands to finish the above steps:
 	$ hadoop fs -put $HADOOP_HOME/hadoop-examples-*.jar /jars
 	$ hadoop fs -put words.txt /input
 
-*words.txt* contains the input data for the wordcount job.
+`words.txt` contains the input data for the wordcount job.
 
 Open URL: <https://console.aws.amazon.com/elasticmapreduce>.
 
-Click the '*Create New Job Flow*' button as shown in Figure
-[fig:aws.elasticmapred.createflow].
+Click the 'Create New Job Flow' [button](#fig:aws.elasticmapred.createflow).
 
-![Create New Elastic MapReduce Job Flow<span
-data-label="fig:aws.elasticmapred.createflow"></span>](images/5163os_08_23.png)
+{id="fig:aws.elasticmapred.createflow"}
+![Create New Elastic MapReduce Job Flow](images/5163os_08_23.png)
 
 Next, enter the 'Job Flow Name', select the 'Hadoop Version' and select
-the job flow type as shown in Figure [fig:aws.elasticmapred.config].
+the [job flow type](#fig:aws.elasticmapred.config).
 
-![Configure Elastic MapReduce Job Flow<span
-data-label="fig:aws.elasticmapred.config"></span>](images/5163os_08_24.png)
+{id="fig:aws.elasticmapred.config"}
+![Configure Elastic MapReduce Job Flow](images/5163os_08_24.png)
 
 To test a simple job flow, you can choose 'Run a sample application'
 instead.
 
 Click 'Continue' button at the bottom, the next window asks for the
-location of the jar file and the parameters for running the Hadoop
-MapReduce job as shown in Figure [fig:aws.elasticmapred.specify.param].
+location of the jar file and the parameters for running the
+[Hadoop MapReduce job](#fig:aws.elasticmapred.specify.param).
 
-![Specify Job Flow Parameters<span
-data-label="fig:aws.elasticmapred.specify.param"></span>](images/5163os_08_01.png)
+{id="fig:aws.elasticmapred.specify.param"}
+![Specify Job Flow Parameters](images/5163os_08_01.png)
 
 In this step, we need to specify the location of the jar file and the
 arguments to run a job. The specifications should be similar to option
@@ -1263,10 +1256,10 @@ will be one m1.small instance as the master node and two m1.small
 instances as the slave nodes. You can configure the instance type and
 the number of instances based on the job properties (for example, big or
 small input data size, data intensive or computation intensive etc.).
-This step is shown in Figure [fig:aws.elasticmapred.config.instance].
+This step is shown in the following [figure](#fig:aws.elasticmapred.config.instance). 
 
-![Configure EC2 Instances<span
-data-label="fig:aws.elasticmapred.config.instance"></span>](images/5163os_08_26.png)
+{id="fig:aws.elasticmapred.config.instance"}
+![Configure EC2 Instances](images/5163os_08_26.png)
 
 Click the 'Continue' button and we will go to the 'Advanced options'
 window. This window asks for instance boot options such as security key
@@ -1278,17 +1271,18 @@ in this step and click 'Continue'.
 
 The 'Review' window shows the options we have configured, if there is no
 problem, we can click the 'Create Job Flow' button to create an EMR job
-flow. This step is shown in Figure [fig:aws.elasticmapred.flow.review].
+flow. This step is shown in the following
+[figure](#fig:aws.elasticmapred.flow.review). 
 
-![Review Job Flow Configuration<span
-data-label="fig:aws.elasticmapred.flow.review"></span>](images/5163os_08_27.png)
+{id="fig:aws.elasticmapred.flow.review"}
+![Review Job Flow Configuration](images/5163os_08_27.png)
 
 The job flow will be started and we can check the output when it
-completes. We can get its status from the web console as shown in Figure
-[fig:aws.elasticmapred.flow.status].
+completes. We can get its status from the
+[web console](#fig:aws.elasticmapred.flow.status).
 
-![Status of an Elastic MapReduce Job Flow<span
-data-label="fig:aws.elasticmapred.flow.status"></span>](images/5163os_08_28.png)
+{id="fig:aws.elasticmapred.flow.status"}
+![Status of an Elastic MapReduce Job Flow](images/5163os_08_28.png)
 
 ### See also 
 

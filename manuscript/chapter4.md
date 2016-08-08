@@ -1,3 +1,4 @@
+{id="chap:4"}
 # Managing a Hadoop Cluster 
 
 In this chapter, we will cover:
@@ -1258,10 +1259,10 @@ We will show job management from the web UI.
 Check the status of a job by opening the JobTracker URL:
 <master:50030/jobtracker.jsp>.
 
-We will get a web page similar to Figure [fig:mapred.status].
+We will get a web page similar to the following [figure](#fig:mapred.status).
 
-![MapReduce Job and Scheduling information<span
-data-label="fig:mapred.status"></span>](images/5163os_04_11.png)
+{id="fig:mapred.status"}
+![MapReduce Job and Scheduling information](images/5163os_04_11.png)
 
 From this web page, we can get the cluster summary information, the
 scheduling information, the running jobs list, the completed jobs list,
@@ -1274,26 +1275,22 @@ every 30 seconds.
 Kill a job by opening the URL,
 <master:50030/jobdetails.jsp?jobid=job_201302281451_0007&action=kill>.
 
-After a while, the killed job will be listed in the Failed Jobs list as
-shown in Figure [fig:failed.job].
+After a while, the killed job will be listed in the [Failed Jobs list](#fig:failed.job).
 
-![Information of a Failed job<span
-data-label="fig:failed.job"></span>](images/5163os_04_12.png)
+{id="fig:failed.job"}
+![Information of a Failed job](images/5163os_04_12.png)
 
 Change the job priority to be HIGH by opening the URL,
-<master:50030/jobdetails.jsp?jobid=job_201302281451_0007&action=changeprio&prio=HIGH>.\
+<master:50030/jobdetails.jsp?jobid=job_201302281451_0007&action=changeprio&prio=HIGH>.
 
 ### See also 
 
 - The Validating Hadoop installation recipe of Chapter [chap:3],
-    Configuring a Hadoop Cluster
-
+  Configuring a Hadoop Cluster
 - The Managing the HDFS cluster recipe
-
 - The Managing MapReduce cluster recipe
-
 - Refer to [MapReduce
-    tutorial](http://hadoop.apache.org/docs/r1.1.2/mapred_tutorial.html).
+  tutorial](http://hadoop.apache.org/docs/r1.1.2/mapred_tutorial.html).
 
 ## Checking job history from the web UI
 

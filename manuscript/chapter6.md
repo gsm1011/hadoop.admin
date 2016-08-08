@@ -1,3 +1,4 @@
+{id="chap:6"}
 # Monitoring a Hadoop Cluster 
 
 In this chapter, we will cover:
@@ -92,7 +93,7 @@ Change the permission of the password file to 600 with command:
 
 	$ chmod 600 $HADOOP_HOME/conf/jmxremote.password
 
-Warning!\
+**Warning!**
 If this file is too open, you will get error similar to the following
 when starting the Hadoop cluster daemons:
 
@@ -101,8 +102,8 @@ when starting the Hadoop cluster daemons:
 Open file `$HADOOP_HOME/conf/hadoop-env.sh` with a text editor.
 
 In this file, we will be able to find JMX monitoring configurations for
-the Hadoop daemons including *NameNode, SecondaryNameNode, DataNode,
-balancer, JobTracker* and *TaskTracker*. The default configuration will
+the Hadoop daemons including `NameNode, SecondaryNameNode, DataNode,
+balancer, JobTracker` and `TaskTracker`. The default configuration will
 be similar to the following:
 
     export HADOOP_NAMENODE_OPTS="-Dcom.sun.management.jmxremote $HADOOP_NAMENODE_OPTS"
@@ -126,12 +127,10 @@ changing the original configuration to the following:
 
 Use the following command to start the monitor user interface:
 
-	$ jconsole`\
+	$ jconsole
 
-We can see a window that is similar to Figure [fig:jconsole].
-
-![jconsole UI<span
-data-label="fig:jconsole"></span>](images/5163os_06_01.png)
+{id="fig:jconsole"}
+![jconsole UI](images/5163os_06_01.png)
 
 From this window, we can check the status of both local and remote
 processes. Checking the status of local processes is relatively simple.
@@ -139,28 +138,27 @@ First, select the desired process to check from the process list. Then,
 we only need to click the "Connect" button. Checking the status of
 remote processes is relatively complicated. We need to specify the
 location of the service by either specifying hostname and port or
-protocol and sap as shown in Figure [fig:jconsole]. We also need to
+protocol and sap as shown in [figure](#fig:jconsole). We also need to
 enter the username and password for authentication purposes. In the
 following steps, we assume to check the status of local JobTracker
 process.
 
 Select the "Local Process" radio button and then click "Connect" button.
-We can get a monitoring window, as shown in Figure
-[fig:jconsole.jobtracker] after waiting for a few moments.
+We can get a monitoring window, as shown in [figure](#fig:jconsole.jobtracker) 
+after waiting for a few moments. 
 
-![jconsole JobTracker resource usage monitoring UI<span
-data-label="fig:jconsole.jobtracker"></span>](images/5163os_06_02.png)
+{id="fig:jconsole.jobtracker"}
+![jconsole JobTracker resource usage monitoring UI](images/5163os_06_02.png)
 
 The window shows the daemon status for the JobTracker. From the window,
 we can check the memory usage, threads, classes, summary of JVM and
 details of MBeans.
 
 Check the memory of the daemon by clicking on the "Memory" tab of the
-jconsole window and we will get a window similar to Figure
-[fig:heap.usage.window].
+jconsole window, we will get [figure](#fig:heap.usage.window).
 
-![The Heap Memory Usage Window<span
-data-label="fig:heap.usage.window"></span>](images/5163os_06_03.png)
+{id="fig:heap.usage.window"}
+![The Heap Memory Usage Window](images/5163os_06_03.png)
 
 The memory window shows the heap memory usage as a time serial chart.
 From this window, we can select from different charts and time ranges to
@@ -168,11 +166,10 @@ display. The bottom part of the window is a summary of the current
 memory usage.
 
 By clicking on the "Threads" tab of the window, we can check the running
-threads of the JobTracker and we can get a window similar to Figure
-[fig:num.threads].
+[threads of the JobTracker](#fig:num.threads).
 
-![Number of Threads Window<span
-data-label="fig:num.threads"></span>](images/5163os_06_04.png)
+{id="fig:num.threads"}
+![Number of Threads Window](images/5163os_06_04.png)
 
 The upper part of the window shows the number of peak live threads and
 the number of current live threads. On the lower part of the window, we
@@ -183,11 +180,11 @@ the summary of the JVM virtual machine by clicking on the "VM Summary"
 tab of the window.
 
 The "MBeans" tab is the most informative one if you want to check the
-status details of the daemon. For example, Figure
-[fig:mbeans.hadoop.metrics] shows more metrics details for JobTracker:
+status details of the daemon. For example, [figure](#fig:mbeans.hadoop.metrics)
+shows more metrics details for JobTracker:
 
-![MBeans Hadoop Metrics<span
-data-label="fig:mbeans.hadoop.metrics"></span>](images/5163os_06_05.png)
+{id="fig:mbeans.hadoop.metrics"}
+![MBeans Hadoop Metrics](images/5163os_06_05.png)
 
 From this window, we can get a number of JobTracker metrics such as
 number of running jobs, number of map and reduce slots and number of
@@ -214,7 +211,7 @@ monitoring.
 
 Login to the master node from administrator machine with command:
 
-	$ ssh hdadmin@master`\
+	$ ssh hdadmin@master
 
 Use the following yum command to install Ganglia on the master machine:
 
@@ -268,7 +265,7 @@ Change the `udp_recv_channel` attribute to:
 
 Hadoop supports network communication through both unicast (with normal
 IP addresses, which is the one we use here) and multicast, which uses
-multicast address such as *239.2.11.71*. To use multicast, all the
+multicast address such as `239.2.11.71`. To use multicast, all the
 monitored hosts should be in the same IP segment. In this book, we
 assume to use unicast.
 
@@ -399,53 +396,51 @@ Start the httpd daemon with command:
 	$ sudo service httpd start
 
 Check the status of Ganglia by opening URL <http://master:80/ganglia>
-and we can get webpage similar to Figure [fig:ganglia.cluster.summary].
+and we can get webpage similar to [figure](#fig:ganglia.cluster.summary).
 
-![Ganglia Cluster Summary<span
-data-label="fig:ganglia.cluster.summary"></span>](images/5163os_06_06.png)
+{id="fig:ganglia.cluster.summary"}
+![Ganglia Cluster Summary](images/5163os_06_06.png)
 
 The upper left portion of the UI is a summary of the cluster, including
 number of hosts, host status, average load etc.
 
-The upper right part of Figure [fig:ganglia.cluster.summary] shows an
+The upper right part of [figure](#fig:ganglia.cluster.summary) shows an
 overview of the whole cluster, including cluster total load, cpu usage,
 memory and network traffic. It contains a clear jump for about 20
 minutes when one teragen job is running, which consumes cluster
 resources.
 
-The lower part of Figure [fig:ganglia.cluster.summary] shows the status
+The lower part of [figure](#fig:ganglia.cluster.summary) shows the status
 for each node in the cluster, including the master node and all the
 slave nodes. We can change the metric to display by selecting from the
-combo box as shown in Figure [fig:ganglia.metrics].
+combo box as shown in [figure](#fig:ganglia.metrics).
 
-![Ganglia Available Monitoring Metrics<span
-data-label="fig:ganglia.metrics"></span>](images/5163os_06_09.png)
+{id="fig:ganglia.metrics"}
+![Ganglia Available Monitoring Metrics](images/5163os_06_09.png)
 
 For example, by selecting metric "`dfs_datenode.bytes_written`", we can
-get the `bytes_written` for each node as shown in Figure
-[fig:bytes.written.metric].
+get the `bytes_written`, shown in [figure](#fig:bytes.written.metric).
 
-![The bytes written metric for all the Datanodes<span
-data-label="fig:bytes.written.metric"></span>](images/5163os_06_10.png)
+{id="fig:bytes.written.metric"}
+![The bytes written metric for all the Datanodes](images/5163os_06_10.png)
 
-Figure [fig:bytes.written.metric] confirms that a DataNode is the actual
+The [figure](#fig:bytes.written.metric) confirms that a DataNode is the actual
 place where data blocks are stored and NameNode only keeps track of the
 metadata for the data blocks. So the written data size is much smaller
 for NameNode.
 
 Check the details of each cluster node by selecting from the combo box,
-which has initial value of "–Choose a Node". For example, if we want to
+which has initial value of "- Choose a Node". For example, if we want to
 check all the metric for the master node, we will be able to get web
-page similar to Figure [fig:master.status].
+page similar to [figure](#fig:master.status).
 
-![Metric Status of the **master** Node<span
-data-label="fig:master.status"></span>](images/5163os_06_11.png)
+![Metric Status of the **master** Node](images/5163os_06_11.png)
 
-By scrolling down the window, we can check the Hadoop JobTracker metrics
-as shown in Figure [fig:jobtracker.metrics].
+By scrolling down the window, we can check the
+[Hadoop JobTracker metrics](#fig:jobtracker.metrics). 
 
-![MapReduce jobtracker metrics<span
-data-label="fig:jobtracker.metrics"></span>](images/5163os_06_12.png)
+{id="fig:jobtracker.metrics"}
+![MapReduce jobtracker metrics](images/5163os_06_12.png)
 
 This screenshot contains the status information of the JobTracker
 including the number of running jobs, the number of map and reduce slots
@@ -461,10 +456,10 @@ cluster. They continuously collect metrics data and send to the gmetad
 daemon running on the master node. The gmetad daemon stores data into a
 database maintained by rrdtool. The web UI, including all the graphs, is
 generated with PHP by pulling the data from the database. The Ganglia
-data flow can be described with Figure [fig:ganglia.dataflow].
+data flow can be described with [figure](#fig:ganglia.dataflow).
 
-![The Ganglia Data Flow Diagram<span
-data-label="fig:ganglia.dataflow"></span>](images/5163os_06_13.png)
+{id="fig:ganglia.dataflow"}
+![The Ganglia Data Flow Diagram](images/5163os_06_13.png)
 
 ### See also 
 
@@ -519,7 +514,8 @@ Use the following commands to build the `check_jmx` package:
 	$ cd check_jmx
 	$ ant
 
-After this, we want to get the following directory structure:\
+After this, we want to get the following directory structure:
+
 `$ check_jmx` Copy the two highlighted files into directory
 `/usr/local/nagios/libexec`:
 
@@ -532,14 +528,14 @@ Nagios monitoring configuration.
 ### How to do it... 
 
 Use the following recipe to configure Nagios for Hadoop cluster
-monitoring: Open file /etc/nagios/nagios.cfg with a text editor.\
+monitoring: Open file `/etc/nagios/nagios.cfg` with a text editor.
 
 This file is the main configuration file of Nagios. It references a
-number of files with extension ".cfg", which contains specific
+number of files with extension `.cfg`, which contains specific
 monitoring configurations.
 
 Change the contacts information for alerting services by changing the
-email address in file: /usr/local/nagios/etc/objects/contacts.cfg:
+email address in file: `/usr/local/nagios/etc/objects/contacts.cfg`:
 
     define contact{
       contact_name  nagiosadmin
@@ -553,8 +549,10 @@ available. Please refer to the following web page for more information:
 <http://nagios.sourceforge.net/docs/3_0/objectdefinitions.html>.
 
 Change the Apache web server configuration file
-`/etc/httpd/conf/httpd.conf` file by adding the following line:\
-`Include /etc/httpd/conf/nagios.conf`\
+`/etc/httpd/conf/httpd.conf` file by adding the following line:
+
+	Include /etc/httpd/conf/nagios.conf
+
 File `/etc/httpd/conf/nagios.conf` is the configuration file for Nagios
 web interface, the content of this file should be similar to the
 following:
@@ -603,7 +601,7 @@ Open file `/etc/nagios/nagios.cfg` and add the following content:
     cfg_file=/etc/nagios/services.cfg
 
 These two lines tell the main configuration file nagios.cfg to include
-two user specific configuration files: hosts.cfg and services.cfg.
+two user specific configuration files: `hosts.cfg` and `services.cfg`.
 
 Configuration file hosts.cfg specifies the hosts we want to monitor, and
 it should have content similar to the following:
@@ -710,7 +708,7 @@ monitor. The contents of this file should be similar to the following:
     }
 
 The service configured in this file will be applied to each host
-claiming to be in group hdgroup, which is configured in file hosts.cfg.
+claiming to be in group hdgroup, which is configured in file `hosts.cfg`.
 
 Verify the configurations with command:
 
@@ -901,47 +899,46 @@ Now, we can start the Ambari server with command:
 
 	$ sudo service ambari-server start
 
-Visit the web UI by opening URL: <http://master:8080>.\
+Visit the web UI by opening URL: <http://master:8080>.
+
 Now, we need to login to the Ambari server with username and password
 both as admin.
 
 After login, we will be able to install and manage our Hadoop cluster
-from the Ambari web UI, which is similar to Figure [fig:ambari.welcome].
+from the Ambari [web UI](#fig:ambari.welcome).
 
-![Start Apache Ambari Installation<span
-data-label="fig:ambari.welcome"></span>](images/5163os_06_14.png)
+{id="fig:ambari.welcome"}
+![Start Apache Ambari Installation](images/5163os_06_14.png)
 
-Next, we need to configure the install options as shown in Figure
-[fig:ambari.install.options].
+Next, we need to configure the install [options](#fig:ambari.install.options). 
 
-![Configure Installation Options<span
-data-label="fig:ambari.install.options"></span>](images/5163os_06_15.png)
+{id="fig:ambari.install.options"}
+![Configure Installation Options](images/5163os_06_15.png)
 
-After specifying the installation options as shown in Figure
-[fig:ambari.install.options], we can click the "Register and Confirm"
-button to start the installation process. This will lead to the host
-registration progress page as shown in Figure [fig:host.registration].
-In this step, we need to confirm hosts to install Hadoop.
+After specifying the installation options, we can click the "Register and
+Confirm" button to start the installation process. This will lead to the host
+registration progress page as shown in [figure](#fig:host.registration). In
+this step, we need to confirm hosts to install Hadoop.
 
-![Host Registration for the Hadoop Cluster<span
-data-label="fig:host.registration"></span>](images/5163os_06_17.png)
+{id="fig:host.registration"}
+![Host Registration for the Hadoop Cluster](images/5163os_06_17.png)
 
 By clicking the "Next" button, we will go the a webpage to choose the
-services to install as shown in Figure [fig:choose.services].
+[services](#fig:choose.services).
 
-![Choose Services to Install<span
-data-label="fig:choose.services"></span>](images/5163os_06_18.png)
+{id="fig:choose.services"}
+![Choose Services to Install](images/5163os_06_18.png)
 
 By default, all the services are selected to installed, we can make
 changes based on the requirements and then click the "Next" button. We
 will go to a webpage of to assign hosts as masters, slaves and clients,
-as shown in Figure [fig:assign.masters].
+as shown in the [following figure](#fig:assign.masters).
 
-![Assign hosts for master nodes<span
-data-label="fig:assign.masters"></span>](images/5163os_06_19.png)
+{id="fig:assign.masters"}
+![Assign hosts for master nodes](images/5163os_06_19.png)
 
-![Assign hosts for slaves and clients<span
-data-label="fig:assign.slaves"></span>](images/5163os_06_20.png)
+{id="fig:assign.slaves"}
+![Assign hosts for slaves and clients](images/5163os_06_20.png)
 
 Next, we will go to a webpage for customizing services, for example
 configuring the location for the NameNode directory. In this step, some
@@ -949,30 +946,28 @@ services such as Hive and Nagios may ask you to enter administrative
 usernames and passwords, which are required for service installation.
 
 After everything is configured, we will get a summary page about our
-configurations as shown in Figure [fig:config.review].
+[configurations](#fig:config.review).
 
-![Review Configuration before Installation<span
-data-label="fig:config.review"></span>](images/5163os_06_22.png)
+{id="fig:config.review"}
+![Review Configuration before Installation](images/5163os_06_22.png)
 
 By clicking on the "Deploy" button, the cluster deployment will start
-and a progress bar will appear for each service that is being installed
-as shown in Figure [fig:hadoop.install.process].
+and a [progress bar](#fig:hadoop.install.process).
 
-![The Hadoop Installation Process<span
-data-label="fig:hadoop.install.process"></span>](images/5163os_06_24.png)
+![The Hadoop Installation Process](images/5163os_06_24.png)
 
-After the deployment completes, we will get a summary page as shown in
-Figure [fig:install.summary].
+After the deployment completes, we will get a
+[summary page](#fig:install.summary). 
 
-![Summary of the Installation Process<span
-data-label="fig:install.summary"></span>](images/5163os_06_26.png)
+{id="fig:install.summary"}
+![Summary of the Installation Process](images/5163os_06_26.png)
 
 By clicking on the "Complete" button, the cluster installation process
-will complete, and we will be able to see the status of the cluster as
-shown in Figure [fig:cluster.status].
+will complete, and we will be able to see
+[the status of the cluster](#fig:cluster.status).
 
-![Cluster Status after Installation<span
-data-label="fig:cluster.status"></span>](images/5163os_06_27.png)
+{id="fig:cluster.status"}
+![Cluster Status after Installation](images/5163os_06_27.png)
 
 ### See also 
 
@@ -1039,7 +1034,7 @@ structure might be different from this.
 
 Install telnet with command:
 
-	$ sudo yum install telnet`\
+	$ sudo yum install telnet
 
 Login to the master node from administrator machine with command:
 
@@ -1252,14 +1247,11 @@ Sometimes, you might have problem running the HICC and visiting web UI,
 the most probable reason is that you have incompatible jar files for
 Hadoop, HBase and Chukwa. In such cases, my suggestion is to clone the
 source code from [github](https://github.com/apache/chukwa) and compile
-the hicc.war web archive file from source. For more information, please
+the `hicc.war` web archive file from source. For more information, please
 check the `README.txt` file in the source code root directory.
 
-In summary, the data flow of Chukwa can be described with the following
-figure:
-
-![Chukwa Dataflow<span
-data-label="fig:chukwa.dataflow"></span>](images/5163os_06_08.png)
+{id="fig:chukwa.dataflow"}
+![Chukwa Dataflow](images/5163os_06_08.png)
 
 For more information about the design of Chukwa, please check the
 [documentation](http://incubator.apache.org/chukwa/docs/r0.5.0/design.html).

@@ -1,3 +1,4 @@
+{id="chap:7"}
 # Tuning Hadoop Cluster for Best Performance 
 
 In this chapter, we will cover:
@@ -174,7 +175,8 @@ computing and recording the checksums of the data blocks etc.
 The following recipe can be used to benchmark a MapReduce cluster:
 
 Benchmark MapReduce jobs with command:
-`$ hadoop jar $HADOOP_HOME/hadoop-test-*.jar mapredtest 5 1000
+
+	$ hadoop jar $HADOOP_HOME/hadoop-test-*.jar mapredtest 5 1000
 
 The mapredtest benchmark does a load test on the MapReduce computing
 framework. This benchmark is done with random integers, which are
@@ -516,46 +518,43 @@ The usage for sort is as follows:
     $ sort [-m <maps>] [-r <reduces>] [-inFormat <input format class>] [-outFormat <output format class>] [-outKey <output key class>] [-outValue <output value class>] [-totalOrder <pcnt> <num samples> <max splits>] <input> <output>
 
 The meaning of each option is shown in Table [tbl:sort].
-
-<span>ll</span> **Option** & **Description**\
--m & Number of map tasks\
--r & Number of reduce tasks\
--inFormat & Input format class\
--outFormat & Output format class\
--outKey & Output key class\
--outValue & Output value class\
--totalOrder &
-
-[t]<span>0.8</span>Specifies to use the TotalOrderPartitioner to
-partition the input data. Three parameters are needed: `<pcnt>`
-specifies the number of partitions, `<num samples>` specifies the number
-of samples and `<max splits>` specifies the maximum number of splits for
-the data.
-
-input & Sort input directory\
-output & Sort output directory\
-
-The usage for wordcount is as follows:
-
-	$ hadoop jar $HADOOP_HOME/hadoop-example-*.jar wordcount <in> <out>
-
-`<in>` specifies the directory for input and `<out>` specifies the
-directory for output.
-
-### See also 
-
-- Benchmarking a Hadoop cluster with GridMix.
-
-## Analyzing job history with Rumen
-
-Rumen is a tool for extracting well formatted information from job log
-files. It parses logs and generates statistics for the Hadoop jobs. The
-job traces can be used for performance tuning and simulation.
-
-Current Rumen implementation includes two components, trace builder and
-folder. The trace builder takes job history as input and generates
-easily parsed json files. The folder is a utility to manipulate on input
-traces, and for most of the time, it is used to scale the summarized job
+																						 
+|  **Option** | **Description**															 |
+|:------------|:-------------------------------------------------------------------------| 	   	   	   	   	   	   	
+| -m          | Number of map tasks														 |
+| -r          | Number of reduce tasks													 |
+| -inFormat   | Input format class														 |
+| -outFormat  | Output format class														 |
+| -outKey     | Output key class														 |
+| -outValue   | Output value class														 |
+| -totalOrder | Specifies to use the TotalOrderPartitioner to							 |
+|             | partition the input data. Three parameters are needed: `<pcnt>`			 |
+|             | specifies the number of partitions, `<num samples>` specifies the number |
+|             | of samples and `<max splits>` specifies the maximum splits for the data. |
+| input       | Sort input directory													 |
+| output      | Sort output directory									   	   	   	   	 |
+																						  
+The usage for wordcount is as follows:													  
+																						  
+	$ hadoop jar $HADOOP_HOME/hadoop-example-*.jar wordcount <in> <out>					  
+																						  
+`<in>` specifies the directory for input and `<out>` specifies the						  
+directory for output.																	  
+																						  
+### See also 																			  
+																						  
+- Benchmarking a Hadoop cluster with GridMix.											  
+																						  
+## Analyzing job history with Rumen														  
+																						  
+Rumen is a tool for extracting well formatted information from job log					  
+files. It parses logs and generates statistics for the Hadoop jobs. The					  
+job traces can be used for performance tuning and simulation.							  
+																						  
+Current Rumen implementation includes two components, trace builder and					  
+folder. The trace builder takes job history as input and generates						  
+easily parsed json files. The folder is a utility to manipulate on input				  
+traces, and for most of the time, it is used to scale the summarized job				  
 traces from the trace builder. For example, we can use the folder tool
 to scale up (make time longer) or down (make time shorter) the job
 runtime. In this recipe, we will outline steps to analyze job history
@@ -1192,13 +1191,10 @@ following command:
 
 Use the following recipe to balance HDFS data blocks with balancer:
 
-Check the data skew through the web UI, for example, by opening URL
-<http://master:50070/>
+Check the data skew through the [web UI](#fig:skewed.datanode), for example, by opening URL <http://master:50070/>.
 
-The webpage will be similar to Figure [fig:skewed.datanode].
-
-![The Skewed Datanode<span
-data-label="fig:skewed.datanode"></span>](images/5163os_07_01.png)
+{id="fig:skewed.datanode"}
+![The Skewed Datanode](images/5163os_07_01.png)
 
 The screenshot shows that the data blocks are skewed. Hence, rebalancing
 is necessary.
@@ -1459,23 +1455,21 @@ Restart the Hadoop cluster with command:
 Table [tbl:hdfscompression] is a summary of properties for configuring
 Hadoop data compression:
 
-<span>ll</span> **Property** & **Default**\
-mapred.output.compress & true\
-mapred.output.compression.type & RECORD\
-mapred.output.compression.codec &
-org.apache.hadoop.io.compress.DefaultCodec\
-mapred.compress.map.output & false\
-mapred.map.output.compression.codec &
-org.apache.hadoop.io.compress.DefaultCodec\
+| **Property**                        | **Default**
+| mapred.output.compress              | true
+| mapred.output.compression.type      | RECORD
+| mapred.output.compression.codec     | org.apache.hadoop.io.compress.DefaultCodec
+| mapred.compress.map.output          | false
+| mapred.map.output.compression.codec | org.apache.hadoop.io.compress.DefaultCodec
 
 Available compression codecs are described in Table [tbl:hdfscodecs].
 
-<span>ll</span> **Codec Name** & **Java Class**\
-DefaultCodec & org.apache.hadoop.io.compress.DefaultCodec\
-GzipCodec & org.apache.hadoop.io.compress.GzipCodec\
-BZip2Codec & org.apache.hadoop.io.compress.BZip2Codec\
-SnappyCodec & org.apache.hadoop.io.compress.SnappyCodec\
-LzoCodec & org.apache.hadoop.io.compress.LzoCodec\
+| **Codec Name** | **Java Class**
+| DefaultCodec | org.apache.hadoop.io.compress.DefaultCodec
+| GzipCodec | org.apache.hadoop.io.compress.GzipCodec
+| BZip2Codec | org.apache.hadoop.io.compress.BZip2Codec
+| SnappyCodec | org.apache.hadoop.io.compress.SnappyCodec
+| LzoCodec | org.apache.hadoop.io.compress.LzoCodec
 
 ## Configuring speculative execution
 
@@ -1598,12 +1592,11 @@ Started the MapReduce cluster with the following command:
 ### How it works... 
 
 When speculative execution is enabled, some tasks will get killed. This
-can be verified by opening URL: <http://master:50030/>.
+can be verified by opening URL: <http://master:50030/> shown in
+[figure below](#fig:killed.jobs.speculative).
 
-The web page will be similar to Figure [fig:killed.jobs.speculative].
-
-![Killed Attempts due to Speculative Execution<span
-data-label="fig:killed.jobs.speculative"></span>](images/5163os_06_10.png)
+{id="fig:killed.jobs.speculative"}
+![Killed Attempts due to Speculative Execution](images/5163os_06_10.png)
 
 If speculative execution has been enabled for a Hadoop cluster, we can
 still disable it for specific jobs. For example, when we write MapReduce
@@ -1617,32 +1610,31 @@ snippet to disable speculative execution for this job:
 Table [tbl:speculative] is a summary of the properties we used in this
 recipe with their default values:
 
-<span>ll</span> **Property** & **Default value**\
-mapreduce.map.speculative & true\
-mapreduce.reduce.speculative & true\
-mapreduce.job.speculative.speculativecap & 0.1\
-mapreduce.job.speculative.slowtaskthreshold & 1.0\
-mapreduce.job.speculative.slownodethreshold & 1.0\
+|  **Property**                               | **Default value**
+| mapreduce.map.speculative                   | true
+| mapreduce.reduce.speculative                | true
+| mapreduce.job.speculative.speculativecap    | 0.1
+| mapreduce.job.speculative.slowtaskthreshold | 1.0
+| mapreduce.job.speculative.slownodethreshold | 1.0
 
 The three properties mapreduce.job.speculative.speculativecap,
-*mapreduce.job.speculative.slowtaskthreshold* and
-*mapreduce.job.speculative.slownodethreshold* control when the
+`mapreduce.job.speculative.slowtaskthreshold` and
+`mapreduce.job.speculative.slownodethreshold` control when the
 JobTracker should start a speculative task. Specifically, a speculative
 task for a regular task will be started if the following conditions are
 met:
 
 - Speculative execution is enabled
+- The completion rate, in percentage, of the regular task is less than
+  `mapreduce.job.speculative.slowtaskthreshold` times the mean
+  completion rate of all other tasks.
 
 - The completion rate, in percentage, of the regular task is less than
-    `mapreduce.job.speculative.slowtaskthreshold` times the mean
-    completion rate of all other tasks.
-
-- The completion rate, in percentage, of the regular task is less than
-    `mapreduce.job.speculative.slownodethreshold` times the mean
-    completion rate of all other tasks on the current TaskTracker.
+  `mapreduce.job.speculative.slownodethreshold` times the mean
+  completion rate of all other tasks on the current TaskTracker.
 
 - The number of launched speculative tasks is smaller than the
-    configured speculative cap.
+  configured speculative cap.
 
 ## Setting proper number of map and reduce slots for TaskTracker
 
@@ -1787,7 +1779,7 @@ Configure the task scheduler for the JobTracker by changing property:
 ```
 
 This configuration enables java class
-org.apache.hadoop.mapred.JobQueueTaskScheduler to schedule tasks.
+`org.apache.hadoop.mapred.JobQueueTaskScheduler` to schedule tasks.
 
 Configure the maximum running tasks for a job by changing the following
 property:
@@ -1817,25 +1809,24 @@ Restart the Hadoop cluster with command:
 
 ### How it works 
 
-Table [tbl:jobtracker] is a list of properties with descriptions of this
+The following [table](#tbl:jobtracker) is a list of properties with descriptions of this
 recipe:
+					 
+{id="tbl:jobtracker"}
+|  **Property**                                         | **Default** | **Description**|
+|:------------------------------------------------------|:------------|:---------------|
+| mapred.jobtracker.maxtasks.per.job                    | -1          | Unlimited	   |
+| mapred.jobtracker.restart.recover                     | false       | No Recover.	   |
+| mapred.jobtracker.job.history.block.size              | 3145728     |				   |
+| mapred.jobtracker.taskScheduler.maxRunningTasksPerJob | EMPTY       | No Limits	   |
 
-<span>lll</span> **Property** & **Default** & **Description**\
-mapred.jobtracker.maxtasks.per.job & -1 & Unlimited\
-mapred.jobtracker.restart.recover & false & No Recover.\
-mapred.jobtracker.job.history.block.size & 3145728 &\
-mapred.jobtracker.taskScheduler.maxRunningTasksPerJob & EMPTY & No
-Limits\
-
-### See also 
+### See also 																		   	
 
 - Tuning TaskTracker configuration
-
 - Configuring capacity scheduler in Chapter [chap:4], Managing a
-    Hadoop cluster
-
+  Hadoop cluster
 - Configuring fair scheduler in Chapter [chap:4], Managing a Hadoop
-    cluster
+  cluster
 
 ## Tuning TaskTracker configuration
 
@@ -1890,8 +1881,8 @@ the following property:
 ```
 
 This property configures the sleep time in milliseconds that the
-TaskTracker waits before sending a SIGKILL signal to a process after it
-has been sent a SIGTERM signal. Its default value is 5000ms.
+TaskTracker waits before sending a `SIGKILL` signal to a process after it
+has been sent a `SIGTERM` signal. Its default value is `5000ms`.
 
 Enable TaskTracker memory management by changing the following property:
 
@@ -1928,7 +1919,7 @@ manager by changing the following property:
 This property configures the interval, in milliseconds, that the
 TaskTracker monitors the tasks' memory usage. It is only meaningful when
 tasks' memory management has been enabled using property
-mapred.tasktracker.tasks.maxmemory.
+`mapred.tasktracker.tasks.maxmemory`.
 
 Configure TaskTracker to send an out-of-band heartbeat on task
 completion by changing the following property:
@@ -1988,30 +1979,29 @@ Restart the MapReduce cluster with the following command:
 Table [tbl:tasktracker] contains a list of properties with descriptions
 of this recipe:
 
-<span>lll</span> **Property** & **Default** & **Description**\
-mapred.tasktracker.expiry.interval & 600000 & In milliseconds.\
-mapred.tasktracker.tasks.sleeptime-before-sigkill & 5000 & In
-milliseconds.\
-mapred.tasktracker.indexcache.mb & 10 & In MB.\
-mapred.tasktracker.taskmemorymanager.monitoring-interval & 5000 & In
-milliseconds.\
-mapreduce.tasktracker.outofband.heartbeat & false &\
-mapred.map.max.attempts & 4 &\
-mapred.reduce.max.attempts & 4 &\
-
-### See also 
-
-- Tuning JobTracker configuration
-
-## Tuning shuffle, merge and sort parameters
-
-In a MapReduce job, map task outputs are aggregated into JVM buffers.
-The size of the in-memory buffer determines how large the data can be
-merged and sorted at once. Too small buffer size can cause large number
-of swap operations, incurring big overhead. In this section, we will
-show best practices for configuring the shuffle, merge and sort
-parameters.
-
+|  **Property**                                            | **Default** | **Description** |
+|:---------------------------------------------------------|:------------|:----------------|
+| mapred.tasktracker.expiry.interval                       | 600000      | In milliseconds.|
+| mapred.tasktracker.tasks.sleeptime-before-sigkill        | 5000        | In milliseconds.|
+| mapred.tasktracker.indexcache.mb                         | 10          | In MB.		   |
+| mapred.tasktracker.taskmemorymanager.monitoring-interval | 5000        | In milliseconds.|
+| mapreduce.tasktracker.outofband.heartbeat                | false       |				   |
+| mapred.map.max.attempts                                  | 4           |				   |
+| mapred.reduce.max.attempts                               | 4           |				   |
+																						   	
+### See also 																				
+																							
+- Tuning JobTracker configuration															
+																							
+## Tuning shuffle, merge and sort parameters												
+																							
+In a MapReduce job, map task outputs are aggregated into JVM buffers.						
+The size of the in-memory buffer determines how large the data can be						
+merged and sorted at once. Too small buffer size can cause large number						
+of swap operations, incurring big overhead. In this section, we will						
+show best practices for configuring the shuffle, merge and sort								
+parameters.																					
+																							
 ### Getting ready 
 
 We assume that the Hadoop cluster has been properly configured and all
@@ -2070,8 +2060,8 @@ changing the following property:
 
 This property configures the percentage of memory used for record
 boundary tracking. The maximum number of records collected before the
-collection thread must block is equal to io.sort.record.percent \*
-io.sort.mb / 4.
+collection thread must block is equal to `io.sort.record.percent` {$$}\times{/$$}
+`io.sort.mb` / 4.
 
 Change the spill factor for buffers by changing the following property:
 
@@ -2182,20 +2172,22 @@ Restart the MapReduce cluster with the following command:
 
 ### How it works 
 
-Figure [tbl:memoryconfig] show the description of the properties and
+Following [table](#tbl:memoryconfig) show the description of the properties and
 their default values mentioned in the recipe:
 
-<span>ll</span> **Property** & **Default**\
-io.sort.mb & 100\
-io.sort.factor & 10\
-io.sort.record.percent & 0.05\
-io.sort.spill.percent & 0.80\
-mapred.inmem.merge.threshold & 1000\
-mapred.job.shuffle.merge.percent & 0.66\
-mapred.job.shuffle.input.buffer.percent & 0.70\
-mapred.job.reduce.input.buffer.percent & 0.0\
-mapreduce.reduce.shuffle.maxfetchfailures & 10\
-
+{id="tbl:memoryconfig"}
+| **Property**                              | **Default** |
+|:------------------------------------------|:------------|														  |
+| io.sort.mb                                | 100		  |
+| io.sort.factor                            | 10		  |
+| io.sort.record.percent                    | 0.05		  |
+| io.sort.spill.percent                     | 0.80		  |
+| mapred.inmem.merge.threshold              | 1000		  |
+| mapred.job.shuffle.merge.percent          | 0.66		  |
+| mapred.job.shuffle.input.buffer.percent   | 0.70		  |
+| mapred.job.reduce.input.buffer.percent    | 0.0		  |
+| mapreduce.reduce.shuffle.maxfetchfailures | 10		  |
+  														  
 ### See also 
 
 - Configuring memory for a Hadoop cluster
@@ -2314,22 +2306,23 @@ Start the Hadoop cluster with the following command:
 
 ### How it works... 
 
-Table [tbl:memoryconfig.default] lists the properties in the recipe that
-their descriptions.
+Following [table](#tbl:memoryconfig.default) lists the properties in the recipe that
+their descriptions.													  
 
-<span>lll</span> **Property** & **Default** & **Description**\
-mapred.cluster.map.memory.mb & -1 & Feature unused.\
-mapred.cluster.reduce.memory.mb & -1 & Feature unused.\
-mapred.cluster.max.map.memory.mb & -1 & Feature unused.\
-mapred.cluster.max.reduce.memory.mb & -1 & Feature unused.\
-mapred.job.map.memory.mb & -1 & Feature unused.\
-mapred.job.reduce.memory.mb & -1 & Feature unused.\
+{id="tbl:memoryconfig.default"}
+| **Property**                        | **Default** | **Description**|
+|:------------------------------------|:------------|:---------------|
+| mapred.cluster.map.memory.mb        | -1          | Feature unused.|
+| mapred.cluster.reduce.memory.mb     | -1          | Feature unused.|
+| mapred.cluster.max.map.memory.mb    | -1          | Feature unused.|
+| mapred.cluster.max.reduce.memory.mb | -1          | Feature unused.|
+| mapred.job.map.memory.mb            | -1          | Feature unused.|
+| mapred.job.reduce.memory.mb         | -1          | Feature unused.|
 
-### See also 
-
-- Setting proper number of map and reduce slots for TaskTracker
-
-- Tuning shuffle, merge and sort parameters
+### See also 														  
+																	  
+- Setting proper number of map and reduce slots for TaskTracker		  
+- Tuning shuffle, merge and sort parameters							  
 
 ## Setting proper number of parallel copies
 
