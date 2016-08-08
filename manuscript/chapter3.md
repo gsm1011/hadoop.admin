@@ -187,6 +187,7 @@ variable to:
 Use your favorite text editor to open file
 `$HADOOP_HOME/conf/core-site.xml` and add the following content:
 
+{line-numbers=off}
 ```xml
 <configuration>
   <property>
