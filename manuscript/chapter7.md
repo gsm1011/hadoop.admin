@@ -356,25 +356,24 @@ command:
 
     $ hadoop jar $HADOOP_HOME/hadoop-test-1.1.2.jar testfilesystem
     Usage: TestFileSystem -files N -megaBytes M [-noread] [-nowrite] [-noseek] [-fastcheck]
-    Table \ref{tbl:benchmark.option.desc} shows the meaning of each option of this benchmark command:
-    \begin{table}[ht]
-      \centering
-      \begin{tabular}{p{.2\textwidth}p{.75\textwidth}}
-        \toprule
-        \textbf{Option} & \textbf{Description} \\ \midrule
-        -files & Number of files to generate for the benchmark. \\
-        -megaBytes & Size in megabytes of the generated files. \\
-        -noread & Disable the data reading test. \\
-        -nowrite & Disable the data writing test. \\
-        -noseek & Disable the seek test. \\
-        -fastcheck & Whether to use fast check or not. If the value is true, the test buffer will be filled with the same value, otherwise random numbers are generated for each location in the test buffer. \\ \bottomrule
-        \end{tabular}
-        \caption{Description of the benchmark command options.}\label{tbl:benchmark.option.desc}
-      \end{table}
 
-    We can get the help for the mrbench benchmark with command:
-    \lstset{style=bashstyle}
-    \begin{lstlisting}
+The following [table](#tbl:benchmark.option.desc) shows the meaning of each				
+ option of this benchmark command:														
+																					   	
+{id="tbl:benchmark.option.desc", title="Description of the benchmark command options."}	
+| **Option** | **Description**   													   |
+|:-----------|:------------------------------------------------------------------------|   	   
+| -files     | Number of files to generate for the benchmark. 						   |
+| -megaBytes | Size in megabytes of the generated files. 							   |
+| -noread    | Disable the data reading test. 										   |
+| -nowrite   | Disable the data writing test. 										   |
+| -noseek    | Disable the seek test. 												   |
+| -fastcheck | Whether to use fast check or not. If the value is true, the test		   |
+|            | buffer will be filled with the same value, otherwise random numbers are |
+|            | generated for each location in the test buffer.						   |
+																					   	
+We can get the help for the mrbench benchmark with command:
+
     $ hadoop jar $HADOOP_HOME/hadoop-test-*.jar mrbench --help
     MRBenchmark.0.0.2
     Usage: mrbench [-baseDir <base DFS path for output/input, default is /benchmarks/MRBench>]
@@ -455,28 +454,32 @@ random integers will be generated between `0` and `range - 1`. The
 the benchmark, it should have a substantially larger value than the
 `<range>` option.
 
-We can get the usage of the testmapredsort benchmark with command:
+We can get the usage of the `testmapredsort` benchmark with command:
 
     $ hadoop jar $HADOOP_HOME/hadoop-test-*.jar testmapredsort
     sortvalidate [-m <maps>] [-r <reduces>] [-deep] -sortInput <sort-input-dir> -sortOutput <sort-output-dir>
-    Table \ref{tbl:testmapred.sort} shows the meaning of the options:
-    \begin{table}[ht]
-      \centering
-      \begin{tabular}{ll}
-        \toprule
-        \textbf{Option} & \textbf{Description} \\ \midrule
-        -m & Number of mappers. \\
-        -r  & Number of reducers.
-        -deep & Do deep validation.
-        -sortInput & Directory for the input data used for sort. The specified directory must exist, otherwise the benchmark will fail.
-        -sortOutput & Output directory after the data specified by the -sortInput directory is sorted. The specified directory must exist, otherwise the benchmark will fail.
-        \end{tabular}
-        \caption{Description of the \textbf{testmapredsort} command.}\label{tbl:testmapred.sort}
-      \end{table}
-    \subsection*{There's more...}
-    Besides the Hadoop tests package, Hadoop was shipped with an example package, which can also be used to do benchmark a Hadoop cluster. We can get all the examples benchmarks with command:
-    \lstset{style=bashstyle}
-    \begin{lstlisting}
+
+The following [table](#tbl:testmapred.sort) shows the meaning of the options	   	 
+
+{id="tbl:testmapred.sort"}
+| **Option**  | **Description**													   |
+|:------------|:-------------------------------------------------------------------|   	   	   	   	   	   	   	   	
+| -m          | Number of mappers.												   |
+| -r          | Number of reducers.												   |
+| -deep       | Do deep validation.												   |
+| -sortInput  | Directory for the input data used for sort. The specified directory|
+|             | must exist, otherwise the benchmark will fail.					   |
+| -sortOutput | Output directory after the data specified by the -sortInput		   |
+|             | directory is sorted. The specified directory must exist, otherwise |
+|             | the benchmark will fail.   	   	   	   	   	   	   	   	   	   	   |
+																				   
+
+### There's more...
+
+Besides the Hadoop tests package, Hadoop was shipped with an example package,
+which can also be used to do benchmark a Hadoop cluster. We can get all the
+examples benchmarks with command:
+
     $ hadoop jar $HADOOP_HOME/hadoop-example-*.jar
     Valid program names are:
       aggregatewordcount: An Aggregate based map/reduce program that counts the words in the input files.
@@ -500,11 +503,11 @@ We can get the usage of the testmapredsort benchmark with command:
 
 Some commands are very handy for testing the configuration of a Hadoop
 cluster. For example, we can use the following command to test the
-cluster by computing $\pi$ (pi):
+cluster by computing {$$}\pi{/$$} (pi):
 
 	$ hadoop jar $HADOOP_HOME/hadoop-example-*.jar pi 10 1000000`
 
-This command will start a MapReduce job to compute $\pi$ with 10 mappers
+This command will start a MapReduce job to compute {$$}\pi{/$$} with 10 mappers
 with each mapper generating 1000000 samples.
 
 The usage for randomwriter is as follows:

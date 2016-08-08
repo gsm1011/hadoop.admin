@@ -40,17 +40,17 @@ Sometimes, the revision number can have a fourth part, for example
 
 ### How to do it... 
 
-The table [below](tbl:compare.mrv1.mrv2) shows features of major Hadoop
+The table [below](#tbl:compare.mrv1.mrv2) shows features of major Hadoop
 releases: 
 
 {id="tbl:compare.mrv1.mrv2"}
 | Feature or Version | 2.x.y  | 1.1.x | 0.23.x | 0.20.x|
 |--------------------|:-------|:------|:-------|:------|
-|       Stable       |        |  Yes  |        |   Yes |
+|       Stable       |        |  Yes  |        |  Yes  |
 |--------------------|--------|-------|--------|-------|
 |        MRv1        |        |  Yes  |        |  Yes  |
 |--------------------|--------|-------|--------|-------|
-| MRv2               |   Yes  |       |   Yes  |       |
+|        MRv2        |   Yes  |       |   Yes  |       |
 |--------------------|--------|-------|--------|-------|
 | Kerberos Security  |   Yes  |  Yes  |   Yes  |       |
 |--------------------|--------|-------|--------|-------|
@@ -112,13 +112,13 @@ If you have installed OpenJDK, please refer to recipe `Installing Java
 and other tools` of Chapter 2, Preparing for Hadoop installation.
 
 Download the desired Hadoop distribution. In this book, we assume to use
-Hadoop release 1.1.2.
+Hadoop release `1.1.2`.
 
 To download a Hadoop release from one [mirror
 site](http://www.apache.org/dyn/closer.cgi/hadoop/common/), choose the
 proper mirror site (or use the suggested link on top of the mirror).
 Start download by clicking the proper Hadoop release. We suggest
-downloading a gzip archived file with file name ending with tar.gz.
+downloading a gzip archived file with file name ending with `tar.gz`.
 
 Alternatively, we can download a Hadoop release with the following
 command under Linux:
