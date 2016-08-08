@@ -1,3 +1,4 @@
+{id="chap:3"}
 # Configuring a Hadoop Cluster 
 
 In this chapter, we will cover:
@@ -400,31 +401,29 @@ configuring a Hadoop cluster in pseudo-distributed mode:
     the only slave node in the cluster.
 
 Hadoop provides a number of bash scripts for convenience of starting and
-stopping a cluster. Table [tbl:start.stop.scripts] shows these scripts.
+stopping a cluster.
 
-| **Script**       |     **Description**             |
-|------------------|:--------------------------------|
-| **start-dfs.sh** | Script to start HDFS daemons including NameNode,
-SecondaryNameNode and DataNode. A PID file will be created for each
-daemon process under default folder \$. For example, if user hduser is used
-to run the script, file `/hadoop/tmp/hadoop-hduser-namenode.pid` will be
-created for the NameNode daemon process. |
-|------------------|---------------------|
-| **stop-dfs.sh** | Script to stop HDFS daemons. This command will try to
-find the PIDs of the HDFS daemons and kill the processes with the PIDs.
-So, if the PID file is missing, this script will not work.|
-|------------------|---------------------|
-| **start-mapred.sh** | Script to start MapReduce daemons, including the
-JobTracker and TaskTrackers. Similar to start-hdfs.sh script, PIDs files
-will be created for each daemon process.|
-|------------------|---------------------|
-| **stop-mapred.sh** | Script to stop Hadoop MapReduce daemons. Similar to
-`stop-dfs.sh` script, the script will try to find the PID files and then
-kill those processes.|
-|------------------|---------------------|
-| **start-all.sh** | Equals to start-dfs.sh plus start-mapred.sh.|
-|------------------|---------------------|
-| **stop-all.sh** | Equals to stop-dfs.sh plus stop-mapred.sh.|
+- **start-dfs.sh** Script to start HDFS daemons including NameNode,
+  SecondaryNameNode and DataNode. A PID file will be created for each
+  daemon process under default folder \$. For example, if user hduser is used
+  to run the script, file `/hadoop/tmp/hadoop-hduser-namenode.pid` will be
+  created for the NameNode daemon process. 
+  
+- **stop-dfs.sh** Script to stop HDFS daemons. This command will try to
+  find the PIDs of the HDFS daemons and kill the processes with the PIDs.
+  So, if the PID file is missing, this script will not work.
+  
+- **start-mapred.sh** Script to start MapReduce daemons, including the
+  JobTracker and TaskTrackers. Similar to start-hdfs.sh script, PIDs files
+  will be created for each daemon process.
+  
+- **stop-mapred.sh** Script to stop Hadoop MapReduce daemons. Similar to
+  `stop-dfs.sh` script, the script will try to find the PID files and then
+  kill those processes.
+  
+- **start-all.sh** Equals to start-dfs.sh plus start-mapred.sh.
+
+- **stop-all.sh** Equals to stop-dfs.sh plus stop-mapred.sh.
 
 ### There's more... 
 
@@ -655,9 +654,9 @@ information will contain message similar to the following:
 
 `Re-format filesystem in /tmp/hadoop-shumin/dfs/name ? (Y or N)`
 
-In such a case, we need to type “Y” to confirm the reformatting of the
+In such a case, we need to type "Y" to confirm the reformatting of the
 filesystem. Be cautious that all the data will be wiped out after you
-hit the “Enter” key.
+hit the "Enter" key.
 
 Check the directory structure of the formatted NameNode with command:
 

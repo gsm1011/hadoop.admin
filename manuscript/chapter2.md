@@ -1,4 +1,4 @@
-{id="chapter-2"}
+{id="chap:2"}
 # Preparing for Hadoop Installation 
 
 In this chapter, we will cover:
@@ -964,7 +964,7 @@ To download Java from Oracle, go to the [official
 site](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 Select 'Java SE Development Kit 7 Downloads', which is `Java 1.7.x`
 (Hadoop can work with Java with version {$$}\ge{/$$} `1.6.0`). Next, click the
-“Accept License Agreement” radio button and choose
+"Accept License Agreement" radio button and choose
 `jdk-7u11-linux-x64.rpm` for a 64bit Linux machine. The operations are
 shown in Figure below.
 

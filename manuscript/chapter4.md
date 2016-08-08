@@ -96,8 +96,8 @@ Check the status of the root filesystem with the following command:
 
 The output shows that some percentage of data blocks is under
 replicated. But because HDFS can automatically make duplication for
-those data blocks, the HDFS filesystem and the '/' directory are both
-HEALTHY.
+those data blocks, the HDFS filesystem and the `/` directory are both
+`HEALTHY`.
 
 Check the status of all the files on HDFS with the following command:
 
@@ -130,16 +130,16 @@ Check the locations of file blocks with the following command:
 
 	$ hadoop fsck / -files -locations
 
-The output will be similar to Figure [fig:hdfs.block.locations].
+The output will be similar to the following [figure](#fig:hdfs.block.locations). 
 
-![Block locations on HDFS<span
-data-label="fig:hdfs.block.locations"></span>](images/5163os_04_07.png)
+{id="fig:hdfs.block.locations"}
+![Block locations on HDFS](images/5163os_04_07.png)
 
 The first line tells us that file `part-00000` has 17 blocks in total
 and each block has 2 replications (replication factor has been set to
 2). The following lines list the location of each block on the DataNode.
 For example, block `blk_6733127705602961004_1127` has been replicated on
-hosts `10.145.231.46` and `10.145.223.184`. The number 50010 is the port
+hosts `10.145.231.46` and `10.145.223.184`. The number `50010` is the port
 number of the DataNode.
 
 Check the locations of file blocks containing rack information with the
@@ -151,12 +151,12 @@ Delete corrupted files with the following command:
 
 	$ hadoop fsck -delete
 
-Move corrupted files to /lost+found with the following command:
+Move corrupted files to `/lost+found` with the following command:
 
 	$ hadoop fsck -move
 
 Use the following steps to check the status of a HDFS cluster with
-hadoop dfsadmin:
+`hadoop dfsadmin`. 
 
 Report the status of each slave node with the following command:
 
@@ -191,7 +191,7 @@ used space, number of under replicated data blocks, number of data
 blocks with corrupted replicas, and number of missing blocks.
 
 The following sections of the output information show the status of each
-HDFS slave node, including the name (ip:port) of DataNode machine,
+HDFS slave node, including the name (`ip:port`) of DataNode machine,
 commission status, configured capacity, HDFS and non-HDFS used space
 amount, HDFS remaining space, and the time that the slave node contacted
 the master.
@@ -225,7 +225,8 @@ leave this mode.
 
 Wait until NameNode leaves safe mode using the following command:
 
-	$ hadoop dfsadmin -safemode wait`\
+	$ hadoop dfsadmin -safemode wait
+	
 This command is useful when we want to wait until HDFS finishes data
 block replication or wait until a newly commissioned DataNode to be
 ready for service.
@@ -280,7 +281,7 @@ We can get the usage of the fsck command using:
             -racks print out network topology for data-node locations
              By default fsck ignores files opened for write, use -openforwrite to report such files. They are usually tagged CORRUPT or HEALTHY depending on their block allocation status.
 
-We can get the usage of the dfsadmin command using:
+We can get the usage of the `dfsadmin` command using:
 
     $ hadoop dfsadmin
     Usage: java DFSAdmin
@@ -305,29 +306,28 @@ We can get the usage of the dfsadmin command using:
 
 Besides using command line, we can use the web UI to check the status of
 an HDFS cluster. For example, we can get the status information of HDFS
-by opening the link [DFS health
-page](http://master:50070/dfshealth.jsp).
+by opening the link [DFS health page](http://master:50070/dfshealth.jsp).
 
 We will get a web page that shows the summary of the HDFS cluster such
 as the configured capacity and remaining space. For example, the web
-page will be similar to Figure [fig:hdfs.summary].
+page will be similar to the following [figure](#fig:hdfs.summary).
 
-![Summary of a HDFS cluster<span
-data-label="fig:hdfs.summary"></span>](images/5163os_04_08.png)
+{id="fig:hdfs.summary"}
+![Summary of a HDFS cluster](images/5163os_04_08.png)
 
 By clicking on the Live Nodes link, we can check the status of each
-DataNode. We will get a web page similar to Figure
-[fig:datanode.status].
+DataNode. The web page is similar to the following
+[figure](#fig:datanode.status). 
 
-![HDFS DataNode status<span
-data-label="fig:datanode.status"></span>](images/5163os_04_09.png)
+{id="fig:datanode.status"}
+![HDFS DataNode status](images/5163os_04_09.png)
 
 By clicking on the link of each node, we can browse the directory of the
-HDFS filesystem. The web page will be similar to Figure
-[fig:content.hdfs]
+HDFS filesystem. The web page will be similar to the following
+[figure](#fig:content.hdfs). 
 
-![Content of an HDFS directory<span
-data-label="fig:content.hdfs"></span>](images/5163os_04_10.png)
+{id="fig:content.hdfs"}
+![Content of an HDFS directory](images/5163os_04_10.png)
 
 The web page shows that file `/user/hduser/randtext` has been split into
 five partitions. We can browse the content of each partition by clicking
@@ -337,9 +337,7 @@ on the **part-0000x** link.
 
 - The Validating Hadoop installation recipe in Chapter [chap:3],
     Configuring a Hadoop cluster
-
 - The Decommissioning DataNode recipe
-
 - The Manipulating files on HDFS recipe
 
 ## Configuring SecondaryNameNode
@@ -352,7 +350,8 @@ to configure SecondaryNameNode.
 
 ### Getting ready 
 
-We assume that Hadoop has been configured correctly.\
+We assume that Hadoop has been configured correctly.
+
 Log in to the master node from cluster administration machine using the
 following command:
 
@@ -360,7 +359,8 @@ following command:
 
 ### How to do it... 
 
-Perform the following steps to configure SecondaryNameNode:\
+Perform the following steps to configure SecondaryNameNode:
+
 Stop the cluster using the following command:
 
 	$ stop-all.sh
@@ -424,7 +424,6 @@ directory for backup by changing the following property in the file
 ### See also 
 
 - The Managing HDFS cluster recipe
-
 - The Decommissioning DataNode recipe
 
 ## Managing the MapReduce cluster
@@ -439,7 +438,7 @@ recipe, we will outline commands to manage a MapReduce cluster.
 
 We assume that the Hadoop cluster has been properly configured and
 running. Log in to the master node from the cluster administration
-machine using the following command: ssh hduser@master
+machine using the following command: `ssh hduser@master`.
 
 ### How to do it... 
 
@@ -447,7 +446,8 @@ Perform the following steps to manage a MapReduce cluster:
 
 List all the active TaskTrackers using the following command:
 
-	$ hadoop -job -list-active-trackers`\
+	$ hadoop -job -list-active-trackers
+	
 This command can help us check the registration status of the
 TaskTrackers in the cluster.
 
@@ -456,7 +456,7 @@ Check the status of JobTracker safe mode using the following command:
     $ hadoop mradmin -safemode get
     Safe mode is OFF
 
-The output tells us that the JobTracker is not in safe mode. We can
+The output shows that the JobTracker is not in safe mode. We can
 submit jobs to the cluster. If the JobTracker is in safe mode, no jobs
 can be submitted to the cluster.
 
@@ -502,22 +502,18 @@ Get the help for the mradmin command using the following command:
                [-help [cmd]]
     ...
 
-The meaning of the command options is listed in Table [tbl:mradmin].
+The meaning of the command options is listed below:
 
-<span>ll</span> **Option** & **Description**\
--refreshServiceAcl & Force JobTracker to reload service ACL.\
--refreshQueues & Force JobTracker to reload queue configurations.\
--refreshUserToGroupsMappings & Force JobTracker to reload user group
-mappings.\
--refreshSuperUserGroupsConfiguration & Force JobTracker to reload super
-user group mappings.\
--refreshNodes & Force JobTracker to refresh the JobTracker hosts.\
--help [cmd] & Show the help info for a command or all commands.\
+- `-refreshServiceAcl` Force JobTracker to reload service ACL.
+- `-refreshQueues` Force JobTracker to reload queue configurations.
+- `-refreshUserToGroupsMappings` Force JobTracker to reload user group mappings.
+- `-refreshSuperUserGroupsConfiguration` Force JobTracker to reload super user group mappings.
+- `-refreshNodes` Force JobTracker to refresh the JobTracker hosts.
+- `-help [cmd]` Show the help info for a command or all commands.
 
 ### See also 
 
 - The Configuring SecondaryNameNode recipe
-
 - The Managing MapReduce jobs recipe
 
 ## Managing TaskTracker
@@ -650,8 +646,8 @@ the file:
 
 The `$HADOOP_HOME/conf/mapred-exclude.txt` file will contain the
 excluding TaskTracker hostnames one per line. For example, the file
-should contain the following two lines if we want to exclude *slave1*
-and *slave3* from the cluster:
+should contain the following two lines if we want to exclude `slave1`
+and `slave3` from the cluster:
 
     slave1
     slave3
@@ -690,11 +686,8 @@ percent of the total number of TaskTrackers.
 ### See also 
 
 - The Managing the MapReduce cluster recipe
-
 - The Managing MapReduce jobs recipe
-
 - The Decommissioning DataNode recipe
-
 - The Replacing a slave node recipe
 
 ## Decommissioning DataNode
@@ -765,11 +758,8 @@ DataNodes. We can get the usage of this command using the following:
 ### See also 
 
 - The Managing the HDFS cluster recipe
-
 - The Configuring SecondaryNameNode recipe
-
 - The Managing TaskTracker recipe
-
 - The Replacing a slave node recipe
 
 ## Replacing a slave node
@@ -782,7 +772,7 @@ the steps to replace a slave node.
 ### Getting ready 
 
 We assume that replacement hardware is ready for use. And for
-illustration purposes, we suppose *slave2* needs to be replaced in this
+illustration purposes, we suppose `slave2` needs to be replaced in this
 book.
 
 ### How to do it... 
@@ -833,14 +823,14 @@ Get all the active TaskTrackers with the following command:
 
 ### See also 
 
-- The Installing Linux on node recipe of Chapter [chap:2], Preparing
-    for Hadoop Installation
-- The Installing Java and other tools recipe of Chapter [chap:2],
-    Preparing for Hadoop Installation
-- The Configuring SSH recipe of Chapter [chap:2], Preparing for Hadoop
-    installation
-- The Configuring Hadoop in Fully-distributed Mode recipe of Chapter
-    [chap:3], Configuring a Hadoop Cluster
+- The Installing Linux on node recipe of [Chapter 2](#chap:2), Preparing for
+  Hadoop Installation 
+- The Installing Java and other tools recipe of [Chapter 2](#chap:2), Preparing
+  for Hadoop Installation
+- The Configuring SSH recipe of [Chapter 2](#chap:2), Preparing for Hadoop
+  installation
+- The Configuring Hadoop in Fully-distributed Mode recipe of
+  [Chapter 3](#chap:3), Configuring a Hadoop Cluster
 - The Managing TaskTracker recipe
 - The Decommissioning DataNode recipe
 
@@ -1015,7 +1005,7 @@ according to the state of the killed job `job_201302152353_0004`.
 
 Perform the following steps to submit a MapReduce job:
 
-Create the job configuration file, *job.xml*, with the following
+Create the job configuration file, `job.xml`, with the following
 content:
 
     <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -1063,7 +1053,7 @@ content:
     </configuration>
 
 
-The *job.xml* file is an XML file that specifies the configuration of a
+The `job.xml` file is an XML file that specifies the configuration of a
 job. In this job configuration file, we specified the job name, the
 mapper class, the reducer class, the combiner class, the input format,
 and output format for the job. We have used wordcount as an example, so
@@ -1138,10 +1128,10 @@ For example, we can query the first 10 events of the job
 
 	$ hadoop job -events job_201302281451_0002 0 10
 
-We will get output similar to Figure [fig:task.events].
+The output will be similar to the [following figure](#fig:task.events).
 
-![MapReduce task completion events<span
-data-label="fig:task.events"></span>](images/5163os_04_13.png)
+{id="fig:task.events"}
+![MapReduce task completion events](images/5163os_04_13.png)
 
 Get the job history including job details, failed and killed jobs, and
 so on with the following command:
@@ -1218,23 +1208,21 @@ use the following command:
 
 After the task is killed, the JobTracker will restart the task on a
 different node. The killed tasks can be viewed through the web UI as
-shown in Figure [fig:mapred.killed.tasks].
+shown in [figure](#fig:mapred.killed.tasks).
 
-![Status of killed tasks<span
-data-label="fig:mapred.killed.tasks"></span>](images/5163os_04_14.png)
+{id="fig:mapred.killed.tasks"}
+![Status of killed tasks](images/5163os_04_14.png)
 
 Hadoop JobTracker can automatically kill tasks in the following
 situations:
 
 - A task does not report progress after timeout
-
 - Speculative execution can run one task on multiple nodes, if one of
-    these task is succeeded, other attempts of the same task will be
-    killed, because the attempt results for those attempts will be
-    useless
-
+  these task is succeeded, other attempts of the same task will be
+  killed, because the attempt results for those attempts will be
+  useless
 - Job/Task schedulers such as fair scheduler and capacity scheduler
-    need empty slots for other pools or queues
+  need empty slots for other pools or queues
 
 In many situations, we need a task to fail, which can be done with the
 following command:
@@ -1250,8 +1238,8 @@ List task attempts with the following command:
 
 	$ hadoop job -list-attempt-ids <job-id> <task-type> <task-state>
 
-In this command, available task types are *map, reduce, setup*, and
-*clean*; available task states are running and completed. For example,
+In this command, available task types are `map, reduce, setup`, and
+`clean`; available task states are running and completed. For example,
 to list all the completed map attempts for the job
 `job_201302281451_0014`, the following command can be used:
 
@@ -1323,24 +1311,23 @@ daemons are running without any issues.
 
 Perform the following steps to check job history logs from web UI:
 
-Open the job history URL, <http://master:50030/jobhistoryhome.jsp>.\
-We will be able to get a web page similar to Figure [fig:history.jobs]
+Open the job history URL, <http://master:50030/jobhistoryhome.jsp> show in
+the following [figure](#fig:history.jobs).
 
-![History jobs<span
-data-label="fig:history.jobs"></span>](images/5163os_04_01.png)
+{id="fig:history.jobs"}
+![History jobs](images/5163os_04_01.png)
 
 On the web UI, we can filter jobs based on the username and job name in
-the format **username:jobname** as shown in Figure [fig:history.jobs].
+the format **username:jobname** as shown in [figure](#fig:history.jobs).
 username should be the username that runs a certain job, and job name
 should contain keywords of Hadoop jobs.
 
 From the web UI, we will be able to get a list of jobs in the Available
-Jobs in History section. By clicking on the Job Id link of a job, we can
-get the details of the job as shown in Figure
-[fig:specific.job.history].
+Jobs in History section. By clicking on the Job Id link of a job, show in
+[figure](#fig:specific.job.history). 
 
-![History of a specific job<span
-data-label="fig:specific.job.history"></span>](images/5163os_04_02.png)
+{id="fig:specific.job.history"}
+![History of a specific job](images/5163os_04_02.png)
 
 This web page shows the details of the job, including task information
 such as total, successful, failed, and killed tasks. The information
@@ -1348,24 +1335,24 @@ also includes the start time and end time of four phases of a Hadoop job
 including setup, map, reduce, and cleanup phases.
 
 The web page also contains information of counters of the job as shown
-in the lower part of Figure [fig:specific.job.history].
+in the lower part of [figure](#fig:specific.job.history).
 
 In addition to the summary of job information, the web UI provides
-interface for us to analyze a job. By clicking on the link *Analyze This
-Job*, we will go to a web page similar to Figure [fig:task.statistics].
+interface for us to analyze a job. By clicking on the link **Analyze This
+Job**, we will get [figure](#fig:task.statistics).
 
-![Statistics of tasks for a job<span
-data-label="fig:task.statistics"></span>](images/5163os_04_03.png)
+{id="fig:task.statistics"}
+![Statistics of tasks for a job](images/5163os_04_03.png)
 
 The web page contains information of simple time analytics for each
 task, for example the best performing tasks that take the shortest time,
 the worse performing tasks, and the average time taken by all the tasks.
 
 To further check the information of a task, we can click on the link for
-the task, and we will get a web page similar to Figure [fig:task.info].
+the task, shown in [figure](#fig:task.info).
 
-![Information of a task<span
-data-label="fig:task.info"></span>](images/5163os_04_04.png)
+{id="fig:task.info"}
+![Information of a task](images/5163os_04_04.png)
 
 We can get the counters of a task by clicking on the Counters field of
 the task as shown in Figure [fig:task.info], or we can get the same web
@@ -1373,36 +1360,30 @@ page by opening URL
 <http://master:50030/taskstats.jsp?tipid=task_201302281211_0001_m_000000>.
 
 In this URL, `task_201302281211_0001_m_000000` is the task ID we want to
-get counters for.
+get counters id, shown in [figure](#fig:task.counters).
 
-We will be able to get task counters as shown in Figure
-[fig:task.counters]
-
-![Task Counters<span
-data-label="fig:task.counters"></span>](images/5163os_04_05.png)
+{id="fig:task.counters"}
+![Task Counters](images/5163os_04_05.png)
 
 In addition to all these web services, the web UI provides a graphical
-display of the progress of Hadoop jobs and each phase as shown in Figure
-[fig:mapreduce.progress].
+display of the progress of Hadoop jobs and each [phase](#fig:mapreduce.progress).
 
-![Progress of map and reduce tasks from the web UI<span
-data-label="fig:mapreduce.progress"></span>](images/5163os_04_06.png)
+{id="fig:mapreduce.progress"}
+![Progress of map and reduce tasks from the web UI](images/5163os_04_06.png)
 
 This screenshot shows the progress of each map and reduce task. The
 reduce task is composed of three phases, the shuffle phase, the sort
-phase, and the reduce phase, with each phase composing of $\frac{1}{3}$
+phase, and the reduce phase, with each phase composing of {$$}\frac{1}{3}{/$$}
 of the total reduce task.
 
 ### How it works... 
 
-The meaning of the job history URL, <master:50030/jobhistoryhome.jsp>,
-can be explained as in Table [tbl:jobhistory].
+The meaning of the job history URL, <master:50030/jobhistoryhome.jsp>.
 
-<span>ll</span> **Field** & **Description**\
-master & Hostname of machine that runs the JobTracker daemon.\
-50030 & The port number of the JobTracker embedded web server.\
-`jobhistoryhome.jsp` & The `.jsp` file name that provides the job
-history service.\
+- `master` Hostname of machine that runs the JobTracker daemon.
+- `50030` The port number of the JobTracker embedded web server.
+- `jobhistoryhome.jsp` The `.jsp` file name that provides the job
+history service.
 
 The web UI can be automatically updated every five seconds; this
 interval can be modified by changing the
@@ -1419,31 +1400,30 @@ interval can be modified by changing the
 Table [tbl:statusuris] shows the summary of URIs we can use to check the
 status of jobs, tasks, and attempts.
 
-<span>ll</span> **URL** & **Description**\
-master:50030/jobtracker.jsp & JobTracker.\
-master:50030/jobhistoryhome.jsp & Job history.\
-[master:50030/jobtasks.jsp?jobid=\<jobID\>&type=map&pagenum=1](master:50030/jobtasks.jsp?jobid=<jobID>&type=map&pagenum=1)
-& List of all map tasks.\
-[master:50030/jobtasks.jsp?jobid=\<jobID\>&type=reduce&pagenum=1](master:50030/jobtasks.jsp?jobid=<jobID>&type=reduce&pagenum=1)
-& List of all reduce tasks.\
-[master:50030/taskdetails.jsp?tipid=\<taskID\>](master:50030/taskdetails.jsp?tipid=<taskID>)
-& Task attempt details.\
-[master:50030/taskstats.jsp?attemptid=\<attempID\>](master:50030/taskstats.jsp?attemptid=<attempID>)
-& Attempt counters.\
+- `master:50030/jobtracker.jsp`  JobTracker.
+- `master:50030/jobhistoryhome.jsp`  Job history.
+- [master:50030/jobtasks.jsp?jobid=\<jobID\>&type=map&pagenum=1](master:50030/jobtasks.jsp?jobid=<jobID>&type=map&pagenum=1)
+ List of all map tasks.
+- [master:50030/jobtasks.jsp?jobid=\<jobID\>&type=reduce&pagenum=1](master:50030/jobtasks.jsp?jobid=<jobID>&type=reduce&pagenum=1)
+ List of all reduce tasks.
+- [master:50030/taskdetails.jsp?tipid=\<taskID\>](master:50030/taskdetails.jsp?tipid=<taskID>)
+ Task attempt details.
+- [master:50030/taskstats.jsp?attemptid=\<attempID\>](master:50030/taskstats.jsp?attemptid=<attempID>)
+ Attempt counters.
 
 Table [tbl:ids] lists the naming examples for jobID, taskID, and
 attemptID:
 
-<span>ll</span> **ID** & **Example**\
-jobID & `job_201302281451_0001`\
-taskID & `task_201302281451_0001_m_000000`\
-attemptID & `attempt_201302281451_0001_m_000000_0`\
+|   **ID**   | **Example**                            |
+|:-----------|:---------------------------------------|
+|   jobID    | `job_201302281451_0001`                |
+|   taskID   | `task_201302281451_0001_m_000000`      |
+|  attemptID | `attempt_201302281451_0001_m_000000_0` |
 
 ### See also 
 
-- The Validating Hadoop installation recipe of Chapter [chap:3],
-    Configuring a Hadoop Cluster
-
+- The Validating Hadoop installation recipe of [Chapter 3](#chap:3),
+  Configuring a Hadoop Cluster
 - The Managing MapReduce jobs recipe
 
 ## Importing data to HDFS
@@ -1456,7 +1436,7 @@ filesystem to the HDFS filesystem.
 
 We assume that our Hadoop cluster has been properly configured and all
 the Hadoop daemons are running without any issues. And we assume that
-the data on the local system is in the directory /data.
+the data on the local system is in the directory `/data`.
 
 ### How to do it... 
 
@@ -1564,8 +1544,8 @@ specified in the command.
 
 The default `<src>` filesystem schema for `-cp` and `-mv` is `hdfs:///`,
 which is configured with the *fs.default.name* property in the file
-`$HADOOP_HOME/conf/core-site.xml`. While the default \<src\> filesystem
-schema for -put, -copyFromLocal, and -moveFromLocal is `file:///`.
+`$HADOOP_HOME/conf/core-site.xml`. While the default `<src>` filesystem
+schema for `-put`, `-copyFromLocal`, and `-moveFromLocal` is `file:///`.
 
 The default `<dst>` filesystem schema for all these commands is
 `hdfs:///`.
@@ -1573,7 +1553,6 @@ The default `<dst>` filesystem schema for all these commands is
 ### See also 
 
 - The Managing the HDFS cluster recipe
-
 - The Manipulating files on HDFS recipe
 
 ## Manipulating files on HDFS
@@ -1620,7 +1599,7 @@ The first column shows the size of the file in bytes and the second
 column shows the location of files on HDFS.
 
 Sometimes, we can get a summarized usage of a directory with the command
-hadoop fs -dus .. It will show us the total space usage of the directory
+`hadoop fs -dus ..` It will show us the total space usage of the directory
 rather than the sizes of individual files and folders in the directory.
 For example, we can get a one-line output similar to the following:
 
@@ -1632,9 +1611,9 @@ Check the content of a file with the following command:
 
 This command is handy to check the content of small files. But when the
 file is large, it is not recommended. Instead, we can use the command
-hadoop fs -tail file1 to check the content of the last few lines.
+`hadoop fs -tail file1` to check the content of the last few lines.
 
-Alternatively, we can use the command hadoop fs -text file1 to show the
+Alternatively, we can use the command `hadoop fs -text file1` to show the
 content of file1 in text format.
 
 Use the following commands to test if file1 exists, is empty, or is a
@@ -1670,8 +1649,8 @@ Delete file1 under the current directory using the following command:
 	$ hadoop fs -rm file1
 
 Note that this command will not delete a directory. To delete a
-directory, we can use the command hadoop fs -rmr dir. It is very similar
-to the Linux command rm -r, which will recursively delete everything in
+directory, we can use the command `hadoop fs -rmr` dir. It is very similar
+to the Linux command `rm -r`, which will recursively delete everything in
 the directory dir and the directory itself. So use it with caution.
 
 Download file1 from HDFS using the following command:
@@ -1795,7 +1774,7 @@ with the following command:
 	$ hadoop dfsadmin -setSpaceQuota 100000000 /user/hduser
 
 If the space usage under the directory `/user/hduser` exceeds the
-specified quota, we will get an error message similar to the following:\
+specified quota, we will get an error message similar to the following:
 
     put: org.apache.hadoop.hdfs.protocol.DSQuotaExceededException: The DiskSpace quota of /user/hduser is exceeded: quota=100000000 diskspace consumed=204.5g
 
@@ -1803,7 +1782,7 @@ Check the quota status with the following command:
 
 	$ hadoop fs -count -q /user/hduser
 
-We will get output similar to the following before setting quota:\
+We will get output similar to the following before setting quota:
 
     none inf  none inf 13  127  109810605367 hdfs://master:54310/user/hduser
 
@@ -1855,7 +1834,7 @@ command:
                [-setBalancerBandwidth <bandwidth in bytes per second>]
                [-help [cmd]]
 
-The generic usage of -count command is:
+The generic usage of `-count` command is:
 
 	$ hadoop fs -count -q <path>
 
@@ -1904,7 +1883,7 @@ Define a new queue, hdqueue, by adding the following lines into the file
 
 By default, a Hadoop cluster has only one default queue.
 
-Configure CapacityScheduler queues by adding the following lines into
+Configure `CapacityScheduler` queues by adding the following lines into
 the file `$HADOOP_HOME/conf/capacity-scheduler.xml`:
 
 ```xml
@@ -1949,23 +1928,22 @@ Restart the MapReduce cluster with the following commands:
     $ stop-mapred.sh
     $ start-mapred.sh
 
-From the JobTracker web UI, we can get a queue scheduling information
-web page similar to Figure [fig:mapred.scheduling].
+From the JobTracker web UI, we can get a queue
+[scheduling information](#fig:mapred.scheduling). 
 
-![Hadoop MapReduce job Scheduling information<span
-data-label="fig:mapred.scheduling"></span>](images/5163os_04_17.png)
+{id="fig:mapred.scheduling"}
+![Hadoop MapReduce job Scheduling information](images/5163os_04_17.png)
 
-Alternatively, we can use the command hadoop queue -list to get the same
+Alternatively, we can use the command `hadoop queue -list` to get the same
 information.
 
 Get the schedule details of each queue by opening the URL,
-master:50030/scheduler, and we can get a web page similar to the
-following:
+`master:50030/scheduler`.
 
-![Job Scheduler Queues<span
-data-label="fig:job.queues"></span>](images/5163os_04_18.png)
+{id="fig:job.queues"}
+![Job Scheduler Queues](images/5163os_04_18.png)
 
-Figure [fig:job.queues] shows the status of each queue in the cluster
+[The figure](#fig:job.queues) shows the status of each queue in the cluster
 including the numbers of running jobs, pending jobs, and so on.
 
 Test the queue configuration by submitting an example wordcount job to
@@ -1984,28 +1962,24 @@ CapacityScheduler is available as a JAR file under the
 `$HADOOP_HOME/lib` directory. For example, in our Hadoop distribution,
 the JAR file is `$HADOOP_HOME/lib/hadoop-capacity-scheduler-1.1.2.jar`.
 
-Table [tbl:queueconfig] shows the description of queue configuration
-properties:
+A few important queue configuration parameters are described below.
 
-<span>p<span>.45</span>p<span>.45</span></span> **Property** &
-**Description**\
-mapred.capacity-scheduler.queue.hdqueue.capacity & The percentage share
-of total number of slots for the hdqueue queue.\
-mapred.capacity-scheduler.queue.default.capacity & The percentage share
-of total number of slots for default queue.\
-mapred.capacity-scheduler.queue.hdqueue.minimum-user-limit-percent & The
-percentage of minimum resources allocated for each user in the queue
-hdqueue.\
-mapred.capacity-scheduler.maximum-system-jobs & The maximum number of
-jobs that can be initialized concurrently by CapacityScheduler.\
-mapred.capacity-scheduler.queue.hdqueue.maximum-initialized-active-tasks
-& The maximum number of concurrently initialized tasks across all jobs
-in the queue hdqueue.\
-mapred.capacity-scheduler.queue.hdqueue.maximum-initialized-active-tasks-per-user
-& The maximum number of concurrently initialized tasks across all jobs
-in the queue hdqueue for each user.\
-mapred.capacity-scheduler.queue.hdqueue.supports-priority & Whether to
-support job priority for job scheduling or not.\
+- `mapred.capacity-scheduler.queue.hdqueue.capacity` The percentage share
+  of total number of slots for the hdqueue queue.
+- `mapred.capacity-scheduler.queue.default.capacity` The percentage share
+  of total number of slots for default queue.
+- `mapred.capacity-scheduler.queue.hdqueue.minimum-user-limit-percent` The
+  percentage of minimum resources allocated for each user in the queue
+  hdqueue.
+- `mapred.capacity-scheduler.maximum-system-jobs` The maximum number of
+  jobs that can be initialized concurrently by CapacityScheduler.
+- `mapred.capacity-scheduler.queue.hdqueue.maximum-initialized-active-tasks` 
+  The maximum number of concurrently initialized tasks across all jobs in the queue hdqueue.
+- `mapred.capacity-scheduler.queue.hdqueue.maximum-initialized-active-tasks-per-user`
+  The maximum number of concurrently initialized tasks across all jobs in
+  the queue hdqueue for each user. 
+- `mapred.capacity-scheduler.queue.hdqueue.supports-priority`Whether to
+  support job priority for job scheduling or not.
 
 ### There's more... 
 
@@ -2017,13 +1991,10 @@ information about queue ACLs can be found at
 ### See also 
 
 - The Managing MapReduce jobs recipe
-
 - The Checking job history from the web UI recipe
-
 - The Configuring Fair Scheduler recipe
-
-- The Configuring job authentication with ACL recipe of Chapter
-    [chap:5], Hardening a Hadoop Cluster
+- The Configuring job authentication with ACL recipe of
+  [Chapter 5](#chap:5), Hardening a Hadoop Cluster 
 
 - Refer to
     <http://hadoop.apache.org/docs/r1.1.2/capacity_scheduler.html>
@@ -2084,12 +2055,11 @@ Restart the MapReduce cluster with the following commands:
 	$ start-mapred.sh
 
 Verify the setting of Fair Scheduler by opening the URL
-<http://master:50030/scheduler>.
+<http://master:50030/scheduler>, as shown in the
+[following figure](#fig:fairscheduler). 
 
-The web page will be similar to Figure [fig:fairscheduler].
-
-![Status of fair scheduler<span
-data-label="fig:fairscheduler"></span>](images/5163os_04_16.png)
+{id="fig:fairscheduler"}
+![Status of fair scheduler](images/5163os_04_16.png)
 
 ### How it works... 
 
@@ -2101,7 +2071,7 @@ specifies the amount of resources a user can share on the cluster, for
 example the number of map slots, reduce slots, the total number of
 running jobs, and so on.
 
-*minMaps* and *minReduces* are used to ensure the minimum share of
+`minMaps` and `minReduces` are used to ensure the minimum share of
 computing slots on the cluster for a pool. The minimum share guarantee
 can be useful when the required number of computing slots is larger than
 the number of configured slots. In case if the minimum share of a pool
@@ -2119,42 +2089,31 @@ If all jobs in the waiting queue have the same priority, the Fair
 Scheduler can be configured to schedule these jobs with either Fair
 Scheduler or FIFO Scheduler.
 
-Table [tbl:fairscheduler] shows the properties supported by fair
+Following [table](#tbl:fairscheduler) shows the properties supported by fair
 scheduler:
 
-<span>p<span>.27</span>p<span>.07</span>p<span>.56</span></span>
-**Property** & **Value** & **Description**\
-minMaps & Integer & Minimum map slots for a pool.\
-maxMaps & Integer & Maximum map slots for a pool.\
-minReduces & Integer & Minimum reduce slots for a pool.\
-minReduces & Integer & Maximum reduce slots for a pool.\
-schedulingMode & Fair/FIFO & Pool internal scheduling mode, fair or
-fifo.\
-maxRunningJobs & Integer & Maximum number of concurrently running jobs
-for a pool. Default value is unlimited.\
-weight & Float & Value to control non proportional share of cluster
-resource. The default value is 1.0.\
-minSharePreemptionTimeout & Integer & Seconds to wait before killing
-other pool's tasks if a pool's share is under minimum share.\
-maxRunningJobs & Integer & Maximum number of concurrent running jobs for
-a user. Default is unlimited.\
-poolMaxJobsDefault & Integer & Default maximum number of concurrently
-running jobs for a pool.\
-userMaxJobsDefault & Integer & Default maximum number of concurrently
-running jobs for a user.\
-defaultMinSharePreemptionTimeout & Integer & Default seconds to wait
-before killing other pool's tasks when a pool's share is under minimum
-share.\
-fairSharePreemptionTimeout & Integer & Pre-emption time when a job's
-resource is below half of the fair share.\
-defaultPoolSchedulingMode & Fair/FIFO & Default in-pool scheduling
-mode.\
-
-### See also 
-
-- The Configuring CapacityScheduler recipe
-
-- Refer to [the FairScheduler
+{id="tbl:fairscheduler"}
+| **Property**                     | **Value** | **Description**																					  |
+|:---------------------------------|:----------|:-----------------------------------------------------------------------------------------------------|	   	
+| minMaps                          | Integer   | Minimum map slots for a pool.																		  |
+| maxMaps                          | Integer   | Maximum map slots for a pool.																		  |
+| minReduces                       | Integer   | Minimum reduce slots for a pool.																	  |
+| minReduces                       | Integer   | Maximum reduce slots for a pool.																	  |
+| schedulingMode                   | Fair/FIFO | Pool internal scheduling mode, fair or fifo.														  |
+| maxRunningJobs                   | Integer   | Maximum number of concurrently running jobs for a pool. Default value is unlimited.				  |
+| weight                           | Float     | Value to control non proportional share of cluster resource. The default value is 1.0.				  |
+| minSharePreemptionTimeout        | Integer   | Seconds to wait before killing other pool's tasks if a pool's share is under minimum share.		  |
+| maxRunningJobs                   | Integer   | Maximum number of concurrent running jobs for a user. Default is unlimited.						  |
+| poolMaxJobsDefault               | Integer   | Default maximum number of concurrently running jobs for a pool.									  |
+| userMaxJobsDefault               | Integer   | Default maximum number of concurrently running jobs for a user.									  |
+| defaultMinSharePreemptionTimeout | Integer   | Default seconds to wait before killing other pool's tasks when a pool's share is under minimum share.|
+| fairSharePreemptionTimeout       | Integer   | Pre-emption time when a job's resource is below half of the fair share.							  |
+| defaultPoolSchedulingMode        | Fair/FIFO | Default in-pool scheduling mode.																	  |
+																																					   
+### See also 																																		   
+																																					   
+- The Configuring CapacityScheduler recipe																											   
+- Refer to [the FairScheduler																														   
     documentation](http://hadoop.apache.org/docs/r1.1.2/fair_scheduler.html).
 
 ## Configuring Hadoop daemon logging
@@ -2240,37 +2199,38 @@ we are debugging a daemon, we can set its logging level to be DEBUG
 rather than something else. Using a verbose log level can give us more
 information, while on the other hand will incur overhead to the cluster.
 
-Table [tbl:log4j] shows all the logging levels provided by Log4j:
+The following [table](#tbl:log4j) shows all the logging levels provided by Log4j:
 
-<span>ll</span> **Log level** & **Description**\
-ALL & The lowest logging level, all loggings will be turned on.\
-DEBUG & Logging events useful for debugging applications.\
-ERROR & Logging error events, but application can continue to run.\
-FATAL & Logging very severe error events that will abort applications.\
-INFO & Logging informational messages that indicate the progress of
-applications.\
-OFF & Logging will be turned off.\
-TRACE & Logging more finger-grained events for application debugging.\
-`TRACE_INT` & Logging in TRACE level on integer values.\
-WARN & Logging potentially harmful events.\
-
-We can get the usage of daemonlog with the following command:
-
-    $ hadoop daemonlog
-    USAGES:
-    java org.apache.hadoop.log.LogLevel -getlevel <host:port> <name>
-    java org.apache.hadoop.log.LogLevel -setlevel <host:port> <name> <level>
-
-### There's more... 
-
-Other than configuring Hadoop logging on the fly from command line, we
-can configure it using configuration files. The most important file that
-we need to configure is `$HADOOP/conf/hadoop-env.sh`.
-
-Sometimes, audit logging is desirable for corporate auditing purposes.
-Hadoop provides audit logging through Log4j using the INFO logging
-level. We will show you how to configure Hadoop audit logging in the
-next recipe.
+{id="tbl:log4j"}
+| **Log level**    | **Description** 															|
+|:-----------------|:---------------------------------------------------------------------------|
+| `ALL`            | The lowest logging level, all loggings will be turned on.					|
+| `DEBUG`          | Logging events useful for debugging applications.							|
+| `ERROR`          | Logging error events, but application can continue to run.					|
+| `FATAL`          | Logging very severe error events that will abort applications.				|
+| `INFO`           | Logging informational messages that indicate the progress of applications. |
+| `OFF`            | Logging will be turned off.												|
+| `TRACE`          | Logging more finger-grained events for application debugging.				|
+| `TRACE_INT`      | Logging in TRACE level on integer values.									|
+| `WARN`           | Logging potentially harmful events.										|
+																								 
+We can get the usage of daemonlog with the following command:									 
+																								 
+    $ hadoop daemonlog																			 
+    USAGES:																						 
+    java org.apache.hadoop.log.LogLevel -getlevel <host:port> <name>							 
+    java org.apache.hadoop.log.LogLevel -setlevel <host:port> <name> <level>					 
+																								 
+### There's more... 																			 
+																								 
+Other than configuring Hadoop logging on the fly from command line, we							 
+can configure it using configuration files. The most important file that						 
+we need to configure is `$HADOOP/conf/hadoop-env.sh`.											 
+																								 
+Sometimes, audit logging is desirable for corporate auditing purposes.							 
+Hadoop provides audit logging through Log4j using the INFO logging								 
+level. We will show you how to configure Hadoop audit logging in the							 
+next recipe.																					 
 
 The cluster needs to be restarted for the configuration to take effect.
 
@@ -2290,23 +2250,22 @@ following line:
 
 	export HADOOP_LOG_DIR=/var/log/hadoop
 
-Additionally, Table [tbl:loggingenv] shows other environment variables
+Additionally, following [table](#tbl:loggingenv) shows other environment variables
 we can configure for Hadoop logging:
 
-<span>ll</span> **Variable name** & **Description**\
-`HADOOP_LOG_DIR` & Directory for log files.\
-`HADOOP_PID_DIR` & Directory to store the PID for the servers.\
-`HADOOP_ROOT_LOGGER` & Logging configuration for hadoop.root.logger.
-Default value: “INFO,console”.\
-`HADOOP_SECURITY_LOGGER` & Logging configuration for
-hadoop.security.logger. Default value: “INFO,NullAppender”.\
-`HDFS_AUDIT_LOGGER` & Logging configuration for hdfs.audit.logger.
-Default value: “INFO,NullAppender”.\
-
-## Configuring Hadoop security logging
-
-Security logging can help Hadoop cluster administrators to identify
-security problems. It is enabled by default.
+{id="tbl:loggingenv"}
+|  **Variable name**       | **Description**																		 |
+|:-------------------------|:----------------------------------------------------------------------------------------|
+| `HADOOP_LOG_DIR`         | Directory for log files.																 |
+| `HADOOP_PID_DIR`         | Directory to store the PID for the servers.											 |
+| `HADOOP_ROOT_LOGGER`     | Logging configuration for hadoop.root.logger. Default value: "INFO,console".			 |
+| `HADOOP_SECURITY_LOGGER` | Logging configuration for `hadoop.security.logger`. Default value: "INFO,NullAppender". |
+| `HDFS_AUDIT_LOGGER`      | Logging configuration for hdfs.audit.logger. Default value: "INFO,NullAppender".		 |
+																													  
+## Configuring Hadoop security logging																				  
+																													  
+Security logging can help Hadoop cluster administrators to identify													  
+security problems. It is enabled by default.																		  
 
 The security logging configuration is located in the file
 `$HADOOP_HOME/conf/log4j.properties`. By default the security logging
@@ -2343,7 +2302,6 @@ In Hadoop, the names of logging files are using the following format:
 ### See also 
 
 - The Configuring Hadoop audit logging recipe
-
 - Refer to <http://wiki.apache.org/hadoop/HowToConfigure>
 
 ## Configuring Hadoop audit logging
@@ -2415,8 +2373,8 @@ with the following content:
 
 Hadoop logs auditing messages of operations, such as creating, changing,
 or deleting files into a configured log file. By default, audit logging
-is set to *WARN*, which disables audit logging. To enable it, the
-logging level need be changed to *INFO*.
+is set to `WARN`, which disables audit logging. To enable it, the
+logging level need be changed to `INFO`.
 
 When a Hadoop cluster has many jobs to run, the log file can become
 large very quickly. Log file rotation is a function that periodically
@@ -2438,7 +2396,7 @@ upgrade a Hadoop cluster to a newer version.
 
 Download the desired Hadoop release from an Apache mirror site:
 <http://www.apache.org/dyn/closer.cgi/hadoop/common/>. In this book, we
-assume to upgrade Hadoop from version *1.1.2* to version *1.2.0*, which
+assume to upgrade Hadoop from version `1.1.2` to version `1.2.0`, which
 is still in the beta state when writing this book.
 
 We assume that there are no running or pending MapReduce jobs in the
@@ -2607,23 +2565,21 @@ commands:
                [-setBalancerBandwidth <bandwidth in bytes per second>]
                [-help [cmd]]
 
-Table [tbl:dfsadmin] shows the meanings of the command options:
+Following [table](#tbl:dfsadmin) shows the meanings of the command options:
 
-<span>lp<span>.75</span></span> **Option** & **Description**\
--report & Reports filesystem information and statistics.\
--saveNamespace & Save a snapshot of the filesystem metadata into
-configured directories.\
--finalizeUpgrade & Finalize the upgrade of HDFS; this command will cause
-the DataNode to delete the previous version working directories.\
--metasave & Saves the metadata of the HDFS cluster.\
-
-### See also 
-
-- The Configuring Hadoop in pseudo-distributed mode recipe of Chapter
-    [chap:3], Configuring a Hadoop Cluster
-
-- The Configuring Hadoop in fully-distributed mode recipe of Chapter
-    [chap:3], Configuring a Hadoop Cluster
-
-- The Validating Hadoop installation recipe of Chapter [chap:3],
-    Configuring a Hadoop Cluster
+{id="tbl:dfsadmin"}																															
+| **Option**       | **Description**																										|
+|:-----------------|:-----------------------------------------------------------------------------------------------------------------------|  
+| -report          | Reports filesystem information and statistics.																			|
+| -saveNamespace   | Save a snapshot of the filesystem metadata into configured directories.												|
+| -finalizeUpgrade | Finalize the upgrade of HDFS; this command will cause the DataNode to delete the previous version working directories. |
+| -metasave        | Saves the metadata of the HDFS cluster.																				|
+																																			 
+### See also 																																 
+																																			 
+- The Configuring Hadoop in pseudo-distributed mode recipe of
+  [Chapter 3](#chap:3), Configuring a Hadoop Cluster 
+- The Configuring Hadoop in fully-distributed mode recipe of
+  [Chapter 3](#chap:3), Configuring a Hadoop Cluster 
+- The Validating Hadoop installation recipe of [Chapter 3](#chap:3), Configuring
+  a Hadoop Cluster 

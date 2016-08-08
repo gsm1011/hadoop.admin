@@ -188,7 +188,7 @@ with command:
 
 The command will intentionally cause task and TaskTracker failures on a
 running job. So during the test, we will be able to see messages like:
-“Killing a few tasks”. A sample message will be similar to the
+"Killing a few tasks". A sample message will be similar to the
 following:
 
     13/04/17 17:49:22 INFO mapred.ReliabilityTest: Wed Apr 17 17:49:22 EDT 2013 Killing a few tasks
@@ -574,7 +574,7 @@ master node with command:
 
 Use the following recipe to analyze job history with Rumen:
 
-Use the trace builder to extract the “Gold Trace” from the Hadoop job
+Use the trace builder to extract the "Gold Trace" from the Hadoop job
 history files. The syntax of the command is:
 
 	$ hadoop org.apache.hadoop.tools.rumen.TraceBuilder [options] <jobtrace-output> <topology-output> <inputs>
