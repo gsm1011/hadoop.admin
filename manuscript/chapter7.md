@@ -517,8 +517,9 @@ The usage for sort is as follows:
 
     $ sort [-m <maps>] [-r <reduces>] [-inFormat <input format class>] [-outFormat <output format class>] [-outKey <output key class>] [-outValue <output value class>] [-totalOrder <pcnt> <num samples> <max splits>] <input> <output>
 
-The meaning of each option is shown in Table [tbl:sort].
-																						 
+The meaning of each option is shown in the following [table](#tbl:sort).
+
+{id="tbl:sort"}
 |  **Option** | **Description**															 |
 |:------------|:-------------------------------------------------------------------------| 	   	   	   	   	   	   	
 | -m          | Number of map tasks														 |
@@ -1452,25 +1453,29 @@ Restart the Hadoop cluster with command:
 
 ### How it works... 
 
-Table [tbl:hdfscompression] is a summary of properties for configuring
-Hadoop data compression:
+Following [table](#tbl:hdfscompression) is a summary of properties for configuring
+Hadoop data compression.
 
-| **Property**                        | **Default**
-| mapred.output.compress              | true
-| mapred.output.compression.type      | RECORD
-| mapred.output.compression.codec     | org.apache.hadoop.io.compress.DefaultCodec
-| mapred.compress.map.output          | false
-| mapred.map.output.compression.codec | org.apache.hadoop.io.compress.DefaultCodec
+{id="tbl:hdfscompression"}														   
+| **Property**                        | **Default**								   |
+|:------------------------------------|:-------------------------------------------|
+| mapred.output.compress              | true									   |
+| mapred.output.compression.type      | RECORD									   |
+| mapred.output.compression.codec     | org.apache.hadoop.io.compress.DefaultCodec |
+| mapred.compress.map.output          | false									   |
+| mapred.map.output.compression.codec | org.apache.hadoop.io.compress.DefaultCodec |
 
-Available compression codecs are described in Table [tbl:hdfscodecs].
-
-| **Codec Name** | **Java Class**
-| DefaultCodec | org.apache.hadoop.io.compress.DefaultCodec
-| GzipCodec | org.apache.hadoop.io.compress.GzipCodec
-| BZip2Codec | org.apache.hadoop.io.compress.BZip2Codec
-| SnappyCodec | org.apache.hadoop.io.compress.SnappyCodec
-| LzoCodec | org.apache.hadoop.io.compress.LzoCodec
-
+Available compression [codecs](#tbl:hdfscodecs).
+															 
+{id="tbl:hdfscodecs"}										 
+| **Codec Name** | **Java Class**							 |
+|:---------------|:------------------------------------------|
+| DefaultCodec   | org.apache.hadoop.io.compress.DefaultCodec|
+| GzipCodec      | org.apache.hadoop.io.compress.GzipCodec	 |
+| BZip2Codec     | org.apache.hadoop.io.compress.BZip2Codec	 |
+| SnappyCodec    | org.apache.hadoop.io.compress.SnappyCodec |
+| LzoCodec       | org.apache.hadoop.io.compress.LzoCodec	 |
+															 
 ## Configuring speculative execution
 
 Speculative execution is a proactive performance boosting strategy used
@@ -1607,16 +1612,18 @@ snippet to disable speculative execution for this job:
     conf.set("mapred.map.tasks.speculative.execution", "false");
     conf.set("mapred.reduce.tasks.speculative.execution", "false");
 
-Table [tbl:speculative] is a summary of the properties we used in this
+Following [table](#tbl:speculative) is a summary of the properties we used in this
 recipe with their default values:
 
-|  **Property**                               | **Default value**
-| mapreduce.map.speculative                   | true
-| mapreduce.reduce.speculative                | true
-| mapreduce.job.speculative.speculativecap    | 0.1
-| mapreduce.job.speculative.slowtaskthreshold | 1.0
-| mapreduce.job.speculative.slownodethreshold | 1.0
-
+{id="tbl:speculative"}
+|  **Property**                               | **Default value**|
+|:--------------------------------------------|:-----------------|
+| mapreduce.map.speculative                   | true			 |
+| mapreduce.reduce.speculative                | true			 |
+| mapreduce.job.speculative.speculativecap    | 0.1				 |
+| mapreduce.job.speculative.slowtaskthreshold | 1.0				 |
+| mapreduce.job.speculative.slownodethreshold | 1.0				 |
+																 
 The three properties mapreduce.job.speculative.speculativecap,
 `mapreduce.job.speculative.slowtaskthreshold` and
 `mapreduce.job.speculative.slownodethreshold` control when the
@@ -1628,11 +1635,9 @@ met:
 - The completion rate, in percentage, of the regular task is less than
   `mapreduce.job.speculative.slowtaskthreshold` times the mean
   completion rate of all other tasks.
-
 - The completion rate, in percentage, of the regular task is less than
   `mapreduce.job.speculative.slownodethreshold` times the mean
   completion rate of all other tasks on the current TaskTracker.
-
 - The number of launched speculative tasks is smaller than the
   configured speculative cap.
 
@@ -1976,9 +1981,10 @@ Restart the MapReduce cluster with the following command:
 
 ### How it works 
 
-Table [tbl:tasktracker] contains a list of properties with descriptions
+Following [table](#tbl:tasktracker) contains a list of properties with descriptions
 of this recipe:
 
+{id="tbl:tasktracker"}
 |  **Property**                                            | **Default** | **Description** |
 |:---------------------------------------------------------|:------------|:----------------|
 | mapred.tasktracker.expiry.interval                       | 600000      | In milliseconds.|

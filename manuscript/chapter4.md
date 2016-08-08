@@ -1352,7 +1352,7 @@ the task, shown in [figure](#fig:task.info).
 ![Information of a task](images/5163os_04_04.png)
 
 We can get the counters of a task by clicking on the Counters field of
-the task as shown in Figure [fig:task.info], or we can get the same web
+the task as shown in the [figure](#fig:task.info), or we can get the same web
 page by opening URL
 <http://master:50030/taskstats.jsp?tipid=task_201302281211_0001_m_000000>.
 
@@ -1394,7 +1394,7 @@ interval can be modified by changing the
 </property>
 ```
 
-Table [tbl:statusuris] shows the summary of URIs we can use to check the
+The following list shows the summary of URIs we can use to check the
 status of jobs, tasks, and attempts.
 
 - `master:50030/jobtracker.jsp`  JobTracker.
@@ -1408,9 +1408,10 @@ status of jobs, tasks, and attempts.
 - [master:50030/taskstats.jsp?attemptid=\<attempID\>](master:50030/taskstats.jsp?attemptid=<attempID>)
  Attempt counters.
 
-Table [tbl:ids] lists the naming examples for jobID, taskID, and
-attemptID:
+The following [table](#tbl:ids) lists the naming examples for jobID, taskID, and
+attemptID.
 
+{id="tbl:ids"}
 |   **ID**   | **Example**                            |
 |:-----------|:---------------------------------------|
 |   jobID    | `job_201302281451_0001`                |

@@ -117,9 +117,10 @@ generic format of the value should be similar to the following:
 ### There's more... 
 
 Besides the three properties we mentioned in this recipe, a number of
-other ACL properties are available in Hadoop. Table [tbl:acl] shows the
+other ACL properties are available in Hadoop. The following [table](#tbl:acl) shows the 
 meaning of these properties.
-																									  
+
+{id="tbl:acl"}
 | **Property**                         | **Service Description**     								  |
 |:-------------------------------------|:-------------------------------------------------------------|
 | security.client.protocol.acl         | Clients access HDFS										  |
@@ -1508,9 +1509,10 @@ upgrade will be operated on a namespace volume. In addition, federated
 NameNodes can isolate namespaces for different applications or
 situations.
 
-Table [tbl:nnfederation] shows the properties for configuring NameNode
+The following [table](#tbl:nnfederation) shows the properties for configuring NameNode
 federation:
-																											
+
+{id="tbl:nnfederation"}
 |     Daemon        | Property                          | Description										|
 |:------------------|:----------------------------------|:--------------------------------------------------|
 |    NameNode       | dfs.namenode.rpc-address          | For NameNode RPC communication with clients.		|

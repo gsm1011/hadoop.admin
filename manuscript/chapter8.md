@@ -192,8 +192,9 @@ downloaded key pair to `~/.ec2` folder. `$ cp *.pem ~/.ec2/`
 
 ### How it works 
 
-Table [tbl:awssecurity] show the usage of each security credential:										  
-																										  
+Following [table](#tbl:awssecurity) show the usage of each security credential.
+
+{id="tbl:awssecurity"}
 |  **Security Credential** |                    | **Used for**											  |
 |:-------------------------|:-------------------|:--------------------------------------------------------|
 | Access Credentials       | Access Keys        | Secure REST or Query request access to AWS service APIs.|

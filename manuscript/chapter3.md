@@ -944,7 +944,7 @@ a webpage similar to the following [figure](#fig:active.trackers).
 {id="fig:active.trackers"}
 ![List of active TaskTrackers](images/5163os_03_03.png)
 
-From Figure [fig:active.trackers], we can easily check the status of the
+From the [figure](#fig:active.trackers), we can easily check the status of the
 active TaskTrackers on the slave nodes. For example, we can see the
 count of failed tasks, the number of MapReduce slots and the heart beat
 seconds etc.
