@@ -112,7 +112,7 @@ cluster.
 |-------------|-----------------|----------------------------------|
 |             |       RAM       | {$$}\ge{/$$} 16GB                |
 |-------------|-----------------|----------------------------------|
-|             |    Hard Drive   | {$$}\ge{/$$} 2 x 1TB SATA 7200 RPM HDD or SSD[^1]|
+|             |    Hard Drive   | {$$}\ge{/$$} 2 x 1TB SATA 7200 RPM HDD or SSD|
 |-------------|-----------------|----------------------------------|
 |             |  Network Card   | {$$}\ge{/$$} 1Gbps Ethernet      |
 |-------------|-----------------|----------------------------------|
@@ -152,7 +152,7 @@ requirement can incur higher I/O operations for the majority of Hadoop
 jobs. That's why higher end and parallel hard drives can help boost the
 cluster performance. To maximize parallelism, it is advisable to assign
 two slots for each CPU core. For example, if our slave node has two
-quad-core CPUs, we can assign $2 \times 4 \times 2 = 16$ (map only,
+quad-core CPUs, we can assign {$$}2 \times 4 \times 2 = 16{/$$} (map only,
 reduce only or both) slots in total for this node.
 
 In the simple equation, the first 2 stands for the number of CPUs of the
@@ -248,7 +248,7 @@ corresponding documentation.
 Login to the administrator machine as hdadmin and change the hostname of
 the machine with command:
 
-    $ sudo sed -i 's/\^HOSTNAME.*\$/HOSTNAME=hadoop.admin/' /etc/sysconfig/network
+    $ sudo sed -i 's/^HOSTNAME.*$/HOSTNAME=hadoop.admin/' /etc/sysconfig/network
 
 Create directories with command:
 
@@ -299,12 +299,12 @@ We can also use the following wget command to download the image file:
 
 Mount the image file with command:
 
-	$ sudo mount $~/isoimages/ CentOS-6.3-x86_64-minimal.iso ~/$mnt
+	$ sudo mount ~/isoimages/CentOS-6.3-x86_64-minimal.iso /mnt
 
 Copy all the files to the `~/repo` directory for `FTP` hosting with
 command:
 
-    $ cp -r $~/mnt/* ~/$repo
+    $ cp -r /mnt/* ~/repo
 
 Un-mount the ISO image with command:
 
@@ -372,7 +372,7 @@ Make the `DHCP` server to survive a system reboot:
 
     $ sudo chkconfig dhcpd --level 3 on
 
-Use the following recipe to configure `FTP` server:\
+Use the following recipe to configure `FTP` server:
 
 Open file `/etc/vsftpd/vsftpd.conf` with your favorite text editor and
 change the content according to the following list:
@@ -651,7 +651,7 @@ drive.
 
 A kickstart file specifies a number of installation options such as
 installation media, networking configuration, firewall configuration
-etc. Lines that start with `\#` are treated as comments.
+etc. Lines that start with `#` are treated as comments.
 
 The file contains a %packages section, which specifies the packages to
 be installed. In this section, both specific packages and package groups

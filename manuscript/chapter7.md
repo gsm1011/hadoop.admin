@@ -472,7 +472,6 @@ The following [table](#tbl:testmapred.sort) shows the meaning of the options
 | -sortOutput | Output directory after the data specified by the -sortInput		   |
 |             | directory is sorted. The specified directory must exist, otherwise |
 |             | the benchmark will fail.   	   	   	   	   	   	   	   	   	   	   |
-																				   
 
 ### There's more...
 

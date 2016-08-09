@@ -1663,7 +1663,8 @@ command:
 
 	$ hadoop fs -chgrp hadoop file1
 
-In this command, we are assuming group hadoop exists.\
+In this command, we are assuming group hadoop exists.
+
 Also, we can use the command `hadoop fs -chgrp -R <hadoop-dir>` to
 change the group membership of a directory dir recursively.
 
@@ -2473,8 +2474,8 @@ Decompress the Hadoop archive file with the following commands:
 Copy the configuration files from the old configuration directory to the
 new one using the following command:
 
-	$ sudo cp $HADOOP_HOME/conf/* /usr/local/hadoop-1.2.0/conf/*`\
-
+	$ sudo cp $HADOOP_HOME/conf/* /usr/local/hadoop-1.2.0/conf/*
+	
 You can make changes to the configuration files if necessary.
 
 Update the Hadoop symbolic link to the Hadoop version with the following

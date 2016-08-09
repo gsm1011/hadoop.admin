@@ -406,7 +406,7 @@ stopping a cluster.
 
 - **start-dfs.sh** Script to start HDFS daemons including NameNode,
   SecondaryNameNode and DataNode. A PID file will be created for each
-  daemon process under default folder \$. For example, if user hduser is used
+  daemon process under default folder `$`. For example, if user hduser is used
   to run the script, file `/hadoop/tmp/hadoop-hduser-namenode.pid` will be
   created for the NameNode daemon process. 
   
@@ -489,7 +489,8 @@ the password-less login to all slave nodes from the master node:
 
 ### How to do it... 
 
-Use the following recipe to configure Hadoop in fully-distributed mode:\
+Use the following recipe to configure Hadoop in fully-distributed mode:
+
 Login to the master node from administrator machine with command:
 
 	$ ssh hduser@master
@@ -703,7 +704,8 @@ And we will get output similar to the following:
 
 The output message shows that a NameNode and a SecondaryNameNode are
 started on the master node. And a DataNode is started on each slave
-node.\
+node.
+
 Start the MapReduce cluster daemons with command:
 
 	$ start-mapred.sh
@@ -921,7 +923,7 @@ Run a sample MapReduce job with command:
 	$ hadoop jar $HADOOP_HOME/hadoop-examples*.jar pi 20 100000
 
 In this command, `hadoop-examples*jar` is a jar file that contains a few
-sample MapReduce jobs such as $\pi$. Option 20 is the number of tasks to
+sample MapReduce jobs such as {$$}\pi{/$$}. Option 20 is the number of tasks to
 run and 100000 specifies the size of the sample for each task.
 
 If this job finishes without any problem, we can say that the Hadoop
@@ -1050,13 +1052,13 @@ Check the status of HDFS cluster with command:
     The filesystem under path '/' is HEALTHY
 
 The output gives us the same information as from the web interface. And
-the last line tells us that the root filesystem is *HEALTHY*.
+the last line tells us that the root filesystem is **HEALTHY**.
 
 ### How it works 
 
 Hadoop provides commands and web interfaces for system administrators to
 check the status of the cluster. When we start Hadoop daemons, a
-build-in web server will be started and a number of pre-written *jsp*
+build-in web server will be started and a number of pre-written `jsp`
 script files are used to respond to user's requests from a web browser.
 The jsp files can be found under the `$HADOOP_HOME/webapps` directory.
 If you have programming experience, you can take advantage of the jsp
@@ -1087,7 +1089,7 @@ with the following command:
 
 	$ jps
 
-If the output of this command *does not* contain the NameNode and
+If the output of this command **does not** contain the NameNode and
 SecondaryNameNode daemons, we need to check the configuration of HDFS.
 
 To troubleshoot the HDFS startup problem, we can open a new terminal and
@@ -1157,7 +1159,7 @@ illustrated with the following log output:
 To troubleshoot this problem, we can refer to tips for **can't start
 HDFS daemons**.
 
-*Configuration problems of MapReduce*. Recall that we have
+**Configuration problems of MapReduce**. Recall that we have
 configurations for the number of map slots and reduce slots as well as
 memory amount in the `$HADOOP_HOME/conf/mapred-site.xml` file. Before
 starting a cluster, we need to make sure that the total amount of
@@ -1167,7 +1169,7 @@ memory.
 For example, suppose a slave host has 4GB of memory, and we have
 configured 6 map slots and 6 reduce slots with memory 512MB for each
 slot. So we can compute the total configured task memory with the
-following formula: $6 \time 512 + 6 \times 512 = 6GB$.
+following formula: {$$}6 \time 512 + 6 \times 512 = 6GB{/$$}.
 
 As 6GB is larger than the system memory 4GB, the system will not start.
 To clear this problem, we can decrease the number of map slots and
@@ -1243,7 +1245,7 @@ following content:
     JAVA_HOME=/usr/java/latest
     export PATH=$JAVA_HOME/bin:$PATH
 
-The file name *java.env* is mandatory. It will be loaded by zookeeper.
+The file name `java.env` is mandatory. It will be loaded by zookeeper.
 
 Create file `$ZK_HOME/conf/zookeeper.cfg` and add the following lines:
 
@@ -1452,7 +1454,7 @@ To stop HBase, use command:
 
 In the configuration, property hbase.rootdir specifies the root
 directory of the HBase data storage. And property
-*hbase.zookeeper.property.dataDir* specifies the root directory of the
+`hbase.zookeeper.property.dataDir` specifies the root directory of the
 ZooKeeper data storage.
 
 ### There's more... 
@@ -1472,7 +1474,8 @@ section, we will talk about installing Hive on our Hadoop cluster.
 
 Before we install Hive, we need to make sure Hadoop has been properly
 installed. Please refer to the previous sections about the configuration
-of a Hadoop cluster.\
+of a Hadoop cluster.
+
 Download Hive from a mirror site with command similar to the following
 on the administrator machine:
 
@@ -1513,7 +1516,6 @@ Start Hive with command:
 ### There's more... 
 
 - Installing Pig in Chapter 3, Configuring a Hadoop cluster
-
 - Get more documentation about Hive from [Hive
     Home](https://cwiki.apache.org/confluence/display/Hive/Home)
 
@@ -1579,9 +1581,8 @@ computing provided by Hadoop.
 ### There's more... 
 
 - Installing Hive in Chapter 3, Configuring a Hadoop cluster
-
 - More documentation about Pig can be obtained from [Pig @
-    Apache](http://pig.apache.org/docs/r0.10.0/)
+  Apache](http://pig.apache.org/docs/r0.10.0/)
 
 ## Installing Mahout
 
@@ -1642,8 +1643,8 @@ Compile and install Mahout core with the following commands:
 	$ sudo mvn install
 
 The install command will run all the tests by default, we can ignore the
-tests to speed up the installation process with command sudo
-mvn -DskipTests install.
+tests to speed up the installation process with command `sudo
+mvn -DskipTests install`.
 
 Compile the Mahout examples with commands:
 
@@ -1672,5 +1673,5 @@ Run kmeans clustering with command:
 
 ### There's more... 
 
-- More documentation about Mahout can be obtained from the [Mahout
-    Wiki](https://cwiki.apache.org/confluence/display/MAHOUT/Mahout+Wiki)
+- More documentation about Mahout can be found at [Mahout
+  Wiki](https://cwiki.apache.org/confluence/display/MAHOUT/Mahout+Wiki)

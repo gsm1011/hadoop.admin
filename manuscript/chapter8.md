@@ -595,7 +595,8 @@ Add the following content into file `$HAOOP_HOME/conf/hdfs-site.xml`:
 Download and install the other ecosystem components with recipes in
 Chapter 3.
 
-We can use the following recipe to bundle, upload and register an AMI:\
+We can use the following recipe to bundle, upload and register an AMI:
+
 Bundle the loopback image file with command:
 
 	$ ec2-bundle-image -i centos.img -k .ec2/pk-*.pem -c .ec2/cert-*.pem -u 123412341234
@@ -1287,5 +1288,3 @@ completes. We can get its status from the
 ### See also 
 
 - [Configuring a Hadoop cluster](#chap:3)
-
-[^1]: HDD stands for Hard Disk Drive and SSD stands for Solid State Drive
