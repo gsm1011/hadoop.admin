@@ -162,9 +162,8 @@ second 2 means the number of slots per CPU core.
 ### See also 
 
 - Designing the cluster network
-- Managing HDFS cluster in Chapter [chap:4], Managing a Hadoop
-    cluster.
-- Chapter [chap:7], Tuning Hadoop cluster for best performance.
+- Managing HDFS cluster in [Chapter 4](#chap:4), Managing a Hadoop cluster.
+- [Chapter 7](#chap:7), Tuning Hadoop cluster for best performance.
 
 ## Designing the cluster network
 
@@ -178,7 +177,7 @@ The network architecture for a small to medium sized cluster can be as
 simple as connecting the cluster nodes with one or more switches.
 Connection redundancy can add reliability to the network.
 
-Warning!\
+**Warning!**
 Computing nodes in a Hadoop cluster should be configured within the same
 network segment (Local Area Network or LAN). Advanced features such as
 VLANs that can cause overhead are not recommended. And connecting nodes
@@ -953,12 +952,12 @@ Suppose we have both `OpenJDK` and Oracle Java installed in `/usr/openjdk`
 and `/usr/jdk` respectively. We can set the PATH environment variable to
 be the following:
 
-    PATH=/usr/jdk/bin:/usr/openjdk/bin:\$PATH
+    PATH=/usr/jdk/bin:/usr/openjdk/bin:$PATH
 
 Or, if we would like to only use the Oracle Java, we can set PATH to
 be:
 
-    PATH=/usr/jdk/bin:\$PATH
+    PATH=/usr/jdk/bin:$PATH
 
 To download Java from Oracle, go to the [official
 site](http://www.oracle.com/technetwork/java/javase/downloads/index.html).

@@ -336,8 +336,8 @@ on the **part-0000x** link.
 
 ### See also 
 
-- The Validating Hadoop installation recipe in Chapter [chap:3],
-    Configuring a Hadoop cluster
+- The Validating Hadoop installation recipe in [Chapter 3](#chap:3),
+  Configuring a Hadoop cluster
 - The Decommissioning DataNode recipe
 - The Manipulating files on HDFS recipe
 
@@ -1285,7 +1285,7 @@ Change the job priority to be HIGH by opening the URL,
 
 ### See also 
 
-- The Validating Hadoop installation recipe of Chapter [chap:3],
+- The Validating Hadoop installation recipe of [Chapter 3](#chap:3),
   Configuring a Hadoop Cluster
 - The Managing the HDFS cluster recipe
 - The Managing MapReduce cluster recipe

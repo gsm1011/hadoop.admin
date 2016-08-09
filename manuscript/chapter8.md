@@ -535,7 +535,7 @@ the symbolic link:
 	$ sudo tar xvf hadoop-*.tar.gz -C /mnt/centos/usr/local/
 	$ sudo ln -s /mnt/centos/usr/local/hadoop-* /mnt/centos/usr/local/hadoop
 
-Add the following environment variables to file *.bashrc*:
+Add the following environment variables to file `.bashrc`:
 
     export JAVA_HOME=/usr/java/latest
     export HADOOP_HOME=/usr/local/hadoop
@@ -698,7 +698,7 @@ Register the AMI with command:
 The command will give us an ID for the newly registered AMI similar to
 the following: `IMAGE   ami-9f422ff6`
 
-Warning!\
+**Warning!**
 The AMI registration step is required in order for EC2 to find the AMI
 and run instances with it. Note that once changes are made on the image
 part files stored on S3, re-registration is required in order for the
@@ -863,7 +863,7 @@ the symbolic link:
 	$ tar xvf hadoop-*.tar.gz -C /usr/local/
 	$ ln -s /usr/local/hadoop-* /usr/local/hadoop
 
-Add the following environment variables to file .bashrc:
+Add the following environment variables to file `.bashrc`:
 
 	$ export JAVA_HOME=/usr/java/latest
 	$ export HADOOP_HOME=/usr/local/hadoop
@@ -1005,12 +1005,11 @@ AMI.
 
 ### See also 
 
-- Installing HBase in Chapter [chap:3], Configuring a Hadoop cluster
-- Installing Hive in Chapter [chap:3], Configuring a Hadoop cluster
-- Installing Pig in Chapter [chap:3], Configuring a Hadoop cluster
-- Installing ZooKeeper in Chapter [chap:3], Configuring a Hadoop
-    cluster
-- Installing Mahout in Chapter [chap:3], Configuring a Hadoop cluster
+- Installing HBase in [Chapter 3](#chap:3), Configuring a Hadoop cluster
+- Installing Hive in [Chapter 3](#chap:3), Configuring a Hadoop cluster
+- Installing Pig in [Chapter 3](#chap:3), Configuring a Hadoop cluster
+- Installing ZooKeeper in [Chapter 3](#chap:3), Configuring a Hadoop cluster
+- Installing Mahout in [Chapter 3](#chap:3), Configuring a Hadoop cluster
 - <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Tutorial_CreateImage.html>
 - <http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/command-reference.html>
 
@@ -1287,6 +1286,6 @@ completes. We can get its status from the
 
 ### See also 
 
-- Chapter [chap:3], Configuring a Hadoop cluster
+- [Configuring a Hadoop cluster](#chap:3)
 
 [^1]: HDD stands for Hard Disk Drive and SSD stands for Solid State Drive

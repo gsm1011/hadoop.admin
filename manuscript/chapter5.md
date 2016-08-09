@@ -1023,11 +1023,8 @@ Start the cluster with command:
 
 ### See also 
 
-- Managing HDFS cluster in Chapter [chap:4], Managing a Hadoop cluster
-
-- Managing DataNode daemons in Chapter [chap:4], Managing a Hadoop
-    cluster
-
+- Managing HDFS cluster in [Chapter 4](#chap:4), Managing a Hadoop cluster
+- Managing DataNode daemons in [Chapter 4](#chap:4), Managing a Hadoop cluster
 - <https://issues.apache.org/jira/browse/HADOOP-2585>
 
 ## Configuring NameNode high availability

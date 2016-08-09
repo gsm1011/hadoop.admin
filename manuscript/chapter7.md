@@ -1831,9 +1831,9 @@ recipe:
 ### See also 																		   	
 
 - Tuning TaskTracker configuration
-- Configuring capacity scheduler in Chapter [chap:4], Managing a
+- Configuring capacity scheduler in [Chapter 4](#chap:4), Managing a
   Hadoop cluster
-- Configuring fair scheduler in Chapter [chap:4], Managing a Hadoop
+- Configuring fair scheduler in [Chapter 4](#chap:4), Managing a Hadoop
   cluster
 
 ## Tuning TaskTracker configuration

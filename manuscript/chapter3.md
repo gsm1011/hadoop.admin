@@ -372,11 +372,11 @@ configuring a Hadoop cluster in pseudo-distributed mode:
     those related to Hadoop runtime options and cluster logging etc.
 
 - **core-site.xml** specifies the URI of HDFS NameNode and MapReduce
-    JobTracker. Value <hdfs://localhost:54310> of the fs.default.name
+    JobTracker. Value `hdfs://localhost:54310` of the fs.default.name
     property specifies the location of the default file system as HDFS
     on localhost using port 54310. We can specify other file system
-    schemes such as local file system with <file:///home/hduser/hadoop>
-    and amazon web service S3 with <s3://a-bucket/hadoop> etc. Value
+    schemes such as local file system with `file:///home/hduser/hadoop`
+    and amazon web service S3 with `s3://bucket-name/hadoop` etc. Value
     localhost:54311 of the mapred.job.tracker property specifies the URI
     of the cluster's JobTracker.
 
@@ -1076,7 +1076,7 @@ command:
 
 	$ hadoop namenode -format
 
-Warning!\
+**Warning!**
 Be cautious when formatting the filesystem with this command. It will
 erase all the data on the file system. Always try other methods before
 using this one.
@@ -1555,7 +1555,7 @@ Create symbolic link to the Pig directory:
 
 	$ sudo ln -s /usr/local/pig-0.10.1 /usr/local/pig
 
-Open file  /.bashrc with your favorite text editor and add the following
+Open file `~/.bashrc` with your favorite text editor and add the following
 lines into the file:
 
 	export PIG_HOME=/usr/local/pig
